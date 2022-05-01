@@ -9,6 +9,7 @@ const defaultValues = {
     student_name: "",
   };
 
+  
 const Form = () => {    
     const [inputs, setInputs] = useState({});
 
@@ -28,7 +29,7 @@ const Form = () => {
 
   return (
 <>
-<Box position='absolute' top="30vh" right="20vw">
+<Box position='absolute' top="30vh" right="20vw" height="10vh" width="25vw" color="white">
 
 
 <form onSubmit={handleSubmit} sx={{display:flexbox, flexDirection:"column"}}>
@@ -40,6 +41,7 @@ const Form = () => {
         value={inputs.email || ""} 
         onChange={handleChange}
       />
+      <br />
       </label>
       <label>Enter your key:
         <input 
