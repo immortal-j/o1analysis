@@ -11,9 +11,7 @@ const Homepage = () => {
 
    
     <Navbar/>
-    {/* <Form/> */}
-
-    {/* <p>HOme page</p>  */}
+  
     <SocialMedia/>
     </div>
     </>
