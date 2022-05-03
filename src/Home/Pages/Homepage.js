@@ -15,9 +15,13 @@ const Homepage = () => {
 
    
     <Navbar/>
+
     {/* <Form/> */}
 <Main/>
     {/* <p>HOme page</p>  */}
+
+  
+
     <SocialMedia/>
     <Circle/>
 
