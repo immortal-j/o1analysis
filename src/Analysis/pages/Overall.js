@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GraphWrapper from "../components/GraphWrapper";
 import SideBar from "../components/Sidebar/SideBar";
-
+import Linegraph from "../components/Linegraph";
 export const Overall = () => {
   return (
     <Wrapper>
