@@ -62,7 +62,6 @@ const Leetcode = () => {
         options={tempData.options}
         series={tempData.series}
         type="radialBar"
-       
       />
     </div>
   );

@@ -80,31 +80,27 @@ const StackBarGraph = () => {
         show: true,
       },
       fill: {
-        
         // colors: ["#7B367F","#371E59", "#AD67A5", "#954F95", "#B019C1"],
-        type: ["gradient"],
-        gradient: {
-            shade: 'dark',
-            type: "horizontal",
-            shadeIntensity: 0.5,
-            gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
-            inverseColors: true,
-            opacityFrom: 1,
-            opacityTo: 1,
-            // stops: [0, 50, 100],
-            colorStops: []
-        },
+        // type: ["gradient"],
+        // gradient: {
+        //   shade: "dark",
+        //   type: "horizontal",
+        //   shadeIntensity: 0.5,
+        //   gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+        //   inverseColors: true,
+        //   opacityFrom: 1,
+        //   opacityTo: 1,
+        //   // stops: [0, 50, 100],
+        //   colorStops: [],
+        // },
       },
     },
   };
 
   return (
-    <Chart
-      type="bar"
-      options={tempData.options}
-      series={tempData.series}
-      width="800"
-    />
+    <div>
+      <Chart type="bar" options={tempData.options} series={tempData.series} width="570"/>
+    </div>
   );
 };
 

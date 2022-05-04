@@ -1,44 +1,47 @@
 import React from "react";
-import Leetcode from "../components/Leetcode";
-import StackBarGraph from "../components/StackBarGraph";
 import styled from "styled-components";
-
+import GraphWrapper from "../components/GraphWrapper";
+import SideBar from "../components/Sidebar/SideBar";
+import Linegraph from "../components/Linegraph";
 export const Overall = () => {
   return (
-    <>
-      {/* <Leetcode/>
-      <StackBarGraph/> */}
-      <Wrapper>
-        <div className="user">
-          <h2>
-            <strong>Hello,</strong> <span>John</span>
-          </h2>
-        </div>
-        <div className="stats">
-          <p>Levelwise Solved Problem</p>
-          <div className="levelwise-stats">
-            <Leetcode />
+    <Wrapper>
+      <SideBar />
+      <MainContain>
+        <div className="Container">
+          <div className="user">
+            <h2>
+              <strong>Hello,</strong> <span>Pratik</span>
+            </h2>
           </div>
+          <GraphWrapper />
         </div>
-      </Wrapper>
-    </>
+      </MainContain>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-padding: 2rem ;
-width: 100vw;
-  .user {
-    h2 {
-      font-size: 2.3rem;
-      span {
-        font-weight: lighter;
-      }
-    }
+  display: flex;
+`;
+const MainContain = styled.div`
+  width: 100vw;
+  padding: 1.52rem;
+  height: 100vh;
+  .Container {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    /* background-color: #252733; */
   }
-  .stats{
-  
-    .levelwise-stats{
+  .user {
+    padding: 1rem;
+    h2 {
+      font-size: 2.5rem;
+      color: white;
+      span {
+        color: #6d57cf;
+      }
     }
   }
 `;
