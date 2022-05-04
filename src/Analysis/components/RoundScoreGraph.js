@@ -54,7 +54,6 @@ const RoundScoreGraph = () => {
           series={tempData.series}
           type="radialBar"
         >
-          RoundScoreGraph
         </Chart>
       </Wrapper>
     </>
@@ -64,7 +63,9 @@ const RoundScoreGraph = () => {
 const Wrapper = styled.div`
   padding: 1rem;
   background-color: #262834;
+  background-color: white;
+  background: linear-gradient(90deg, rgb(229, 0, 255) 0%, rgb(130, 0, 255) 100%) 0% 0% repeat scroll rgba(0, 0, 0, 0);
   border-radius: 1.8rem;
- max-width: 17rem;
+  
 `;
 export default RoundScoreGraph;

@@ -13,43 +13,32 @@ const GraphWrapper = () => {
         <RoundScoreGraph />
         <RoundScoreGraph />
       </div>
-      <div className="bar-stats">
-        <div className="stackbar">
-          <StackBarGraph />
-        </div>
-        <div className="stackbar">
-          <StackBarGraph />
-        </div>
+      <div className="Stackbar">
+        <StackBarGraph />
       </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  overflow: hidden;
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   .circle-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); */
+    grid-template-columns: 12rem 12rem;
+    align-self: flex-start;
     padding: 1rem;
+    grid-gap: 2rem;
     div {
       flex: 1;
     }
   }
-  .bar-stats {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-around;
-
-    .stackbar {
-      border-radius: 1rem;
-      padding: 0.5rem;
-      border: solid 0.1rem #ffa0ff;
-    }
+  .Stackbar{
+    width: 40rem;
   }
 `;
 

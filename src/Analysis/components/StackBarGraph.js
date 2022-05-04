@@ -99,7 +99,7 @@ const StackBarGraph = () => {
 
   return (
     <div>
-      <Chart type="bar" options={tempData.options} series={tempData.series} width="570"/>
+      <Chart type="bar" options={tempData.options} series={tempData.series} />
     </div>
   );
 };

@@ -23,6 +23,7 @@ export const Overall = () => {
 
 const Wrapper = styled.div`
   display: flex;
+
 `;
 const MainContain = styled.div`
   width: 100vw;
