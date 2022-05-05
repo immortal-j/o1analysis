@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Leetcode from "./Leetcode";
 import StackBarGraph from "./StackBarGraph";
 import RoundScoreGraph from "./RoundScoreGraph";
+import Linegraph from "./Linegraph";
 
 const GraphWrapper = () => {
   return (
@@ -19,6 +20,9 @@ const GraphWrapper = () => {
         </div>
         <div className="stackbar">
           <StackBarGraph />
+        </div>
+        <div className="Linegraph">
+          <Linegraph/>
         </div>
       </div>
     </Wrapper>
