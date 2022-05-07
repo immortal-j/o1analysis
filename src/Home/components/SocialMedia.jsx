@@ -41,7 +41,7 @@ const SocialMedia = () => {
         </a> 
 </Stack>
         
-        SocialMedia</div>
+        </div>
   )
 }
 
