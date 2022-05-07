@@ -1,37 +1,35 @@
+import { dark } from "@mui/material/styles/createPalette";
 import React from "react";
 import Chart from "react-apexcharts";
-
-const StackBarGraph = () => {
-  const tempData = {
+const StackbarGraph = () => {
+  const temp = {
     series: [
-      {
-        name: "Right Answered",
-        data: [44, 55, 41, 64, 22, 43],
-      },
-      {
-        name: "Wrong Answered",
-        data: [-53, -32, -33, -52, -13, -44],
-      },
+      { name: "Right", data: [44, 55, 41, 64, 22, 43, 21] },
+      { name: "Wrong", data: [-35, -10, -22, -17, -26, -23, -21] },
     ],
     options: {
+      title: {
+        text: "No of correct and incorrect answers",
+        align: "Center",
+        style: {
+          color: "#fff",
+        },
+      },
       chart: {
+        toolbar: { show: false },
         type: "bar",
-        height: 430,
-        stacked: true,
-        background: "#000033",
+        stacked: "true",
       },
       plotOptions: {
         bar: {
-          horizontal: false,
           dataLabels: {
-            position: "center",
+            position: "top",
           },
         },
       },
       dataLabels: {
         enabled: true,
         offsetX: -6,
-
         style: {
           fontSize: "12px",
           colors: ["#fff"],
@@ -40,68 +38,47 @@ const StackBarGraph = () => {
       stroke: {
         show: true,
         width: 1,
-        colors: ["#fff"],
+        colors: ["#EB5797"],
       },
+      // colors: ["rgba(237, 10, 51,0.5)", "#ED0A33"],
+      colors: ["#0A9361", "#f24949"],
+      // colors: ["#60F820", "#D1043A"],
+
       tooltip: {
         shared: true,
         intersect: false,
-      },
-      xaxis: {
-        labels: {
-          style: {
-            colors: "#FFFFFF",
-          },
-        },
-        categories: [
-          "Operating Systems",
-          "DSA",
-          "DAA",
-          "AI",
-          "Microprocessor",
-          "Information Security",
-        ],
-      },
-
-      legend: {
-        show: false,
+        followCursor: true,
+        theme:"dark",
         style: {
-          colors: "#fff",
+          fontSize: "10px",
+          fontFamily: undefined,
         },
       },
       grid: {
         show: false,
       },
+      xaxis: {
+        categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
+        labels: {
+          style: {
+            colors: "#fff",
+            fontSize: "12px",
+            fontFamily: "Helvetica, Arial, sans-serif",
+            fontWeight: 400,
+            cssClass: "apexcharts-xaxis-label",
+          },
+        },
+      },
       yaxis: {
         labels: {
           style: {
-            colors: "#FFFFFF",
+            colors: "#fff",
           },
         },
-        show: true,
-      },
-      fill: {
-        // colors: ["#7B367F","#371E59", "#AD67A5", "#954F95", "#B019C1"],
-        // type: ["gradient"],
-        // gradient: {
-        //   shade: "dark",
-        //   type: "horizontal",
-        //   shadeIntensity: 0.5,
-        //   gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
-        //   inverseColors: true,
-        //   opacityFrom: 1,
-        //   opacityTo: 1,
-        //   // stops: [0, 50, 100],
-        //   colorStops: [],
-        // },
       },
     },
   };
-
-  return (
-    <div>
-      <Chart type="bar" options={tempData.options} series={tempData.series} />
-    </div>
-  );
+  return <Chart type="bar" options={temp.options} series={temp.series} />;
 };
 
-export default StackBarGraph;
+export default StackbarGraph;
