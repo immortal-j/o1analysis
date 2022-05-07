@@ -1,47 +1,105 @@
+import { Card, CardContent, Container, Grid } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
-import styled from "styled-components";
-import GraphWrapper from "../components/GraphWrapper";
-import SideBar from "../components/Sidebar/SideBar";
-import Linegraph from "../components/Linegraph";
-export const Overall = () => {
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import ToggleSidebar from "../components/ToggleSideBar";
+import { styled } from "@mui/system";
+import LeetCode from "../components/LeetCode";
+import LineGraph from "../components/LineGraph";
+import StackbarGraph from '../components/StackbarGraph'
+
+const CardContents = styled(CardContent)({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+ 
+  color: "#F4F4FF",
+  minHeight:"25rem",
+  maxHeight:"25rem",
+  padding: "2rem",
+});
+const CardContentsMobile = styled(CardContent)({
+  color: "#F4F4FF",
+  padding: "2rem",
+});
+
+const Overall = () => {
   return (
-    <Wrapper>
-      <SideBar />
-      <MainContain>
-        <div className="Container">
-          <div className="user">
-            <h2>
-              <strong>Hello,</strong> <span>Pratik</span>
-            </h2>
-          </div>
-          <GraphWrapper />
-        </div>
-      </MainContain>
-    </Wrapper>
+    <>
+      <ToggleSidebar />
+      <Container maxWidth="xl">
+        <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
+          <Grid item xs={12} sm={6} md={4}>
+           
+              <Card 
+                sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6", }}
+              >
+                <CardContents >
+                  <EmojiPeopleIcon
+                    sx={{
+                      boxShadow: 2,
+                      fontSize: "4rem",
+                      borderRadius: "2rem",
+                      backgroundColor: "#7468F0",
+                      padding: "0.3rem",
+                    }}
+                  />
+                  <h2> Hello, John</h2>
+                  <p>Nice to meet you !</p>
+                </CardContents>
+              </Card>
+            
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box>
+              <Card
+                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+              >
+                <CardContents>
+                  <LeetCode />
+                </CardContents>
+              </Card>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Box>
+              <Card
+                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+              >
+                <CardContents>
+                  <LeetCode />
+                </CardContents>
+              </Card>
+            </Box>
+          </Grid>
+         
+
+          <Grid item xs={12} sm={6}>
+            <Box>
+              <Card
+                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+              >
+                <CardContentsMobile>
+                  <StackbarGraph />
+                </CardContentsMobile>
+              </Card>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Box>
+              <Card
+                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+              >
+                <CardContentsMobile>
+                  <LineGraph />
+                </CardContentsMobile>
+              </Card>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 };
 
-const Wrapper = styled.div`
-  display: flex;
-`;
-const MainContain = styled.div`
-  width: 100vw;
-  padding: 1.52rem;
-  height: 100vh;
-  .Container {
-    width: 100%;
-    height: 100%;
-    border-radius: 2rem;
-    /* background-color: #252733; */
-  }
-  .user {
-    padding: 1rem;
-    h2 {
-      font-size: 2.5rem;
-      color: white;
-      span {
-        color: #6d57cf;
-      }
-    }
-  }
-`;
+export default Overall;
