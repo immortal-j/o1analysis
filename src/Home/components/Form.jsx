@@ -1,6 +1,8 @@
+
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import { Box} from '@mui/material'
 import { flexbox } from '@mui/system';
-import React, { useState } from 'react'
 
 const defaultValues = {
     email: "",
@@ -9,66 +11,73 @@ const defaultValues = {
     student_name: "",
   };
 
+
   
 const Form = () => {    
     const [inputs, setInputs] = useState({});
 
     const handleChange = (event) => {
-      const email = event.target.name;
-      const key = event.target.value;
-      const college_name = event.target.value;
-      const student_name = event.target.value;
-      setInputs(values => ({...values, [email]: email,[key]:key,[college_name]:college_name,[student_name]:student_name }))
+      const name = event.target.name;
+      const value = event.target.value;
+      setInputs(values => ({...values, [name]: value}))
     }
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      alert(inputs);
+      alert(JSON.stringify( inputs));
     }
   
 
   return (
 <>
-<Box position='absolute' top="30vh" right="20vw" height="10vh" width="25vw" color="white">
+<Box color="white"  >
 
 
-<form onSubmit={handleSubmit} sx={{display:flexbox, flexDirection:"column"}}>
+<form onSubmit={handleSubmit}>
+
+<Box>
+
 
       <label>Enter your email:
-      <input 
+      <Inputs 
         type="text" 
         name="email" 
         value={inputs.email || ""} 
         onChange={handleChange}
       />
       <br />
-      </label>
+      </label></Box>
+      <Box>
       <label>Enter your key:
-        <input 
+        <Inputs 
           type="text" 
           name="key" 
           value={inputs.key || ""} 
           onChange={handleChange}
         />
- </label>
+ </label></Box>
       <label>Enter your college_name:
-        <input 
+        <Inputs 
           type="text" 
           name="college_name" 
           value={inputs.college_name || ""} 
           onChange={handleChange}
         />
  </label>
-      <label>Enter your key:
-        <input 
+ <Box>
+      <label>student_name:
+        <Inputs 
           type="text" 
           name="student_name" 
           value={inputs.student_name || ""} 
           onChange={handleChange}
         />
 
-        </label>
-        <input type="submit" />
+        </label></Box>
+        <Box>
+
+        <Button style={{padding:"5px",margin:"10px auto"}} type="submit" >Submit</Button>
+        </Box>
     </form>
 
 
@@ -79,3 +88,26 @@ const Form = () => {
 }
 
 export default Form;
+
+
+const Button = styled.button`
+background: transparent;
+border-radius: 3px;
+border: 2px solid voilet;
+color: voilet;
+margin: 0 1em;
+padding: 0.25em 1em;
+`
+
+
+const Inputs = styled.input`
+background: transparent;
+border-radius: 3px;
+border: 2px solid voilet;
+color: voilet;
+margin: 0 1em;
+padding: 0.25em 1em;
+&:focus {
+  border: none
+}
+`

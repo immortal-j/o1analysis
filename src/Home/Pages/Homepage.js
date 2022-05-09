@@ -1,33 +1,43 @@
-import React from 'react'
-import Circle from '../components/Circle'
-import Form from '../components/Form'
-import Navbar from '../components/Navbar'
-import SocialMedia from '../components/SocialMedia'
-import Main from '../components/TextContent/Main'
+import React from "react";
+import Circle from "../components/Circle";
+import Form from "../components/Form";
+import Navbar from "../components/Navbar";
+import SocialMedia from "../components/SocialMedia";
+
+import Main from "../components/TextContent/Main";
+import img from "../images/orion-nebula-11107.png";
+import Testimonial from "../components/Testimonial/Testimonial"
 
 
-
-import img from '../images/nebula.jpg'
 const Homepage = () => {
-  return (
-    < >
-    <div style={{backgroundColor: "#0b001a", backgroundImage : `url(${img})`,     backgroundSize: "cover",   minHeight:"1000vh" , backgroundAttachment: "fixed", backgroundRepeat: "no-repeat", backgroundPosition: "center center",scrollBehavior:"smooth",userSelect:"none"}}>
-
-   
-    <Navbar/>
-
-    {/* <Form/> */}
-<Main/>
-    {/* <p>HOme page</p>  */}
-
   
+  return (
+    <>
+    
+      <div //Background Code
+        style={{
+          backgroundColor: "#0b001a",
+          // backgroundImage: `url(${img})`,
+          backgroundSize: "cover",
+          minHeight: "1000vh",
+          backgroundAttachment: "fixed",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          scrollBehavior: "smooth",
+          userSelect: "none",
+        }}
+      >
+        <Navbar />
 
-    <SocialMedia/>
-    <Circle/>
+        <Main />
+        {/* Main content contains Start btn, modal, form */}
 
-    </div>
+        <SocialMedia />
+        <Circle />
+        <Testimonial/>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
