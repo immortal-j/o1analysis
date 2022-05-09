@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import { getData } from "../API/api";
 
 const LeetCode = () => {
+
+
   const temp = {
     series: [80, 55, 67, 83],
     options: {

@@ -3,7 +3,6 @@ import LeetCode from "./LeetCode";
 import LineGraph from "./LineGraph";
 import StackbarGraph from "./StackbarGraph";
 import { Grid } from "@mui/material";
-import Sidebar from "../Sidebar";
 import { styled } from "@mui/system";
 
 const StyledGrid=styled(Grid,{})({

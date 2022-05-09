@@ -1,12 +1,16 @@
 import { Card, CardContent, Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ToggleSidebar from "../components/ToggleSideBar";
 import { styled } from "@mui/system";
 import LeetCode from "../components/LeetCode";
 import LineGraph from "../components/LineGraph";
 import StackbarGraph from '../components/StackbarGraph'
+import userActions from "../redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -24,6 +28,11 @@ const CardContentsMobile = styled(CardContent)({
 });
 
 const Overall = () => {
+const dispatch=useDispatch();
+useEffect(() => {
+ dispatch(userActions());
+}, [])
+
   return (
     <>
       <ToggleSidebar />
