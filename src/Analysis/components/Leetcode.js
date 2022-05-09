@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { getData } from "../API/api";
 
-const LeetCode = () => {
-
+const LeetCode = ({byId}) => {
+  
+  const s=byId[0].leetcode.series;
+ console.log(byId[0])
 
   const temp = {
-    series: [80, 55, 67, 83],
+    series: s,
+    series: [55,33,44],
     options: {
       chart: {
         height: 350,
@@ -37,7 +40,7 @@ const LeetCode = () => {
           },
         },
       },
-      labels: ["Easy", "Medium", "Hard", "Overall"],
+      labels: ["hard","easy","medium"],
     },
   };
   return (

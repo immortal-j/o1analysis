@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const StackbarGraph = () => {
  
   const grph=useSelector(state=>state.userData.allUser)
-  console.log(grph[1].stackgraph);
+  
 
   const [temp,setTemp] = useState({
     series: [

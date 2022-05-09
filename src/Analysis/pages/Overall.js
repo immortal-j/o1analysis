@@ -6,20 +6,19 @@ import ToggleSidebar from "../components/ToggleSideBar";
 import { styled } from "@mui/system";
 import LeetCode from "../components/LeetCode";
 import LineGraph from "../components/LineGraph";
-import StackbarGraph from '../components/StackbarGraph'
+import StackbarGraph from "../components/StackbarGraph";
 import userActions from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-
-
+import { useParams } from "react-router-dom";
 
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
- 
+
   color: "#F4F4FF",
-  minHeight:"25rem",
-  maxHeight:"25rem",
+  minHeight: "25rem",
+  maxHeight: "25rem",
   padding: "2rem",
 });
 const CardContentsMobile = styled(CardContent)({
@@ -28,10 +27,20 @@ const CardContentsMobile = styled(CardContent)({
 });
 
 const Overall = () => {
-const dispatch=useDispatch();
-useEffect(() => {
- dispatch(userActions());
-}, [])
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.userData.allUser);
+  console.log(data);
+
+  const byId = data.filter(function (e) {
+    return e.id === parseInt(id);
+  });
+  console.log(byId);
+  console.log( byId[0].leetcode.labels)
+
+  useEffect(() => {
+    dispatch(userActions());
+  }, []);
 
   return (
     <>
@@ -39,33 +48,35 @@ useEffect(() => {
       <Container maxWidth="xl">
         <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
           <Grid item xs={12} sm={6} md={4}>
-           
-              <Card 
-                sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6", }}
-              >
-                <CardContents >
-                  <EmojiPeopleIcon
-                    sx={{
-                      boxShadow: 2,
-                      fontSize: "4rem",
-                      borderRadius: "2rem",
-                      backgroundColor: "#7468F0",
-                      padding: "0.3rem",
-                    }}
-                  />
-                  <h2> Hello, John</h2>
-                  <p>Nice to meet you !</p>
-                </CardContents>
-              </Card>
-            
+            <Card
+              sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6" }}
+            >
+              <CardContents>
+                <EmojiPeopleIcon
+                  sx={{
+                    boxShadow: 2,
+                    fontSize: "4rem",
+                    borderRadius: "2rem",
+                    backgroundColor: "#7468F0",
+                    padding: "0.3rem",
+                  }}
+                />
+                <h2> Hello, John</h2>
+                <p>Nice to meet you !</p>
+              </CardContents>
+            </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Box>
               <Card
-                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+                sx={{
+                  boxShadow: 2,
+                  minWidth: 275,
+                  backgroundColor: "#10153B",
+                }}
               >
                 <CardContents>
-                  <LeetCode />
+                  <LeetCode byId={byId} />
                 </CardContents>
               </Card>
             </Box>
@@ -73,7 +84,11 @@ useEffect(() => {
           <Grid item xs={12} sm={6} md={4}>
             <Box>
               <Card
-                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+                sx={{
+                  boxShadow: 2,
+                  minWidth: 275,
+                  backgroundColor: "#10153B",
+                }}
               >
                 <CardContents>
                   <LeetCode />
@@ -81,12 +96,15 @@ useEffect(() => {
               </Card>
             </Box>
           </Grid>
-         
 
           <Grid item xs={12} sm={6}>
             <Box>
               <Card
-                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+                sx={{
+                  boxShadow: 2,
+                  minWidth: 275,
+                  backgroundColor: "#10153B",
+                }}
               >
                 <CardContentsMobile>
                   <StackbarGraph />
@@ -97,7 +115,11 @@ useEffect(() => {
           <Grid item xs={12} sm={6}>
             <Box>
               <Card
-                sx={{ boxShadow: 2, minWidth: 275, backgroundColor: "#10153B" }}
+                sx={{
+                  boxShadow: 2,
+                  minWidth: 275,
+                  backgroundColor: "#10153B",
+                }}
               >
                 <CardContentsMobile>
                   <LineGraph />
