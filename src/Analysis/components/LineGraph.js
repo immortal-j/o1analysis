@@ -1,10 +1,8 @@
 import React from "react";
 import Chart from "react-apexcharts";
-const LineGraph = ({byId}) => {
-
-  const series=byId?.[0].linegraph.series;
-  const labels=byId?.[0].linegraph.labels;
-
+const LineGraph = ({ byId }) => {
+  const series = byId?.[0].linegraph.series;
+  const labels = byId?.[0].linegraph.labels;
 
   const temp = {
     series: series,
@@ -27,7 +25,11 @@ const LineGraph = ({byId}) => {
         },
         toolbar: {
           show: false,
-        },
+        },labels:{
+          style:{
+            color:"#fff"
+          }
+        }
       },
       // stroke: {
       //   curve: "smooth",
@@ -42,10 +44,8 @@ const LineGraph = ({byId}) => {
       xaxis: {
         categories: labels,
         // categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
-        Labels: {
-          style: {
-            color: "#fff",
-          },
+        style: {
+          color: "#fff",
         },
         title: {
           text: "Subjects",
@@ -67,7 +67,7 @@ const LineGraph = ({byId}) => {
         shared: true,
         intersect: false,
         followCursor: true,
-        theme:"dark",
+        theme: "dark",
         style: {
           fontSize: "10px",
           fontFamily: undefined,

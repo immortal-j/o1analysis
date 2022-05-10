@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Testimonial.css";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
+// import "swiper/swiper-bundle.css";
 
 export default function Testimonial() {
   const data = [
@@ -58,7 +58,7 @@ export default function Testimonial() {
 
   return (
     <section>
-      <div className="container">
+      {/* <div className="container">
         <div className="section-title">
           <h2>Testimonials</h2>
           <span className="section-separator"></span>
@@ -66,9 +66,9 @@ export default function Testimonial() {
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry.
           </p>
-        </div>
-      </div>
-      <div className="testimonials-carousel-wrap">
+        </div> */}
+      {/* </div> */}
+      {/* <div className="testimonials-carousel-wrap">
         <div
           className="listing-carousel-button listing-carousel-button-next"
           onClick={() => goToPage(activeSlide + 1)}
@@ -81,10 +81,10 @@ export default function Testimonial() {
         >
           <i className="fa fa-caret-left" style={{ color: "#fff" }}></i>
         </div>
-        <div className="testimonials-carousel">
+        {/* <div className="testimonials-carousel">
           {/* <div className="swiper-container">
             <div className="swiper-wrapper"> */}
-          <Swiper
+          {/* <Swiper
             spaceBetween={50}
             slidesPerView={
               window.innerWidth < 768 ? 1 : window.innerWidth < 998 ? 2 : 3
@@ -135,11 +135,12 @@ export default function Testimonial() {
             ))}
             {/* </div>
           </div> */}
-          </Swiper>
-        </div>
+          {/* </Swiper>
+        </div>  */} 
 
-        <div className="tc-pagination"></div>
-      </div>
+        <div className="tc-pagination"></div> 
+     
     </section>
+
   );
 }

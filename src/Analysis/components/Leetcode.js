@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Chart from "react-apexcharts";
-import { getData } from "../API/api";
+
 
 const LeetCode = ({byId}) => {
   
@@ -9,7 +9,6 @@ const LeetCode = ({byId}) => {
 
   const temp = {
     series: series,
-    // series: [55,33,44],
     options: {
       chart: {
         height: 350,
@@ -28,13 +27,14 @@ const LeetCode = ({byId}) => {
             },
             value: {
               fontSize: "16px",
+            
             },
             total: {
               show: true,
               label: "Total",
               formatter: function (w) {
                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                return 249;
+                return 249+" ";
               },
             },
           },

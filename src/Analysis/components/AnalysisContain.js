@@ -11,14 +11,7 @@ const StyledGrid=styled(Grid,{})({
 
   borderRadius:"2rem", 
 })
-const StyledGrid2=styled(Grid,{})({
-  color: "#6b8068",
-  borderRadius:"2rem",
-  backgroundColor:"#30323B",
-  marginBottom: "12px"
-  // boxShadow:   "3px 0px 12px 0px #cdc8ff;"
- 
-})
+
 
 const Analysis = () => {
   return (

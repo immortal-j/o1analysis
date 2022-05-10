@@ -27,16 +27,14 @@ const CardContentsMobile = styled(CardContent)({
 });
 
 const Overall = () => {
-  const { id } = useParams();
+  const { name } = useParams();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.userData.allUser);
   console.log(data);
 
   const byId = data.filter(function (e) {
-    return e.id === parseInt(id);
+    return e.name === name;
   });
-  console.log(byId);
-  console.log( byId[0].leetcode.labels)
 
   useEffect(() => {
     dispatch(userActions());
@@ -91,7 +89,7 @@ const Overall = () => {
                 }}
               >
                 <CardContents>
-                  <LeetCode />
+                  <LeetCode byId={byId}/>
                 </CardContents>
               </Card>
             </Box>
