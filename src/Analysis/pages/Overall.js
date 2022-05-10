@@ -61,7 +61,7 @@ const Overall = () => {
                     padding: "0.3rem",
                   }}
                 />
-                <h2> Hello, John</h2>
+                <h2> Hello, {byId[0].name}</h2>
                 <p>Nice to meet you !</p>
               </CardContents>
             </Card>
@@ -107,7 +107,7 @@ const Overall = () => {
                 }}
               >
                 <CardContentsMobile>
-                  <StackbarGraph />
+                  <StackbarGraph  byId={byId}/>
                 </CardContentsMobile>
               </Card>
             </Box>
@@ -122,7 +122,7 @@ const Overall = () => {
                 }}
               >
                 <CardContentsMobile>
-                  <LineGraph />
+                  <LineGraph   byId={byId}/>
                 </CardContentsMobile>
               </Card>
             </Box>

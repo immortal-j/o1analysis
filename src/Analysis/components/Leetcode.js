@@ -4,12 +4,12 @@ import { getData } from "../API/api";
 
 const LeetCode = ({byId}) => {
   
-  const s=byId[0].leetcode.series;
- console.log(byId[0])
+  const series=byId?.[0].leetcode.series;
+  const labels=byId?.[0].leetcode.labels;
 
   const temp = {
-    series: s,
-    series: [55,33,44],
+    series: series,
+    // series: [55,33,44],
     options: {
       chart: {
         height: 350,
@@ -40,7 +40,7 @@ const LeetCode = ({byId}) => {
           },
         },
       },
-      labels: ["hard","easy","medium"],
+      labels: labels,
     },
   };
   return (
