@@ -27,8 +27,8 @@ body {
   box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
   background-color: #313467;
   /* background-color: #313467; */
-  background: linear-gradient(108deg,rgb(96 16 216) 0%,rgb(165 92 233) 100%);
-  background: linear-gradient(222deg,rgb(92 81 183) 44%,rgb(179 114 239) 100%);
+  background: linear-gradient(108deg,#293846 0%,#293846 100%);
+  background: linear-gradient(222deg,#293846 44%,#293846 100%);
   position: fixed;
   top: 0;
   left: -100%;
@@ -43,7 +43,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  color: #ff4b4b;
+  background-color: #1d2637;
+  color: #f9f1f1;
+ 
 }
 .sidebar-overlay {
   position: fixed;
@@ -76,6 +78,8 @@ body {
   margin-bottom: 8px;
 }
 .sd-body ul li .sd-link {
+  margin: 0;
+  padding: 0;
   display: inline-block;
   width: 100%;
   padding: 10px 16px;
@@ -89,6 +93,31 @@ body {
 }
 .sd-body ul li  :hover {
   color: #fff;
-  background-color: #6F63E6;
   transform: scale(1.1);
+  margin: 0;
+  padding: 0%;
+
+  justify-content: space-between;
+
 }
+.sd-body ul li{
+  height: auto;
+  width :70%;
+  padding: 10px;
+
+  place-items: centre;
+  font-size: small;
+  color :white;
+  border:#313467;
+  border-width: 100%;
+}
+.sd-body ul li #title{
+ font-size: medium;
+ margin: 0;
+ padding: 0;
+
+}
+.sd-body ul li #icon{
+  flex :20%
+}
+
