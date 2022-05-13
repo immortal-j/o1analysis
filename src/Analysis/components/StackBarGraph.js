@@ -1,12 +1,16 @@
-import { dark } from "@mui/material/styles/createPalette";
 import React from "react";
 import Chart from "react-apexcharts";
-const StackbarGraph = () => {
+
+const StackbarGraph = ({ byId }) => {
+  const series = byId?.[0].stackgraph.series;
+  const labels = byId?.[0].stackgraph.labels;
+
   const temp = {
-    series: [
-      { name: "Right", data: [44, 55, 41, 64, 22, 43, 21] },
-      { name: "Wrong", data: [-35, -10, -22, -17, -26, -23, -21] },
-    ],
+    series: series,
+    // series: [
+    //   { name: "Right", data: [55, 22, 66, 77, 52, 99, 34] },
+    //   { name: "Wrong", data: [-35, -10, -22, -17, -26, -23, -21] },
+    // ],
     options: {
       title: {
         text: "No of correct and incorrect answers",
@@ -48,7 +52,7 @@ const StackbarGraph = () => {
         shared: true,
         intersect: false,
         followCursor: true,
-        theme:"dark",
+        theme: "dark",
         style: {
           fontSize: "10px",
           fontFamily: undefined,
@@ -57,8 +61,14 @@ const StackbarGraph = () => {
       grid: {
         show: false,
       },
+      legend: {
+        labels: {
+          colors: "white",
+        },
+      },
       xaxis: {
-        categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
+        categories: labels,
+        // categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
         labels: {
           style: {
             colors: "#fff",
@@ -78,6 +88,7 @@ const StackbarGraph = () => {
       },
     },
   };
+
   return <Chart type="bar" options={temp.options} series={temp.series} />;
 };
 

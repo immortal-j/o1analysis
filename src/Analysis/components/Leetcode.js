@@ -1,9 +1,14 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const LeetCode = () => {
+
+const LeetCode = ({byId}) => {
+  
+  const series=byId?.[0].leetcode.series;
+  const labels=byId?.[0].leetcode.labels;
+
   const temp = {
-    series: [80, 55, 67, 83],
+    series: series,
     options: {
       chart: {
         height: 350,
@@ -13,7 +18,12 @@ const LeetCode = () => {
         text: "Levelwise Score Distribution",
         align: "Center",
         fontSize: "40px",
+        style:{
+          color:"#fff"
+        }
       },
+      // colors:["#0169CD","#6794DC","#6771DC"],
+      colors:["#FBB500","#FC248E","#0169CD"],
       plotOptions: {
         radialBar: {
           dataLabels: {
@@ -22,19 +32,22 @@ const LeetCode = () => {
             },
             value: {
               fontSize: "16px",
+              color:"white",
             },
             total: {
               show: true,
               label: "Total",
+              color:"white",
               formatter: function (w) {
                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                return 249;
+                return 249+" ";
               },
             },
           },
+          
         },
       },
-      labels: ["Easy", "Medium", "Hard", "Overall"],
+      labels: labels,
     },
   };
   return (

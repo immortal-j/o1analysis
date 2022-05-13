@@ -1,13 +1,17 @@
 import React from "react";
 import Chart from "react-apexcharts";
-const LineGraph = () => {
+const LineGraph = ({ byId }) => {
+  const series = byId?.[0].linegraph.series;
+  const labels = byId?.[0].linegraph.labels;
+
   const temp = {
-    series: [
-      {
-        name: "Subject",
-        data: [12, 20, 33, 36, 32, 32, 33],
-      },
-    ],
+    series: series,
+    // series: [
+    //   {
+    //     name: "Subjects",
+    //     data: [12, 20, 33, 36, 32, 32, 33],
+    //   },
+    // ],
     options: {
       chart: {
         type: "line",
@@ -22,6 +26,11 @@ const LineGraph = () => {
         toolbar: {
           show: false,
         },
+        labels: {
+          style: {
+            color: "#fff",
+          },
+        },
       },
       // stroke: {
       //   curve: "smooth",
@@ -34,18 +43,30 @@ const LineGraph = () => {
         },
       },
       xaxis: {
-        categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
-        Labels: {
+        categories: labels,
+        // categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
+        labels: {
           style: {
-            color: "#fff",
+            colors: "#fff",
           },
         },
         title: {
+          style: {
+            color: "#fff",
+          },
           text: "Subjects",
         },
       },
       yaxis: {
+        labels: {
+          style: {
+            colors: "#fff",
+          },
+        },
         title: {
+          style: {
+            color: "#fff",
+          },
           text: "Performance",
         },
       },
@@ -60,7 +81,7 @@ const LineGraph = () => {
         shared: true,
         intersect: false,
         followCursor: true,
-        theme:"dark",
+        theme: "dark",
         style: {
           fontSize: "10px",
           fontFamily: undefined,
