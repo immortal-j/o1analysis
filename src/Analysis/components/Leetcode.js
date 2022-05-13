@@ -14,6 +14,9 @@ const LeetCode = ({byId}) => {
         height: 350,
         type: "radialBar",
       },
+      xaxis:{
+        
+      },
       title: {
         text: "Levelwise Score Distribution",
         align: "Center",

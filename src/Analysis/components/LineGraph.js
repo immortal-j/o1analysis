@@ -1,3 +1,4 @@
+import { withTheme } from "@emotion/react";
 import React from "react";
 import Chart from "react-apexcharts";
 const LineGraph = ({ byId }) => {
@@ -49,11 +50,13 @@ const LineGraph = ({ byId }) => {
         },
         title: {
           text: "Subjects",
+          
         },
       },
       yaxis: {
         title: {
           text: "Performance",
+          
         },
       },
       grid: {
@@ -82,33 +85,35 @@ const LineGraph = ({ byId }) => {
           colorStops: [
             {
               offset: 0,
-              color: "#EB656F",
+              color: "#00ff7f",
               opacity: 1,
             },
             {
               offset: 20,
-              color: "#FAD375",
+              color: "#ffff00",
               opacity: 1,
             },
             {
               offset: 60,
-              color: "#61DBC3",
+              color: "#00ff7f",
               opacity: 1,
             },
             {
               offset: 100,
-              color: "#95DA74",
+              color: "#ff6347",
               opacity: 1,
             },
           ],
         },
       },
+    
       legend: {
         position: "top",
         horizontalAlign: "right",
         floating: true,
         offsetY: -25,
         offsetX: -5,
+        
       },
     },
   };

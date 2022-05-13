@@ -15,9 +15,9 @@ const ToggleSidebar = () => {
       <div className="container-fluid mt-3 mb-3">
         <nav className="navbar navbar-expand-lg  shadow-md">
           <div className="container-fluid p-2">
-            <a className="navbar-brand text-primary mr-0">O(1) Coding Club</a>
+            <a className="navbar-brand text-primary mr-0" >O(1) Coding Club</a>
             <div className="form-inline ml-auto">
-              <div className="btn btn-primary" onClick={ToggleSidebar}>
+              <div className="btn btn-primary" onClick={ToggleSidebar} >
               <MenuIcon/>
               </div>
             </div>
