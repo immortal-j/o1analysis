@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./ToggleSidebar.css";import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import HomeIcon from '@mui/icons-material/Home';
+import {NavBarData} from "./NavBarData";
 const ToggleSidebar = () => {
   const [isOpen, setIsopen] = useState(false);
 
@@ -29,10 +31,25 @@ const ToggleSidebar = () => {
             </div>
           </div>
           <div className="sd-body">
-            <ul>
-              <li>
-                <a className="sd-link">Menu Item 1</a>
-              </li>
+            {/* <ul>
+              <li> */}
+              <div className="NavBarData">
+          <ul className="NavBarList">
+          {NavBarData.map((val,key)=>{
+            return <div ><li key="key" className ="row">
+            <div>
+              {" "}
+              <div id="icon">{val.icon}</div>
+              {" "}
+              <div id="title">{val.title}</div>
+              </div>
+            </li></div>
+          })}
+          </ul>
+          
+           
+          </div>
+              {/* </li>
               <li>
                 <a className="sd-link">Menu Item 2</a>
               </li>
@@ -54,7 +71,7 @@ const ToggleSidebar = () => {
               <li>
                 <a className="sd-link">Menu Item 8</a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div
