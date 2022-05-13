@@ -20,6 +20,7 @@ const LeetCode = ({byId}) => {
       title: {
         text: "Levelwise Score Distribution",
         align: "Center",
+        
         fontSize: "40px",
       },
       plotOptions: {
@@ -27,6 +28,7 @@ const LeetCode = ({byId}) => {
           dataLabels: {
             name: {
               fontSize: "22px",
+              
             },
             value: {
               fontSize: "16px",
