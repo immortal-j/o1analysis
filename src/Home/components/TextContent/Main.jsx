@@ -20,9 +20,19 @@ function Main() {
 export default Main;
 
 const TextContent = styled.div`
+  *{
+    margin:0.4rem 0;
+  }
+
+  @media ${device.mobileM} {
+    position: absolute;
+    top: 60vh;  
+  }
   @media ${device.mobileL} {
     position: absolute;
-    top: 70vh;
-    
+    top: 50vh;
+
   }
+
+
 `;

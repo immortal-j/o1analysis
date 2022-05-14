@@ -1,32 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-html {
-  overflow-x: hidden;
-  height: 100%;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-size: 13px;
-  text-align: center;
-  font-family: "Roboto";
 
-}
+
 section {
   float: left;
   position: relative;
   padding: 30px 0;
-  background: #fcfcfd;
-  z-index: 1;
+
+  z-index: 10;
   width: 100%;
 }
+
 .section-title {
   float: left;
   position: relative;
@@ -44,7 +27,7 @@ section {
   float: left;
   width: 100%;
   text-align: center;
-  color: #007aff;
+  color: #8500ff;
   font-size: 34px;
   font-weight: 800;
   position: relative;
@@ -64,7 +47,7 @@ section {
   width: 50px;
   border-radius: 3px;
   z-index: 2;
-  background-color: #007aff;
+  background-color: #8500ff;
   margin-left: -25px;
 }
 .swiper-container {
@@ -80,7 +63,7 @@ section {
   margin-top: -25px;
   z-index: 100;
   cursor: pointer;
-  background: #007aff;
+  background: #8500ff;
   box-shadow: 0 9px 26px rgba(58, 87, 135, 0.45);
   transition: all 200ms linear;
   outline: none;
@@ -146,7 +129,7 @@ section {
   margin-bottom: 12px;
 }
 .listing-rating i {
-  color: #007aff;
+  color: #8500ff;
 }
 .testimonials-avatar h3 {
   font-weight: 600;
@@ -157,7 +140,7 @@ section {
   font-weight: 400;
   font-size: 12px;
   padding-top: 6px;
-  color: #007aff;
+  color: #8500ff;
 }
 .testimonials-carousel .swiper-slide {
   padding: 30px 0;
@@ -237,3 +220,4 @@ section {
   height: 10px;
   transition: all 300ms ease-in-out;
 }
+

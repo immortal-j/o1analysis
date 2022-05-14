@@ -82,8 +82,8 @@ export default function Testimonial() {
           <i className="fa fa-caret-left" style={{ color: "#fff" }}></i>
         </div>
         <div className="testimonials-carousel">
-          {/* <div className="swiper-container">
-            <div className="swiper-wrapper"> */}
+          <div className="swiper-container">
+            <div className="swiper-wrapper">
           <Swiper
             spaceBetween={50}
             slidesPerView={
@@ -133,8 +133,8 @@ export default function Testimonial() {
                 </div>
               </SwiperSlide>
             ))}
-            {/* </div>
-          </div> */}
+            </div>
+          </div>
           </Swiper>
         </div>
 

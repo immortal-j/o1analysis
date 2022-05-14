@@ -44,6 +44,7 @@ const Form = () => {
         name="email" 
         value={inputs.email || ""} 
         onChange={handleChange}
+        placeholder="johndeo@gmail.com"
       />
       <br />
       </label></Box>
@@ -54,23 +55,26 @@ const Form = () => {
           name="key" 
           value={inputs.key || ""} 
           onChange={handleChange}
+          placeholder="adje8e5"
         />
  </label></Box>
-      <label>Enter your college_name:
+      <label>Enter your college name:
         <Inputs 
           type="text" 
           name="college_name" 
           value={inputs.college_name || ""} 
           onChange={handleChange}
+          placeholder="RCOEM"
         />
  </label>
  <Box>
-      <label>student_name:
+      <label>Student Name:
         <Inputs 
           type="text" 
           name="student_name" 
           value={inputs.student_name || ""} 
           onChange={handleChange}
+          placeholder="Twinshu Parmar"
         />
 
         </label></Box>
@@ -93,8 +97,8 @@ export default Form;
 const Button = styled.button`
 background: transparent;
 border-radius: 3px;
-border: 2px solid voilet;
-color: voilet;
+border: 2px solid white;
+color: white;
 margin: 0 1em;
 padding: 0.25em 1em;
 `
@@ -103,8 +107,8 @@ padding: 0.25em 1em;
 const Inputs = styled.input`
 background: transparent;
 border-radius: 3px;
-border: 2px solid voilet;
-color: voilet;
+border: 2px solid white;
+color: white;
 margin: 0 1em;
 padding: 0.25em 1em;
 &:focus {
