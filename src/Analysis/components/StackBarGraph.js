@@ -45,7 +45,7 @@ const StackbarGraph = ({ byId }) => {
         colors: ["#EB5797"],
       },
       // colors: ["rgba(237, 10, 51,0.5)", "#ED0A33"],
-      colors: ["#0A9361", "#f24949"],
+      colors: ["#00ff7f", "#ff0000"],
       // colors: ["#60F820", "#D1043A"],
 
       tooltip: {
