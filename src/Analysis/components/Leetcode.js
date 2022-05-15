@@ -1,70 +1,58 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const Leetcode = () => {
-  const tempData = {
-    series: [44, 55, 67],
+
+const LeetCode = ({byId}) => {
+  
+  const series=byId?.[0].leetcode.series;
+  const labels=byId?.[0].leetcode.labels;
+
+  const temp = {
+    series: series,
     options: {
       chart: {
         height: 350,
         type: "radialBar",
       },
+      title: {
+        text: "Levelwise Score Distribution",
+        align: "Center",
+        fontSize: "40px",
+        style:{
+          color:"#fff"
+        }
+      },
+      // colors:["#0169CD","#6794DC","#6771DC"],
+      colors:["#FBB500","#FC248E","#0169CD"],
       plotOptions: {
         radialBar: {
           dataLabels: {
-            style: {
-              fontSize: "14px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: "bold",
-              colors: ["#0000FF", "#00FF00", "#FF0000"],
-            },
             name: {
-              fontSize: "30px",
+              fontSize: "22px",
             },
             value: {
               fontSize: "16px",
-              color: "white",
-              formatter: function (val) {
-                return val + "";
-              },
+              color:"white",
             },
             total: {
               show: true,
-              label: "Total Questions Solved",
-              color: "white",
+              label: "Total",
+              color:"white",
               formatter: function (w) {
-                return w.globals.seriesTotals.reduce((a, b) => {
-                  return a + b;
-                }, 0);
+                // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                return 249+" ";
               },
             },
           },
-          hollow: {
-            margin: 0,
-            size: "70%",
-            // background: "#110931",
-            background: "#000033",
-          },
+          
         },
       },
-
-      fill: {
-        type: "solid",
-        colors: ["#0000FF", "#00FF00", "#FF0000"],
-      },
-
-      labels: ["Easy", "Medium", "Hard"],
+      labels: labels,
     },
   };
   return (
-    <div>
-      <Chart
-        options={tempData.options}
-        series={tempData.series}
-        type="radialBar"
-      />
-    </div>
+    <Chart type="radialBar" series={temp.series} options={temp.options}></Chart>
   );
 };
 
-export default Leetcode;
+export default LeetCode;

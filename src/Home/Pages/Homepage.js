@@ -35,10 +35,13 @@ const Homepage = () => {
         <SocialMedia />
         <Circle />
         {/* <Testimonial/> */}
+
+
         <Testislider/>
         <Feature/>
         <Footer/>
       </div>
+
     </>
   );
 };
