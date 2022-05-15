@@ -22,7 +22,12 @@ const LeetCode = ({byId}) => {
         align: "Center",
         
         fontSize: "40px",
+        style:{
+          color:"#fff"
+        }
       },
+      // colors:["#0169CD","#6794DC","#6771DC"],
+      colors:["#FBB500","#FC248E","#0169CD"],
       plotOptions: {
         radialBar: {
           dataLabels: {
@@ -32,17 +37,19 @@ const LeetCode = ({byId}) => {
             },
             value: {
               fontSize: "16px",
-            
+              color:"white",
             },
             total: {
               show: true,
               label: "Total",
+              color:"white",
               formatter: function (w) {
                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
                 return 249+" ";
               },
             },
           },
+          
         },
       },
       labels: labels,

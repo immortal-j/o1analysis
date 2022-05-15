@@ -28,6 +28,10 @@ const Data = [
         },
       ],
     },
+    piechart: {
+      series: [55, 62, 78, 22, 38],
+      labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
+    },
   },
   {
     id: 2,
@@ -52,6 +56,10 @@ const Data = [
     linegraph: {
       labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
       series: [{ name: "Subject", data: [23, 35, 42, 60, 70] }],
+    },
+    piechart: {
+      series: [12, 63, 26, 42, 33],
+      labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
     },
   },
   {
@@ -78,6 +86,10 @@ const Data = [
       labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
       series: [{ name: "Subject", data: [10, 22, 38, 53, 82] }],
     },
+    piechart: {
+      series: [33, 22, 48, 69, 12],
+      labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
+    },
   },
   {
     id: 4,
@@ -102,6 +114,10 @@ const Data = [
     linegraph: {
       labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
       series: [{ name: "Subject", data: [1, 4, 9, 16, 25] }],
+    },
+    piechart: {
+      series: [33, 22, 78, 63, 32],
+      labels: ["DAA", "DSA", "DBMS", "SE", "OS"],
     },
   },
 ];

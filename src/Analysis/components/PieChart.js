@@ -1,53 +1,62 @@
 import React from "react";
 import Chart from "react-apexcharts";
-export const PieChart = () => {
-  const line ={
-    
-    
-          
-        series: [44, 55, 13, 43, 22],
-        options: {
-          chart: {
-            width: 600,
-            type: 'pie',
-          },
-          title: {
-            text: "Overall Analysis ",
-            position:"top",
-            align: 'centre',
-            margin: 0,
-            padding:10,
-            offsetX: 0,
-            offsetY: 0,
-            padding:'20px',
-            floating: false,
-            style: {
-              fontSize:  '16px',
-              fontWeight:  'bold',
-              fontFamily:  undefined,
-              color:  '#fff'
-              
-            },
-        },
-          labels: ['Topic-A', 'Topic-B', 'Topic-C', 'Topic-D', 'Topic-E'],
-          responsive: [{
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200
-              },
-              legend: {
-                position: 'bottom'
-              }
-            }
-          }]
-        },
-      
-      
-      };
-    
 
-return <Chart type="pie" options={line.options} series={line.series} />;
+const PieChart = ({ byId }) => {
+  const series = byId?.[0].piechart.series;
+  const labels = byId?.[0].piechart.labels;
+  const line = {
+    series: series,
+    options: {
+      chart: {
+        type: "pie",
+      },
+
+      title: {
+        text: "Overall Analysis ",
+        align: "centre",
+        margin: 10,
+        padding: 0,
+        offsetX: 0,
+        offsetY: 0,
+        padding: "20px",
+        floating: false,
+        style: {
+          fontSize: "16px",
+          fontWeight: "bold",
+          fontFamily: undefined,
+          color: "#fff",
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+        },
+      },
+
+      legend: {
+        position: "bottom",
+        labels: {
+          colors: "white",
+          // useSeriesColors: true,
+        },
+      },
+      labels: labels,
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {},
+            legend: {
+              position: "bottom",
+            },
+          },
+        },
+      ],
+    },
+  };
+
+  return <Chart type="pie" options={line.options} series={line.series} />;
 };
 
 export default PieChart;

@@ -33,7 +33,7 @@ const Overall = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.userData.allUser);
-  console.log(data);
+  // console.log(data);
 
   const byId = data.filter(function (e) {
     return e.name === name;

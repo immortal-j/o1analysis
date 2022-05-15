@@ -26,11 +26,12 @@ const LineGraph = ({ byId }) => {
         },
         toolbar: {
           show: false,
-        },labels:{
-          style:{
-            color:"#fff"
-          }
-        }
+        },
+        labels: {
+          style: {
+            color: "#fff",
+          },
+        },
       },
       // stroke: {
       //   curve: "smooth",
@@ -45,16 +46,29 @@ const LineGraph = ({ byId }) => {
       xaxis: {
         categories: labels,
         // categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
-        style: {
-          color: "#fff",
+        labels: {
+          style: {
+            colors: "#fff",
+          },
         },
         title: {
+          style: {
+            color: "#fff",
+          },
           text: "Subjects",
           
         },
       },
       yaxis: {
+        labels: {
+          style: {
+            colors: "#fff",
+          },
+        },
         title: {
+          style: {
+            color: "#fff",
+          },
           text: "Performance",
           
         },
