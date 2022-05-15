@@ -4,13 +4,18 @@ import React, { useEffect } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ToggleSidebar from "../components/ToggleSideBar";
 import { styled } from "@mui/system";
+<<<<<<< HEAD
+import LeetCode from "../components/Leetcode";
+=======
 import Leetcode from "../components/Leetcode";
+>>>>>>> main
 import LineGraph from "../components/LineGraph";
 import StackbarGraph from "../components/Stackbargraph";
 import userActions from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import  PieChart  from "../components/PieChart";
+
 
 const CardContents = styled(CardContent)({
   display: "flex",
