@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import StackbarGraph from "../../../Analysis/components/StackbarGraph";
+// import StackbarGraph from "../../../Analysis/components/StackbarGraph";
 
 const FeaturePosition = {
   position: "relative",
