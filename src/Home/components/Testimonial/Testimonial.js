@@ -81,10 +81,10 @@ export default function Testimonial() {
         >
           <i className="fa fa-caret-left" style={{ color: "#fff" }}></i>
         </div>
-        {/* <div className="testimonials-carousel">
-          {/* <div className="swiper-container">
-            <div className="swiper-wrapper"> */}
-          {/* <Swiper
+        <div className="testimonials-carousel">
+          <div className="swiper-container">
+            <div className="swiper-wrapper">
+          <Swiper
             spaceBetween={50}
             slidesPerView={
               window.innerWidth < 768 ? 1 : window.innerWidth < 998 ? 2 : 3

@@ -1,5 +1,6 @@
 import React from "react";
 import   "./textStyle.css"
+
 function Heading() {
   return (
     <div>
@@ -14,3 +15,5 @@ function Heading() {
 }
 
 export default Heading;
+
+
