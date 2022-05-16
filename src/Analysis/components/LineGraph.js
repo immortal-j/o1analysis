@@ -99,22 +99,22 @@ const LineGraph = ({ byId }) => {
           colorStops: [
             {
               offset: 0,
-              color: "#00ff7f",
+              color: "#EB656F",
               opacity: 1,
             },
             {
               offset: 20,
-              color: "#ffff00",
+              color: "#FAD375",
               opacity: 1,
             },
             {
               offset: 60,
-              color: "#00ff7f",
+              color: "#61DBC3",
               opacity: 1,
             },
             {
               offset: 100,
-              color: "#ff6347",
+              color: "#95DA74",
               opacity: 1,
             },
           ],
