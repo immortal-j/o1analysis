@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "./ToggleSidebar.css";import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-
+import "./ToggleSidebar.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import HomeIcon from "@mui/icons-material/Home";
+import { NavBarData } from "./NavBarData";
 const ToggleSidebar = () => {
   const [isOpen, setIsopen] = useState(false);
 
@@ -16,7 +18,7 @@ const ToggleSidebar = () => {
           <div className="container-fluid p-2">
             <div className="form-inline mr-auto">
               <div className="btn btn-primary" onClick={ToggleSidebar}>
-              <MenuIcon/>
+                <MenuIcon />
               </div>
             </div>
             <a className="navbar-brand text-primary mr-0">O(1) Coding Club</a>
@@ -26,7 +28,7 @@ const ToggleSidebar = () => {
           <div className="sd-header">
             <h4 className="mb-0">O(1) Coding Club</h4>
             <div className="btn btn-primary" onClick={ToggleSidebar}>
-              <CloseIcon/>
+              <CloseIcon />
             </div>
           </div>
           <div className="sd-body">

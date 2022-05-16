@@ -2,12 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
 body {
-
   font-family: "Rubik", sans-serif;
 }
 /* ---Sidebar css */
 .text-primary {
-  color: #5a8dee !important;
+  color: #eef0f4 !important;
+  font-weight: bold;
 }
 .btn-primary {
   border-color: #5a8dee !important;
@@ -27,8 +27,8 @@ body {
   box-shadow: 0px 4px 8px rgb(0 0 0 / 16%);
   background-color: #313467;
   /* background-color: #313467; */
-  background: linear-gradient(108deg,rgb(96 16 216) 0%,rgb(165 92 233) 100%);
-  background: linear-gradient(222deg,rgb(92 81 183) 44%,rgb(179 114 239) 100%);
+  background: linear-gradient(108deg, #293846 0%, #293846 100%);
+  background: linear-gradient(222deg, #293846 44%, #293846 100%);
   position: fixed;
   top: 0;
   left: -100%;
@@ -43,7 +43,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  color: #ff4b4b;
+  background-color: #1d2637;
+  color: #f9f1f1;
 }
 .sidebar-overlay {
   position: fixed;
@@ -75,20 +76,20 @@ body {
   list-style: none;
   margin-bottom: 8px;
 }
-.sd-body ul li .sd-link {
-  display: inline-block;
-  width: 100%;
-  padding: 10px 16px;
-  color:  #6F63E6;
-  background-color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.5s all ease-in-out;
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #eef0f4;
+  gap: 1rem;
+  
 
 }
-.sd-body ul li  :hover {
-  color: #fff;
-  background-color: #6F63E6;
+.wrap {
+  transition: 1s all ease-in-out ;
+  cursor: pointer;
+}
+.wrap :hover {
   transform: scale(1.1);
 }

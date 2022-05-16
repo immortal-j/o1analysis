@@ -4,9 +4,7 @@ import React, { useEffect } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import ToggleSidebar from "../components/ToggleSideBar";
 import { styled } from "@mui/system";
-
 import LeetCode from "../components/Leetcode";
-
 import LineGraph from "../components/LineGraph";
 import StackbarGraph from "../components/Stackbargraph";
 
