@@ -1,11 +1,13 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
 import StackBarGraph from "../../../Analysis/components/StackBarGraph";
+import Data from "../../../Analysis/redux/DummyData/Data";
+import LineGraph from "../../../Analysis/components/LineGraph";
+import PieChart from "../../../Analysis/components/PieChart";
 
 const FeaturePosition = {
-  position: "relative",
-  top: "100vh",
-  color:"white"
+  color: "white",
+  marginBottom: "4rem",
 };
 
 const gridStyle = {
@@ -13,21 +15,13 @@ const gridStyle = {
   margin: " 20rem 0",
 };
 
-const reverseCol_inMobileView = {
-  // '@media (max-width: 780px)' : {
-  
-  //   order:-1,
-  // }
-}
-const reverseCol_inMobileView2 = {
-  // '@media (max-width: 780px)' : {
-  //   order:1,
-  // }
-}
+const gridOrder = { order: "-1" };
+
 const FeatureSection = () => {
+  const chartData = Data[0].stackgraph;
   return (
     <>
-      <Box sx={FeaturePosition}>
+      <Box style={FeaturePosition}>
         <h1
           style={{
             textAlign: "center",
@@ -35,13 +29,12 @@ const FeatureSection = () => {
             fontSize: "3em",
             marginBottom: "1em",
           }}
-
         >
           Features
         </h1>
         <Grid container>
-          <Grid item xs={12} sm={12} md={6}>
-            {/* <StackBarGraph /> */}
+          <Grid item xs={12} sm={12} md={5.5}>
+            <StackBarGraph byId={Data} />
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
             <Box sx={{ height: "max-content" }}>
@@ -58,7 +51,7 @@ const FeatureSection = () => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={12} sm={12} md={6} >
+          <Grid item xs={12} sm={12} md={6}  order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
               <p style={{ padding: "8em 2em" }}>
                 Oneself transvaluation marvelous pinnacle burying chaos fearful
@@ -73,15 +66,15 @@ const FeatureSection = () => {
               </p>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} >
-            {/* <StackBarGraph /> */}
+          <Grid item xs={12} sm={12} md={5.5}  order={{ md: 1, lg: 2 }}>
+            <LineGraph byId={Data} />
           </Grid>
         </Grid>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={6} >
-            {/* <StackBarGraph /> */}
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={12} md={4}>
+            <PieChart byId={Data} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} >
+          <Grid item xs={12} sm={12} md={5}>
             <Box>
               <p style={{ padding: "8em 2em" }}>
                 Abstract decieve enlightenment zarathustra transvaluation

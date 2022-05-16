@@ -11,6 +11,7 @@ import img from "../images/orion-nebula-11107.png";
 import Feature from "../components/Features/Feature";
 import Footer from "../components/Footer/Footer";
 import Testislider from "../components/Testimonial_slider/TestiSlider";
+import Home from "../components/Home/Home";
 const Homepage = () => {
   
   return (
@@ -21,7 +22,7 @@ const Homepage = () => {
           backgroundColor: "#0b001a",
           // backgroundImage: `url(${img})`,
           backgroundSize: "cover",
-          minHeight: "450vh",
+ 
           backgroundAttachment: "fixed",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
@@ -29,16 +30,15 @@ const Homepage = () => {
           userSelect: "none",
         }}
       >
-        <Navbar />
+        {/* <Navbar />
         <Main />
-        {/* Main content contains Start btn, modal, form */}
         <SocialMedia />
-        <Circle />
+        <Circle /> */}
         {/* <Testimonial/> */}
 
-
-        <Testislider/>
+<Home/>
         <Feature/>
+        <Testislider/>
         <Footer/>
       </div>
 
