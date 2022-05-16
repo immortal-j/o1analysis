@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import StackBarGraph from "../../../Analysis/components/StackBarGraph";
+import Stackbargraph from "../../../Analysis/components/Stackbargraph";
 import Data from "../../../Analysis/redux/DummyData/Data";
 import LineGraph from "../../../Analysis/components/LineGraph";
 import PieChart from "../../../Analysis/components/PieChart";
@@ -34,7 +34,7 @@ const FeatureSection = () => {
         </h1>
         <Grid container>
           <Grid item xs={12} sm={12} md={5.5}>
-            <StackBarGraph byId={Data} />
+            <Stackbargraph byId={Data} />
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
             <Box sx={{ height: "max-content" }}>
