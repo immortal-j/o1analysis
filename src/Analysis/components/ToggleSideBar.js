@@ -32,26 +32,10 @@ const ToggleSidebar = () => {
             </div>
           </div>
           <div className="sd-body">
-         
-            <div className="NavBarData">
-              <ul className="NavBarList">
-                {NavBarData.map((val, key) => {
-                  return (
-                    <div key={key}>
-                      <li className="row">
-                        <div className="wrap">
-                          <h6 id="title">
-                            <span id="icon">{val.icon}</span>
-                            {val.title}
-                          </h6>
-                        </div>
-                      </li>
-                    </div>
-                  );
-                })}
-              </ul>
-            </div>
-            {/* </li>
+            <ul>
+              <li>
+                <a className="sd-link">Menu Item 1</a>
+              </li>
               <li>
                 <a className="sd-link">Menu Item 2</a>
               </li>
@@ -73,7 +57,7 @@ const ToggleSidebar = () => {
               <li>
                 <a className="sd-link">Menu Item 8</a>
               </li>
-            </ul> */}
+            </ul>
           </div>
         </div>
         <div

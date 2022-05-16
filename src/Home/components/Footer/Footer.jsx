@@ -1,31 +1,26 @@
 import { Box, Container, Grid, Link } from "@mui/material";
 import React from "react";
-const FooterPos = {
-  position: "absolute",
-  top: "400vh",
-  color:"white"
-,
-// '&:hover'{
-// 'transform:translateY(1px)'
-// }
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
+
+const LinkStyle = {
+  textDecoration: "none",
+  padding: " 10px 0",
+  "& hover": {
+    background: "#efefef",
+  },
 };
-
-const LinkStyle ={
-    textDecoration: "none",
-    padding:" 10px 0",
-    "&:hover": {
-        background: "#efefef"
-      },
-
-}
 
 const Footer = () => {
   return (
-    <footer style={FooterPos}>
+    <footer style={{color:"white"}}>
       <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 10 }} width="100vw">
-        <Container maxWidth="lg"  >
+        <Container maxWidth="lg">
           <Grid container spacing={5}>
-            <Grid item xs={12} sm={4}  md={4}>
+            <Grid item xs={12} sm={4} md={4}>
               <Box borderBottom={1}>Help</Box>
 
               <Box>
@@ -44,7 +39,7 @@ const Footer = () => {
                 </Link>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={4}  md={4}>
+            <Grid item xs={12} sm={4} md={4}>
               <Box borderBottom={1}>Account</Box>
 
               <Box>
@@ -58,36 +53,48 @@ const Footer = () => {
                 </Link>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={4}  md={4}>
-              <Box borderBottom={1}>Help</Box>
+            <Grid item xs={12} sm={4} md={4}>
+              <Box borderBottom={1}>Socials</Box>
+              <a
+                style={LinkStyle}
+                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                target="_blank"
+              >
+                <LinkedInIcon />
+              </a>
 
-              <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
-                  Linkedin
-                </Link>
-              </Box>
-              <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
-                  Twitter
-                </Link>
-              </Box>
-              <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
-                  Instagram
-                </Link>
-              </Box>
-              <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
-                  Youtube
-                </Link>
-              </Box>
+              <a
+                style={LinkStyle}
+                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                target="_blank"
+              >
+                <TwitterIcon />
+              </a>
+              <a
+                style={LinkStyle}
+                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                target="_blank"
+              >
+                <InstagramIcon />
+              </a>
+
+              <a
+                style={LinkStyle}
+                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                target="_blank"
+              >
+                <YouTubeIcon />
+              </a>
             </Grid>
           </Grid>
 
-<Box textAlign="center" pt={{xs:5,sm:10,lg:3}} pb={{xs:5,sm:0, lg:3}}>
-
-    O(1) Analysis & Statistics, &reg; {new Date().getFullYear()}
-</Box>
+          <Box
+            textAlign="center"
+            pt={{ xs: 5, sm: 10, lg: 3 }}
+            pb={{ xs: 5, sm: 0, lg: 1 }}
+          >
+            O(1) Analysis &#38; Statistics, &reg; {new Date().getFullYear()}
+          </Box>
         </Container>
       </Box>
     </footer>

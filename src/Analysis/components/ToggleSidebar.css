@@ -20,7 +20,6 @@ body {
 .navbar {
   border-radius: 5px;
   background-color: #0f143c;
-  display: flex;
 }
 .sidebar {
   width: 280px;

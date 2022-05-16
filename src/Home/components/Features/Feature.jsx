@@ -1,10 +1,13 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-// import StackbarGraph from "../../../Analysis/components/StackbarGraph";
+import Stackbargraph from "../../../Analysis/components/Stackbargraph";
+import Data from "../../../Analysis/redux/DummyData/Data";
+import LineGraph from "../../../Analysis/components/LineGraph";
+import PieChart from "../../../Analysis/components/PieChart";
 
 const FeaturePosition = {
-  position: "relative",
-  top: "100vh",
+  color: "white",
+  marginBottom: "4rem",
 };
 
 const gridStyle = {
@@ -12,21 +15,13 @@ const gridStyle = {
   margin: " 20rem 0",
 };
 
-const reverseCol_inMobileView = {
-  // '@media (max-width: 780px)' : {
-  
-  //   order:-1,
-  // }
-}
-const reverseCol_inMobileView2 = {
-  // '@media (max-width: 780px)' : {
-  //   order:1,
-  // }
-}
+const gridOrder = { order: "-1" };
+
 const FeatureSection = () => {
+  const chartData = Data[0].stackgraph;
   return (
     <>
-      <Box sx={FeaturePosition}>
+      <Box style={FeaturePosition}>
         <h1
           style={{
             textAlign: "center",
@@ -34,16 +29,15 @@ const FeatureSection = () => {
             fontSize: "3em",
             marginBottom: "1em",
           }}
-
         >
           Features
         </h1>
         <Grid container>
-          <Grid item xs={12} sm={12} md={6}>
-            {/* <StackBarGraph /> */}
+          <Grid item xs={12} sm={12} md={5.5}>
+            <Stackbargraph byId={Data} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} sx={{ backgroundColor: "red" }}>
-            <Box sx={{ height: "max-content", backgroundColor: "red" }}>
+          <Grid item xs={12} sm={12} md={6}>
+            <Box sx={{ height: "max-content" }}>
               <p style={{ padding: "8em 2em" }}>
                 Superiority derive gains will christianity law war contradict
                 prejudice mountains derive. Insofar superiority marvelous
@@ -57,9 +51,9 @@ const FeatureSection = () => {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={12} sm={12} md={6} sx={{ backgroundColor: "blue" }}>
+          <Grid item xs={12} sm={12} md={6}  order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
-              <p>
+              <p style={{ padding: "8em 2em" }}>
                 Oneself transvaluation marvelous pinnacle burying chaos fearful
                 transvaluation snare decieve eternal-return. Ideal battle joy
                 sea madness holiest pinnacle selfish prejudice spirit.
@@ -72,17 +66,17 @@ const FeatureSection = () => {
               </p>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} style={reverseCol_inMobileView}>
-            {/* <StackBarGraph /> */}
+          <Grid item xs={12} sm={12} md={5.5}  order={{ md: 1, lg: 2 }}>
+            <LineGraph byId={Data} />
           </Grid>
         </Grid>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={6} >
-            {/* <StackBarGraph /> */}
+        <Grid container justifyContent="center">
+          <Grid item xs={12} sm={12} md={4}>
+            <PieChart byId={Data} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} sx={{ backgroundColor: "red" }}>
+          <Grid item xs={12} sm={12} md={5}>
             <Box>
-              <p>
+              <p style={{ padding: "8em 2em" }}>
                 Abstract decieve enlightenment zarathustra transvaluation
                 superiority salvation of. Ultimate deceptions moral noble horror
                 ocean strong war marvelous. War deceptions endless faith endless
