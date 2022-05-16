@@ -1,9 +1,13 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
+<<<<<<< HEAD
 import StackBarGraph from "../../../Analysis/components/StackBarGraph";
 import Data from "../../../Analysis/redux/DummyData/Data";
 import LineGraph from "../../../Analysis/components/LineGraph";
 import PieChart from "../../../Analysis/components/PieChart";
+=======
+import StackbarGraph from "../../../Analysis/components/StackbarGraph";
+>>>>>>> main
 
 const FeaturePosition = {
   color: "white",

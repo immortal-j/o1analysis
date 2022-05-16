@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Overall from "./Analysis/pages/Overall";
 import GlobalStyles from "./GlobalStyles";
 import PageNotFound from "./Analysis/pages/PageNotFound";
-import './style.css'
 function App() {
   return (
     <div className="App">
