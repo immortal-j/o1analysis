@@ -1,12 +1,9 @@
-import * as React from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Form from "../Form";
-import { borderRadius } from "@mui/system";
-// import IconButton from '@material-ui/core/IconButton';
-// import CloseIcon from '@material-ui/icons/Close';
+import styled from 'styled-components'
+
 
 const style = {
   position: "absolute",
@@ -15,11 +12,11 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "20rem",
 
-    border: '2px solid #000',
+  border: '2px solid #000',
   borderRadius: "6px",
   boxShadow: 24,
   p: 4,
-  backgroundColor:"#8400ff"
+  backgroundColor: "#8400ff"
   // backdropfilter: " 2000px",
 
 };
@@ -30,7 +27,7 @@ function KeepMountedModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <HeroButton>
       <button className="btn-giveTest" onClick={handleOpen}>
         Give Test
       </button>
@@ -45,8 +42,15 @@ function KeepMountedModal() {
           <Form />
         </Box>
       </Modal>
-    </div>
+    </HeroButton>
   );
 }
 
+const HeroButton = styled.div`
+
+@media screen and (max-width: 400px) {
+  
+    
+  }
+`
 export default KeepMountedModal;

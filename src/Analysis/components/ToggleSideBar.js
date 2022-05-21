@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ToggleSidebar.css";
 import MenuIcon from "@mui/icons-material/Menu";
+import Logo from '../Assets/Logo/logo2.svg'
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
 import { NavBarData } from "./NavBarData";
@@ -21,12 +22,12 @@ const ToggleSidebar = () => {
                 <MenuIcon />
               </div>
             </div>
-            <a className="navbar-brand text-primary mr-0">O(1) Coding Club</a>
+            <a className="navbar-brand text-primary mr-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></a>
           </div>
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-            <h4 className="mb-0">O(1) Coding Club</h4>
+            <h4 className="mb-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></h4>
             <div className="btn btn-primary" onClick={ToggleSidebar}>
               <CloseIcon />
             </div>

@@ -38,7 +38,7 @@ const FeatureSection = () => {
         >
           Features
         </Typography>
-        <Grid container alignItems={"center"} spacing={5}>
+        <Grid container alignItems={"center"} spacing={3}>
           <Grid item xs={12} sm={12} md={5}>
             <Stackbargraph byId={Data} />
           </Grid>
@@ -56,7 +56,7 @@ const FeatureSection = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} spacing={5} wrap={"wrap-reverse"}>
+        <Grid container alignItems={"center"} spacing={3} wrap={"wrap-reverse"}>
           <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
               <p style={FeatureParagraph}>
@@ -76,7 +76,7 @@ const FeatureSection = () => {
             <LineGraph byId={Data} />
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} spacing={5} >
+        <Grid container alignItems={"center"} spacing={3} >
           <Grid item xs={12} sm={12} md={5}>
             <PieChart byId={Data} />
           </Grid>
