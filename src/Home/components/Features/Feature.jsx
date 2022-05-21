@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import Stackbargraph from "../../../Analysis/components/Stackbargraph";
 import Data from "../../../Analysis/redux/DummyData/Data";
 import LineGraph from "../../../Analysis/components/LineGraph";
@@ -9,7 +9,14 @@ const FeaturePosition = {
   color: "white",
   marginBottom: "4rem",
 };
-
+const FeatureParagraph = {
+  background: "-webkit-linear-gradient(38deg, #ffffff, #c5c5c5, #4e4747)",
+  WebkitBackgroundClip: "text",
+  // webkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  padding: "8em 2em",
+  fontSize: "19px",
+}
 const gridStyle = {
   height: "8vh",
   margin: " 20rem 0",
@@ -21,24 +28,23 @@ const FeatureSection = () => {
   const chartData = Data[0].stackgraph;
   return (
     <>
-      <Box style={FeaturePosition}>
-        <h1
+      <Container maxWidth="lg" style={FeaturePosition}>
+        <Typography variant="h2"
+          gutterBottom={'true'}
           style={{
             textAlign: "center",
             color: "white",
-            fontSize: "3em",
-            marginBottom: "1em",
           }}
         >
           Features
-        </h1>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={5.5}>
+        </Typography>
+        <Grid container alignItems={"center"} spacing={5}>
+          <Grid item xs={12} sm={12} md={5}>
             <Stackbargraph byId={Data} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
-              <p style={{ padding: "8em 2em" }}>
+              <Typography variant="body1" gutterBottom={"true"} style={FeatureParagraph}>
                 Superiority derive gains will christianity law war contradict
                 prejudice mountains derive. Insofar superiority marvelous
                 deceptions grandeur decieve decieve. Superiority ultimate
@@ -46,14 +52,14 @@ const FeatureSection = () => {
                 salvation noble ascetic. Oneself battle inexpedient ascetic self
                 transvaluation of salvation inexpedient right holiest. Disgust
                 ultimate convictions morality philosophy snare grandeur.
-              </p>
+              </Typography>
             </Box>
           </Grid>
         </Grid>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={6}  order={{ md: 2, lg: 1 }}>
+        <Grid container alignItems={"center"} spacing={5} wrap={"wrap-reverse"}>
+          <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
-              <p style={{ padding: "8em 2em" }}>
+              <p style={FeatureParagraph}>
                 Oneself transvaluation marvelous pinnacle burying chaos fearful
                 transvaluation snare decieve eternal-return. Ideal battle joy
                 sea madness holiest pinnacle selfish prejudice spirit.
@@ -66,17 +72,17 @@ const FeatureSection = () => {
               </p>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={5.5}  order={{ md: 1, lg: 2 }}>
+          <Grid item xs={12} sm={12} md={5} order={{ md: 1, lg: 2 }}>
             <LineGraph byId={Data} />
           </Grid>
         </Grid>
-        <Grid container justifyContent="center">
-          <Grid item xs={12} sm={12} md={4}>
+        <Grid container alignItems={"center"} spacing={5} >
+          <Grid item xs={12} sm={12} md={5}>
             <PieChart byId={Data} />
           </Grid>
-          <Grid item xs={12} sm={12} md={5}>
+          <Grid item xs={12} sm={12} md={7}>
             <Box>
-              <p style={{ padding: "8em 2em" }}>
+              <p style={FeatureParagraph}>
                 Abstract decieve enlightenment zarathustra transvaluation
                 superiority salvation of. Ultimate deceptions moral noble horror
                 ocean strong war marvelous. War deceptions endless faith endless
@@ -89,7 +95,7 @@ const FeatureSection = () => {
             </Box>
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     </>
   );
 };
