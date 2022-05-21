@@ -93,3 +93,7 @@ body {
 .wrap :hover {
   transform: scale(1.1);
 }
+
+.brand-logo{
+  width: 2.6rem;
+}

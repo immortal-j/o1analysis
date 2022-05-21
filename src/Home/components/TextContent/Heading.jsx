@@ -3,14 +3,15 @@ import   "./textStyle.css"
 
 function Heading() {
   return (
-    <div>
+    <>
       <div className="head">
-        <h6 className="sidehead">statistics & Analysis</h6>
+        <h6 className="sidehead">Statistics & Analysis</h6>
+        <p className="heroName">
         <span className="firsthead">O(1)Test </span>
-        <span className="secondhead">Analysis</span>
+        <span className="secondhead">Analysis</span></p>
      
     </div>
-    </div>
+    </>
   );
 }
 

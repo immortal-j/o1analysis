@@ -42,10 +42,12 @@ const StackbarGraph = ({ byId }) => {
       stroke: {
         show: true,
         width: 1,
-        colors: ["#EB5797"],
+        colors: ["#EB5797","#EF7DBA","#C05FE3"],
+        // colors: ["#EB5797"],
       },
       // colors: ["rgba(237, 10, 51,0.5)", "#ED0A33"],
-      colors: ["#00ff7f", "#ff0000"],
+      colors: ["#6806C7", "#8D139F"],
+      // colors: ["#00ff7f", "#ff0000"],
       // colors: ["#60F820", "#D1043A"],
 
       tooltip: {
