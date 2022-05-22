@@ -27,7 +27,7 @@ const ToggleSidebar = () => {
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-            <h4 className="mb-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></h4>
+          <a className="navbar-brand text-primary mr-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></a>
             <div className="btn btn-primary" onClick={ToggleSidebar}>
               <CloseIcon />
             </div>
