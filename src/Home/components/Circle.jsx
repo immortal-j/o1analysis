@@ -29,6 +29,19 @@ const CircleStyle = styled.div`
     object-fit: contain;
     height: 100%;
   }
+  animation: MoveUpDown 1s linear infinite;
+
+  @keyframes MoveUpDown {
+    0% ,100%{
+transform: translateY(0)
+
+    }
+    50%{
+      transform: translateY(-5px);
+ 
+    }
+    
+  }
   &:hover {
     transform: scale(1.01);
     transition: 0.9s all ease-in-out;

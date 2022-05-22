@@ -14,7 +14,7 @@ const FeatureParagraph = {
   WebkitBackgroundClip: "text",
   // webkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
-  padding: "8em 2em",
+  padding: "5rem 2rem",
   fontSize: "19px",
 }
 const gridStyle = {
@@ -30,7 +30,7 @@ const FeatureSection = () => {
     <>
       <Container maxWidth="lg" style={FeaturePosition}>
         <Typography variant="h2"
-          gutterBottom={'true'}
+          gutterBottom={true}
           style={{
             textAlign: "center",
             color: "white",
@@ -38,13 +38,13 @@ const FeatureSection = () => {
         >
           Features
         </Typography>
-        <Grid container alignItems={"center"} spacing={3}>
+        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5}>
           <Grid item xs={12} sm={12} md={5}>
             <Stackbargraph byId={Data} />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
-              <Typography variant="body1" gutterBottom={"true"} style={FeatureParagraph}>
+              <Typography variant="body1"  style={FeatureParagraph}>
                 Superiority derive gains will christianity law war contradict
                 prejudice mountains derive. Insofar superiority marvelous
                 deceptions grandeur decieve decieve. Superiority ultimate
@@ -56,7 +56,7 @@ const FeatureSection = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} spacing={3} wrap={"wrap-reverse"}>
+        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} wrap={"wrap-reverse"}>
           <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
               <p style={FeatureParagraph}>
@@ -76,7 +76,7 @@ const FeatureSection = () => {
             <LineGraph byId={Data} />
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} spacing={3} >
+        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} >
           <Grid item xs={12} sm={12} md={5}>
             <PieChart byId={Data} />
           </Grid>
