@@ -4,13 +4,15 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
+import ChevronRightSharpIcon from '@mui/icons-material/ChevronRightSharp';
 
 const LinkStyle = {
   textDecoration: "none",
   padding: " 10px 0",
-  "& hover": {
+  color:"white",
+  "&:hover": {
     background: "#efefef",
+    color:"black"
   },
 };
 
@@ -24,36 +26,41 @@ const Footer = () => {
               <Box borderBottom={1}>Help</Box>
 
               <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
+              <ChevronRightSharpIcon/>
+                <Link href="/"  style={LinkStyle}>
                   Contact
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
+              <ChevronRightSharpIcon/>
+                <Link href="/"  style={LinkStyle}>
                   Support
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
+              <ChevronRightSharpIcon/>
+                <Link href="/"  style={LinkStyle}>
                   Privacy Policy
                 </Link>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
               <Box borderBottom={1}>Account</Box>
-
               <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
+              <ChevronRightSharpIcon/>
+                <Link href="/"  style={LinkStyle}>
                   Login
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit" style={LinkStyle}>
+              <ChevronRightSharpIcon/>
+                <Link href="/"  style={LinkStyle}>
                   Signup
                 </Link>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
+        
               <Box borderBottom={1}>Socials</Box>
               <a
                 style={LinkStyle}
@@ -72,7 +79,7 @@ const Footer = () => {
               </a>
               <a
                 style={LinkStyle}
-                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                href="https://www.instagram.com/o1codingclub/?hl=en"
                 target="_blank"
               >
                 <InstagramIcon />
@@ -80,7 +87,7 @@ const Footer = () => {
 
               <a
                 style={LinkStyle}
-                href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+                href="https://www.youtube.com/channel/UCTLzD9A-M_ll2m7Wj45sHJg"
                 target="_blank"
               >
                 <YouTubeIcon />

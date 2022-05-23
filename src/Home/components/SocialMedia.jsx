@@ -36,14 +36,14 @@ const SocialMedia = () => {
           <TwitterIcon sx={iconStyle} />
         </a>
         <a
-          href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+          href="https://www.instagram.com/o1codingclub/?hl=en"
           target="_blank"
         >
           <InstagramIcon sx={iconStyle} />
         </a>
 
         <a
-          href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+          href="https://www.youtube.com/channel/UCTLzD9A-M_ll2m7Wj45sHJg"
           target="_blank"
         >
           <YouTubeIcon sx={iconStyle} />
