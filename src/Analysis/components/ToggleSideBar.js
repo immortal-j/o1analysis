@@ -39,7 +39,7 @@ const ToggleSidebar = () => {
             return <div ><li key="key" className ="row">
             
               
-              <div id="icon" >{val.icon} {val.title}</div>
+              <div id="icon" >{val.icon}{"  "} {val.title}</div>
               
               
               
