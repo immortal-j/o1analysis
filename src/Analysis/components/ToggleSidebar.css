@@ -20,7 +20,6 @@ body {
 .navbar {
   border-radius: 5px;
   background-color: #0f143c;
-  display: flex;
 }
 .sidebar {
   width: 280px;
@@ -93,4 +92,12 @@ body {
 }
 .wrap :hover {
   transform: scale(1.1);
+}
+
+.brand-logo{
+  width: 2.6rem;
+  transition: all ease 0.5s;
+}
+.brand-logo:hover{
+  transform: scale(1.09);
 }

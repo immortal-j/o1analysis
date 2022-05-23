@@ -14,13 +14,9 @@ const LeetCode = ({byId}) => {
         height: 350,
         type: "radialBar",
       },
-      xaxis:{
-        
-      },
       title: {
         text: "Levelwise Score Distribution",
         align: "Center",
-        
         fontSize: "40px",
         style:{
           color:"#fff"
@@ -33,7 +29,6 @@ const LeetCode = ({byId}) => {
           dataLabels: {
             name: {
               fontSize: "22px",
-              
             },
             value: {
               fontSize: "16px",
