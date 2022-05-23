@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Form from "../Form";
 import styled from 'styled-components'
-import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterationForm";
 
 
 // const style = {
@@ -41,7 +41,7 @@ function KeepMountedModal() {
       >
         <Box >
           {/* <Form /> */}
-          <LoginForm/>
+          <RegisterForm/>
         </Box>
       </Modal>
     </HeroButton>
