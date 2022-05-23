@@ -2,11 +2,13 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 
-const LeetCode = ({byId}) => {
+const LeetCode = (props) => {
   
-  const series=byId?.[0].leetcode.series;
-  const labels=byId?.[0].leetcode.labels;
+  // const series=byId?.[0].leetcode.series;
+  // const labels=byId?.[0].leetcode.labels;
 
+const labels=props.leetcodeLabel
+const series=props.leetcodeSeries
   const temp = {
     series: series,
     options: {

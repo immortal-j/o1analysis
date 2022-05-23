@@ -26,7 +26,10 @@ const RegisterForm = () => {
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
         console.log(res.data);
-        if (res.status !== 400  || res.status!== 404) navigate("/dashboard/Pratik");
+        if (res.status !== 400 || res.status !== 404) {
+          window.alert("User Register Successfully");
+          navigate("/dashboard/Pratik");
+        }
       })
       .catch(function (error) {
         // handle error
@@ -38,7 +41,6 @@ const RegisterForm = () => {
 
   return (
     <>
-    
       <Container
         maxWidth={"md"}
         style={{

@@ -23,6 +23,7 @@ const style = {
   p: 4,
 };
 const DashboardLogin = () => {
+  const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
@@ -31,58 +32,59 @@ const DashboardLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     let name = email.split("@")[0];
-    navigate(`/dashboard/${name}`)
+    navigate(`/dashboard/${name}`);
   };
-  <Overall  email={email}/>
 
   return (
-    <div>
-      <Button onClick={handleOpen}>Login</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Grid
-            container
-            spacing={4}
-            justifyContent={"center"}
-            alignItems={"center"}
-            style={{ padding: "1rem" }}
-          >
-            <Grid item md={12} xs={12}>
-              <Typography variant={"h4"} marginBottom={2}>
-                Login Here for Analysis
-              </Typography>
-              <TextField
-                margin={"dense"}
-                fullWidth
-                type="email"
-                name="email"
-                id="standard-basic"
-                label="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                variant="filled"
-                color="secondary"
-                required
-              />
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={handleLogin}
-                style={{ marginTop: "1rem" }}
-              >
-                Login
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-      </Modal>
-    <Overall email={email}/>
-    </div>
+   <div>
+     <Button onClick={handleOpen}>Login</Button>
+     <Modal
+       open={open}
+       onClose={handleClose}
+       aria-labelledby="modal-modal-title"
+       aria-describedby="modal-modal-description"
+     >
+       <Box sx={style}>
+         <Grid
+           container
+           spacing={4}
+           justifyContent={"center"}
+           alignItems={"center"}
+           style={{ padding: "1rem" }}
+         >
+           <Grid item md={12} xs={12}>
+             <Typography variant={"h4"} marginBottom={2}>
+               Login Here for Analysis
+             </Typography>
+             <TextField
+               margin={"dense"}
+               fullWidth
+               type="email"
+               name="email"
+               id="standard-basic"
+               label="Email"
+               value={email}
+               onChange={(e) => setEmail(e.target.value)}
+               variant="filled"
+               color="secondary"
+               required
+             />
+             <Button
+               variant="contained"
+               color="secondary"
+               onClick={handleLogin}
+               style={{ marginTop: "1rem" }}
+             >
+               Login
+             </Button>
+           </Grid>
+         </Grid>
+       </Box>
+     </Modal>
+     
+   </div>
+   
+   
   );
 };
 

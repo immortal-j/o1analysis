@@ -80,7 +80,8 @@ const Overall = ({email}) => {
 
   return (
     <>
-      <div>
+    
+      <div >
         <ToggleSidebar />
         <Container maxWidth="xl">
           <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
@@ -165,7 +166,7 @@ const Overall = ({email}) => {
                 </Card>
               </Box>
             </Grid>
-          </Grid>
+          </Grid> 
         </Container>
       </div>
     </>
