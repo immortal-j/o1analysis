@@ -11,7 +11,7 @@ const LinkStyle = {
   padding: " 10px 0",
   color:"white",
   "&:hover": {
-    background: "#efefef",
+    backgroundColor: "#efefef",
     color:"black"
   },
 };

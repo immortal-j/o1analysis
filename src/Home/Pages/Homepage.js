@@ -3,6 +3,7 @@ import Feature from "../components/Features/Feature";
 import Footer from "../components/Footer/Footer";
 import Testislider from "../components/Testimonial_slider/TestiSlider";
 import Home from "../components/Home/Home";
+import FooterNew from "../components/Footer/FooterNew";
 const Homepage = () => {
   return (
     <>
@@ -20,7 +21,8 @@ const Homepage = () => {
         <Home />
         <Feature />
         <Testislider />
-        <Footer />
+        {/* <Footer /> */}
+        <FooterNew/>
       </div>
     </>
   );
