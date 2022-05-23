@@ -59,37 +59,46 @@ const Overall2 = () => {
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
   const [open, setOpen] = useState(true);
-  const [name,setName]=useState("")
+  const [toggle, setToggle] = useState(false);
+  const [name, setName] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
+
   const obj = {
     email: email,
     subject_frontend: "overall",
   };
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    const userData = await axios.post(
-      `https://o1apti.herokuapp.com/get_test_analysis`,obj
-    );
-    console.log(userData);
-    setName(userData.data.name)
-    setLeetCodeLabel(userData.data.leetcode.labels)
-    setLeetCodeSeries(userData.data.leetcode.series)
-    setLineGraphLabel(userData.data.linegraph.labels)
-    setLineGraphSeries(userData.data.linegraph.series)
-    setPieChartLabel(userData.data.piechart.labels)
-    setPieChartSeries(userData.data.piechart.series)
-    setPieChartLabel(userData.data.piechart.labels)
-    setPieChartSeries(userData.data.piechart.series)
-    setStackBarLabel(userData.data.stackgraph.labels)
-    setStackBarSeries(userData.data.stackgraph.series)
-    handleClose();
+    try {
+      const userData = await axios.post(
+        `https://o1apti.herokuapp.com/get_test_analysis`,
+        obj
+      )
+      setName(userData.data.name);
+      setLeetCodeLabel(userData.data.leetcode.labels);
+      setLeetCodeSeries(userData.data.leetcode.series);
+      setLineGraphLabel(userData.data.linegraph.labels);
+      setLineGraphSeries(userData.data.linegraph.series);
+      setPieChartLabel(userData.data.piechart.labels);
+      setPieChartSeries(userData.data.piechart.series);
+      setPieChartLabel(userData.data.piechart.labels);
+      setPieChartSeries(userData.data.piechart.series);
+      setStackBarLabel(userData.data.stackgraph.labels);
+      setStackBarSeries(userData.data.stackgraph.series);
+      window.alert("Check your result here");
+      setToggle(!toggle);
+      handleClose();
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
     <>
-      <div>
+      {!toggle && (
         <div>
           <Button onClick={handleOpen}>Login</Button>
           <Modal
@@ -136,96 +145,112 @@ const Overall2 = () => {
             </Box>
           </Modal>
         </div>
-
-        <ToggleSidebar />
-        <Container maxWidth="xl">
-          <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card
-                sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6" }}
-              >
-                <CardContents>
-                  <EmojiPeopleIcon
+      )}
+      {toggle && (
+        <div>
+          <ToggleSidebar />
+          <Container maxWidth="xl">
+            <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
+              <Grid item xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    boxShadow: 1,
+                    minWidth: 275,
+                    backgroundColor: "#6F63E6",
+                  }}
+                >
+                  <CardContents>
+                    <EmojiPeopleIcon
+                      sx={{
+                        boxShadow: 2,
+                        fontSize: "4rem",
+                        borderRadius: "2rem",
+                        backgroundColor: "#7468F0",
+                        padding: "0.3rem",
+                      }}
+                    />
+                    <h2> Hello, {name}</h2>
+                    <p>Nice to meet you !</p>
+                  </CardContents>
+                </Card>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box>
+                  <Card
                     sx={{
                       boxShadow: 2,
-                      fontSize: "4rem",
-                      borderRadius: "2rem",
-                      backgroundColor: "#7468F0",
-                      padding: "0.3rem",
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
                     }}
-                  />
-                  <h2> Hello, {name}</h2>
-                  <p>Nice to meet you !</p>
-                </CardContents>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box>
-                <Card
-                  sx={{
-                    boxShadow: 2,
-                    minWidth: 275,
-                    backgroundColor: "#10153B",
-                  }}
-                >
-                  <CardContents>
-                    <PieChart PieChartLabel={PieChartLabel} PieChartSeries={PieChartSeries} />
-                  </CardContents>
-                </Card>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box>
-                <Card
-                  sx={{
-                    boxShadow: 2,
-                    minWidth: 275,
-                    backgroundColor: "#10153B",
-                  }}
-                >
-                  <CardContents>
-                    <LeetCode
-                      leetcodeLabel={leetcodeLabel}
-                      leetcodeSeries={leetcodeSeries}
-                    />
-                  </CardContents>
-                </Card>
-              </Box>
-            </Grid>
+                  >
+                    <CardContents>
+                      <PieChart
+                        PieChartLabel={PieChartLabel}
+                        PieChartSeries={PieChartSeries}
+                      />
+                    </CardContents>
+                  </Card>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box>
+                  <Card
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
+                    }}
+                  >
+                    <CardContents>
+                      <LeetCode
+                        leetcodeLabel={leetcodeLabel}
+                        leetcodeSeries={leetcodeSeries}
+                      />
+                    </CardContents>
+                  </Card>
+                </Box>
+              </Grid>
 
               <Grid item xs={12} sm={6}>
-              <Box>
-                <Card
-                  sx={{
-                    boxShadow: 2,
-                    minWidth: 275,
-                    backgroundColor: "#10153B",
-                  }}
-                >
-                  <CardContentsMobile>
-                    <StackbarGraph StackBarLabel={StackBarLabel} StackBarSeries={StackBarSeries} />
-                  </CardContentsMobile>
-                </Card>
-              </Box>
+                <Box>
+                  <Card
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
+                    }}
+                  >
+                    <CardContentsMobile>
+                      <StackbarGraph
+                        StackBarLabel={StackBarLabel}
+                        StackBarSeries={StackBarSeries}
+                      />
+                    </CardContentsMobile>
+                  </Card>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box>
+                  <Card
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
+                    }}
+                  >
+                    <CardContentsMobile>
+                      <LineGraph
+                        LineGraphLabel={LineGraphLabel}
+                        LineGraphSeries={LineGraphSeries}
+                      />
+                    </CardContentsMobile>
+                  </Card>
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Box>
-                <Card
-                  sx={{
-                    boxShadow: 2,
-                    minWidth: 275,
-                    backgroundColor: "#10153B",
-                  }}
-                >
-                  <CardContentsMobile>
-                    <LineGraph LineGraphLabel={LineGraphLabel} LineGraphSeries={LineGraphSeries} />
-                  </CardContentsMobile>
-                </Card>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </div>
+          </Container>
+        </div>
+      )}
     </>
   );
 };

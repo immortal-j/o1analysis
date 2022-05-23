@@ -1,7 +1,6 @@
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import login from "../../images/login.svg";
 
 const RegisterForm = () => {
@@ -12,7 +11,7 @@ const RegisterForm = () => {
     key: "",
     college: "",
   });
-  const navigate = useNavigate();
+  
   let key, value;
   const handleInputs = (e) => {
     key = e.target.name;
@@ -28,7 +27,6 @@ const RegisterForm = () => {
         console.log(res.data);
         if (res.status !== 400 || res.status !== 404) {
           window.alert("User Register Successfully");
-          navigate("/dashboard/Pratik");
         }
       })
       .catch(function (error) {
