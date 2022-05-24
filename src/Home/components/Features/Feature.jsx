@@ -21,11 +21,11 @@ const gridStyle = {
   height: "8vh",
   margin: " 20rem 0",
 };
-
+const dummyData=Data[0];
 const gridOrder = { order: "-1" };
 
 const FeatureSection = () => {
-  const chartData = Data[0].stackgraph;
+ 
   return (
     <>
       <Container maxWidth="lg" style={FeaturePosition}>
@@ -40,7 +40,10 @@ const FeatureSection = () => {
         </Typography>
         <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5}>
           <Grid item xs={12} sm={12} md={5}>
-            <Stackbargraph byId={Data} />
+            <Stackbargraph  
+             StackBarLabel={dummyData.stackgraph.labels}
+             StackBarSeries={dummyData.stackgraph.series}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
@@ -73,12 +76,14 @@ const FeatureSection = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={5} order={{ md: 1, lg: 2 }}>
-            <LineGraph byId={Data} />
+            <LineGraph LineGraphLabel={dummyData.linegraph.labels}
+                      LineGraphSeries={dummyData.linegraph.series} />
           </Grid>
         </Grid>
         <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} >
           <Grid item xs={12} sm={12} md={5}>
-            <PieChart byId={Data} />
+            <PieChart PieChartLabel={dummyData.piechart.labels}
+                      PieChartSeries={dummyData.piechart.series} />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box>

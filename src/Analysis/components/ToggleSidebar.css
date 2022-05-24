@@ -70,11 +70,12 @@ body {
   display: inline-block;
   width: 100%;
   margin-bottom: 0;
-  padding: 0;
+  padding-left: 35px;
 }
 .sd-body ul li {
   list-style: none;
   margin-bottom: 8px;
+  padding: 10px;
 }
 
 .row {
@@ -100,4 +101,60 @@ body {
 }
 .brand-logo:hover{
   transform: scale(1.09);
+}
+
+
+.sd-body ul {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0;
+}
+.sd-body ul li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.sd-body ul li .sd-link {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  width: 100%;
+  padding: 10px 16px;
+  color:  #6F63E6;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s all ease-in-out;
+
+}
+.sd-body ul li  :hover {
+  color: #fff;
+  transform: scale(1.1);
+  margin: 0;
+  padding: 0%;
+  cursor: pointer;
+
+  justify-content: space-between;
+
+}
+.sd-body ul li{
+  height: auto;
+  width :100%;
+  padding: 10px;
+
+  place-items: centre;
+  font-size: large;
+  color :white;
+  border:#313467;
+  border-width: 100%;
+}
+.sd-body ul li #title{
+ font-size: medium;
+ margin: 0;
+ padding: 0;
+
+}
+.sd-body ul li #icon{
+  flex :30%
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const StackbarGraph = ({ byId }) => {
-  const series = byId?.[0].stackgraph.series;
-  const labels = byId?.[0].stackgraph.labels;
+const StackbarGraph = (props) => {
+  // const series = byId?.[0].stackgraph.series;
+  // const labels = byId?.[0].stackgraph.labels;
 
+  const labels=props.StackBarLabel
+  const series=props.StackBarSeries
   const temp = {
     series: series,
     // series: [

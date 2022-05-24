@@ -1,4 +1,3 @@
-import { Box } from "@mui/system";
 import React from "react";
 import styled from "styled-components";
 import laptopImg from "../images/laptop_for_webpage.png";
@@ -47,9 +46,11 @@ transform: translateY(0)
     transition: 0.9s all ease-in-out;
   }
   @media screen and (max-width: 900px) {
+    animation: none;
     transform: scale(0.8) !important;
   }
   @media screen and (max-width: 600px) {
+    animation: none;
     transform: scale(0.5) !important;
     right: 10rem;
   }
@@ -57,5 +58,6 @@ transform: translateY(0)
   @media screen and (max-width: 400px) {
     transform: scale(0.5) !important;
     right: 11rem;
+    animation: none;
   }
 `;

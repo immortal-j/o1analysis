@@ -1,9 +1,12 @@
 import React from "react";
 import Chart from "react-apexcharts";
 
-const PieChart = ({ byId }) => {
-  const series = byId?.[0].piechart.series;
-  const labels = byId?.[0].piechart.labels;
+const PieChart = (props) => {
+  // const series = byId?.[0].piechart.series;
+  // const labels = byId?.[0].piechart.labels;
+
+  const labels=props.PieChartLabel
+const series=props.PieChartSeries
   const line = {
     series: series,
     options: {
