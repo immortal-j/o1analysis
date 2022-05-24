@@ -83,7 +83,7 @@ const FeatureSection = () => {
         <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} >
           <Grid item xs={12} sm={12} md={5}>
             <PieChart PieChartLabel={dummyData.piechart.labels}
-                      PieChartSeries={dummyData.piechart.labels} />
+                      PieChartSeries={dummyData.piechart.series} />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box>
