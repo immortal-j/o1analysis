@@ -21,6 +21,7 @@ import userActions from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
+import Tour from "../components/Tour";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -35,6 +36,7 @@ const CardContentsMobile = styled(CardContent)({
   color: "#F4F4FF",
   padding: "2rem",
 });
+
 
 const handleclick = () => {};
 
@@ -76,6 +78,7 @@ const Overall = ({email}) => {
         // handle error
         console.log(error);
       });
+      
   }, []);
 
   return (
@@ -83,11 +86,13 @@ const Overall = ({email}) => {
     
       <div >
         <ToggleSidebar />
+        <Tour/>
+    
         <Container maxWidth="xl">
           <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} className="user-detail">
               <Card
-                sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6" }}
+                sx={{ boxShadow: 1, minWidth: 275, backgroundColor: "#6F63E6" }} 
               >
                 <button onClick={handleclick}> Click</button>
                 <CardContents>
@@ -105,7 +110,7 @@ const Overall = ({email}) => {
                 </CardContents>
               </Card>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} className="overall-analysis">
               <Box>
                 <Card
                   sx={{
@@ -120,7 +125,7 @@ const Overall = ({email}) => {
                 </Card>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} className="subjectwise-analysis">
               <Box>
                 <Card
                   sx={{
@@ -136,7 +141,7 @@ const Overall = ({email}) => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}  className="right-wrong-analysis">
               <Box>
                 <Card
                   sx={{
@@ -151,7 +156,7 @@ const Overall = ({email}) => {
                 </Card>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6}  className="subjectwise-linegraph-analysis">
               <Box>
                 <Card
                   sx={{
@@ -168,6 +173,7 @@ const Overall = ({email}) => {
             </Grid>
           </Grid> 
         </Container>
+ 
       </div>
     </>
   );

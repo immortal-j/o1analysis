@@ -23,6 +23,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import { Data } from "../../Analysis/redux/DummyData/Data";
+import Tour from "../components/Tour";
+
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -149,9 +151,11 @@ const Overall2 = () => {
       {toggle && (
         <div>
           <ToggleSidebar />
+          <Tour/>
+
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} className="user-detail">
                 <Card
                   sx={{
                     boxShadow: 1,
@@ -174,7 +178,7 @@ const Overall2 = () => {
                   </CardContents>
                 </Card>
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} className="overall-analysis">
                 <Box>
                   <Card
                     sx={{
@@ -192,8 +196,8 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <Box>
+              <Grid item xs={12} sm={6} md={4} >
+                <Box className="subjectwise-analysis">
                   <Card
                     sx={{
                       boxShadow: 2,
@@ -212,7 +216,7 @@ const Overall2 = () => {
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                <Box>
+                <Box className="right-wrong-analysis">
                   <Card
                     sx={{
                       boxShadow: 2,
@@ -230,7 +234,7 @@ const Overall2 = () => {
                 </Box>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Box>
+                <Box className="subjectwise-linegraph-analysis">
                   <Card
                     sx={{
                       boxShadow: 2,
@@ -239,7 +243,7 @@ const Overall2 = () => {
                     }}
                   >
                     <CardContentsMobile>
-                      <LineGraph
+                      <LineGraph 
                         LineGraphLabel={LineGraphLabel}
                         LineGraphSeries={LineGraphSeries}
                       />

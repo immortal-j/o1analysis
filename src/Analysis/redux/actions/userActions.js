@@ -8,7 +8,7 @@ const userActions = () => async (disptach) => {
   disptach({
     type: "GET_USER_DATA",
     payload: {
-      allUser: userData,
+      // allUser: userData,
     },
   });
 };
