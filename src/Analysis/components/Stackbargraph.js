@@ -90,6 +90,40 @@ const StackbarGraph = (props) => {
           },
         },
       },
+      responsive: [
+        {
+          breakpoint: 1000,
+          options: {
+            chart:{
+            height: "200%"
+          },
+            plotOptions: {
+              bar: {
+                horizontal: false
+              }
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        },
+        {
+          breakpoint: 600,
+          options: {
+            chart:{
+            height: "200%"
+          },
+            plotOptions: {
+              bar: {
+                horizontal: false
+              }
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ]
     },
   };
 

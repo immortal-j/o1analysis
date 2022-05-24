@@ -8,7 +8,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import DashboardLogin from "./DashboardLogin";
+import loginImage from "../../Home/images/Register.svg";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
@@ -23,6 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import { Data } from "../../Analysis/redux/DummyData/Data";
+
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -42,9 +47,12 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  minWidth: 400,
+  height: 400,
+  borderRadius: "2rem",
   bgcolor: "white",
   border: "2px solid #000",
+  outline: "none",
   boxShadow: 24,
   p: 4,
 };
@@ -64,10 +72,36 @@ const Overall2 = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
+  const [subjectData, setSubjectData] = useState({});
 
   const obj = {
     email: email,
     subject_frontend: "overall",
+  };
+
+
+  const fetchSubject = async (key) => {
+    const subjectlist = ["dsa","cn","dbms","os","oops","logical","verbal","quantitative"];
+    
+    const obj = {
+      email: email,
+      subject_frontend: subjectlist[key-1],
+    };
+    const subject = await axios.post(
+      `https://o1apti.herokuapp.com/get_test_analysis`,
+      obj
+    );
+    setLeetCodeLabel(subject.data.leetcode.labels);
+      setLeetCodeSeries(subject.data.leetcode.series);
+      setLineGraphLabel(subject.data.linegraph.labels);
+      setLineGraphSeries(subject.data.linegraph.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setStackBarLabel(subject.data.stackgraph.labels);
+      setStackBarSeries(subject.data.stackgraph.series);
+    console.log(subjectData)
   };
 
   const handleLogin = async (e) => {
@@ -76,7 +110,9 @@ const Overall2 = () => {
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
-      )
+      );
+      toast.info("Check your result here")
+
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
@@ -88,7 +124,6 @@ const Overall2 = () => {
       setPieChartSeries(userData.data.piechart.series);
       setStackBarLabel(userData.data.stackgraph.labels);
       setStackBarSeries(userData.data.stackgraph.series);
-      window.alert("Check your result here");
       setToggle(!toggle);
       handleClose();
     } catch (e) {
@@ -100,10 +135,8 @@ const Overall2 = () => {
     <>
       {!toggle && (
         <div>
-          <Button onClick={handleOpen}>Login</Button>
           <Modal
             open={open}
-            onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
@@ -115,7 +148,7 @@ const Overall2 = () => {
                 alignItems={"center"}
                 style={{ padding: "1rem" }}
               >
-                <Grid item md={12} xs={12}>
+                <Grid item md={6} xs={12}>
                   <Typography variant={"h4"} marginBottom={2}>
                     Login Here for Analysis
                   </Typography>
@@ -141,6 +174,13 @@ const Overall2 = () => {
                     Login
                   </Button>
                 </Grid>
+                <Grid item md={6} display={{ md: "block", xs: "none" }}>
+                  <img
+                    src={loginImage}
+                    alt=""
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
               </Grid>
             </Box>
           </Modal>
@@ -148,7 +188,12 @@ const Overall2 = () => {
       )}
       {toggle && (
         <div>
-          <ToggleSidebar />
+          <ToggleSidebar
+            subjectData={subjectData}
+            email={email}
+            setSubjectData={setSubjectData}
+            fetchSubject={fetchSubject}
+          />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -249,6 +294,17 @@ const Overall2 = () => {
               </Grid>
             </Grid>
           </Container>
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
       )}
     </>

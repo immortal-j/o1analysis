@@ -1,9 +1,11 @@
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import login from "../../images/login.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const RegisterForm = () => {
+const RegisterForm = ({}) => {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -11,7 +13,17 @@ const RegisterForm = () => {
     key: "",
     college: "",
   });
-  
+
+  const getCollegeName = async () => {
+    const clgNames = await axios.get(
+      `https://o1apti.herokuapp.com/college_list`
+    );
+    console.log(clgNames);
+  };
+  useEffect(() => {
+    getCollegeName();
+  }, []);
+
   let key, value;
   const handleInputs = (e) => {
     key = e.target.name;
@@ -24,16 +36,17 @@ const RegisterForm = () => {
     axios
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
-        console.log(res.data);
-        if (res.status !== 400 || res.status !== 404) {
-          window.alert("User Register Successfully");
-        }
+      
+      
+          setOpen(false)
+          toast.success("User Register Successfully");
+        
       })
       .catch(function (error) {
-        // handle error
+        toast.warn("Something goes wrong. Please try again.")
+        
         console.log(error);
       });
-
     setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
   };
 
@@ -44,8 +57,11 @@ const RegisterForm = () => {
         style={{
           backgroundColor: "#fff",
           borderRadius: "1rem",
-          position: "relative",
-          top: "5rem",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          boxShadow: 24,
         }}
       >
         <Grid
@@ -108,6 +124,7 @@ const RegisterForm = () => {
             />
             <TextField
               margin={"dense"}
+              // select
               color="secondary"
               fullWidth
               onChange={handleInputs}
@@ -117,7 +134,9 @@ const RegisterForm = () => {
               label="College Name"
               variant="filled"
               required
-            />
+            >
+
+            </TextField>
             <TextField
               margin={"dense"}
               color="secondary"
@@ -142,6 +161,16 @@ const RegisterForm = () => {
           </Grid>
         </Grid>
       </Container>
+      <ToastContainer position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+      />
     </>
   );
 };
