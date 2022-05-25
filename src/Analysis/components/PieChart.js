@@ -7,6 +7,7 @@ const PieChart = (props) => {
 
   const labels=props.PieChartLabel
 const series=props.PieChartSeries
+
   const line = {
     series: series,
     options: {
@@ -47,9 +48,13 @@ const series=props.PieChartSeries
       labels: labels,
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 1400,
           options: {
-            chart: {},
+            chart: {
+              height: "325rem"
+
+
+            },
             legend: {
               position: "bottom",
             },

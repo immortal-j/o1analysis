@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import "./ToggleSidebar.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import Logo from '../Assets/Logo/logo2.svg'
+import Logo from "../Assets/Logo/logo2.svg";
 import CloseIcon from "@mui/icons-material/Close";
-import HomeIcon from "@mui/icons-material/Home";
 import { NavBarData } from "./NavBarData";
-const ToggleSidebar = () => {
-  const [isOpen, setIsopen] = useState(false);
+import axios from "axios";
+import { Link } from "react-router-dom";
 
+const ToggleSidebar = ({fetchSubject} ) => {
+  const [isOpen, setIsopen] = useState(false);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
   };
+
+  const xyz=(key)=>{
+      fetchSubject(key)
+  }
+  
 
   return (
     <>
@@ -22,33 +28,45 @@ const ToggleSidebar = () => {
                 <MenuIcon />
               </div>
             </div>
-            <a className="navbar-brand text-primary mr-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></a>
+            <Link className="navbar-brand text-primary mr-0" to='/'>
+              <img
+                className="brand-logo"
+                src={Logo}
+                alt="O(1) Coding Club"
+                srcSet=""
+              />
+            </Link>
           </div>
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-          <a className="navbar-brand text-primary mr-0"><img className="brand-logo" src={Logo} alt="O(1) Coding Club" srcSet="" /></a>
+            <Link to='/' className="navbar-brand text-primary mr-0">
+              <img
+                className="brand-logo"
+                src={Logo}
+                alt="O(1) Coding Club"
+                srcSet=""
+              />
+            </Link>
             <div className="btn btn-primary" onClick={ToggleSidebar}>
               <CloseIcon />
             </div>
           </div>
           <div className="sd-body">
-          <div className="NavBarData">
-          <ul className="NavBarList">
-          {NavBarData.map((val,key)=>{
-            return <div ><li key="key" className ="row">
-            
-              
-              <div id="icon" >{val.icon}{"  "} {val.title}</div>
-              
-              
-              
-            </li></div>
-          })}
-          </ul>
-          
-           
-          </div>
+            <div className="NavBarData">
+              <ul className="NavBarList">
+                {NavBarData.map((val, key) => {
+                  return (
+                    <li key={key} className="row">
+                      <div id="icon" onClick={() => xyz(key)}>
+                        {val.icon}
+                        {"  "} {val.title}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
         <div

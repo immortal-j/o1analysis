@@ -1,14 +1,13 @@
 import {
-  Button,
+  Backdrop,
   Card,
   CardContent,
+  CircularProgress,
   Container,
   Grid,
-  Modal,
-  TextField,
-  Typography,
 } from "@mui/material";
-import DashboardLogin from "./DashboardLogin";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
@@ -18,11 +17,9 @@ import LeetCode from "../components/Leetcode";
 import LineGraph from "../components/LineGraph";
 import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
-import userActions from "../redux/actions/userActions";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
-import { Data } from "../../Analysis/redux/DummyData/Data";
+
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -37,19 +34,10 @@ const CardContentsMobile = styled(CardContent)({
   padding: "2rem",
 });
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "white",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-const Overall2 = () => {
+const Overall = () => {
+  const { email } = useParams();
+  const [visibility, setVisibility] = useState(false);
+  const [name, setName] = useState("");
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
@@ -58,25 +46,18 @@ const Overall2 = () => {
   const [PieChartSeries, setPieChartSeries] = useState([]);
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
-  const [open, setOpen] = useState(true);
-  const [toggle, setToggle] = useState(false);
-  const [name, setName] = useState("");
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [email, setEmail] = useState("");
 
-  const obj = {
-    email: email,
-    subject_frontend: "overall",
-  };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const getAnalysis = async () => {
     try {
+      setVisibility(false);
+      const obj = {
+        email: email,
+        subject_frontend: "overall",
+      };
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
-      )
+      );
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
@@ -88,67 +69,79 @@ const Overall2 = () => {
       setPieChartSeries(userData.data.piechart.series);
       setStackBarLabel(userData.data.stackgraph.labels);
       setStackBarSeries(userData.data.stackgraph.series);
-      window.alert("Check your result here");
-      setToggle(!toggle);
-      handleClose();
-    } catch (e) {
-      console.log(e);
+      toast.info("Check your analysis here");
+      setVisibility(true);
+    } catch (error) {
+      toast.warn("Something went wrong. Please check your email");
+      console.log(error);
     }
   };
+  const fetchSubject = async (key) => {
+    const subjectlist = [
+      "overall",
+      "dsa",
+      "cn",
+      "dbms",
+      "os",
+      "oops",
+      "logical",
+      "verbal",
+      "quantitative",
+    ];
+
+    const obj = {
+      email: email,
+      subject_frontend: subjectlist[key],
+    };
+    setVisibility(false);
+    const subject = await axios.post(
+      `https://o1apti.herokuapp.com/get_test_analysis`,
+      obj
+    );
+    setLeetCodeLabel(subject.data.leetcode.labels);
+    setLeetCodeSeries(subject.data.leetcode.series);
+    setLineGraphLabel(subject.data.linegraph.labels);
+    setLineGraphSeries(subject.data.linegraph.series);
+    setPieChartLabel(subject.data.piechart.labels);
+    setPieChartSeries(subject.data.piechart.series);
+    setPieChartLabel(subject.data.piechart.labels);
+    setPieChartSeries(subject.data.piechart.series);
+    setStackBarLabel(subject.data.stackgraph.labels);
+    setStackBarSeries(subject.data.stackgraph.series);
+    setVisibility(true);
+    toast.info("Check your " + obj.subject_frontend + " analysis here");
+  };
+
+  useEffect(() => {
+    getAnalysis();
+  }, []);
 
   return (
     <>
-      {!toggle && (
-        <div>
-          <Button onClick={handleOpen}>Login</Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Grid
-                container
-                spacing={4}
-                justifyContent={"center"}
-                alignItems={"center"}
-                style={{ padding: "1rem" }}
-              >
-                <Grid item md={12} xs={12}>
-                  <Typography variant={"h4"} marginBottom={2}>
-                    Login Here for Analysis
-                  </Typography>
-                  <TextField
-                    margin={"dense"}
-                    fullWidth
-                    type="email"
-                    name="email"
-                    id="standard-basic"
-                    label="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    variant="filled"
-                    color="secondary"
-                    required
-                  />
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={handleLogin}
-                    style={{ marginTop: "1rem" }}
-                  >
-                    Login
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </Modal>
-        </div>
+      {!visibility && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={true}
+        >
+          <CircularProgress color="secondary" />
+        </Backdrop>
       )}
-      {toggle && (
+
+      {visibility && (
         <div>
-          <ToggleSidebar />
+          <ToggleSidebar fetchSubject={fetchSubject} />
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="colored"
+            pauseOnHover
+          />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -169,7 +162,7 @@ const Overall2 = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2> Hello, {name}</h2>
+                    <h2> Hello,{name} </h2>
                     <p>Nice to meet you !</p>
                   </CardContents>
                 </Card>
@@ -255,4 +248,4 @@ const Overall2 = () => {
   );
 };
 
-export default Overall2;
+export default Overall;

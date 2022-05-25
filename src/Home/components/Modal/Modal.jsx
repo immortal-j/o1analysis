@@ -41,7 +41,7 @@ function KeepMountedModal() {
       >
         <Box >
           {/* <Form /> */}
-          <RegisterForm/>
+          <RegisterForm handleClose={handleClose}/>
         </Box>
       </Modal>
     </HeroButton>

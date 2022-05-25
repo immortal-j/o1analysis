@@ -12,7 +12,7 @@ import AbcIcon from '@mui/icons-material/Abc';
 import ScaleIcon from '@mui/icons-material/Scale';
 export const NavBarData = [
     {
-  title :"Home",
+  title :"Overall",
   icon :<HomeIcon/>,
   link :"Home"
 },
@@ -56,11 +56,11 @@ export const NavBarData = [
   icon :<ScaleIcon/>,
   link :"Home"
 },
-{
-  title :"Help?",
-  icon :<ContactMailIcon/>,
-  link :"Home"
-},
+// {
+//   title :"Help?",
+//   icon :<ContactMailIcon/>,
+//   link :"Home"
+// },
 
 
   ]

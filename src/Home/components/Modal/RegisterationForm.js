@@ -1,9 +1,11 @@
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Button, Container, Grid, TextField, Typography,MenuItem, Backdrop, CircularProgress} from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import login from "../../images/login.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -12,6 +14,20 @@ const RegisterForm = () => {
     college: "",
   });
   
+
+  const [loading,setLoading]=useState(false)
+  const [clgList,setClgList]=useState([])
+
+  const getCollegeName = async () => {
+    const fetchNames = await axios.get(
+      `https://o1apti.herokuapp.com/college_list`
+    );
+    setClgList( fetchNames.data.clg_names);
+  };
+  useEffect(() => {
+    getCollegeName();
+  }, []);
+
   let key, value;
   const handleInputs = (e) => {
     key = e.target.name;
@@ -20,21 +36,31 @@ const RegisterForm = () => {
   };
 
   const submitData = (e) => {
+    
     e.preventDefault();
+    setLoading(true)
     axios
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
-        console.log(res.data);
-        if (res.status !== 400 || res.status !== 404) {
-          window.alert("User Register Successfully");
-        }
+        setLoading(false)
+        toast.success("User Register Successfully");
+        setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
       })
       .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+        setLoading(false)
+        // props.handleClose();
 
-    setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
+        if(error.response.data==="EMAIL ALREADY EXIST")
+        toast.error("Email Already Exist.");
+
+        if(error.response.data==="INVALID DATA")
+        toast.warn("Please fill all the fields.")
+        else{
+          console.log(error.response);
+          toast.warn("Something goes wrong. Please try again.");
+
+        }
+      });
   };
 
   return (
@@ -44,8 +70,11 @@ const RegisterForm = () => {
         style={{
           backgroundColor: "#fff",
           borderRadius: "1rem",
-          position: "relative",
-          top: "5rem",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          boxShadow: 24,
         }}
       >
         <Grid
@@ -106,10 +135,12 @@ const RegisterForm = () => {
               variant="filled"
               required
             />
+            
             <TextField
               margin={"dense"}
               color="secondary"
               fullWidth
+              select
               onChange={handleInputs}
               value={userData.college}
               name="college"
@@ -117,7 +148,13 @@ const RegisterForm = () => {
               label="College Name"
               variant="filled"
               required
-            />
+            >
+              {clgList.map((option,key) => (
+                <MenuItem key={key} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
             <TextField
               margin={"dense"}
               color="secondary"
@@ -134,14 +171,33 @@ const RegisterForm = () => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={submitData}
+              size={"lg"}
+              onClick={ submitData}
               style={{ marginTop: "1rem" }}
             >
-              Register Now
+             { loading?
+                <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={true}             
+              >
+                <CircularProgress color="secondary" />
+              </Backdrop> : <span>Register Now </span> 
+              }
             </Button>
           </Grid>
         </Grid>
       </Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+      />
     </>
   );
 };

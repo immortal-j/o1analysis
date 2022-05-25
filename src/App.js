@@ -1,11 +1,11 @@
 import React from "react";
 import Homepage from "./Home/Pages/Homepage";
 import { Routes, Route } from "react-router-dom";
-import Overall from "./Analysis/pages/Overall";
+import Overall from "./Analysis/pages/OverallUsingURL";
 import GlobalStyles from "./GlobalStyles";
 import PageNotFound from "./Analysis/pages/PageNotFound";
 import DashboardLogin from "./Analysis/pages/DashboardLogin";
-import Overall2 from "./Analysis/pages/Overall copy";
+import Overall2 from "./Analysis/pages/OverallUsingLogin";
 function App() {
   return (
     <div className="App">
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/dashboard" element={<Overall2 />} />
-        <Route path="/dashboard/:name" element={<Overall />} />
+        <Route path="/dashboard/:email" element={<Overall />} />
       </Routes>
     </div>
   );
