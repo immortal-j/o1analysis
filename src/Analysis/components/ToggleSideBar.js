@@ -5,8 +5,9 @@ import Logo from "../Assets/Logo/logo2.svg";
 import CloseIcon from "@mui/icons-material/Close";
 import { NavBarData } from "./NavBarData";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-const ToggleSidebar = ({subjectData,setSubjectData,email,fetchSubject} ) => {
+const ToggleSidebar = ({fetchSubject} ) => {
   const [isOpen, setIsopen] = useState(false);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
@@ -27,26 +28,26 @@ const ToggleSidebar = ({subjectData,setSubjectData,email,fetchSubject} ) => {
                 <MenuIcon />
               </div>
             </div>
-            <a className="navbar-brand text-primary mr-0">
+            <Link className="navbar-brand text-primary mr-0" to='/'>
               <img
                 className="brand-logo"
                 src={Logo}
                 alt="O(1) Coding Club"
                 srcSet=""
               />
-            </a>
+            </Link>
           </div>
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-            <a className="navbar-brand text-primary mr-0">
+            <Link to='/' className="navbar-brand text-primary mr-0">
               <img
                 className="brand-logo"
                 src={Logo}
                 alt="O(1) Coding Club"
                 srcSet=""
               />
-            </a>
+            </Link>
             <div className="btn btn-primary" onClick={ToggleSidebar}>
               <CloseIcon />
             </div>

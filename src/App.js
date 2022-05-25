@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/dashboard" element={<Overall2 />} />
-        <Route path="/dashboard/:name" element={<Overall />} />
+        <Route path="/dashboard/:email" element={<Overall />} />
       </Routes>
     </div>
   );

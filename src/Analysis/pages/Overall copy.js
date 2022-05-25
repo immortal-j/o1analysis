@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import DashboardLogin from "./DashboardLogin";
 import loginImage from "../../Home/images/Register.svg";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
@@ -22,11 +20,7 @@ import LeetCode from "../components/Leetcode";
 import LineGraph from "../components/LineGraph";
 import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
-import userActions from "../redux/actions/userActions";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
-import { Data } from "../../Analysis/redux/DummyData/Data";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -72,36 +66,43 @@ const Overall2 = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
-  const [subjectData, setSubjectData] = useState({});
 
   const obj = {
     email: email,
     subject_frontend: "overall",
   };
 
-
   const fetchSubject = async (key) => {
-    const subjectlist = ["dsa","cn","dbms","os","oops","logical","verbal","quantitative"];
-    
+    const subjectlist = [
+      "overall",
+      "dsa",
+      "cn",
+      "dbms",
+      "os",
+      "oops",
+      "logical",
+      "verbal",
+      "quantitative",
+    ];
+
     const obj = {
       email: email,
-      subject_frontend: subjectlist[key-1],
+      subject_frontend: subjectlist[key],
     };
     const subject = await axios.post(
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
     setLeetCodeLabel(subject.data.leetcode.labels);
-      setLeetCodeSeries(subject.data.leetcode.series);
-      setLineGraphLabel(subject.data.linegraph.labels);
-      setLineGraphSeries(subject.data.linegraph.series);
-      setPieChartLabel(subject.data.piechart.labels);
-      setPieChartSeries(subject.data.piechart.series);
-      setPieChartLabel(subject.data.piechart.labels);
-      setPieChartSeries(subject.data.piechart.series);
-      setStackBarLabel(subject.data.stackgraph.labels);
-      setStackBarSeries(subject.data.stackgraph.series);
-    console.log(subjectData)
+    setLeetCodeSeries(subject.data.leetcode.series);
+    setLineGraphLabel(subject.data.linegraph.labels);
+    setLineGraphSeries(subject.data.linegraph.series);
+    setPieChartLabel(subject.data.piechart.labels);
+    setPieChartSeries(subject.data.piechart.series);
+    setPieChartLabel(subject.data.piechart.labels);
+    setPieChartSeries(subject.data.piechart.series);
+    setStackBarLabel(subject.data.stackgraph.labels);
+    setStackBarSeries(subject.data.stackgraph.series);
   };
 
   const handleLogin = async (e) => {
@@ -111,7 +112,7 @@ const Overall2 = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      toast.info("Check your result here")
+      toast.info("Check your result here");
 
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -127,6 +128,8 @@ const Overall2 = () => {
       setToggle(!toggle);
       handleClose();
     } catch (e) {
+      toast.warn("Please fill valid fields");
+
       console.log(e);
     }
   };
@@ -184,16 +187,23 @@ const Overall2 = () => {
               </Grid>
             </Box>
           </Modal>
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="colored"
+            pauseOnHover
+          />
         </div>
       )}
       {toggle && (
         <div>
-          <ToggleSidebar
-            subjectData={subjectData}
-            email={email}
-            setSubjectData={setSubjectData}
-            fetchSubject={fetchSubject}
-          />
+          <ToggleSidebar fetchSubject={fetchSubject} />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -294,17 +304,6 @@ const Overall2 = () => {
               </Grid>
             </Grid>
           </Container>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
         </div>
       )}
     </>

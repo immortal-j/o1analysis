@@ -1,11 +1,11 @@
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { Button, Container, Grid, TextField, Typography,MenuItem, Backdrop, CircularProgress} from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import login from "../../images/login.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const RegisterForm = ({}) => {
+const RegisterForm = (props) => {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -13,12 +13,16 @@ const RegisterForm = ({}) => {
     key: "",
     college: "",
   });
+  console.log(props);
+
+  const [loading,setLoading]=useState(false)
+  const [clgList,setClgList]=useState([])
 
   const getCollegeName = async () => {
-    const clgNames = await axios.get(
+    const fetchNames = await axios.get(
       `https://o1apti.herokuapp.com/college_list`
     );
-    console.log(clgNames);
+    setClgList( fetchNames.data.clg_names);
   };
   useEffect(() => {
     getCollegeName();
@@ -32,20 +36,29 @@ const RegisterForm = ({}) => {
   };
 
   const submitData = (e) => {
-    e.preventDefault();
+    // props.handleClose();
+    // e.preventDefault();
+    setLoading(true)
     axios
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
-      
-      
-          setOpen(false)
-          toast.success("User Register Successfully");
-        
+        setLoading(false)
+        toast.success("User Register Successfully");
       })
       .catch(function (error) {
-        toast.warn("Something goes wrong. Please try again.")
-        
-        console.log(error);
+        setLoading(false)
+        // props.handleClose();
+
+        if(error.response.data==="EMAIL ALREADY EXIST")
+        toast.error("Email Already Exist.");
+
+        if(error.response.data==="INVALID DATA")
+        toast.warn("Please fill all the fields.")
+        else{
+          console.log(error.response);
+          toast.warn("Something goes wrong. Please try again.");
+
+        }
       });
     setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
   };
@@ -122,11 +135,12 @@ const RegisterForm = ({}) => {
               variant="filled"
               required
             />
+            
             <TextField
               margin={"dense"}
-              // select
               color="secondary"
               fullWidth
+              select
               onChange={handleInputs}
               value={userData.college}
               name="college"
@@ -135,7 +149,11 @@ const RegisterForm = ({}) => {
               variant="filled"
               required
             >
-
+              {clgList.map((option,key) => (
+                <MenuItem key={key} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
             </TextField>
             <TextField
               margin={"dense"}
@@ -153,23 +171,32 @@ const RegisterForm = ({}) => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={submitData}
+              size={"lg"}
+              onClick={(e)=>{ props.handleClose();submitData(e);}}
               style={{ marginTop: "1rem" }}
             >
-              Register Now
+             { loading?
+                <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}             
+              >
+                <CircularProgress color="secondary" />
+              </Backdrop> : <span>Register Now </span> 
+              }
             </Button>
           </Grid>
         </Grid>
       </Container>
-      <ToastContainer position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
       />
     </>
   );
