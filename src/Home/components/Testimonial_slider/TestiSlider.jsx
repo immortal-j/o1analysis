@@ -7,8 +7,8 @@ import "swiper/swiper-bundle.css";
 import "../Testimonial/Testimonial.css";
 
 const Testimonial_position = {
-  position: "absolute",
-  top: " 320vh",
+  // position: "absolute",
+  // top: " 320vh",
 };
 
 const settings = {
@@ -179,7 +179,7 @@ const Testislider = () => {
             <div className="tc-pagination"></div>
           </div>
         </div>
-        <h3 style={{ color: "white",textAlign:"center"}}>{`<-Slide->`}</h3>
+        <h3 style={{ color: "white",textAlign:"center",marginTop:"-3rem"}}>{`<-Slide->`}</h3>
       </section>
     </div>
   );
