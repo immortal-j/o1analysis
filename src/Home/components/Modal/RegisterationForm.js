@@ -13,7 +13,7 @@ const RegisterForm = (props) => {
     key: "",
     college: "",
   });
-  console.log(props);
+  
 
   const [loading,setLoading]=useState(false)
   const [clgList,setClgList]=useState([])
@@ -36,14 +36,15 @@ const RegisterForm = (props) => {
   };
 
   const submitData = (e) => {
-    // props.handleClose();
-    // e.preventDefault();
+    
+    e.preventDefault();
     setLoading(true)
     axios
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
         setLoading(false)
         toast.success("User Register Successfully");
+        setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
       })
       .catch(function (error) {
         setLoading(false)
@@ -60,7 +61,6 @@ const RegisterForm = (props) => {
 
         }
       });
-    setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
   };
 
   return (
@@ -172,13 +172,13 @@ const RegisterForm = (props) => {
               variant="contained"
               color="secondary"
               size={"lg"}
-              onClick={(e)=>{ props.handleClose();submitData(e);}}
+              onClick={ submitData}
               style={{ marginTop: "1rem" }}
             >
              { loading?
                 <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={open}             
+                open={true}             
               >
                 <CircularProgress color="secondary" />
               </Backdrop> : <span>Register Now </span> 
