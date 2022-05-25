@@ -23,7 +23,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import { Data } from "../../Analysis/redux/DummyData/Data";
-import Tour from "../components/Tour";
+// import TestIntro from "./TestIntro";
+import Demo from "./demo";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -151,12 +152,13 @@ const Overall2 = () => {
       {toggle && (
         <div>
           <ToggleSidebar />
-          <Tour/>
+        
 
-          <Container maxWidth="xl">
+          <Container maxWidth="xl"  >
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
-              <Grid item xs={12} sm={6} md={4} className="user-detail">
+              <Grid item xs={12} sm={6} md={4} >
                 <Card
+               
                   sx={{
                     boxShadow: 1,
                     minWidth: 275,
@@ -173,7 +175,8 @@ const Overall2 = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2> Hello, {name}</h2>
+                    
+                    <h2 className="user-detail"> Hello, {name}</h2>
                     <p>Nice to meet you !</p>
                   </CardContents>
                 </Card>
@@ -252,7 +255,10 @@ const Overall2 = () => {
                 </Box>
               </Grid>
             </Grid>
+            {/* <TestIntro/> */}
+            <Demo/>
           </Container>
+         
         </div>
       )}
     </>

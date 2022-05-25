@@ -21,7 +21,7 @@ import userActions from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
-import Tour from "../components/Tour";
+
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -86,7 +86,6 @@ const Overall = ({email}) => {
     
       <div >
         <ToggleSidebar />
-        <Tour/>
     
         <Container maxWidth="xl">
           <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
