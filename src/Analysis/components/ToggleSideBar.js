@@ -4,7 +4,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../Assets/Logo/logo2.svg";
 import CloseIcon from "@mui/icons-material/Close";
 import { NavBarData } from "./NavBarData";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const ToggleSidebar = ({fetchSubject} ) => {
@@ -15,6 +14,7 @@ const ToggleSidebar = ({fetchSubject} ) => {
 
   const xyz=(key)=>{
       fetchSubject(key)
+      ToggleSidebar();
   }
   
 

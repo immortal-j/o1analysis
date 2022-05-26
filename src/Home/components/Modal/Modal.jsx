@@ -28,7 +28,7 @@ function KeepMountedModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <HeroButton>
+    <div>
       <button className="btn-giveTest" onClick={handleOpen}>
         Give Test
       </button>
@@ -40,19 +40,12 @@ function KeepMountedModal() {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box >
-          {/* <Form /> */}
           <RegisterForm handleClose={handleClose}/>
         </Box>
       </Modal>
-    </HeroButton>
+    </div>
   );
 }
 
-const HeroButton = styled.div`
 
-@media screen and (max-width: 400px) {
-  
-    
-  }
-`
 export default KeepMountedModal;

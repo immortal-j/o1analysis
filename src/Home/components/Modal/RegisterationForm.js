@@ -22,6 +22,9 @@ const RegisterForm = (props) => {
     key: "",
     college: "",
   });
+  
+ 
+  
 
   const [loading, setLoading] = useState(false);
   const [clgList, setClgList] = useState([]);
@@ -50,21 +53,23 @@ const RegisterForm = (props) => {
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
         setLoading(false);
-        props.handleClose();
         toast.success("User Register Successfully");
         setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
+        props.handleClose()
+      
       })
       .catch(function (error) {
         setLoading(false);
         if (error.response.data === "EMAIL ALREADY EXIST")
           toast.error("Email Already Exist.");
-
-        if (error.response.data === "INVALID DATA")
+        else if (error.response.data === "INVALID DATA")
           toast.warn("Please fill all the fields.");
         else {
-          console.log(error.response);
+          // console.log(error.response);
           toast.warn("Something goes wrong. Please try again.");
         }
+        props.handleClose()
+
       });
   };
 
