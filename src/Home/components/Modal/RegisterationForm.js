@@ -1,4 +1,13 @@
-import { Button, Container, Grid, TextField, Typography,MenuItem, Backdrop, CircularProgress} from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+  MenuItem,
+  Backdrop,
+  CircularProgress,
+} from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import login from "../../images/login.svg";
@@ -13,16 +22,15 @@ const RegisterForm = (props) => {
     key: "",
     college: "",
   });
-  
 
-  const [loading,setLoading]=useState(false)
-  const [clgList,setClgList]=useState([])
+  const [loading, setLoading] = useState(false);
+  const [clgList, setClgList] = useState([]);
 
   const getCollegeName = async () => {
     const fetchNames = await axios.get(
       `https://o1apti.herokuapp.com/college_list`
     );
-    setClgList( fetchNames.data.clg_names);
+    setClgList(fetchNames.data.clg_names);
   };
   useEffect(() => {
     getCollegeName();
@@ -36,29 +44,26 @@ const RegisterForm = (props) => {
   };
 
   const submitData = (e) => {
-    
     e.preventDefault();
-    setLoading(true)
+    setLoading(true);
     axios
       .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
+        props.handleClose();
         toast.success("User Register Successfully");
         setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
       })
       .catch(function (error) {
-        setLoading(false)
-        // props.handleClose();
+        setLoading(false);
+        if (error.response.data === "EMAIL ALREADY EXIST")
+          toast.error("Email Already Exist.");
 
-        if(error.response.data==="EMAIL ALREADY EXIST")
-        toast.error("Email Already Exist.");
-
-        if(error.response.data==="INVALID DATA")
-        toast.warn("Please fill all the fields.")
-        else{
+        if (error.response.data === "INVALID DATA")
+          toast.warn("Please fill all the fields.");
+        else {
           console.log(error.response);
           toast.warn("Something goes wrong. Please try again.");
-
         }
       });
   };
@@ -135,7 +140,7 @@ const RegisterForm = (props) => {
               variant="filled"
               required
             />
-            
+
             <TextField
               margin={"dense"}
               color="secondary"
@@ -149,7 +154,7 @@ const RegisterForm = (props) => {
               variant="filled"
               required
             >
-              {clgList.map((option,key) => (
+              {clgList.map((option, key) => (
                 <MenuItem key={key} value={option}>
                   {option}
                 </MenuItem>
@@ -172,17 +177,22 @@ const RegisterForm = (props) => {
               variant="contained"
               color="secondary"
               size={"lg"}
-              onClick={ submitData}
+              onClick={submitData}
               style={{ marginTop: "1rem" }}
             >
-             { loading?
+              {loading ? (
                 <Backdrop
-                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={true}             
-              >
-                <CircularProgress color="secondary" />
-              </Backdrop> : <span>Register Now </span> 
-              }
+                  sx={{
+                    color: "#fff",
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                  }}
+                  open={true}
+                >
+                  <CircularProgress color="secondary" />
+                </Backdrop>
+              ) : (
+                <span>Register Now </span>
+              )}
             </Button>
           </Grid>
         </Grid>
