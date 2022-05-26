@@ -13,8 +13,9 @@ const ToggleSidebar = ({fetchSubject} ) => {
   };
 
   const xyz=(key)=>{
+    ToggleSidebar();
       fetchSubject(key)
-      ToggleSidebar();
+     
   }
   
 
