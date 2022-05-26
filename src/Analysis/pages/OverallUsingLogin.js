@@ -1,7 +1,9 @@
 import {
+  Backdrop,
   Button,
   Card,
   CardContent,
+  CircularProgress,
   Container,
   Grid,
   Modal,
@@ -63,7 +65,7 @@ const Overall2 = () => {
   const [open, setOpen] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
-  const handleOpen = () => setOpen(true);
+  const [loading, setLoading] = useState(false);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
 
@@ -73,6 +75,7 @@ const Overall2 = () => {
   };
 
   const fetchSubject = async (key) => {
+    setLoading(true)
     const subjectlist = [
       "overall",
       "dsa",
@@ -89,7 +92,7 @@ const Overall2 = () => {
       email: email,
       subject_frontend: subjectlist[key],
     };
-    
+
     const subject = await axios.post(
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
@@ -104,17 +107,18 @@ const Overall2 = () => {
     setPieChartSeries(subject.data.piechart.series);
     setStackBarLabel(subject.data.stackgraph.labels);
     setStackBarSeries(subject.data.stackgraph.series);
+    setLoading(false)
+    toast.info("Check your " + obj.subject_frontend + " analysis here");
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      toast.info("Check your result here");
-
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
@@ -127,6 +131,9 @@ const Overall2 = () => {
       setStackBarLabel(userData.data.stackgraph.labels);
       setStackBarSeries(userData.data.stackgraph.series);
       setToggle(!toggle);
+      toast.info("Check your result here");
+
+      setLoading(false);
       handleClose();
     } catch (e) {
       toast.warn("Please fill valid fields");
@@ -136,9 +143,20 @@ const Overall2 = () => {
   };
 
   return (
-    <>
+    <div>
       {!toggle && (
         <div>
+          {loading && (
+            <Backdrop
+              sx={{
+                color: "#fff",
+                zIndex: (theme) => theme.zIndex.drawer + 1000,
+              }}
+              open={true}
+            >
+              <CircularProgress color="secondary" />
+            </Backdrop>
+          )}
           <Modal
             open={open}
             aria-labelledby="modal-modal-title"
@@ -188,22 +206,22 @@ const Overall2 = () => {
               </Grid>
             </Box>
           </Modal>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            theme="colored"
-            pauseOnHover
-          />
+         
         </div>
       )}
       {toggle && (
         <div>
+          {loading && (
+            <Backdrop
+              sx={{
+                color: "#fff",
+                zIndex: (theme) => theme.zIndex.drawer + 1000,
+              }}
+              open={true}
+            >
+              <CircularProgress color="secondary" />
+            </Backdrop>
+          )}
           <ToggleSidebar fetchSubject={fetchSubject} />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
@@ -233,7 +251,7 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
-                  className="overall-analysis"
+                    className="overall-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -252,6 +270,8 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
+                  className="levelwise-analysis"
+
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -271,6 +291,8 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
+                  className="correct-analysis"
+
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -289,6 +311,8 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
+                  className="subjectWise-analysis"
+
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -305,11 +329,23 @@ const Overall2 = () => {
                 </Box>
               </Grid>
             </Grid>
-            <Demo/>
+            <Demo />
           </Container>
         </div>
       )}
-    </>
+       <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="colored"
+            pauseOnHover
+          />
+    </div>
   );
 };
 

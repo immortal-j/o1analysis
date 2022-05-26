@@ -19,6 +19,7 @@ import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
+import Demo from "./demo";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -161,7 +162,7 @@ const Overall = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2> Hello,{name} </h2>
+                    <h2 className="user-detail"> Hello,{name} </h2>
                     <p>Nice to meet you !</p>
                   </CardContents>
                 </Card>
@@ -169,6 +170,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
+                  className="overall-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -187,6 +189,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
+                  className="levelwise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -206,6 +209,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
+                  className="correct-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -224,6 +228,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
+                  className="subjectWise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -241,6 +246,7 @@ const Overall = () => {
               </Grid>
             </Grid>
           </Container>
+          <Demo/>
         </div>
       )}
     </>

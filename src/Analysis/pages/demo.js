@@ -14,6 +14,18 @@ function Demo() {
         element: ".overall-analysis",
         intro: "Score Distribution",
       },
+      {
+        element: ".levelwise-analysis",
+        intro: "Levelwise Distribution",
+      },
+      {
+        element: ".correct-analysis",
+        intro: "No of correct and incorrect questions",
+      },
+      {
+        element: ".subjectWise-analysis",
+        intro: "Hard and weak topics",
+      },
     ],
   });
   const options={
