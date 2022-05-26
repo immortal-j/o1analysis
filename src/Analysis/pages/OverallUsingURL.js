@@ -69,7 +69,6 @@ const Overall = () => {
       setPieChartSeries(userData.data.piechart.series);
       setStackBarLabel(userData.data.stackgraph.labels);
       setStackBarSeries(userData.data.stackgraph.series);
-      toast.info("Check your analysis here");
       setVisibility(true);
     } catch (error) {
       toast.warn("Something went wrong. Please check your email");
