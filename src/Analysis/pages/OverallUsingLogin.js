@@ -75,7 +75,7 @@ const Overall2 = () => {
   };
 
   const fetchSubject = async (key) => {
-    setLoading(true)
+    setLoading(true);
     const subjectlist = [
       "overall",
       "dsa",
@@ -107,7 +107,7 @@ const Overall2 = () => {
     setPieChartSeries(subject.data.piechart.series);
     setStackBarLabel(subject.data.stackgraph.labels);
     setStackBarSeries(subject.data.stackgraph.series);
-    setLoading(false)
+    setLoading(false);
     toast.info("Check your " + obj.subject_frontend + " analysis here");
   };
 
@@ -137,7 +137,7 @@ const Overall2 = () => {
       handleClose();
     } catch (e) {
       toast.warn("Please fill valid fields");
-
+      setLoading(false);
       console.log(e);
     }
   };
@@ -206,7 +206,6 @@ const Overall2 = () => {
               </Grid>
             </Box>
           </Modal>
-         
         </div>
       )}
       {toggle && (
@@ -270,8 +269,7 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
-                  className="levelwise-analysis"
-
+                    className="levelwise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -291,8 +289,7 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
-                  className="correct-analysis"
-
+                    className="correct-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -311,8 +308,7 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
-                  className="subjectWise-analysis"
-
+                    className="subjectWise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -333,18 +329,18 @@ const Overall2 = () => {
           </Container>
         </div>
       )}
-       <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            theme="colored"
-            pauseOnHover
-          />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+        pauseOnHover
+      />
     </div>
   );
 };
