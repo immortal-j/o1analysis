@@ -52,9 +52,9 @@ const toggleSteps = () => {
         initialStep={state.initialStep}
         onExit={onExit}
       />
-      <button class="world" onClick={toggleSteps}>
+      {/* <button class="world" onClick={toggleSteps}>
         Start Tutorial
-      </button>
+      </button> */}
     </div>
   );
 }
