@@ -21,7 +21,7 @@ import LineGraph from "../components/LineGraph";
 import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
 import PieChart from "../components/PieChart";
-
+import Demo from "./demo";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -225,7 +225,7 @@ const Overall2 = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2> Hello, {name}</h2>
+                    <h2 className="user-detail"> Hello, {name}</h2>
                     <p>Nice to meet you !</p>
                   </CardContents>
                 </Card>
@@ -233,6 +233,7 @@ const Overall2 = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
+                  className="overall-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -304,6 +305,7 @@ const Overall2 = () => {
                 </Box>
               </Grid>
             </Grid>
+            <Demo/>
           </Container>
         </div>
       )}
