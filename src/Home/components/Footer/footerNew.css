@@ -132,8 +132,3 @@
     }
 }
 
-.icons {
-    display: inline-grid;
-    grid-template-columns: repeat(4, auto);
-    column-gap: 16px;
-}
