@@ -3,14 +3,14 @@ import Navbar from "../Navbar";
 import SocialMedia from "../SocialMedia";
 import Main from "../TextContent/Main";
 import image from "../../images/star.png";
-import bg_final from "../../images/bg_final.png";
+import bg_final from "../../images/bg_homepage.png";
 const Home = () => {
   return (
     <>
       <div
         style={{
-          backgroundImage: { bg_final },
           minHeight: "100vh",
+          backgroundImage:  "url(" + bg_final + ")",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           backgroundRepeat: "no-repeat",
