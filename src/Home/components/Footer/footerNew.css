@@ -1,8 +1,8 @@
-.footer-wrap {}
 
 .footer {
     padding: 90px 105px 25px 105px;
     color: #d6d9db;
+    min-height: max-content;
 }
 .company-detail {
   margin-right: 13rem;
@@ -12,7 +12,7 @@
 .footer .top-footer {
     padding: 0 0 50px;
     border-bottom: 1px solid #979797;
-    border-top: 1px solid #979797;
+    /* border-top: 1px solid #979797; */
 }
 
 .footer .footer-logo a {

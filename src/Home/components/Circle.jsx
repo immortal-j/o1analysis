@@ -14,9 +14,9 @@ export default Circle;
 
 const CircleStyle = styled.div`
   position: relative;
-  right: 11rem;
-  height: 33rem;
-  width: 33rem;
+  right: 8.3rem;
+  height: 35rem;
+  width: 35rem;
   background: rgba(0, 0, 0, 0)
     linear-gradient(90deg, rgb(229, 0, 255) 0%, rgb(130, 0, 255) 100%) repeat
     scroll 0% 0%;
@@ -27,8 +27,8 @@ const CircleStyle = styled.div`
     width: 100%;
     object-fit: contain;
     height: 100%;
+    animation: MoveUpDown 1s linear infinite;
   }
-  animation: MoveUpDown 1s linear infinite;
 
   @keyframes MoveUpDown {
     0% ,100%{

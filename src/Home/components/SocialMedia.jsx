@@ -13,6 +13,7 @@ const StackStyle = {
   right: "3vw",
   lineHeight: "2px",
   fontSize: "2px",
+
 };
 
 const iconStyle = {
