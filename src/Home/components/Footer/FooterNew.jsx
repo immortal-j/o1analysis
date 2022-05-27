@@ -16,14 +16,14 @@ const FooterNew = () => {
               <div className="row">
                 <div className='company-detail'>
                   <div className="footer-logo">
-                    <a href="/" title="Mercury">
+                    <a href="#" title="O1 Analysis">
                       <img
                         src={logo} 
                         width="72"
                         alt="O(1)-logo"
                         className="img-fluid"
                       />
-                     Statistics & Analysis
+                     Statistics &#38; Analysis
                     </a>
                     <p className="tagline">A product of O1 Coding Club.</p>
                   </div>

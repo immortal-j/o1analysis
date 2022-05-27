@@ -13,7 +13,7 @@
 }
 
 .firsthead {
-    font-size: 8.3em;
+    font-size: 9.3em;
     color: white;
     font-weight: 600;
     display: inline-block;
@@ -36,10 +36,6 @@
     letter-spacing: -2px;
     font-weight: 700;
     font-size: 83px;
-    transform-origin: 50% 50% 0px;
-    opacity: 1;
-    transform: translate(0px);
-    visibility: visible;
 }
 
 .para {
@@ -51,8 +47,8 @@
     line-height: 25px;
     letter-spacing: 1px;
     font-weight: 300;
-    font-size: 13px;
-    visibility: visible;
+    font-size: 1rem;
+
 }
 
 .sidehead {
@@ -67,9 +63,6 @@
     letter-spacing: 7px;
     font-weight: 400;
     font-size: 13px;
-    opacity: 1;
-    transform: translate(0px);
-    visibility: visible;
 }
 
 .btn-giveTest {
@@ -87,7 +80,7 @@
     line-height: 40px;
     letter-spacing: 2px;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
     box-shadow: rgba(103, 0, 255, 0.4) 0px 10px 60px 0px;
     padding: 4px 25px;
     border-radius: 300px;
