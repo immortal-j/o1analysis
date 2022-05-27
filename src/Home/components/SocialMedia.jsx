@@ -2,7 +2,8 @@ import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import TelegramIcon from '@mui/icons-material/Telegram';
+
 import { Stack } from "@mui/material";
 
 const StackStyle = {
@@ -33,7 +34,7 @@ const SocialMedia = () => {
           href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
           target="_blank"
         >
-          <TwitterIcon sx={iconStyle} />
+          <TelegramIcon sx={iconStyle} />
         </a>
         <a
           href="https://www.instagram.com/o1codingclub/?hl=en"

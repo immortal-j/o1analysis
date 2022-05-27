@@ -5,7 +5,7 @@ import './footerNew.css'
 import logo from '../../../Analysis/Assets/Logo/logo2.svg'
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from "@mui/icons-material/Instagram";
 const FooterNew = () => {
   return (
@@ -85,7 +85,7 @@ const FooterNew = () => {
           href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
           target="_blank"
         >
-          <TwitterIcon />
+          <TelegramIcon />
         </a>
         <a
    
