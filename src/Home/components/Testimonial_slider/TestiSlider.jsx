@@ -95,7 +95,7 @@ const Testislider = () => {
 
   return (
     <div>
-      <section >
+      <section className="testimonial-section">
         <div className="container">
           <div className="section-title">
             <h2>Testimonials</h2>
