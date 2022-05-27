@@ -15,8 +15,8 @@ export default Circle;
 const CircleStyle = styled.div`
   position: relative;
   right: 8.3rem;
-  height: 35rem;
-  width: 35rem;
+  height: 34rem;
+  width: 34rem;
   background: rgba(0, 0, 0, 0)
     linear-gradient(90deg, rgb(229, 0, 255) 0%, rgb(130, 0, 255) 100%) repeat
     scroll 0% 0%;
