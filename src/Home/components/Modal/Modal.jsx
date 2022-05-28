@@ -32,6 +32,10 @@ function KeepMountedModal() {
       <button className="btn-giveTest" onClick={handleOpen}>
         Give Test
       </button>
+      <button className="btn-giveTest" onClick={event =>  window.location.href='/dashboard'}>
+        CheckResults
+      </button>
+
       <Modal
         keepMounted
         open={open}

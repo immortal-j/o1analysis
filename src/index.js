@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./Analysis/redux/reducers/combinedReducer";
+import { CookiesProvider } from 'react-cookie';
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -23,7 +24,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <CookiesProvider>
         <App />
+        </CookiesProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

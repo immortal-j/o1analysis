@@ -25,7 +25,7 @@ import axios from "axios";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-
+import { useCookies } from 'react-cookie';
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -71,7 +71,7 @@ const Overall2 = () => {
   const [loading, setLoading] = useState(false);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
-
+  const [cookies, setCookie] = useCookies(['abcd']);
   const obj = {
     email: email,
     subject_frontend: "overall",
@@ -121,6 +121,7 @@ const Overall2 = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setCookie("o1user",email,{maxAge:1800});
     setLoading(true);
     try {
       const userData = await axios.post(
@@ -151,6 +152,51 @@ const Overall2 = () => {
       console.log(e);
     }
   };
+  const handleLoginWithCookie = async (par) => {
+    // e.preventDefault();
+    setEmail(par);
+    console.log("hi");
+    setLoading(true);
+    try {
+      console.log(par);
+      const userData = await axios.post(
+        `https://o1apti.herokuapp.com/get_test_analysis`,
+        {
+          email: par,
+    subject_frontend: "overall",
+        }
+      );
+      setName(userData.data.name);
+      setLeetCodeLabel(userData.data.leetcode.labels);
+      setLeetCodeSeries(userData.data.leetcode.series);
+      setLineGraphLabel(userData.data.linegraph.labels);
+      setLineGraphSeries(userData.data.linegraph.series);
+      setPieChartLabel(userData.data.piechart.labels);
+      setPieChartSeries(userData.data.piechart.series);
+      setPieChartLabel(userData.data.piechart.labels);
+      setPieChartSeries(userData.data.piechart.series);
+      setStackBarLabel(userData.data.stackgraph.labels);
+      setStackBarSeries(userData.data.stackgraph.series);
+      setToggle(!toggle);
+      toast.info("Check your result here");
+
+      setLoading(false);
+      handleClose();
+    } catch (e) {
+      toast.warn("Please fill valid fields");
+      setLoading(false);
+      console.log(e);
+    }
+  };
+  const handlecookie =(par)=>{
+    handleLoginWithCookie(par);
+  }
+  useEffect(() => {
+    
+    if( "o1user" in cookies){
+        handlecookie(cookies.o1user);
+    }
+  }, [1]);
 
   return (
     <div>

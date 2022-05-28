@@ -3,11 +3,13 @@ import "./ToggleSidebar.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../Assets/Logo/logo2.svg";
 import CloseIcon from "@mui/icons-material/Close";
+import { Button } from "@mui/material";
 import { NavBarData } from "./NavBarData";
 import { Link } from "react-router-dom";
-
+import { useCookies } from 'react-cookie';
 const ToggleSidebar = ({fetchSubject,subName} ) => {
   const [isOpen, setIsopen] = useState(false);
+  const [cookies, setCookie,RemoveCookie] = useCookies(['abcd']);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
   };
@@ -17,7 +19,11 @@ const ToggleSidebar = ({fetchSubject,subName} ) => {
       fetchSubject(key)
      
   }
-  
+  const handleLogOut=()=>{
+    RemoveCookie("o1user");
+    window.location.href='/dashboard'
+  }
+
 
   return (
     <>
@@ -32,6 +38,7 @@ const ToggleSidebar = ({fetchSubject,subName} ) => {
             <h3 style={{color:'white', marginRight:"auto", textTransform:"capitalize"}}>
               {subName}
             </h3>
+            <Button onClick={handleLogOut}>LOGOUT</Button>
             <Link className="navbar-brand text-primary mr-0" to='/'>
               <img
                 className="brand-logo"
