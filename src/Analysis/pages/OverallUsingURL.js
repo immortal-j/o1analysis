@@ -118,6 +118,18 @@ const Overall = () => {
 
   return (
     <div>
+       <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="colored"
+            pauseOnHover
+          />
       {!visibility && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -130,18 +142,7 @@ const Overall = () => {
       {visibility && (
         <div>
           <ToggleSidebar fetchSubject={fetchSubject} />
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            theme="colored"
-            pauseOnHover
-          />
+         
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>

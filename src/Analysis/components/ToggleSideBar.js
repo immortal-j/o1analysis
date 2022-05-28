@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { NavBarData } from "./NavBarData";
 import { Link } from "react-router-dom";
 
-const ToggleSidebar = ({fetchSubject} ) => {
+const ToggleSidebar = ({fetchSubject,subName} ) => {
   const [isOpen, setIsopen] = useState(false);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
@@ -29,6 +29,9 @@ const ToggleSidebar = ({fetchSubject} ) => {
                 <MenuIcon />
               </div>
             </div>
+            <h3 style={{color:'white', marginRight:"auto", textTransform:"capitalize"}}>
+              {subName}
+            </h3>
             <Link className="navbar-brand text-primary mr-0" to='/'>
               <img
                 className="brand-logo"

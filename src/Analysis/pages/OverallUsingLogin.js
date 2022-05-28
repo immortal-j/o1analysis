@@ -65,6 +65,7 @@ const Overall2 = () => {
   const [open, setOpen] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
+  const [subName, setSubName] = useState("");
   const [loading, setLoading] = useState(false);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
@@ -97,6 +98,8 @@ const Overall2 = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
+    console.log(subject);
+    setSubName(subject.data.subject);
     setLeetCodeLabel(subject.data.leetcode.labels);
     setLeetCodeSeries(subject.data.leetcode.series);
     setLineGraphLabel(subject.data.linegraph.labels);
@@ -119,6 +122,8 @@ const Overall2 = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
+
+      setSubName(userData.data.subject);
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
@@ -221,7 +226,7 @@ const Overall2 = () => {
               <CircularProgress color="secondary" />
             </Backdrop>
           )}
-          <ToggleSidebar fetchSubject={fetchSubject} />
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -330,7 +335,7 @@ const Overall2 = () => {
         </div>
       )}
       <ToastContainer
-        position="top-center"
+        position="bottom-right"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
