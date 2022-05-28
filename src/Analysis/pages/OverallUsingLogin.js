@@ -24,6 +24,8 @@ import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -74,6 +76,9 @@ const Overall2 = () => {
     email: email,
     subject_frontend: "overall",
   };
+  const currentURL = window.location.href
+
+  const publicURL=`${currentURL}${email}`
 
   const fetchSubject = async (key) => {
     setLoading(true);
@@ -249,6 +254,10 @@ const Overall2 = () => {
                     />
                     <h2 className="user-detail"> Hello, {name}</h2>
                     <p>Nice to meet you !</p>
+                    <Typography variant="body2"> {publicURL}</Typography>
+                    <CopyToClipboard text={publicURL}>
+                      <Button variant='contained' color="secondary"style={{marginTop:"1rem"}} >Public Profile URL</Button>
+                    </CopyToClipboard>
                   </CardContents>
                 </Card>
               </Grid>

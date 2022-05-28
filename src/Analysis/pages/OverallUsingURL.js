@@ -4,7 +4,9 @@ import {
   CardContent,
   CircularProgress,
   Container,
+  Button,
   Grid,
+  Typography,
 } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +22,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -35,6 +38,7 @@ const CardContentsMobile = styled(CardContent)({
   padding: "2rem",
 });
 
+
 const Overall = () => {
   const { email } = useParams();
   const [visibility, setVisibility] = useState(false);
@@ -47,6 +51,10 @@ const Overall = () => {
   const [PieChartSeries, setPieChartSeries] = useState([]);
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
+
+  const currentURL = window.location.href
+
+  const publicURL=`${currentURL}`
 
   const getAnalysis = async () => {
     try {
@@ -165,6 +173,10 @@ const Overall = () => {
                     />
                     <h2 className="user-detail"> Hello,{name} </h2>
                     <p>Nice to meet you !</p>
+                    <Typography variant="body2"> {publicURL}</Typography>
+                    <CopyToClipboard text={publicURL}>
+                      <Button variant='contained' color="secondary"style={{marginTop:"1rem"}} >Public Profile URL</Button>
+                    </CopyToClipboard>
                   </CardContents>
                 </Card>
               </Grid>
