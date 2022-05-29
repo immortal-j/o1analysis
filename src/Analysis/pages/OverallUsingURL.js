@@ -23,6 +23,7 @@ import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Ranklist from "../components/Ranklist"
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -273,6 +274,7 @@ const Overall = () => {
             </Grid>
           </Container>
           <Demo/>
+          <Ranklist/>
         </div>
       )}
     </div>
