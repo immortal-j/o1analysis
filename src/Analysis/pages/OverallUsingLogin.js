@@ -26,6 +26,7 @@ import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useCookies } from 'react-cookie';
+
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
