@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import Form from "../Form";
-import styled from 'styled-components'
 import RegisterForm from "./RegisterationForm";
 
 
@@ -29,13 +27,14 @@ function KeepMountedModal() {
 
   return (
     <div>
+      <div className="btn-container">
       <button className="btn-giveTest" onClick={handleOpen}>
         Give Test
       </button>
       <button className="btn-giveTest" onClick={event =>  window.location.href='/dashboard'}>
-        CheckResults
+        Check Results
       </button>
-
+</div>
       <Modal
         keepMounted
         open={open}

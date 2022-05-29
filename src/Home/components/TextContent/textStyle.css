@@ -77,14 +77,14 @@
     white-space: normal;
     width: 10rem;
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
     letter-spacing: 2px;
     font-weight: 500;
     font-size: 14px;
     box-shadow: rgba(103, 0, 255, 0.4) 0px 10px 60px 0px;
-    padding: 4px 25px;
+    padding: 4px 0px;
     border-radius: 300px;
-    filter: brightness(100%);
+    /* filter: brightness(100%); */
     visibility: visible;
 }
 .btn-giveTest:hover{
@@ -92,8 +92,18 @@
 }
 
 @media screen and (max-width: 900px) {
+    body{
+        overflow-x: hidden;
+    }
     
-    
+.secondhead{
+    margin-bottom: 1rem;
+}
+    .btn-container{
+        display: flex;
+        flex-direction: column;
+    }
+  
 }
 @media screen and (max-width: 600px) {
     .sidehead{

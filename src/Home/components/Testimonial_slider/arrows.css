@@ -10,4 +10,13 @@
     color: black;
   }
 
- 
+  @media screen and (max-width: 500px) {
+
+    .slick-prev {
+      left: 6% !important;
+    
+    }
+    .slick-next {
+      right: 6% !important;
+    ;  }
+    }
