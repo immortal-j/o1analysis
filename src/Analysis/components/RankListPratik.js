@@ -21,7 +21,7 @@ const RankListPratik = () => {
       const ranklistData = await axios.get(
         "https://o1apti.herokuapp.com/ranklist/global"
       );
-      console.log(ranklistData.data.ranklist);
+    //
       setData(ranklistData.data.ranklist);
     } catch (error) {
       console.log(error);
@@ -29,8 +29,11 @@ const RankListPratik = () => {
   };
 
   useEffect(() => {
-    getRanklist();
+    getRanklist();  
+    // const rows =ranklistData.data.ranklist.length;
   }, []);
+
+  // console.log(rows);
 
   function TablePaginationActions(props) {
     const theme = useTheme();
@@ -56,8 +59,7 @@ const RankListPratik = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  // const emptyRows =page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -69,48 +71,49 @@ const RankListPratik = () => {
   };
   return (
     <Container>
-      <TableContainer component={Paper}>
+      <h2 style={{color:"white"}}>RankList</h2>
+      <TableContainer component={Paper} sx={{backgroundColor:"transparent"}}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
-            <TableRow>
-              <TableCell>Rank</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>DSA</TableCell>
-              <TableCell>DBMS</TableCell>
-              <TableCell>CN</TableCell>
-              <TableCell>OS</TableCell>
-              <TableCell>OOPS</TableCell>
-              <TableCell>Verbal</TableCell>
-              <TableCell>Quantitative</TableCell>
-              <TableCell>Logical</TableCell>
-              <TableCell>Total Score</TableCell>
+            <TableRow >
+              <TableCell sx={{color:"white"}}>Rank</TableCell>
+              <TableCell sx={{color:"white"}}>Name</TableCell>
+              <TableCell sx={{color:"white"}}>Email</TableCell>
+              <TableCell sx={{color:"white"}}>DSA</TableCell>
+              <TableCell sx={{color:"white"}}>DBMS</TableCell>
+              <TableCell sx={{color:"white"}}>CN</TableCell>
+              <TableCell sx={{color:"white"}}>OS</TableCell>
+              <TableCell sx={{color:"white"}}>OOPS</TableCell>
+              <TableCell sx={{color:"white"}}>Verbal</TableCell>
+              <TableCell sx={{color:"white"}}>Quantitative</TableCell>
+              <TableCell sx={{color:"white"}}>Logical</TableCell>
+              <TableCell sx={{color:"white"}}>Total Score</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row, key) => (
-              <TableRow key={key}>
-                <TableCell component="th" scope="row">
+              <TableRow key={key} >
+                <TableCell component="th" scope="row" sx={{color:"white"}}>
                   {key + 1}
                 </TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.scores.dsa?row.scores.dsa:0}</TableCell>
-                <TableCell>{row.scores.dbms?row.scores.dbms:0}</TableCell>
-                <TableCell>{row.scores.cn?row.scores.cn:0}</TableCell>
-                <TableCell>{row.scores.os?row.scores.os:0}</TableCell>
-                <TableCell>{row.scores.oops?row.scores.oops:0}</TableCell>
-                <TableCell>{row.scores.verbal?row.scores.verbal:0}</TableCell>
-                <TableCell>{row.scores.quantitative?row.scores.quantitative:0}</TableCell>
-                <TableCell>{row.scores.logical?row.scores.logical:0}</TableCell>
-                <TableCell>{row.total_score}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.name}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.email}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.dsa?row.scores.dsa:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.dbms?row.scores.dbms:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.cn?row.scores.cn:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.os?row.scores.os:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.oops?row.scores.oops:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.verbal?row.scores.verbal:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.quantitative?row.scores.quantitative:0} </TableCell>
+                <TableCell sx={{color:"white"}}>{row.scores.logical?row.scores.logical:0}</TableCell>
+                <TableCell sx={{color:"white"}}>{row.total_score}</TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+          <TableRow sx={{color:"white"}}>
+            {/* <TablePagination */}
+              {/* rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
               colSpan={3}
               count={data.length}
               rowsPerPage={rowsPerPage}
@@ -124,7 +127,7 @@ const RankListPratik = () => {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
-            />
+            /> */}
           </TableRow>
         </TableFooter>
         </Table>

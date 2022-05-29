@@ -217,7 +217,6 @@ export default function CustomPaginationActionsTable() {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
-              
             />
           </TableRow>
         </TableFooter>
