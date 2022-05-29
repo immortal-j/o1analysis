@@ -99,16 +99,10 @@
 
 @media only screen and (max-width: 1199px) {
    
-    .footer {
-        /* padding: 45px 50px 25px 50px; */
-    }
-    .footer .footer-logo {
-        width: 100%;
 
-        margin: 0   auto ;
-    
-        text-align: center;
-    }
+        .company-detail{
+    min-width:100% ;
+}
 }
 
 @media only screen and (max-width: 991px) {
@@ -116,9 +110,7 @@
     .footer {
         padding: 20px 30px;
     }
-    .company-detail {
-      margin-right:0 ;
-    }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -129,8 +121,6 @@
   }
   
  
-    .company-detail {
-      margin-right:0 ;
-    }
+  
 }
 

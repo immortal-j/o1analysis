@@ -1,7 +1,5 @@
 import React from "react";
 import "./textStyle.css";
-import styled from "styled-components";
-import { device } from "../../ResponsiveData/DeviceData";
 import { Typography } from "@mui/material";
 function List() {
   return (

@@ -69,6 +69,7 @@
     background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(229, 0, 255) 0%, rgb(130, 0, 255) 100%) repeat scroll 0% 0%;
     font-family: "Poppins";
     margin-top: 0.9rem;
+    margin-right: 0.6rem;
     text-transform: uppercase;
     height: auto;
     color: rgb(255, 255, 255);
