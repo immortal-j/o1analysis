@@ -51,6 +51,7 @@ const Overall = () => {
   const [PieChartSeries, setPieChartSeries] = useState([]);
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
+  const [subName, setSubName] = useState("");
 
   const currentURL = window.location.href
 
@@ -68,6 +69,7 @@ const Overall = () => {
         obj
       );
       setName(userData.data.name);
+      setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
       setLineGraphLabel(userData.data.linegraph.labels);
@@ -106,6 +108,8 @@ const Overall = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
+    setSubName(subject.data.subject);
+
     setLeetCodeLabel(subject.data.leetcode.labels);
     setLeetCodeSeries(subject.data.leetcode.series);
     setLineGraphLabel(subject.data.linegraph.labels);
@@ -149,7 +153,7 @@ const Overall = () => {
 
       {visibility && (
         <div>
-          <ToggleSidebar fetchSubject={fetchSubject} />
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
          
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
@@ -175,7 +179,16 @@ const Overall = () => {
                     <p>Nice to meet you !</p>
                     <Typography variant="body2"> {publicURL}</Typography>
                     <CopyToClipboard text={publicURL}>
-                      <Button variant='contained' color="secondary"style={{marginTop:"1rem"}} >Public Profile URL</Button>
+                    <Button variant='contained'onClick={()=>{
+                        toast.info("Copy to Clipboard", {
+                          position: "bottom-right",
+                          autoClose: 1500,
+                          closeOnClick: true,
+                          draggable: true,
+                          theme:'dark',
+                          progress: undefined})
+                      }} color="secondary"style={{marginTop:"1rem",background: "#f4f4ff",
+    color: "#6f63e6"}} >Public Profile URL</Button>
                     </CopyToClipboard>
                   </CardContents>
                 </Card>

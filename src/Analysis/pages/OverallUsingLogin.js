@@ -78,7 +78,7 @@ const Overall2 = () => {
   };
   const currentURL = window.location.href
 
-  const publicURL=`${currentURL}${email}`
+  const publicURL=`${currentURL}/${email}`
 
   const fetchSubject = async (key) => {
     setLoading(true);
@@ -167,6 +167,7 @@ const Overall2 = () => {
         }
       );
       setName(userData.data.name);
+      setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
       setLineGraphLabel(userData.data.linegraph.labels);
@@ -302,7 +303,16 @@ const Overall2 = () => {
                     <p>Nice to meet you !</p>
                     <Typography variant="body2"> {publicURL}</Typography>
                     <CopyToClipboard text={publicURL}>
-                      <Button variant='contained' color="secondary"style={{marginTop:"1rem"}} >Public Profile URL</Button>
+                      <Button variant='contained'onClick={()=>{
+                        toast.info("Copy to Clipboard", {
+                          position: "bottom-right",
+                          autoClose: 1500,
+                          closeOnClick: true,
+                          draggable: true,
+                          theme:'dark',
+                          progress: undefined})
+                      }} color="secondary"style={{marginTop:"1rem",background: "#f4f4ff",
+    color: "#6f63e6"}} >Public Profile URL</Button>
                     </CopyToClipboard>
                   </CardContents>
                 </Card>
