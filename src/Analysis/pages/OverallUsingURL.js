@@ -25,6 +25,7 @@ import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Ranklist from "../components/Ranklist"
 import RankListPratik from "../components/RankListPratik";
+import RankTable from "../components/RankTable";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -275,7 +276,8 @@ const Overall = () => {
             </Grid>
           </Container>
           <Demo/>
-          <RankListPratik/>
+          {/* <RankListPratik/> */}
+          <RankTable/>
         </div>
       )}
     </div>
