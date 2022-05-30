@@ -89,6 +89,26 @@ const Overall = () => {
       console.log(error);
     }
   };
+
+  // const getRankTable = async () => {
+  //   try {
+  //     setVisibility(false);
+  //     const obj = {
+  //       email: email,
+  //     };
+  //     const userData = await axios.post(
+  //       `https://o1apti.herokuapp.com/get_user_ranklist`,
+  //       obj
+  //     );
+  //     console.log("Hello");
+  //     console.log(userData);
+  //   } catch (error) {
+  //     toast.warn("Something went wrong. Please check your email");
+  //     console.log(error);
+  //   }
+  // };
+
+
   const fetchSubject = async (key) => {
     const subjectlist = [
       "overall",
@@ -129,6 +149,7 @@ const Overall = () => {
 
   useEffect(() => {
     getAnalysis();
+    // getRankTable();
   }, [1]);
 
   return (
@@ -271,13 +292,13 @@ const Overall = () => {
                       />
                     </CardContentsMobile>
                   </Card>
-                </Box>
+                </Box>    
               </Grid>
             </Grid>
           </Container>
           <Demo/>
           {/* <RankListPratik/> */}
-          <RankTable/>
+          {/* <RankTable/> */}
         </div>
       )}
     </div>

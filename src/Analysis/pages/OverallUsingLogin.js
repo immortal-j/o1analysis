@@ -156,15 +156,13 @@ const Overall2 = () => {
   const handleLoginWithCookie = async (par) => {
     // e.preventDefault();
     setEmail(par);
-    console.log("hi");
     setLoading(true);
     try {
-      console.log(par);
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
         {
           email: par,
-    subject_frontend: "overall",
+          subject_frontend: "overall",
         }
       );
       setName(userData.data.name);
