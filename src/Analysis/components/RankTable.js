@@ -8,7 +8,7 @@ const RankTable = () => {
         (async () => {
           const result = await axios("https://api.tvmaze.com/search/shows?q=snow");
           setData(result.data);
-          console.log(result.data);
+          // console.log(result.data);
         })();
       }, []);
       
