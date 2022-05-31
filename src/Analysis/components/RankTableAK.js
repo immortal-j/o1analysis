@@ -5,6 +5,7 @@ import DataTable from "react-data-table-component";
 import { createTheme } from "react-data-table-component";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import { FilledInput } from '@mui/material';
 const userData = [];
 
 const columns = [
@@ -59,6 +60,7 @@ const customStyles = {
       // paddingRight: "8px",
     },
   },
+ 
 };
 
 createTheme("dark", {
@@ -69,15 +71,20 @@ createTheme("dark", {
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
-    <TextField
+    <FilledInput 
+     variant="outlined"
       id="search"
       type="text"
       placeholder="Filter By Name"
       aria-label="Search Input"
       value={filterText}
       onChange={onFilter}
+       inputProps={{
+        style: { color:"white",opacity:"0.7", },
+      }}
     />
-    <Button type="button" onClick={onClear}>
+    <Button type="button" onClick={onClear}
+     style={{color:"white",opacity:"0.7"}}>
       X
     </Button>
   </>

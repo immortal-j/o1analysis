@@ -172,7 +172,7 @@ const Overall = () => {
 
   useEffect(() => {
     getAnalysis();
-    getRankTable();
+    getRankTable(0);
   },[]);
 
   const handleGlobalRankList = () =>{
@@ -355,7 +355,7 @@ const Overall = () => {
                       color="secondary"
                       style={{
                         marginTop: "1rem",
-                        // marginLeft: "20rem",
+                        marginLeft: "2rem",
                         background: "#f4f4ff",
                         color: "#6f63e6",
                       }}
@@ -368,7 +368,7 @@ const Overall = () => {
                       color="secondary"
                       style={{
                         marginTop: "1rem",
-                        // marginLeft: "18rem",
+                        marginLeft: "1rem",
                         background: "#f4f4ff",
                         color: "#6f63e6",
                       }}
