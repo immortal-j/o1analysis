@@ -39,8 +39,8 @@ const LeetCode = (props) => {
               label: "Total",
               color: "white",
               formatter: function (w) {
-                return w.globals.seriesTotals.reduce((a, b, c) => {
-                  return a + b + c;
+                return w.globals.seriesTotals.reduce((a, b,c) => {
+                  return a +b+c;
                 }, 0);
               },
             },
