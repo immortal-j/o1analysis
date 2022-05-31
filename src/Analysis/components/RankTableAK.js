@@ -84,16 +84,15 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 );
 
 function getData(props) {
-  // const globalList = demoData.global_list;
   userData.length = 0;
-  for (let i = 0; i < props.ListToShow.length; i++) {
-    const item = props.ListToShow[i];
+  for (const [key, value] of Object.entries(props.ListToShow)) {
     const obj = {
-      name: item.name,
-      total_score: item.total_score,
-      email: item.email,
-      college: item.college,
-    };
+      name: value[0].name,
+      total_score: value[0].total_score,
+      email: value[0].email,
+      college: value[0].college,
+    }
+    console.log(obj);
     userData.push(obj);
   }
 }
@@ -156,6 +155,7 @@ function RankTableAK(props) {
       subHeader
 			subHeaderComponent={subHeaderComponentMemo}
     />
+
   );
 }
 

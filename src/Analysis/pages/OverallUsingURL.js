@@ -109,18 +109,21 @@ const Overall = () => {
     try {
       const obj = {
         email: email,
-        subject: subjectlist[key],
+        // rank_subject: "subjectlist[key]",
+        rank_subject: "overall",
       };
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_user_ranklist`,
         obj
       );
       // console.log("Hello");
-      console.log(userData);
+      console.log(userData.data);
+      console.log(userData.data.college_list[1][0]);
       setCollegeRank(userData.data.college_rank);
       setGlobalRank(userData.data.global_rank);
       setCollegeRankList(userData.data.college_list);
       setGlobalRankList(userData.data.global_list);
+      setListToShow(userData.data.college_list)
       
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
