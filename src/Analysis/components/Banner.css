@@ -5,7 +5,7 @@
 }
 
 .banner-container .banner{
-    background:linear-gradient(-55deg, #ff7675 29%, #d63031 29.1%, #d63031 68%, #ff7675 68.1%);
+    background:linear-gradient(-55deg, #6f63e6 29%,#0f143c  29.1%, #6f63e6 68%, #0f143c 68.1%);
     border-radius: 5px;
     margin:10px;
     display: flex;
@@ -51,12 +51,12 @@
 
 .banner-container .banner .content .btn{
     display: block;
-    height:40px;
-    width:150px;
-    line-height: 40px;
-    background: #fff;
-    color:#d63031;
-    margin:5px auto;
+    height:60px;
+    width:auto;
+    /* line-height: px; */
+    background: #fff ;
+    color:#6f63e6;
+    /* margin:5px auto; */
     text-decoration: none;
 }
 

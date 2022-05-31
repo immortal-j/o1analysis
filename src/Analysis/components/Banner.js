@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from "@mui/material";
+
 import styled from "styled-components";
 import React from "react";
 import './Banner.css'
@@ -51,7 +51,7 @@ const Banner = () => {
           <h3>50% 0ff</h3>
           <p>offer ends after 5 days</p>
           <a href="#" className="btn">
-            veiw offer
+            view offer
           </a>
         </div>
         <div className="women">
@@ -62,6 +62,8 @@ const Banner = () => {
   </div>
   );
 };
+
+
 const LogoBox = styled.div`
   img {
     width: 3rem;
@@ -101,5 +103,6 @@ const C2 = styled.div`
   width: 25rem;
   height: 10rem;
 `;
+
 
 export default Banner;

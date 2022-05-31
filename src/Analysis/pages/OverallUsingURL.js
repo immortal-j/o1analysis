@@ -27,6 +27,7 @@ import Ranklist from "../components/Ranklist"
 import RankListPratik from "../components/RankListPratik";
 import RankTable from "../components/RankTable";
 import RankTableAK from "../components/RankTableAK";
+import Banner from "../components/Banner";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -392,10 +393,12 @@ const Overall = () => {
                         email={email}
                       />
                     </CardContentsMobile>
+                    
                   </Card>
                 </Box>
               </Grid>
             </Grid>
+            <Banner/>
           </Container>
           <Demo />
           <br />

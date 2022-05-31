@@ -81,7 +81,7 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
       value={filterText}
       onChange={onFilter}
        inputProps={{
-        style: { color:"white",opacity:"0.7", },
+        style: { color:"white",opacity:"0.7",fontSize:"0.9rem" },
       }}
     />
     <Button type="button" onClick={onClear}
