@@ -50,8 +50,9 @@ const customStyles = {
   headCells: {
     style: {
       paddingLeft: "12px",
-      backgroundColor: "#040612",
+      // backgroundColor: "#040612",
       // paddingRight: "58px",
+      fontSize:"1.3rem"
     },
   },
   cells: {
@@ -99,7 +100,7 @@ function getData(props) {
       email: value[0].email,
       college: value[0].college,
     }
-    console.log(obj);
+    // console.log(obj);
     userData.push(obj);
   }
 }
@@ -132,7 +133,7 @@ createTheme(
 
 function RankTableAK(props) {
   getData(props);
-  console.log(props);
+  // console.log(props);
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
 	const filteredItems = userData.filter(
@@ -162,7 +163,7 @@ function RankTableAK(props) {
       subHeader
 			subHeaderComponent={subHeaderComponentMemo}
     />
-
+    
   );
 }
 

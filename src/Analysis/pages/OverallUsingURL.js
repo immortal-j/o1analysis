@@ -116,8 +116,7 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_user_ranklist`,
         obj
       );
-      // console.log("Hello");
-      console.log(userData.data);
+      // console.log(userData.data);
       console.log(userData.data.college_list[1][0]);
       setCollegeRank(userData.data.college_rank);
       setGlobalRank(userData.data.global_rank);
@@ -352,6 +351,9 @@ const Overall = () => {
                       backgroundColor: "#10153B",
                     }}
                   >
+                    <div style={{display:"flex", justifyContent:"center"}}>
+
+                  
                     <Button
                       onClick={handleCollegeRankList}
                       variant="contained"
@@ -374,10 +376,12 @@ const Overall = () => {
                         marginLeft: "1rem",
                         background: "#f4f4ff",
                         color: "#6f63e6",
+                  
                       }}
                     >
                       Global Level RankList
                     </Button>
+                    </div>  
                     <CardContentsMobile>
                       <RankTableAK
                         collegeRank={collegeRank}
