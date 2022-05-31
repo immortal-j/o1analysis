@@ -23,9 +23,6 @@ import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
-import Ranklist from "../components/Ranklist"
-import RankListPratik from "../components/RankListPratik";
-import RankTable from "../components/RankTable";
 import RankTableAK from "../components/RankTableAK";
 import Banner from "../components/Banner";
 
@@ -185,6 +182,8 @@ const Overall = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   }
+
+  const [active, SetActive] = useState(false);
 
   return (
     <div>
@@ -356,7 +355,7 @@ const Overall = () => {
 
                   
                     <Button
-                      onClick={handleCollegeRankList}
+                      onClick={handleCollegeRankList }
                       variant="contained"
                       color="secondary"
                       style={{
@@ -369,7 +368,7 @@ const Overall = () => {
                       College Level RankList
                     </Button>
                     <Button
-                      onClick={handleGlobalRankList}
+                      onClick={()=>{handleGlobalRankList() ; SetActive(true)}}
                       variant="contained"
                       color="secondary"
                       style={{
@@ -379,6 +378,7 @@ const Overall = () => {
                         color: "#6f63e6",
                   
                       }}
+                      className={active === true ? "active-btn" : ""}
                     >
                       Global Level RankList
                     </Button>
