@@ -26,6 +26,7 @@ import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useCookies } from 'react-cookie';
+import Banner from "../components/Banner";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -394,6 +395,7 @@ const Overall2 = () => {
               </Grid>
             </Grid>
             <Demo />
+            <Banner/>
           </Container>
         </div>
       )}
