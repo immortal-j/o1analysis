@@ -26,6 +26,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Ranklist from "../components/Ranklist"
 import RankListPratik from "../components/RankListPratik";
 import RankTable from "../components/RankTable";
+import RankTableAK from "../components/RankTableAK";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -55,9 +56,12 @@ const Overall = () => {
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
   const [subName, setSubName] = useState("");
-
+  const [collegeRank, setCollegeRank] = useState(0);
+  const [globalRank, setGlobalRank] = useState(0);
+  const [collegeRankList, setCollegeRankList] = useState([]);
+  const [globalRankList, setGlobalRankList] = useState([]);
+  const [listToShow, setListToShow] = useState([]);  
   const currentURL = window.location.href
-
   const publicURL=`${currentURL}`
 
   const getAnalysis = async () => {
@@ -90,23 +94,41 @@ const Overall = () => {
     }
   };
 
-  // const getRankTable = async () => {
-  //   try {
-  //     setVisibility(false);
-  //     const obj = {
-  //       email: email,
-  //     };
-  //     const userData = await axios.post(
-  //       `https://o1apti.herokuapp.com/get_user_ranklist`,
-  //       obj
-  //     );
-  //     console.log("Hello");
-  //     console.log(userData);
-  //   } catch (error) {
-  //     toast.warn("Something went wrong. Please check your email");
-  //     console.log(error);
-  //   }
-  // };
+  const getRankTable = async (key) => {
+    const subjectlist = [
+      "overall",
+      "dsa",
+      "cn",
+      "dbms",
+      "os",
+      "oops",
+      "logical",
+      "verbal",
+      "quantitative",
+    ];
+    try {
+      const obj = {
+        email: email,
+        subject: subjectlist[key],
+      };
+      const userData = await axios.post(
+        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        obj
+      );
+      // console.log("Hello");
+      console.log(userData);
+      setCollegeRank(userData.data.college_rank);
+      setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.college_list);
+      setGlobalRankList(userData.data.global_list);
+      
+      // console.log({globalRank,collegeRankList,globalRankList});
+    } catch (error) {
+      toast.warn("Something went wrong. Please check your email");
+      console.log(error);
+    }
+    // console.log(collegeRank);
+  };
 
 
   const fetchSubject = async (key) => {
@@ -131,6 +153,7 @@ const Overall = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
+    getRankTable(key);
     setSubName(subject.data.subject);
 
     setLeetCodeLabel(subject.data.leetcode.labels);
@@ -149,23 +172,31 @@ const Overall = () => {
 
   useEffect(() => {
     getAnalysis();
-    // getRankTable();
-  }, [1]);
+    getRankTable();
+  },[]);
+
+  const handleGlobalRankList = () =>{
+    setListToShow(globalRankList);
+  }
+
+  const handleCollegeRankList = () => {
+    setListToShow(collegeRankList);
+  }
 
   return (
     <div>
-       <ToastContainer
-            position="bottom-right"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            theme="colored"
-            pauseOnHover
-          />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+        pauseOnHover
+      />
       {!visibility && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -177,8 +208,8 @@ const Overall = () => {
 
       {visibility && (
         <div>
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
-         
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject}  />
+
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -203,24 +234,38 @@ const Overall = () => {
                     <p>Nice to meet you !</p>
                     <Typography variant="body2"> {publicURL}</Typography>
                     <CopyToClipboard text={publicURL}>
-                    <Button variant='contained'onClick={()=>{
-                        toast.info("Copy to Clipboard", {
-                          position: "bottom-right",
-                          autoClose: 1500,
-                          closeOnClick: true,
-                          draggable: true,
-                          theme:'dark',
-                          progress: undefined})
-                      }} color="secondary"style={{marginTop:"1rem",background: "#f4f4ff",
-    color: "#6f63e6"}} >Public Profile URL</Button>
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          toast.info("Copy to Clipboard", {
+                            position: "bottom-right",
+                            autoClose: 1500,
+                            closeOnClick: true,
+                            draggable: true,
+                            theme: "dark",
+                            progress: undefined,
+                          });
+                        }}
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                      >
+                        Public Profile URL
+                      </Button>
                     </CopyToClipboard>
+                    <br></br>
+                    <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography>
                   </CardContents>
                 </Card>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
-                  className="overall-analysis"
+                    className="overall-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -239,7 +284,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
-                  className="levelwise-analysis"
+                    className="levelwise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -259,7 +304,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
-                  className="correct-analysis"
+                    className="correct-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -278,7 +323,7 @@ const Overall = () => {
               <Grid item xs={12} sm={6}>
                 <Box>
                   <Card
-                  className="subjectWise-analysis"
+                    className="subjectWise-analysis"
                     sx={{
                       boxShadow: 2,
                       minWidth: 275,
@@ -292,13 +337,62 @@ const Overall = () => {
                       />
                     </CardContentsMobile>
                   </Card>
-                </Box>    
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={8}>
+                <Box>
+                  <Card
+                    className="rankTable"
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
+                    }}
+                  >
+                    <Button
+                      onClick={handleCollegeRankList}
+                      variant="contained"
+                      color="secondary"
+                      style={{
+                        marginTop: "1rem",
+                        // marginLeft: "20rem",
+                        background: "#f4f4ff",
+                        color: "#6f63e6",
+                      }}
+                    >
+                      College Level RankList
+                    </Button>
+                    <Button
+                      onClick={handleGlobalRankList}
+                      variant="contained"
+                      color="secondary"
+                      style={{
+                        marginTop: "1rem",
+                        // marginLeft: "18rem",
+                        background: "#f4f4ff",
+                        color: "#6f63e6",
+                      }}
+                    >
+                      Global Level RankList
+                    </Button>
+                    <CardContentsMobile>
+                      <RankTableAK
+                        collegeRank={collegeRank}
+                        globalRank={globalRank}
+                        ListToShow = {listToShow}
+                        collegeRankList={collegeRankList}
+                        globalRankList={globalRankList}
+                        email={email}
+                      />
+                    </CardContentsMobile>
+                  </Card>
+                </Box>
               </Grid>
             </Grid>
           </Container>
-          <Demo/>
-          {/* <RankListPratik/> */}
-          {/* <RankTable/> */}
+          <Demo />
+          <br />
+          <br />
         </div>
       )}
     </div>

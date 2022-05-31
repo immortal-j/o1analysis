@@ -192,7 +192,6 @@ const Overall2 = () => {
     handleLoginWithCookie(par);
   }
   useEffect(() => {
-    
     if( "o1user" in cookies){
         handlecookie(cookies.o1user);
     }
