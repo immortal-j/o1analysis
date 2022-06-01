@@ -109,8 +109,8 @@ const Overall = () => {
     try {
       const obj = {
         email: email,
-        // rank_subject: "subjectlist[key]",
         rank_subject: subjectlist[key],
+        // rank_subject: "overall",
       };
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_user_ranklist`,
