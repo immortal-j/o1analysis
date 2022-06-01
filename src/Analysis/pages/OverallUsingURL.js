@@ -23,10 +23,8 @@ import { useParams } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
-import Ranklist from "../components/Ranklist"
-import RankListPratik from "../components/RankListPratik";
-import RankTable from "../components/RankTable";
 import RankTableAK from "../components/RankTableAK";
+import Banner from "../components/Banner";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -116,9 +114,8 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_user_ranklist`,
         obj
       );
-      // console.log("Hello");
-      console.log(userData);
-      // console.log(userData.data.college_list);
+      // console.log(userData.data);
+      console.log(userData.data.college_list[1][0]);
       setCollegeRank(userData.data.college_rank);
       setGlobalRank(userData.data.global_rank);
       setCollegeRankList(userData.data.college_list);
@@ -175,7 +172,7 @@ const Overall = () => {
 
   useEffect(() => {
     getAnalysis();
-    getRankTable();
+    getRankTable(0);
   },[]);
 
   const handleGlobalRankList = () =>{
@@ -185,6 +182,8 @@ const Overall = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   }
+
+  const [active, SetActive] = useState(false);
 
   return (
     <div>
@@ -352,13 +351,16 @@ const Overall = () => {
                       backgroundColor: "#10153B",
                     }}
                   >
+                    <div style={{display:"flex", justifyContent:"center"}}>
+
+                  
                     <Button
-                      onClick={handleCollegeRankList}
+                      onClick={handleCollegeRankList }
                       variant="contained"
                       color="secondary"
                       style={{
                         marginTop: "1rem",
-                        // marginLeft: "20rem",
+                        marginLeft: "2rem",
                         background: "#f4f4ff",
                         color: "#6f63e6",
                       }}
@@ -366,18 +368,21 @@ const Overall = () => {
                       College Level RankList
                     </Button>
                     <Button
-                      onClick={handleGlobalRankList}
+                      onClick={()=>{handleGlobalRankList() ; SetActive(true)}}
                       variant="contained"
                       color="secondary"
                       style={{
                         marginTop: "1rem",
-                        // marginLeft: "18rem",
+                        marginLeft: "1rem",
                         background: "#f4f4ff",
                         color: "#6f63e6",
+                  
                       }}
+                      className={active === true ? "active-btn" : ""}
                     >
                       Global Level RankList
                     </Button>
+                    </div>  
                     <CardContentsMobile>
                       <RankTableAK
                         collegeRank={collegeRank}
@@ -388,10 +393,12 @@ const Overall = () => {
                         email={email}
                       />
                     </CardContentsMobile>
+                    
                   </Card>
                 </Box>
               </Grid>
             </Grid>
+            <Banner/>
           </Container>
           <Demo />
           <br />

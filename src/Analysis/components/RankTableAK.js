@@ -1,10 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import styled from "styled-components";
 import DataTable from "react-data-table-component";
 import { createTheme } from "react-data-table-component";
-import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import { FilledInput } from '@mui/material';
 const userData = [];
 
 const columns = [
@@ -49,8 +47,9 @@ const customStyles = {
   headCells: {
     style: {
       paddingLeft: "12px",
-      backgroundColor: "#040612",
+      // backgroundColor: "#040612",
       // paddingRight: "58px",
+      fontSize:"1.3rem"
     },
   },
   cells: {
@@ -59,6 +58,7 @@ const customStyles = {
       // paddingRight: "8px",
     },
   },
+ 
 };
 
 createTheme("dark", {
@@ -69,15 +69,20 @@ createTheme("dark", {
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
-    <TextField
+    <FilledInput 
+     variant="outlined"
       id="search"
       type="text"
       placeholder="Filter By Name"
       aria-label="Search Input"
       value={filterText}
       onChange={onFilter}
+       inputProps={{
+        style: { color:"white",opacity:"0.7",fontSize:"0.9rem" },
+      }}
     />
-    <Button type="button" onClick={onClear}>
+    <Button type="button" onClick={onClear}
+     style={{color:"white",opacity:"0.7"}}>
       X
     </Button>
   </>
@@ -92,7 +97,7 @@ function getData(props) {
       email: value.email,
       college: value.college,
     }
-    console.log(obj);
+    // console.log(obj);
     userData.push(obj);
   }
 }
@@ -125,7 +130,7 @@ createTheme(
 
 function RankTableAK(props) {
   getData(props);
-  console.log(props);
+  // console.log(props);
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
 	const filteredItems = userData.filter(
@@ -155,7 +160,7 @@ function RankTableAK(props) {
       subHeader
 			subHeaderComponent={subHeaderComponentMemo}
     />
-
+    
   );
 }
 
