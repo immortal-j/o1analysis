@@ -87,10 +87,10 @@ function getData(props) {
   userData.length = 0;
   for (const [key, value] of Object.entries(props.ListToShow)) {
     const obj = {
-      name: value[0].name,
-      total_score: value[0].total_score,
-      email: value[0].email,
-      college: value[0].college,
+      name: value.name,
+      total_score: value.score,
+      email: value.email,
+      college: value.college,
     }
     console.log(obj);
     userData.push(obj);
