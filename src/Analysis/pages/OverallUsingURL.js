@@ -40,7 +40,6 @@ const CardContentsMobile = styled(CardContent)({
   padding: "2rem",
 });
 
-
 const Overall = () => {
   const { email } = useParams();
   const [visibility, setVisibility] = useState(false);
@@ -58,9 +57,9 @@ const Overall = () => {
   const [globalRank, setGlobalRank] = useState(0);
   const [collegeRankList, setCollegeRankList] = useState([]);
   const [globalRankList, setGlobalRankList] = useState([]);
-  const [listToShow, setListToShow] = useState([]);  
-  const currentURL = window.location.href
-  const publicURL=`${currentURL}`
+  const [listToShow, setListToShow] = useState([]);
+  const currentURL = window.location.href;
+  const publicURL = `${currentURL}`;
 
   const getAnalysis = async () => {
     try {
@@ -114,14 +113,14 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_user_ranklist`,
         obj
       );
-      // console.log(userData.data);
+      console.log(userData);
       console.log(userData.data.college_list[1][0]);
       setCollegeRank(userData.data.college_rank);
       setGlobalRank(userData.data.global_rank);
       setCollegeRankList(userData.data.college_list);
       setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.college_list)
-      
+      setListToShow(userData.data.college_list);
+
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
       toast.warn("Something went wrong. Please check your email");
@@ -129,7 +128,6 @@ const Overall = () => {
     }
     // console.log(collegeRank);
   };
-
 
   const fetchSubject = async (key) => {
     const subjectlist = [
@@ -173,15 +171,15 @@ const Overall = () => {
   useEffect(() => {
     getAnalysis();
     getRankTable(0);
-  },[]);
+  }, []);
 
-  const handleGlobalRankList = () =>{
+  const handleGlobalRankList = () => {
     setListToShow(globalRankList);
-  }
+  };
 
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
-  }
+  };
 
   const [active, SetActive] = useState(false);
 
@@ -210,7 +208,7 @@ const Overall = () => {
 
       {visibility && (
         <div>
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject}  />
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
 
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
@@ -341,7 +339,7 @@ const Overall = () => {
                   </Card>
                 </Box>
               </Grid>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12}>
                 <Box>
                   <Card
                     className="rankTable"
@@ -351,54 +349,54 @@ const Overall = () => {
                       backgroundColor: "#10153B",
                     }}
                   >
-                    <div style={{display:"flex", justifyContent:"center"}}>
-
-                  
-                    <Button
-                      onClick={handleCollegeRankList }
-                      variant="contained"
-                      color="secondary"
-                      style={{
-                        marginTop: "1rem",
-                        marginLeft: "2rem",
-                        background: "#f4f4ff",
-                        color: "#6f63e6",
-                      }}
-                    >
-                      College Level RankList
-                    </Button>
-                    <Button
-                      onClick={()=>{handleGlobalRankList() ; SetActive(true)}}
-                      variant="contained"
-                      color="secondary"
-                      style={{
-                        marginTop: "1rem",
-                        marginLeft: "1rem",
-                        background: "#f4f4ff",
-                        color: "#6f63e6",
-                  
-                      }}
-                      className={active === true ? "active-btn" : ""}
-                    >
-                      Global Level RankList
-                    </Button>
-                    </div>  
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        onClick={handleCollegeRankList}
+                        variant="contained"
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          marginLeft: "2rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                      >
+                        College Level RankList
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          handleGlobalRankList();
+                          SetActive(true);
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          marginLeft: "1rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                        className={active === true ? "active-btn" : ""}
+                      >
+                        Global Level RankList
+                      </Button>
+                    </div>
                     <CardContentsMobile>
                       <RankTableAK
                         collegeRank={collegeRank}
                         globalRank={globalRank}
-                        ListToShow = {listToShow}
+                        ListToShow={listToShow}
                         collegeRankList={collegeRankList}
                         globalRankList={globalRankList}
                         email={email}
                       />
                     </CardContentsMobile>
-                    
                   </Card>
                 </Box>
               </Grid>
             </Grid>
-            <Banner/>
+            <br/>
+            <Banner />
           </Container>
           <Demo />
           <br />

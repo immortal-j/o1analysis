@@ -27,7 +27,7 @@ import Demo from "./demo";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { useCookies } from 'react-cookie';
 import Banner from "../components/Banner";
-
+import RankTableAK from "../components/RankTableAK";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -71,8 +71,14 @@ const Overall2 = () => {
   const [name, setName] = useState("");
   const [subName, setSubName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [collegeRank, setCollegeRank] = useState(0);
+  const [globalRank, setGlobalRank] = useState(0);
+  const [collegeRankList, setCollegeRankList] = useState([]);
+  const [globalRankList, setGlobalRankList] = useState([]);
+  const [listToShow, setListToShow] = useState([]);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
+  const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(['abcd']);
   const obj = {
     email: email,
@@ -81,6 +87,87 @@ const Overall2 = () => {
   const currentURL = window.location.href
 
   const publicURL=`${currentURL}/${email}`
+
+
+
+  const getRankTable = async (key) => {
+    const subjectlist = [
+      "overall",
+      "dsa",
+      "cn",
+      "dbms",
+      "os",
+      "oops",
+      "logical",
+      "verbal",
+      "quantitative",
+    ];
+    try {
+      const obj = {
+        email: email,
+        rank_subject: subjectlist[key],
+        // rank_subject: "overall",
+      };
+      // console.log(obj);
+      const userData = await axios.post(
+        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        obj
+      );
+      // console.log(userData.data);
+      // console.log(userData.data.college_list[1][0]);
+      setCollegeRank(userData.data.college_rank);
+      setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.college_list);
+      setGlobalRankList(userData.data.global_list);
+      setListToShow(userData.data.college_list);
+
+      // console.log({globalRank,collegeRankList,globalRankList});
+    } catch (error) {
+      toast.warn("Something went wrong. Please check your email");
+      console.log(error);
+    }
+    // console.log(collegeRank);
+  };
+
+    const getRankTableWithCookie = async (key,par) => {
+      const subjectlist = [
+        "overall",
+        "dsa",
+        "cn",
+        "dbms",
+        "os",
+        "oops",
+        "logical",
+        "verbal",
+        "quantitative",
+      ];
+      try {
+        const obj = {
+          email: par,
+          rank_subject: subjectlist[key],
+          // rank_subject: "overall",
+        };
+        console.log(obj);
+        const userData = await axios.post(
+          `https://o1apti.herokuapp.com/get_user_ranklist`,
+          obj
+        );
+        // console.log(userData.data);
+        console.log(userData.data.college_list[1][0]);
+        setCollegeRank(userData.data.college_rank);
+        setGlobalRank(userData.data.global_rank);
+        setCollegeRankList(userData.data.college_list);
+        setGlobalRankList(userData.data.global_list);
+        setListToShow(userData.data.college_list);
+
+        // console.log({globalRank,collegeRankList,globalRankList});
+      } catch (error) {
+        toast.warn("Something went wrong. Please check your email");
+        console.log(error);
+      }
+      // console.log(collegeRank);
+    };
+
 
   const fetchSubject = async (key) => {
     setLoading(true);
@@ -95,7 +182,7 @@ const Overall2 = () => {
       "verbal",
       "quantitative",
     ];
-
+    getRankTable(key);
     const obj = {
       email: email,
       subject_frontend: subjectlist[key],
@@ -125,6 +212,7 @@ const Overall2 = () => {
     e.preventDefault();
     setCookie("o1user",email,{maxAge:1800});
     setLoading(true);
+    
     try {
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
@@ -145,7 +233,7 @@ const Overall2 = () => {
       setStackBarSeries(userData.data.stackgraph.series);
       setToggle(!toggle);
       toast.info("Check your result here");
-
+      getRankTable(0);
       setLoading(false);
       handleClose();
     } catch (e) {
@@ -180,7 +268,7 @@ const Overall2 = () => {
       setStackBarSeries(userData.data.stackgraph.series);
       setToggle(!toggle);
       toast.info("Check your result here");
-
+      getRankTableWithCookie(0,par);
       setLoading(false);
       handleClose();
     } catch (e) {
@@ -188,6 +276,7 @@ const Overall2 = () => {
       setLoading(false);
       console.log(e);
     }
+
   };
   const handlecookie =(par)=>{
     handleLoginWithCookie(par);
@@ -196,7 +285,15 @@ const Overall2 = () => {
     if( "o1user" in cookies){
         handlecookie(cookies.o1user);
     }
-  }, [1]);
+  }, [0]);
+
+  const handleGlobalRankList = () => {
+    setListToShow(globalRankList);
+  };
+
+  const handleCollegeRankList = () => {
+    setListToShow(collegeRankList);
+  };
 
   return (
     <div>
@@ -302,16 +399,27 @@ const Overall2 = () => {
                     <p>Nice to meet you !</p>
                     <Typography variant="body2"> {publicURL}</Typography>
                     <CopyToClipboard text={publicURL}>
-                      <Button variant='contained'onClick={()=>{
-                        toast.info("Copy to Clipboard", {
-                          position: "bottom-right",
-                          autoClose: 1500,
-                          closeOnClick: true,
-                          draggable: true,
-                          theme:'dark',
-                          progress: undefined})
-                      }} color="secondary"style={{marginTop:"1rem",background: "#f4f4ff",
-    color: "#6f63e6"}} >Public Profile URL</Button>
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          toast.info("Copy to Clipboard", {
+                            position: "bottom-right",
+                            autoClose: 1500,
+                            closeOnClick: true,
+                            draggable: true,
+                            theme: "dark",
+                            progress: undefined,
+                          });
+                        }}
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                      >
+                        Public Profile URL
+                      </Button>
                     </CopyToClipboard>
                   </CardContents>
                 </Card>
@@ -393,9 +501,65 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
+              <Grid item xs={12}>
+                <Box>
+                  <Card
+                    className="rankTable"
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#10153B",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        onClick={handleCollegeRankList}
+                        variant="contained"
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          marginLeft: "2rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                      >
+                        College Level RankList
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          handleGlobalRankList();
+                          SetActive(true);
+                        }}
+                        variant="contained"
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          marginLeft: "1rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                        className={active === true ? "active-btn" : ""}
+                      >
+                        Global Level RankList
+                      </Button>
+                    </div>
+                    <CardContentsMobile>
+                      <RankTableAK
+                        collegeRank={collegeRank}
+                        globalRank={globalRank}
+                        ListToShow={listToShow}
+                        collegeRankList={collegeRankList}
+                        globalRankList={globalRankList}
+                        email={email}
+                      />
+                    </CardContentsMobile>
+                  </Card>
+                </Box>
+              </Grid>
             </Grid>
+
             <Demo />
-            <Banner/>
+            <Banner />
           </Container>
         </div>
       )}

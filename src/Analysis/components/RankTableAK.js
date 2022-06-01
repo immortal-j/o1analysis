@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { createTheme } from "react-data-table-component";
 import { Button } from "@mui/material";
 import { FilledInput } from '@mui/material';
 const userData = [];
 
-const columns = [
+var columns = [
+  {
+    name: "Rank",
+    selector: (row) => row.rank,
+    sortable: true,
+  },
   {
     name: "Name",
     selector: (row) => row.name,
@@ -28,12 +33,28 @@ const columns = [
   },
 ];
 
-
+// const conditionalRowStyles = [
+//   {
+//     when: (row) => row.email === email,
+//     style: {
+//       backgroundColor: "green",
+//       color: "white",
+//       "&:hover": {
+//         cursor: "pointer",
+//       },
+//     },
+//   },
+//   // You can also pass a callback to style for additional customization
+//   // {
+//   //   when: (row) => row.calories < 400,
+//   //   style: (row) => ({ backgroundColor: row.isSpecial ? "pink" : "inerit" }),
+//   // },
+// ];
 
 const customStyles = {
   table: {
     style: {
-      maxWidth: "1050px",
+      // maxWidth: "1550px",
       // marginLeft: "135px",
       marginBottom: "20px",
     },
@@ -90,13 +111,16 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 
 function getData(props) {
   userData.length = 0;
+  var idx = 1;
   for (const [key, value] of Object.entries(props.ListToShow)) {
     const obj = {
+      rank: idx,
       name: value.name,
       total_score: value.score,
       email: value.email,
       college: value.college,
     }
+    idx++;
     // console.log(obj);
     userData.push(obj);
   }
@@ -107,7 +131,7 @@ createTheme(
   {
     text: {
       primary: "#ffffff",
-      secondary: "#2aa198",
+      secondary: "#white",
     },
     background: {
       default: "#243A73",
@@ -130,7 +154,6 @@ createTheme(
 
 function RankTableAK(props) {
   getData(props);
-  // console.log(props);
   const [filterText, setFilterText] = React.useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
 	const filteredItems = userData.filter(
