@@ -15,7 +15,7 @@ const Banner = ({name}) => {
       <div className="banner">
         <div className="content">
           <Typography variant="h3">Data Structure Course</Typography>
-          <Typography variant="body2">Hey {name}, Based on your performance. Your weak topic is Dynamic Programming. You can level up the understand by enrolling in our courses.</Typography>
+          <Typography variant="body2">Hey {name}, Based on your performance. Your weak topic is Dynamic Programming. You can level up the skill by enrolling in our courses.</Typography>
           {/* <Button  variant="contained" style={{background: "white",
     color: "#002299"}}>
             Enroll Here
