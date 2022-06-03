@@ -43,7 +43,7 @@
 }
 
 .banner-container .banner .content h3{
-    color:#c3c8ff ;
+    color:#fff ;
     font-size: 2.6rem;
     font-family: monospace;
 }
@@ -54,10 +54,11 @@
 
 .banner-container .banner .content p{
     color:#eee;
+    max-width: 45rem;
     font-size: 1rem;
     text-align: justify;
     font-family: 'Poppins';
-    color: #c5ceffcc;
+    color: #fff;
     line-height: 1.4rem;
     padding:10px 0;
 }

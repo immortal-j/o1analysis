@@ -134,6 +134,7 @@ createTheme(
       secondary: "#white",
     },
     background: {
+      // default: "#2C2C43",
       default: "#243A73",
     },
     context: {
