@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 
-const CourseCard = () => {
+const CourseCard = ({courseName}) => {
   return (
     <Wrapper style={{ boxShadow: "rgb(0 0 0 / 85%) 0px 4px 16px" }}>
       <Card>
@@ -14,10 +14,10 @@ const CourseCard = () => {
         </div>
         <CardInfo>
           <Typography variant="h6" color="white" fontSize={16}>
-            Complete Interview Preparation - Self Paced
+            {courseName}
           </Typography>
-          <div>
-            <div style={{marginTop:'1rem'}}>
+          <div style={{display:'flex', alignItems:'flex-end'}}>
+            <div style={{marginTop:'1rem',flex:"1"}}>
               <Typography
                 variant="h6"
                 style={{ textDecoration: "line-through", color: "#ADADAD",fontSize:"1rem" }}
@@ -28,7 +28,7 @@ const CourseCard = () => {
                 ₹ 3000
               </Typography>
             </div>
-            <div>
+            <div >
               <Button
                 variant="contained"
                 style={{ textTransform: "none", backgroundColor: "#0259eb" }}

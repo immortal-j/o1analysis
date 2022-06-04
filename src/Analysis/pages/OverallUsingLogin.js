@@ -24,8 +24,8 @@ import StackbarGraph from "../components/Stackbargraph";
 import axios from "axios";
 import PieChart from "../components/PieChart";
 import Demo from "./demo";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-import { useCookies } from 'react-cookie';
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
 import RankTableAK from "../components/RankTableAK";
 const CardContents = styled(CardContent)({
@@ -76,19 +76,18 @@ const Overall2 = () => {
   const [collegeRankList, setCollegeRankList] = useState([]);
   const [globalRankList, setGlobalRankList] = useState([]);
   const [listToShow, setListToShow] = useState([]);
+  const [weak, setWeak] = useState({});
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("");
   const [active, SetActive] = useState(false);
-  const [cookies, setCookie] = useCookies(['abcd']);
+  const [cookies, setCookie] = useCookies(["abcd"]);
   const obj = {
     email: email,
     subject_frontend: "overall",
   };
-  const currentURL = window.location.href
+  const currentURL = window.location.href;
 
-  const publicURL=`${currentURL}/${email}`
-
-
+  const publicURL = `${currentURL}/${email}`;
 
   const getRankTable = async (key) => {
     const subjectlist = [
@@ -129,45 +128,42 @@ const Overall2 = () => {
     // console.log(collegeRank);
   };
 
-    const getRankTableWithCookie = async (key,par) => {
-      const subjectlist = [
-        "overall",
-        "dsa",
-        "cn",
-        "dbms",
-        "os",
-        "oops",
-        "logical",
-        "verbal",
-        "quantitative",
-      ];
-      try {
-        const obj = {
-          email: par,
-          rank_subject: subjectlist[key],
-          // rank_subject: "overall",
-        };
-        console.log(obj);
-        const userData = await axios.post(
-          `https://o1apti.herokuapp.com/get_user_ranklist`,
-          obj
-        );
-        // console.log(userData.data);
-        console.log(userData.data.college_list[1][0]);
-        setCollegeRank(userData.data.college_rank);
-        setGlobalRank(userData.data.global_rank);
-        setCollegeRankList(userData.data.college_list);
-        setGlobalRankList(userData.data.global_list);
-        setListToShow(userData.data.college_list);
+  const getRankTableWithCookie = async (key, par) => {
+    const subjectlist = [
+      "overall",
+      "dsa",
+      "cn",
+      "dbms",
+      "os",
+      "oops",
+      "logical",
+      "verbal",
+      "quantitative",
+    ];
+    try {
+      const obj = {
+        email: par,
+        rank_subject: subjectlist[key],
+        // rank_subject: "overall",
+      };
+      const userData = await axios.post(
+        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        obj
+      );
+      // console.log(userData.data);
+      setCollegeRank(userData.data.college_rank);
+      setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.college_list);
+      setGlobalRankList(userData.data.global_list);
+      setListToShow(userData.data.college_list);
 
-        // console.log({globalRank,collegeRankList,globalRankList});
-      } catch (error) {
-        toast.warn("Something went wrong. Please check your email");
-        console.log(error);
-      }
-      // console.log(collegeRank);
-    };
-
+      // console.log({globalRank,collegeRankList,globalRankList});
+    } catch (error) {
+      toast.warn("Something went wrong. Please check your email");
+      console.log(error);
+    }
+    // console.log(collegeRank);
+  };
 
   const fetchSubject = async (key) => {
     setLoading(true);
@@ -193,9 +189,10 @@ const Overall2 = () => {
       obj
     );
     const weaktopics = await axios.post(
-      `https://o1apti.herokuapp.com/weak_topic`,
-      obj
+      `https://o1apti.herokuapp.com/courses_promotion`,
+      { email }
     );
+    setWeak(weaktopics.data);
     console.log(weaktopics);
     console.log(subject);
     setSubName(subject.data.subject);
@@ -215,14 +212,19 @@ const Overall2 = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setCookie("o1user",email,{maxAge:1800});
+    setCookie("o1user", email, { maxAge: 1800 });
     setLoading(true);
-    
+
     try {
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/courses_promotion`,
+        { email }
+      );
+      setWeak(weaktopics.data);
       setSubName(userData.data.subject);
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -258,6 +260,11 @@ const Overall2 = () => {
           subject_frontend: "overall",
         }
       );
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/courses_promotion`,
+        { email }
+      );
+      setWeak(weaktopics.data);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -272,7 +279,7 @@ const Overall2 = () => {
       setStackBarSeries(userData.data.stackgraph.series);
       setToggle(!toggle);
       toast.info("Check your result here");
-      getRankTableWithCookie(0,par);
+      getRankTableWithCookie(0, par);
       setLoading(false);
       handleClose();
     } catch (e) {
@@ -280,14 +287,13 @@ const Overall2 = () => {
       setLoading(false);
       console.log(e);
     }
-
   };
-  const handlecookie =(par)=>{
+  const handlecookie = (par) => {
     handleLoginWithCookie(par);
-  }
+  };
   useEffect(() => {
-    if( "o1user" in cookies){
-        handlecookie(cookies.o1user);
+    if ("o1user" in cookies) {
+      handlecookie(cookies.o1user);
     }
   }, [0]);
 
@@ -563,7 +569,7 @@ const Overall2 = () => {
             </Grid>
 
             <Demo />
-            <Banner name={name}/>
+            <Banner weak={weak} name={name} />
           </Container>
         </div>
       )}
