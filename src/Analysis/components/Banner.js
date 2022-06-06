@@ -11,7 +11,7 @@ const Banner = ({ name, weak }) => {
   const apti = weak.apti;
   const core = weak.core;
   const sde_bootcamp = weak.sde_bootcamp;
-  console.log(apti);
+  // console.log(apti);
   return (
     <div>
       <div className="banner-container">

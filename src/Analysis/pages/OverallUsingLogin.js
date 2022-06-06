@@ -220,12 +220,7 @@ const Overall2 = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/courses_promotion`,
-        { email }
-      );
-      setWeak(weaktopics.data);
-      setSubName(userData.data.subject);
+      fetchWeakTopics(email);
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
@@ -260,11 +255,7 @@ const Overall2 = () => {
           subject_frontend: "overall",
         }
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/courses_promotion`,
-        { email }
-      );
-      setWeak(weaktopics.data);
+      fetchWeakTopics(par);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -288,6 +279,16 @@ const Overall2 = () => {
       console.log(e);
     }
   };
+  const fetchWeakTopics=async(par)=>{
+    console.log(par);
+    const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/courses_promotion`,
+        {email:par} 
+      );
+     
+      setWeak(weaktopics.data);
+      
+  }
   const handlecookie = (par) => {
     handleLoginWithCookie(par);
   };
