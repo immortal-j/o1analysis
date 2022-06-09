@@ -4,7 +4,7 @@ import "./Banner.css";
 import women from "../Assets/women.png";
 import logo from "../Assets/Logo/logo2.svg";
 import ds from "../Assets/ds.jpg";
-import { Button, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import CourseCard from "./CourseCard";
 
 const Banner = ({ name, weak }) => {
@@ -13,19 +13,36 @@ const Banner = ({ name, weak }) => {
   const sde_bootcamp = weak.sde_bootcamp;
   // console.log(apti);
   return (
-    <div>
-      <div className="banner-container">
-        <div className="banner">
+    <div className="banner-container">
+      <div className="banner">
+        <Container maxWidth="lg">
           <div className="content">
-            <Typography variant="h3"></Typography>
-            <Typography variant="body2">
-              Hey {name}, Based on your performance. Your weak topic is{" "}
-              {(core && <span style={{fontSize:'inherit', fontWeight:'600'}}>{core[0]}</span>) ||
-                (apti && <span style={{fontSize:'inherit', fontWeight:'600'}}>{core[0]}</span>) ||
-                (sde_bootcamp && (
-                  <span style={{fontSize:'inherit', fontWeight:'600'}}>{core[0]}</span>
-                ))}
-              . You can level up the skill by enrolling in our following courses.
+            <Typography variant="h3" style={{ fontFamily: "Poppins",marginTop:'1rem' }}>
+              Featured Courses
+            </Typography>
+            <Typography
+              variant="body2"
+              style={{ fontWeight: "100", fontSize: "1.1rem" }}
+            >
+              Hey {name}, Based on your performance, Your weak topics is/are{" "}
+              <span
+                style={{
+                  fontSize: "inherit",
+                  fontWeight: "600",
+                  color: "#ffbe37",
+                }}
+              >
+                {weak?.apti?.[0]}
+                {", "} {weak?.core?.[0]}
+                {", "}
+                {weak?.sde_bootcamp?.[0]}
+              </span>
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{ textAlign: "left", color: "#f4f4ff",marginBottom:"1rem" }}
+            >
+              Recommended for {name}
             </Typography>
             {/* <Button  variant="contained" style={{background: "white",
     color: "#002299"}}>
@@ -38,6 +55,7 @@ const Banner = ({ name, weak }) => {
               display: "flex",
               gap: "6rem",
               justifyContent: "space-around",
+              flexWrap: "wrap",
             }}
           >
             {apti && <CourseCard courseName={"Aptitude Series - Self Pace"} />}
@@ -48,7 +66,7 @@ const Banner = ({ name, weak }) => {
               />
             )}
           </div>
-        </div>
+        </Container>
       </div>
     </div>
   );
