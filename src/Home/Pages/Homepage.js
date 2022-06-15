@@ -3,6 +3,7 @@ import Feature from "../components/Features/Feature";
 import Testislider from "../components/Testimonial_slider/TestiSlider";
 import Home from "../components/Home/Home";
 import FooterNew from "../components/Footer/FooterNew";
+import Courses from "../components/Courses";
 
 const Homepage = () => {
   return (
@@ -17,12 +18,12 @@ const Homepage = () => {
           backgroundPosition: "center center",
           scrollBehavior: "smooth",
           userSelect: "none",
-          
         }}
       >
         <Home />
         <Feature />
         <Testislider />
+        <Courses/>
         <FooterNew/>
       </div>
     </>
