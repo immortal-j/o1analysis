@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../Navbar";
 import SocialMedia from "../SocialMedia";
 import Main from "../TextContent/Main";
-import image from "../../images/star.png";
 import bg_final from "../../images/bg_homepage.png";
 const Home = () => {
   return (
@@ -19,7 +18,7 @@ const Home = () => {
       >
         <Navbar />
         <Main />
-       
+        
         {/* Main content contains Start btn, modal, form */}
         <SocialMedia />
       </div>
