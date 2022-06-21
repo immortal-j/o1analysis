@@ -53,6 +53,7 @@ const Overall = () => {
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
   const [subName, setSubName] = useState("");
+  const [weak, setWeak] = useState({});
   const [collegeRank, setCollegeRank] = useState(0);
   const [globalRank, setGlobalRank] = useState(0);
   const [collegeRankList, setCollegeRankList] = useState([]);
@@ -61,6 +62,10 @@ const Overall = () => {
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
+
+  const apti = weak.apti;
+  const core = weak.core;
+  const sde_bootcamp = weak.sde_bootcamp;
   const getAnalysis = async () => {
     try {
       setVisibility(false);
@@ -151,9 +156,14 @@ const Overall = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
+    const weaktopics = await axios.post(
+      `https://o1apti.herokuapp.com/courses_promotion`,
+      { email }
+    );
     getRankTable(key);
     setSubName(subject.data.subject);
-
+    setWeak(weaktopics.data);
+    
     setLeetCodeLabel(subject.data.leetcode.labels);
     setLeetCodeSeries(subject.data.leetcode.series);
     setLineGraphLabel(subject.data.linegraph.labels);
@@ -396,7 +406,7 @@ const Overall = () => {
               </Grid>
             </Grid>
             <br/>
-            <Banner />
+            <Banner  weak={weak} name={name} />
           </Container>
           <Demo />
           <br />

@@ -192,6 +192,7 @@ const Overall2 = () => {
       `https://o1apti.herokuapp.com/courses_promotion`,
       { email }
     );
+    
     setWeak(weaktopics.data);
     console.log(weaktopics);
     console.log(subject);
@@ -432,6 +433,9 @@ const Overall2 = () => {
                         Public Profile URL
                       </Button>
                     </CopyToClipboard>
+                    <br></br>
+                    <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography>
                   </CardContents>
                 </Card>
               </Grid>
