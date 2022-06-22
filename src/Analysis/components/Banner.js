@@ -79,7 +79,7 @@ const Banner = ({ name, weak }) => {
             <img
               src={bannerImg}
               alt=""
-              style={{ width: "100%", margin: "1rem 0" }}
+              style={{ width: "100%", margin: "1rem 0" ,border: "1.1rem #f25c00 solid",borderRadius: "4.3rem"}}
             />
           </div>
         </Container>

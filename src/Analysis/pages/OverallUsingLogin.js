@@ -167,6 +167,9 @@ const Overall2 = () => {
 
   const fetchSubject = async (key) => {
     setLoading(true);
+    try {
+      
+   
     const subjectlist = [
       "overall",
       "dsa",
@@ -209,6 +212,11 @@ const Overall2 = () => {
     setStackBarSeries(subject.data.stackgraph.series);
     setLoading(false);
     toast.info("Check your " + obj.subject_frontend + " analysis here");
+  } catch (error) {
+    setLoading(false);
+    toast.error("Subject data not found");
+      
+  }
   };
 
   const handleLogin = async (e) => {
