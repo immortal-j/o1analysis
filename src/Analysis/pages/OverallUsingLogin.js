@@ -83,7 +83,7 @@ const Overall2 = () => {
   const [cookies, setCookie] = useCookies(["abcd"]);
   const obj = {
     email: email,
-    subject_frontend: "overall",
+    subject: "overall",
   };
   const currentURL = window.location.href;
 
@@ -103,13 +103,13 @@ const Overall2 = () => {
     ];
     try {
       const obj = {
-        email: email,
-        rank_subject: subjectlist[key],
+        // email: email,
+        subject: subjectlist[key],
         // rank_subject: "overall",
       };
       // console.log(obj);
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        `https://o1apti.herokuapp.com/ranklist/subject_ranklist`,
         obj
       );
       // console.log(userData.data);
@@ -142,22 +142,23 @@ const Overall2 = () => {
     ];
     try {
       const obj = {
-        email: par,
-        rank_subject: subjectlist[key],
+        // email: email,
+        subject: subjectlist[key],
         // rank_subject: "overall",
       };
+      
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        `https://o1apti.herokuapp.com/ranklist/subject_ranklist`,
         obj
       );
       // console.log(userData.data);
       setCollegeRank(userData.data.college_rank);
       setGlobalRank(userData.data.global_rank);
       setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.college_list);
+      setGlobalRankList(userData.data.ranklist);
+      setListToShow(userData.data.ranklist);
 
-      // console.log({globalRank,collegeRankList,globalRankList});
+      console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
       toast.warn("Something went wrong. Please check your email");
       console.log(error);
@@ -184,15 +185,16 @@ const Overall2 = () => {
     getRankTable(key);
     const obj = {
       email: email,
-      subject_frontend: subjectlist[key],
+      subject: subjectlist[key],
+      
     };
 
     const subject = await axios.post(
-      `https://o1apti.herokuapp.com/get_test_analysis`,
+      `https://o1apti.herokuapp.com/get_test_analysis/`,
       obj
     );
     const weaktopics = await axios.post(
-      `https://o1apti.herokuapp.com/courses_promotion`,
+      `https://o1apti.herokuapp.com/weak_topic`,
       { email }
     );
     
@@ -226,7 +228,7 @@ const Overall2 = () => {
 
     try {
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis`,
+        `https://o1apti.herokuapp.com/get_test_analysis/`,
         obj
       );
       fetchWeakTopics(email);
@@ -258,10 +260,10 @@ const Overall2 = () => {
     setLoading(true);
     try {
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis`,
+        `https://o1apti.herokuapp.com/get_test_analysis/`,
         {
           email: par,
-          subject_frontend: "overall",
+          subject: "overall",
         }
       );
       fetchWeakTopics(par);
@@ -291,7 +293,7 @@ const Overall2 = () => {
   const fetchWeakTopics=async(par)=>{
     console.log(par);
     const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/courses_promotion`,
+        `https://o1apti.herokuapp.com/weak_topic`,
         {email:par} 
       );
      
@@ -566,7 +568,7 @@ const Overall2 = () => {
                         Global Level RankList
                       </Button>
                     </div>
-                    <CardContentsMobile>
+                    {/* <CardContentsMobile>
                       <RankTableAK
                         collegeRank={collegeRank}
                         globalRank={globalRank}
@@ -575,7 +577,7 @@ const Overall2 = () => {
                         globalRankList={globalRankList}
                         email={email}
                       />
-                    </CardContentsMobile>
+                    </CardContentsMobile> */}
                   </Card>
                 </Box>
               </Grid>

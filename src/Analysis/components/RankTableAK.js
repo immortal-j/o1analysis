@@ -111,6 +111,7 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 
 function getData(props) {
   userData.length = 0;
+  console.log(props);
   var idx = 1;
   for (const [key, value] of Object.entries(props.ListToShow)) {
     const obj = {
