@@ -1,9 +1,8 @@
-import styled from "styled-components";
 import React from "react";
 import "./Banner.css";
 import women from "../Assets/women.png";
+import Man from "../Assets/Man.png";
 import bannerImg from "../Assets/banner.png";
-import ds from "../Assets/ds.jpg";
 import { Button, Container, Typography } from "@mui/material";
 import CourseCard from "./CourseCard";
 
@@ -49,7 +48,7 @@ const Banner = ({ name, weak }) => {
                 textAlign: "left",
                 color: "#f4f4ff",
                 marginBottom: "1rem",
-                textTransform: "capitalize"
+                textTransform: "capitalize",
               }}
             >
               Recommended for {name}
@@ -64,23 +63,52 @@ const Banner = ({ name, weak }) => {
             style={{
               display: "flex",
               gap: "6rem",
-              justifyContent: "space-around",
+              justifyContent: "flex-start",
               flexWrap: "wrap",
             }}
           >
-            {apti && <CourseCard courseName={"Aptitude Series - Self Pace"} />}
+            {/* {apti && <CourseCard courseName={"Aptitude Series - Self Pace"} />}
             {core && <CourseCard courseName={"Core Subjects - Crash Course"} />}
             {sde_bootcamp && (
               <CourseCard
                 courseName={"Complete SDE Bootcamp - Master Course"}
               />
-            )}
+            )} */}
 
             <img
               src={bannerImg}
               alt=""
-              style={{ width: "100%", margin: "1rem 0" ,border: "1.1rem #f25c00 solid",borderRadius: "4.3rem"}}
+              style={{
+                width: "100%",
+                margin: "1rem 0",
+                border: "0.51rem #f25c00 solid",
+                borderRadius: "1.3rem",
+              }}
             />
+            <div style={{ display: "flex", justifyContent:"stretch",alignItems:"stretch" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                  gap: "2rem",
+                  width: "60%",
+                }}
+              >
+                <CourseCard
+                  courseName={"Complete SDE Bootcamp - Master Course"}
+                />
+                <CourseCard courseName={"Aptitude Series - Self Pace"} />
+                <CourseCard courseName={"Core Subjects - Crash Course"} />
+              </div>
+                {/* <div className="modelgirl" style={{width:"40%",}}> */}
+                  <img
+                    src={Man}
+                    alt=""
+                    style={{ width: "49%", height: "72%",objectFit:"contain" ,    transform:" scale(1.3)" }}
+                  />
+                {/* </div> */}
+            </div>
           </div>
         </Container>
       </div>

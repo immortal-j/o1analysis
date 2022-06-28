@@ -213,7 +213,7 @@ const Overall2 = () => {
     setStackBarLabel(subject.data.stackgraph.labels);
     setStackBarSeries(subject.data.stackgraph.series);
     setLoading(false);
-    toast.info("Check your " + obj.subject_frontend + " analysis here");
+    toast.info("Check your " + obj.subject+ " analysis here");
   } catch (error) {
     setLoading(false);
     toast.error("Subject data not found");

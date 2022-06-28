@@ -62,7 +62,6 @@ const Overall = () => {
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
-
   const apti = weak.apti;
   const core = weak.core;
   const sde_bootcamp = weak.sde_bootcamp;
@@ -71,10 +70,10 @@ const Overall = () => {
       setVisibility(false);
       const obj = {
         email: email,
-        subject_frontend: "overall",
+        subject: "overall",
       };
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis`,
+        `https://o1apti.herokuapp.com/get_test_analysis/`,
         obj
       );
       setName(userData.data.name);
@@ -135,47 +134,52 @@ const Overall = () => {
   };
 
   const fetchSubject = async (key) => {
-    const subjectlist = [
-      "overall",
-      "dsa",
-      "cn",
-      "dbms",
-      "os",
-      "oops",
-      "logical",
-      "verbal",
-      "quantitative",
-    ];
+    try {
+      const subjectlist = [
+        "overall",
+        "dsa",
+        "cn",
+        "dbms",
+        "os",
+        "oops",
+        "logical",
+        "verbal",
+        "quantitative",
+      ];
 
-    const obj = {
-      email: email,
-      subject_frontend: subjectlist[key],
-    };
-    setVisibility(false);
-    const subject = await axios.post(
-      `https://o1apti.herokuapp.com/get_test_analysis`,
-      obj
-    );
-    const weaktopics = await axios.post(
-      `https://o1apti.herokuapp.com/courses_promotion`,
-      { email }
-    );
-    getRankTable(key);
-    setSubName(subject.data.subject);
-    setWeak(weaktopics.data);
-    
-    setLeetCodeLabel(subject.data.leetcode.labels);
-    setLeetCodeSeries(subject.data.leetcode.series);
-    setLineGraphLabel(subject.data.linegraph.labels);
-    setLineGraphSeries(subject.data.linegraph.series);
-    setPieChartLabel(subject.data.piechart.labels);
-    setPieChartSeries(subject.data.piechart.series);
-    setPieChartLabel(subject.data.piechart.labels);
-    setPieChartSeries(subject.data.piechart.series);
-    setStackBarLabel(subject.data.stackgraph.labels);
-    setStackBarSeries(subject.data.stackgraph.series);
-    setVisibility(true);
-    toast.info("Check your " + obj.subject_frontend + " analysis here");
+      const obj = {
+        email: email,
+        subject: subjectlist[key],
+      };
+      setVisibility(false);
+      const subject = await axios.post(
+        `https://o1apti.herokuapp.com/get_test_analysis/`,
+        obj
+      );
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/weak_topic`,
+        { email }
+      );
+      getRankTable(key);
+      setSubName(subject.data.subject);
+      setWeak(weaktopics.data);
+      setLeetCodeLabel(subject.data.leetcode.labels);
+      setLeetCodeSeries(subject.data.leetcode.series);
+      setLineGraphLabel(subject.data.linegraph.labels);
+      setLineGraphSeries(subject.data.linegraph.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setStackBarLabel(subject.data.stackgraph.labels);
+      setStackBarSeries(subject.data.stackgraph.series);
+      setVisibility(true);
+      toast.info("Check your " + obj.subject + " analysis here");
+    } catch (error) {
+      setLoading(false);
+      setVisibility(true);
+      toast.error("Subject data not found");
+    }
   };
 
   useEffect(() => {
@@ -405,8 +409,8 @@ const Overall = () => {
                 </Box>
               </Grid>
             </Grid>
-            <br/>
-            <Banner  weak={weak} name={name} />
+            <br />
+            <Banner weak={weak} name={name} />
           </Container>
           <Demo />
           <br />
