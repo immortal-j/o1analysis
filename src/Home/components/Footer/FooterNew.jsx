@@ -23,7 +23,7 @@ const FooterNew = () => {
                         alt="O(1)-logo"
                         className="img-fluid"
                       />
-                     Statistics &#38; Analysis
+                     Know Your Prep
                     </a>
                     <p className="tagline">A product of O1 Coding Club.</p>
                   </div>
