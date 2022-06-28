@@ -25,6 +25,7 @@ import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
 import RankTableAK from "../components/RankTableAK";
 import Banner from "../components/Banner";
+import Ban from "../components/Ban";
 
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -176,8 +177,7 @@ const Overall = () => {
       setVisibility(true);
       toast.info("Check your " + obj.subject + " analysis here");
     } catch (error) {
-      setLoading(false);
-      setVisibility(true);
+            setVisibility(true);
       toast.error("Subject data not found");
     }
   };
@@ -411,6 +411,7 @@ const Overall = () => {
             </Grid>
             <br />
             <Banner weak={weak} name={name} />
+            <Ban/>
           </Container>
           <Demo />
           <br />

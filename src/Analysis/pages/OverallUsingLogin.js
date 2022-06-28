@@ -28,6 +28,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
 import RankTableAK from "../components/RankTableAK";
+import Ban from "../components/Ban";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -190,7 +191,7 @@ const Overall2 = () => {
     };
 
     const subject = await axios.post(
-      `https://o1apti.herokuapp.com/get_test_analysis/`,
+      `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
     const weaktopics = await axios.post(
@@ -585,6 +586,8 @@ const Overall2 = () => {
 
             <Demo />
             <Banner weak={weak} name={name} />
+            <Ban/>
+            
           </Container>
         </div>
       )}

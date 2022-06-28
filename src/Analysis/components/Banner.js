@@ -53,11 +53,7 @@ const Banner = ({ name, weak }) => {
             >
               Recommended for {name}
             </Typography>
-            {/* <Button  variant="contained" style={{background: "white",
-    color: "#002299"}}>
-            Enroll Here
-          </Button> */}
-          </div>
+                      </div>
 
           <div
             style={{
@@ -67,14 +63,6 @@ const Banner = ({ name, weak }) => {
               flexWrap: "wrap",
             }}
           >
-            {/* {apti && <CourseCard courseName={"Aptitude Series - Self Pace"} />}
-            {core && <CourseCard courseName={"Core Subjects - Crash Course"} />}
-            {sde_bootcamp && (
-              <CourseCard
-                courseName={"Complete SDE Bootcamp - Master Course"}
-              />
-            )} */}
-
             <img
               src={bannerImg}
               alt=""
@@ -85,30 +73,6 @@ const Banner = ({ name, weak }) => {
                 borderRadius: "1.3rem",
               }}
             />
-            <div style={{ display: "flex", justifyContent:"stretch",alignItems:"stretch" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                  gap: "2rem",
-                  width: "60%",
-                }}
-              >
-                <CourseCard
-                  courseName={"Complete SDE Bootcamp - Master Course"}
-                />
-                <CourseCard courseName={"Aptitude Series - Self Pace"} />
-                <CourseCard courseName={"Core Subjects - Crash Course"} />
-              </div>
-                {/* <div className="modelgirl" style={{width:"40%",}}> */}
-                  <img
-                    src={Man}
-                    alt=""
-                    style={{ width: "49%", height: "72%",objectFit:"contain" ,    transform:" scale(1.3)" }}
-                  />
-                {/* </div> */}
-            </div>
           </div>
         </Container>
       </div>
