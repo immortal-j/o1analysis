@@ -13,6 +13,8 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 1,
   swipeToSlide: true,
+  autoplay: true,
+      autoplaySpeed: 2000,
     className: 'react__slick__slider__parent',
   responsive: [
     {
