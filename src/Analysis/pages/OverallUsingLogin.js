@@ -70,7 +70,7 @@ const Overall2 = () => {
   const [open, setOpen] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
-  const [subName, setSubName] = useState("");
+  const [subName, setSubName] = useState("Overall");
   const [loading, setLoading] = useState(false);
   const [collegeRank, setCollegeRank] = useState(0);
   const [globalRank, setGlobalRank] = useState(0);
@@ -82,6 +82,7 @@ const Overall2 = () => {
   const [email, setEmail] = useState("");
   const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(["abcd"]);
+  const [isOverall,setIsOverall] = useState(1);
   const obj = {
     email: email,
     subject: "overall",
@@ -102,6 +103,11 @@ const Overall2 = () => {
       "verbal",
       "quantitative",
     ];
+    if(key===0){
+      setIsOverall(1);
+    }else{
+      setIsOverall(0);
+    }
     try {
       const obj = {
         // email: email,
@@ -229,7 +235,7 @@ const Overall2 = () => {
 
     try {
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis/`,
+        `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
       fetchWeakTopics(email);
@@ -261,7 +267,7 @@ const Overall2 = () => {
     setLoading(true);
     try {
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis/`,
+        `https://o1apti.herokuapp.com/get_test_analysis`,
         {
           email: par,
           subject: "overall",
@@ -538,19 +544,23 @@ const Overall2 = () => {
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                      <Button
-                        onClick={handleCollegeRankList}
-                        variant="contained"
-                        color="secondary"
-                        style={{
-                          marginTop: "1rem",
-                          marginLeft: "2rem",
-                          background: "#f4f4ff",
-                          color: "#6f63e6",
-                        }}
-                      >
-                        College Level RankList
-                      </Button>
+                      {isOverall ? (
+                        <Button
+                          onClick={handleCollegeRankList}
+                          variant="contained"
+                          color="secondary"
+                          style={{
+                            marginTop: "1rem",
+                            marginLeft: "2rem",
+                            background: "#f4f4ff",
+                            color: "#6f63e6",
+                          }}
+                        >
+                          College Level RankList
+                        </Button>
+                      ) : (
+                        ""
+                      )}
                       <Button
                         onClick={() => {
                           handleGlobalRankList();
@@ -586,8 +596,7 @@ const Overall2 = () => {
 
             <Demo />
             <Banner weak={weak} name={name} />
-            <Ban/>
-            
+            <Ban />
           </Container>
         </div>
       )}
