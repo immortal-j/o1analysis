@@ -42,26 +42,15 @@ export const NavBarData = [
   link :"Home"
 },
 {
-  title :"Logical",
+  title :"General Aptitude",
   icon :<TipsAndUpdatesIcon/>,
   link :"Home"
 },
 {
-  title :"Verbal",
+  title :"Language",
   icon :<AbcIcon/>,
   link :"Home"
 },
-{
-  title :"Quantitative",
-  icon :<ScaleIcon/>,
-  link :"Home"
-},
-// {
-//   title :"Help?",
-//   icon :<ContactMailIcon/>,
-//   link :"Home"
-// },
-
 
   ]
 

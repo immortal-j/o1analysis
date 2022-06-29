@@ -185,9 +185,9 @@ const Overall2 = () => {
       "dbms",
       "os",
       "oops",
-      "logical",
-      "verbal",
-      "quantitative",
+      "general aptitude",
+      "language",
+      
     ];
     getRankTable(key);
     const obj = {
@@ -595,8 +595,8 @@ const Overall2 = () => {
             </Grid>
 
             <Demo />
-            <Banner weak={weak} name={name} />
-            <Ban />
+            <Banner  />
+            <Ban weak={weak} name={name}/>
           </Container>
         </div>
       )}

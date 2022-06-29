@@ -78,6 +78,11 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/weak_topic`,
+        { email }
+      );
+      setWeak(weaktopics.data);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -149,9 +154,8 @@ const Overall = () => {
         "dbms",
         "os",
         "oops",
-        "logical",
-        "verbal",
-        "quantitative",
+        "general aptitude",
+        "language",
       ];
 
       const obj = {
@@ -167,6 +171,7 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/weak_topic`,
         { email }
       );
+      
       getRankTable(key);
       setSubName(subject.data.subject);
       setWeak(weaktopics.data);
@@ -431,8 +436,8 @@ const Overall = () => {
               </Grid>
             </Grid>
             <br />
-            <Banner weak={weak} name={name} />
-            <Ban/>
+            <Banner/>
+            <Ban weak={weak} name={name}/>
           </Container>
           <Demo />
           <br />
