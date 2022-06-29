@@ -9,12 +9,12 @@ const LeetCode = (props) => {
   };
   const labels = props.leetcodeLabel;
   const orignalseries = props.leetcodeSeries;
-  var total = orignalseries[0] + orignalseries[1] + orignalseries[2];
+  const total=props.leetcodeTotal.toFixed(2)
 
   const series = [
-    getPercentile(orignalseries[0]),
-    getPercentile(orignalseries[1]),
-    getPercentile(orignalseries[2]),
+    orignalseries[0].toFixed(2),
+    orignalseries[1].toFixed(2),
+    orignalseries[2].toFixed(2),
   ];
   const temp = {
     series: series,

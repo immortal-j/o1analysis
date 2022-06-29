@@ -61,6 +61,7 @@ const style = {
 const Overall2 = () => {
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
+  const [leetcodetotal, setLeetCodeTotal] = useState(0);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
   const [LineGraphSeries, setLineGraphSeries] = useState([]);
   const [PieChartLabel, setPieChartLabel] = useState([]);
@@ -83,6 +84,7 @@ const Overall2 = () => {
   const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(["abcd"]);
   const [isOverall,setIsOverall] = useState(1);
+  const [demostatus,SetDemostatus] = useState(false);
   const obj = {
     email: email,
     subject: "overall",
@@ -242,6 +244,7 @@ const Overall2 = () => {
       setName(userData.data.name);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -278,6 +281,7 @@ const Overall2 = () => {
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -313,6 +317,15 @@ const Overall2 = () => {
   useEffect(() => {
     if ("o1user" in cookies) {
       handlecookie(cookies.o1user);
+    }
+    if("democookie" in cookies){
+      SetDemostatus(false)
+    }
+    else{
+      SetDemostatus(true);
+      setTimeout(() => {
+        setCookie("democookie",'done');
+      }, 100);
     }
   }, [0]);
 
@@ -451,8 +464,8 @@ const Overall2 = () => {
                       </Button>
                     </CopyToClipboard>
                     <br></br>
-                    <Typography>Global Rank: {globalRank} </Typography>
-                    <Typography>College Rank: {collegeRank}</Typography>
+                    {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography> */}
                   </CardContents>
                 </Card>
               </Grid>
@@ -489,6 +502,7 @@ const Overall2 = () => {
                       <LeetCode
                         leetcodeLabel={leetcodeLabel}
                         leetcodeSeries={leetcodeSeries}
+                        leetcodeTotal={leetcodetotal}
                       />
                     </CardContents>
                   </Card>
@@ -594,7 +608,7 @@ const Overall2 = () => {
               </Grid>
             </Grid>
 
-            <Demo />
+           {demostatus?<Demo />:''} 
             <Banner  />
             <Ban weak={weak} name={name}/>
           </Container>

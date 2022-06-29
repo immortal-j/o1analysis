@@ -26,7 +26,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import RankTableAK from "../components/RankTableAK";
 import Banner from "../components/Banner";
 import Ban from "../components/Ban";
-
+import { useCookies } from "react-cookie";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -47,6 +47,7 @@ const Overall = () => {
   const [name, setName] = useState("");
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
+  const [leetcodetotal, setLeetCodeTotal] = useState(0);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
   const [LineGraphSeries, setLineGraphSeries] = useState([]);
   const [PieChartLabel, setPieChartLabel] = useState([]);
@@ -61,6 +62,8 @@ const Overall = () => {
   const [globalRankList, setGlobalRankList] = useState([]);
   const [listToShow, setListToShow] = useState([]);
   const [isOverall,setIsOverall] = useState(1);
+  const [cookies, setCookie] = useCookies(["abcd"]);
+  const [demostatus,SetDemostatus] = useState(false);
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
@@ -87,6 +90,7 @@ const Overall = () => {
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -196,6 +200,13 @@ const Overall = () => {
   useEffect(() => {
     getAnalysis();
     getRankTable(0);
+    if("democookie" in cookies){
+      SetDemostatus(false)
+    }
+    else{
+      SetDemostatus(true);
+      setCookie("democookie", true);
+    }
   }, []);
 
   const handleGlobalRankList = () => {
@@ -282,8 +293,8 @@ const Overall = () => {
                       </Button>
                     </CopyToClipboard>
                     <br></br>
-                    <Typography>Global Rank: {globalRank} </Typography>
-                    <Typography>College Rank: {collegeRank}</Typography>
+                    {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography> */}
                   </CardContents>
                 </Card>
               </Grid>
@@ -320,6 +331,7 @@ const Overall = () => {
                       <LeetCode
                         leetcodeLabel={leetcodeLabel}
                         leetcodeSeries={leetcodeSeries}
+                        leetcodeTotal={leetcodetotal}
                       />
                     </CardContents>
                   </Card>
@@ -439,7 +451,7 @@ const Overall = () => {
             <Banner/>
             <Ban weak={weak} name={name}/>
           </Container>
-          <Demo />
+          {demostatus?<Demo />:''} 
           <br />
           <br />
         </div>
