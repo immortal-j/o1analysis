@@ -60,6 +60,7 @@ const Overall = () => {
   const [collegeRankList, setCollegeRankList] = useState([]);
   const [globalRankList, setGlobalRankList] = useState([]);
   const [listToShow, setListToShow] = useState([]);
+  const [isOverall,setIsOverall] = useState(1);
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
@@ -74,7 +75,7 @@ const Overall = () => {
         subject: "overall",
       };
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis/`,
+        `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
       setName(userData.data.name);
@@ -108,6 +109,11 @@ const Overall = () => {
       "verbal",
       "quantitative",
     ];
+    if(key===0){
+      setIsOverall(1);
+    }else{
+      setIsOverall(0);
+    }
     try {
       const obj = {
         email: email,
@@ -124,7 +130,7 @@ const Overall = () => {
       setGlobalRank(userData.data.global_rank);
       setCollegeRankList(userData.data.college_list);
       setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.college_list);
+      setListToShow(userData.data.global_list);
 
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
@@ -154,7 +160,7 @@ const Overall = () => {
       };
       setVisibility(false);
       const subject = await axios.post(
-        `https://o1apti.herokuapp.com/get_test_analysis/`,
+        `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
       const weaktopics = await axios.post(
@@ -364,7 +370,8 @@ const Overall = () => {
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                      <Button
+                      {isOverall
+                      ?(<Button
                         onClick={handleCollegeRankList}
                         variant="contained"
                         color="secondary"
@@ -376,7 +383,21 @@ const Overall = () => {
                         }}
                       >
                         College Level RankList
-                      </Button>
+                      </Button>)
+                      :('')}
+                      {/* <Button
+                        onClick={handleCollegeRankList}
+                        variant="contained"
+                        color="secondary"
+                        style={{
+                          marginTop: "1rem",
+                          marginLeft: "2rem",
+                          background: "#f4f4ff",
+                          color: "#6f63e6",
+                        }}
+                      >
+                        College Level RankList
+                      </Button> */}
                       <Button
                         onClick={() => {
                           handleGlobalRankList();
