@@ -13,6 +13,8 @@ import React, { useEffect, useState } from "react";
 import login from "../../images/login.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
 
 const RegisterForm = (props) => {
   const [userData, setUserData] = useState({
@@ -27,15 +29,23 @@ const RegisterForm = (props) => {
   
 
   const [loading, setLoading] = useState(false);
-  const [clgList, setClgList] = useState([]);
-
+  const [clgList, setClgList] = useState(['Shri Ramdeobaba College of Engineering and Management']);
+  const [testlink, setTestLink] = useState('');
+  let navigate = useNavigate();
   const getCollegeName = async () => {
     const fetchNames = await axios.get(
       `https://o1apti.herokuapp.com/college_list`
     );
     setClgList(fetchNames.data.clg_names);
   };
+  const getTestlink = async () => {
+    const link = await axios.get(
+      `https://o1apti.herokuapp.com/testlink`
+    );
+    setTestLink(link.data.link);
+  };
   useEffect(() => {
+    getTestlink();
     getCollegeName();
   }, []);
 
@@ -50,11 +60,12 @@ const RegisterForm = (props) => {
     e.preventDefault();
     setLoading(true);
     axios
-      .post(`https://o1apti.herokuapp.com/auth/register/`, userData)
+      .post(`https://o1apti.herokuapp.com/auth/register`, userData)
       .then((res) => {
         setLoading(false);
         toast.success("User Register Successfully");
         setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
+        window.location=testlink;
         props.handleClose()
       
       })

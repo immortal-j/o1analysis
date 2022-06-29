@@ -3,7 +3,7 @@ import Feature from "../components/Features/Feature";
 import Testislider from "../components/Testimonial_slider/TestiSlider";
 import Home from "../components/Home/Home";
 import FooterNew from "../components/Footer/FooterNew";
-import Courses from "../components/Courses";
+import Combo from "../components/Combo";
 
 const Homepage = () => {
   return (
@@ -18,7 +18,7 @@ const Homepage = () => {
         <Home />
         <Feature />
         <Testislider />
-        <Courses/>
+        <Combo/>
         <FooterNew/>
       </div>
     </>

@@ -70,7 +70,7 @@ const Overall2 = () => {
   const [open, setOpen] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
-  const [subName, setSubName] = useState("");
+  const [subName, setSubName] = useState("Overall");
   const [loading, setLoading] = useState(false);
   const [collegeRank, setCollegeRank] = useState(0);
   const [globalRank, setGlobalRank] = useState(0);
