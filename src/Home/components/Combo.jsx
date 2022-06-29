@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     wrapper:{
-        width: "80%",
+        width: "90%",
         margin: "0 auto"
     },
   mar: {
@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBig: {
     width: "100%",
+    borderRadius:"10px",
   },
   imgSmall: {
    width: "100%",
@@ -32,9 +33,9 @@ export default function Combo() {
   const classes = useStyles();
 
   return (
-    <div onClick={() => window.open("combo", "_blank")} className={classes.wrapper}>
+    <div  className={classes.wrapper}>
       <div className={classes.mar}>
-        <img src="Banner.jpeg" className={classes.imgBig} />
+        <img src="banner.png" className={classes.imgBig} />
       </div>
 
       <div className={classes.mar2}>
