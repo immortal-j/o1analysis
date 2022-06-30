@@ -34,6 +34,9 @@ const CourseCard = ({courseName}) => {
               <Button
                 variant="contained"
                 style={{ textTransform: "none", backgroundColor: "#0259eb" }}
+                onClick={()=>{
+                  window.location="https://www.o1codingclub.in/"
+                }}
               >
                 Explore
               </Button></Link>

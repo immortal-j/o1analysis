@@ -112,7 +112,7 @@ const Overall2 = () => {
     }
     try {
       const obj = {
-        // email: email,
+        email: email,
         subject: subjectlist[key],
         // rank_subject: "overall",
       };
@@ -123,11 +123,11 @@ const Overall2 = () => {
       );
       // console.log(userData.data);
       // console.log(userData.data.college_list[1][0]);
-      setCollegeRank(userData.data.college_rank);
-      setGlobalRank(userData.data.global_rank);
-      setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.college_list);
+      // setCollegeRank(userData.data.college_rank);
+      // setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.collegeRanklist);
+      setGlobalRankList(userData.data.globalRanklist);
+      setListToShow(userData.data.globalRanklist);
 
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
@@ -149,9 +149,14 @@ const Overall2 = () => {
       "verbal",
       "quantitative",
     ];
+    if(key===0){
+      setIsOverall(1);
+    }else{
+      setIsOverall(0);
+    }
     try {
       const obj = {
-        // email: email,
+        email: par,
         subject: subjectlist[key],
         // rank_subject: "overall",
       };
@@ -161,11 +166,11 @@ const Overall2 = () => {
         obj
       );
       // console.log(userData.data);
-      setCollegeRank(userData.data.college_rank);
-      setGlobalRank(userData.data.global_rank);
-      setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.ranklist);
-      setListToShow(userData.data.ranklist);
+      // setCollegeRank(userData.data.college_rank);
+      // setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.collegeRanklist);
+      setGlobalRankList(userData.data.globalRanklist);
+      setListToShow(userData.data.globalRanklist);
 
       console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
@@ -593,16 +598,15 @@ const Overall2 = () => {
                         Global Level RankList
                       </Button>
                     </div>
-                    {/* <CardContentsMobile>
+                    <CardContentsMobile>
                       <RankTableAK
-                        collegeRank={collegeRank}
-                        globalRank={globalRank}
+                       
                         ListToShow={listToShow}
                         collegeRankList={collegeRankList}
                         globalRankList={globalRankList}
                         email={email}
                       />
-                    </CardContentsMobile> */}
+                    </CardContentsMobile>
                   </Card>
                 </Box>
               </Grid>

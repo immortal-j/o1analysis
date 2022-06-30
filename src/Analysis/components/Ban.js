@@ -4,7 +4,7 @@ import "./Ban.css";
 import CourseCard from "./CourseCard";
 import { Container, Typography } from "@mui/material";
 const Ban = ({weak,name}) => {
-  console.log(weak);
+  // console.log(weak);
   const sde=weak?.sde_bootcamp
   const aptitude=weak?.apti
   const core=weak?.core

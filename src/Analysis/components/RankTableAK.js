@@ -21,11 +21,7 @@ var columns = [
     selector: (row) => row.total_score,
     sortable: true,
   },
-  {
-    name: "Email",
-    selector: (row) => row.email,
-    sortable: true,
-  },
+  
   {
     name: "College",
     selector: (row) => row.college,
@@ -111,17 +107,14 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 
 function getData(props) {
   userData.length = 0;
-  console.log(props);
-  var idx = 1;
+  // console.log(props);
   for (const [key, value] of Object.entries(props.ListToShow)) {
     const obj = {
-      rank: idx,
+      rank: value.rank,
       name: value.name,
-      total_score: value.score,
-      email: value.email,
+      total_score: value.total_score,
       college: value.college,
     }
-    idx++;
     // console.log(obj);
     userData.push(obj);
   }
