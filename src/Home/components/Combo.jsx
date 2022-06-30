@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBig: {
     width: "100%",
+  marginBottom:"2rem",
     borderRadius:"10px",
   },
   imgSmall: {

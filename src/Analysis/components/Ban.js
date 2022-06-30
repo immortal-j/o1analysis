@@ -11,9 +11,9 @@ const Ban = ({weak,name}) => {
   return (
     <Container maxWidth={'xl'} >
           
-      <div class="banner-container-1">
-        <div class="banner-1">
-                    <div class="content">
+      <div className="banner-container-1">
+        <div className="banner-1">
+                    <div className="content">
             <div>
             {(aptitude || core || sde) && (
               <Typography
@@ -53,7 +53,7 @@ const Ban = ({weak,name}) => {
             <CourseCard courseName={"Core Subjects - Crash Course"} />
           }
           </div>
-          <div class="women">
+          <div className="women">
             <img src={Man} alt="" />
           </div>
         </div>
