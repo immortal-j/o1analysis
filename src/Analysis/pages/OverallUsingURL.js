@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import ToggleSidebar from "../components/ToggleSideBar";
+import ToggleSidebar from "../components/ToggleSideBarurl";
 import { styled } from "@mui/system";
 import LeetCode from "../components/Leetcode";
 import LineGraph from "../components/LineGraph";
@@ -81,11 +81,11 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/weak_topic`,
-        { email }
-      );
-      setWeak(weaktopics.data);
+      // const weaktopics = await axios.post(
+      //   `https://o1apti.herokuapp.com/weak_topic`,
+      //   { email }
+      // );
+      // setWeak(weaktopics.data);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -126,20 +126,20 @@ const Overall = () => {
     try {
       const obj = {
         email: email,
-        rank_subject: subjectlist[key],
+        subject: subjectlist[key],
         // rank_subject: "overall",
       };
       const userData = await axios.post(
-        `https://o1apti.herokuapp.com/get_user_ranklist`,
+        `https://o1apti.herokuapp.com/ranklist/subject_ranklist`,
         obj
       );
-      // console.log(userData);
+      console.log(userData);
       // console.log(userData.data.college_list[1][0]);
-      setCollegeRank(userData.data.college_rank);
-      setGlobalRank(userData.data.global_rank);
-      setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.global_list);
+      // setCollegeRank(userData.data.college_rank);
+      // setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.collegeRanklist);
+      setGlobalRankList(userData.data.globalRanklist);
+      setListToShow(userData.data.globalRanklist);
 
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
@@ -171,14 +171,14 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/weak_topic`,
-        { email }
-      );
+      // const weaktopics = await axios.post(
+      //   `https://o1apti.herokuapp.com/weak_topic`,
+      //   { email }
+      // );
       
       getRankTable(key);
       setSubName(subject.data.subject);
-      setWeak(weaktopics.data);
+      // setWeak(weaktopics.data);
       setLeetCodeLabel(subject.data.leetcode.labels);
       setLeetCodeSeries(subject.data.leetcode.series);
       setLineGraphLabel(subject.data.linegraph.labels);

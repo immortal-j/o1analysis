@@ -4,7 +4,7 @@ import "./Ban.css";
 import CourseCard from "./CourseCard";
 import { Container, Typography } from "@mui/material";
 const Ban = ({weak,name}) => {
-  console.log(weak);
+  // console.log(weak);
   const sde=weak?.sde_bootcamp
   const aptitude=weak?.apti
   const core=weak?.core
@@ -13,8 +13,8 @@ const Ban = ({weak,name}) => {
           
       <div className="banner-container-1">
         <div className="banner-1">
-                    <div className="content">
-            <div>
+        <div className="content">
+            <div style={{width:"75%"}}>
             {(aptitude || core || sde) && (
               <Typography
                 variant="body2"
@@ -44,6 +44,7 @@ const Ban = ({weak,name}) => {
               Recommended for {name}
             </Typography>
             </div>
+           
             {sde && 
             <CourseCard courseName={"Complete SDE Bootcamp - Master Course"} />
           }{
@@ -52,7 +53,13 @@ const Ban = ({weak,name}) => {
           {  core && 
             <CourseCard courseName={"Core Subjects - Crash Course"} />
           }
+          
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            
           </div>
+         
           <div className="women">
             <img src={Man} alt="" />
           </div>
