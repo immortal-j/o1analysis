@@ -207,14 +207,12 @@ const Overall2 = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
-    const weaktopics = await axios.post(
-      `https://o1apti.herokuapp.com/weak_topic`,
-      { email }
-    );
+    // const weaktopics = await axios.post(
+    //   `https://o1apti.herokuapp.com/weak_topic`,
+    //   { email }
+    // );
     
-    setWeak(weaktopics.data);
-    console.log(weaktopics);
-    console.log(subject);
+    // setWeak(weaktopics.data);
     setSubName(subject.data.subject);
     setLeetCodeLabel(subject.data.leetcode.labels);
     setLeetCodeSeries(subject.data.leetcode.series);

@@ -81,11 +81,11 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/weak_topic`,
-        { email }
-      );
-      setWeak(weaktopics.data);
+      // const weaktopics = await axios.post(
+      //   `https://o1apti.herokuapp.com/weak_topic`,
+      //   { email }
+      // );
+      // setWeak(weaktopics.data);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
@@ -171,14 +171,14 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/weak_topic`,
-        { email }
-      );
+      // const weaktopics = await axios.post(
+      //   `https://o1apti.herokuapp.com/weak_topic`,
+      //   { email }
+      // );
       
       getRankTable(key);
       setSubName(subject.data.subject);
-      setWeak(weaktopics.data);
+      // setWeak(weaktopics.data);
       setLeetCodeLabel(subject.data.leetcode.labels);
       setLeetCodeSeries(subject.data.leetcode.series);
       setLineGraphLabel(subject.data.linegraph.labels);
