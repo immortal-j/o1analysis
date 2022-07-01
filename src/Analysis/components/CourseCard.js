@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CourseCard = ({courseName}) => {
@@ -29,12 +30,16 @@ const CourseCard = ({courseName}) => {
               </Typography>
             </div>
             <div >
+              <Link to='/'>
               <Button
                 variant="contained"
                 style={{ textTransform: "none", backgroundColor: "#0259eb" }}
+                onClick={()=>{
+                  window.location="https://www.o1codingclub.in/"
+                }}
               >
                 Explore
-              </Button>
+              </Button></Link>
             </div>
           </div>
         </CardInfo>

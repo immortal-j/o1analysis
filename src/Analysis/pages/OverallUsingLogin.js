@@ -27,6 +27,7 @@ import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
+import Combo from '../../Home/components/Combo'
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
 const CardContents = styled(CardContent)({
@@ -61,6 +62,7 @@ const style = {
 const Overall2 = () => {
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
+  const [leetcodetotal, setLeetCodeTotal] = useState(0);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
   const [LineGraphSeries, setLineGraphSeries] = useState([]);
   const [PieChartLabel, setPieChartLabel] = useState([]);
@@ -83,6 +85,7 @@ const Overall2 = () => {
   const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(["abcd"]);
   const [isOverall,setIsOverall] = useState(1);
+  const [demostatus,SetDemostatus] = useState(true);
   const obj = {
     email: email,
     subject: "overall",
@@ -110,7 +113,7 @@ const Overall2 = () => {
     }
     try {
       const obj = {
-        // email: email,
+        email: email,
         subject: subjectlist[key],
         // rank_subject: "overall",
       };
@@ -121,11 +124,11 @@ const Overall2 = () => {
       );
       // console.log(userData.data);
       // console.log(userData.data.college_list[1][0]);
-      setCollegeRank(userData.data.college_rank);
-      setGlobalRank(userData.data.global_rank);
-      setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.global_list);
-      setListToShow(userData.data.college_list);
+      // setCollegeRank(userData.data.college_rank);
+      // setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.collegeRanklist);
+      setGlobalRankList(userData.data.globalRanklist);
+      setListToShow(userData.data.globalRanklist);
 
       // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
@@ -147,9 +150,14 @@ const Overall2 = () => {
       "verbal",
       "quantitative",
     ];
+    if(key===0){
+      setIsOverall(1);
+    }else{
+      setIsOverall(0);
+    }
     try {
       const obj = {
-        // email: email,
+        email: par,
         subject: subjectlist[key],
         // rank_subject: "overall",
       };
@@ -159,13 +167,13 @@ const Overall2 = () => {
         obj
       );
       // console.log(userData.data);
-      setCollegeRank(userData.data.college_rank);
-      setGlobalRank(userData.data.global_rank);
-      setCollegeRankList(userData.data.college_list);
-      setGlobalRankList(userData.data.ranklist);
-      setListToShow(userData.data.ranklist);
+      // setCollegeRank(userData.data.college_rank);
+      // setGlobalRank(userData.data.global_rank);
+      setCollegeRankList(userData.data.collegeRanklist);
+      setGlobalRankList(userData.data.globalRanklist);
+      setListToShow(userData.data.globalRanklist);
 
-      console.log({globalRank,collegeRankList,globalRankList});
+      // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
       toast.warn("Something went wrong. Please check your email");
       console.log(error);
@@ -185,9 +193,9 @@ const Overall2 = () => {
       "dbms",
       "os",
       "oops",
-      "logical",
-      "verbal",
-      "quantitative",
+      "general aptitude",
+      "language",
+      
     ];
     getRankTable(key);
     const obj = {
@@ -200,14 +208,12 @@ const Overall2 = () => {
       `https://o1apti.herokuapp.com/get_test_analysis`,
       obj
     );
-    const weaktopics = await axios.post(
-      `https://o1apti.herokuapp.com/weak_topic`,
-      { email }
-    );
+    // const weaktopics = await axios.post(
+    //   `https://o1apti.herokuapp.com/weak_topic`,
+    //   { email }
+    // );
     
-    setWeak(weaktopics.data);
-    console.log(weaktopics);
-    console.log(subject);
+    // setWeak(weaktopics.data);
     setSubName(subject.data.subject);
     setLeetCodeLabel(subject.data.leetcode.labels);
     setLeetCodeSeries(subject.data.leetcode.series);
@@ -240,8 +246,10 @@ const Overall2 = () => {
       );
       fetchWeakTopics(email);
       setName(userData.data.name);
+      console.log(userData)
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -278,6 +286,7 @@ const Overall2 = () => {
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -313,6 +322,15 @@ const Overall2 = () => {
   useEffect(() => {
     if ("o1user" in cookies) {
       handlecookie(cookies.o1user);
+    }
+    if("democookie" in cookies){
+      SetDemostatus(false)
+    }
+    else{
+      SetDemostatus(true);
+      setTimeout(() => {
+        setCookie("democookie",'done');
+      }, 100);
     }
   }, [0]);
 
@@ -451,8 +469,8 @@ const Overall2 = () => {
                       </Button>
                     </CopyToClipboard>
                     <br></br>
-                    <Typography>Global Rank: {globalRank} </Typography>
-                    <Typography>College Rank: {collegeRank}</Typography>
+                    {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography> */}
                   </CardContents>
                 </Card>
               </Grid>
@@ -489,6 +507,7 @@ const Overall2 = () => {
                       <LeetCode
                         leetcodeLabel={leetcodeLabel}
                         leetcodeSeries={leetcodeSeries}
+                        leetcodeTotal={leetcodetotal}
                       />
                     </CardContents>
                   </Card>
@@ -579,24 +598,23 @@ const Overall2 = () => {
                         Global Level RankList
                       </Button>
                     </div>
-                    {/* <CardContentsMobile>
+                    <CardContentsMobile>
                       <RankTableAK
-                        collegeRank={collegeRank}
-                        globalRank={globalRank}
+                       
                         ListToShow={listToShow}
                         collegeRankList={collegeRankList}
                         globalRankList={globalRankList}
                         email={email}
                       />
-                    </CardContentsMobile> */}
+                    </CardContentsMobile>
                   </Card>
                 </Box>
               </Grid>
             </Grid>
 
-            <Demo />
-            <Banner weak={weak} name={name} />
-            <Ban />
+           {demostatus?<Demo />:''} 
+            <Banner  />
+            <Ban weak={weak} name={name}/>
           </Container>
         </div>
       )}

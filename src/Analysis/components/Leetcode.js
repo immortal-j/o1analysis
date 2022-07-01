@@ -4,17 +4,32 @@ import Chart from "react-apexcharts";
 const LeetCode = (props) => {
   // const series=byId?.[0].leetcode.series;
   // const labels=byId?.[0].leetcode.labels;
-  const getPercentile = (par) => {
-    return parseFloat((par / total) * 100).toFixed(2);
-  };
-  const labels = props.leetcodeLabel;
+  // const getPercentile = (par) => {
+  //   return parseFloat((par / total) * 100).toFixed(2);
+  // };
   const orignalseries = props.leetcodeSeries;
-  var total = orignalseries[0] + orignalseries[1] + orignalseries[2];
+  const labels = [
+    props.leetcodeLabel[0] +
+      " - " +
+      orignalseries[0][0] +
+      " / " +
+      orignalseries[0][1],
+    props.leetcodeLabel[1] +
+      " - " +
+      orignalseries[1][0] +
+      " / " +
+      orignalseries[1][1],
+    props.leetcodeLabel[2] +
+      " - " +
+      orignalseries[2][0] +
+      " / " +
+      orignalseries[2][1],
+  ];
 
   const series = [
-    getPercentile(orignalseries[0]),
-    getPercentile(orignalseries[1]),
-    getPercentile(orignalseries[2]),
+    ((orignalseries[0][0] / orignalseries[0][1]) * 100).toFixed(),
+    ((orignalseries[1][0] / orignalseries[1][1]) * 100).toFixed(),
+    ((orignalseries[2][0] / orignalseries[2][1]) * 100).toFixed(),
   ];
   const temp = {
     series: series,
@@ -32,7 +47,7 @@ const LeetCode = (props) => {
         },
       },
       // colors:["#0169CD","#6794DC","#6771DC"],
-      colors: ["#DC143C","#FBB500",  "#0BDA51"],
+      colors: ["#DC143C", "#FBB500", "#0BDA51"],
       plotOptions: {
         radialBar: {
           dataLabels: {
@@ -51,7 +66,15 @@ const LeetCode = (props) => {
                 // return w.globals.seriesTotals.reduce((a, b, c) => {
                 //   return a + b + c;
                 // }, 0);
-                return total;
+                return (
+                  orignalseries[0][0] +
+                  orignalseries[1][0] +
+                  orignalseries[2][0] +
+                  " / " +
+                  (orignalseries[0][1] +
+                    orignalseries[1][1] +
+                    orignalseries[2][1])
+                );
               },
             },
           },

@@ -83,6 +83,13 @@ const LineGraph = (props) => {
         intersect: false,
         followCursor: true,
         theme: "dark",
+        y: {
+          title: {
+            formatter: function(val) {
+              return val.length >= 0 ? "Total Marks" + '...' : val
+            }
+          }
+        },
         style: {
           fontSize: "10px",
           fontFamily: undefined,
