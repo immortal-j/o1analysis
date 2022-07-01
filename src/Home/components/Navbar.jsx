@@ -26,7 +26,7 @@ const Navbar = () => {
     <>
       <AppBar position="static" elevation={0} style={{ backgroundColor: "transparent" }}>
         <StyledToolbar flex={1}>
-          <a><img src={logo} alt=")(1) Coding Club" srcSet="" style={{ width: "3rem" }} /></a>
+          {/* <a><img src={logo} alt=")(1) Coding Club" srcSet="" style={{ width: "3rem" }} /></a> */}
           <Box>
             {/* <Link style={{textDecoration:"none"}} to="/dashboard"><Button style={ButtonStyle}> Login </Button></Link> */}
             {/* <Button style={ButtonStyle} onClick={handleOpen}> Signup </Button> */}

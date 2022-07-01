@@ -85,7 +85,7 @@ const Overall2 = () => {
   const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(["abcd"]);
   const [isOverall,setIsOverall] = useState(1);
-  const [demostatus,SetDemostatus] = useState(false);
+  const [demostatus,SetDemostatus] = useState(true);
   const obj = {
     email: email,
     subject: "overall",

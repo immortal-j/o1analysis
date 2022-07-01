@@ -63,7 +63,7 @@ const Overall = () => {
   const [listToShow, setListToShow] = useState([]);
   const [isOverall,setIsOverall] = useState(1);
   const [cookies, setCookie] = useCookies(["abcd"]);
-  const [demostatus,SetDemostatus] = useState(false);
+  const [demostatus,SetDemostatus] = useState(true);
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
@@ -205,9 +205,9 @@ const Overall = () => {
     }
     else{
       SetDemostatus(true);
-      setCookie("democookie", true);
+        setCookie("democookie",'done');
     }
-  }, []);
+  }, [0]);
 
   const handleGlobalRankList = () => {
     setListToShow(globalRankList);

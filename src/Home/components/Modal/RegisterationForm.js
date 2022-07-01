@@ -15,7 +15,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
-
 const RegisterForm = (props) => {
   const [userData, setUserData] = useState({
     name: "",
@@ -24,13 +23,12 @@ const RegisterForm = (props) => {
     key: "",
     college: "",
   });
-  
- 
-  
 
   const [loading, setLoading] = useState(false);
-  const [clgList, setClgList] = useState(['Shri Ramdeobaba College of Engineering and Management']);
-  const [testlink, setTestLink] = useState('');
+  const [clgList, setClgList] = useState([
+    "Shri Ramdeobaba College of Engineering and Management",
+  ]);
+  const [testlink, setTestLink] = useState("");
   let navigate = useNavigate();
   const getCollegeName = async () => {
     const fetchNames = await axios.get(
@@ -39,9 +37,7 @@ const RegisterForm = (props) => {
     setClgList(fetchNames.data.clg_names);
   };
   const getTestlink = async () => {
-    const link = await axios.get(
-      `https://o1apti.herokuapp.com/testlink`
-    );
+    const link = await axios.get(`https://o1apti.herokuapp.com/testlink`);
     setTestLink(link.data.link);
   };
   useEffect(() => {
@@ -59,15 +55,25 @@ const RegisterForm = (props) => {
   const submitData = (e) => {
     e.preventDefault();
     setLoading(true);
+    if (
+      userData.name.length == 0 ||
+      userData.email.length == 0 ||
+      userData.mobile.length != 10 ||
+      userData.college.length == 0 ||
+      userData.key.length == 0
+    ) {
+      setLoading(false);
+      toast.error("Fields Empty");
+    }
+    else{
     axios
       .post(`https://o1apti.herokuapp.com/auth/register`, userData)
       .then((res) => {
         setLoading(false);
         toast.success("User Register Successfully");
         setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
-        window.location=testlink;
-        props.handleClose()
-      
+        window.location = testlink;
+        props.handleClose();
       })
       .catch(function (error) {
         setLoading(false);
@@ -79,9 +85,9 @@ const RegisterForm = (props) => {
           // console.log(error.response);
           toast.warn("Something goes wrong. Please try again.");
         }
-        props.handleClose()
-
+        props.handleClose();
       });
+    }
   };
 
   return (
