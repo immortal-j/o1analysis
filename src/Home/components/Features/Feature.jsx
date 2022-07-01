@@ -16,38 +16,41 @@ const FeatureParagraph = {
   WebkitTextFillColor: "transparent",
   padding: "5rem 2rem",
   fontSize: "19px",
-}
+};
 const gridStyle = {
   height: "8vh",
   margin: " 20rem 0",
 };
-const dummyData=Data[0];
+const dummyData = Data[0];
 const gridOrder = { order: "-1" };
 
 const FeatureSection = () => {
- 
   return (
     <>
       <Container maxWidth="lg" style={FeaturePosition}>
-        <Typography variant="h2"
+        <Typography
+          variant="h2"
           gutterBottom={true}
           style={{
             textAlign: "center",
             color: "white",
           }}
         >
-          Features
+          <div className="section-title">
+            <h2 style={{fontSize:"2.5rem"}}>Features</h2>
+            <span className="section-separator"></span>
+          </div>
         </Typography>
         <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5}>
           <Grid item xs={12} sm={12} md={5}>
-            <Stackbargraph  
-             StackBarLabel={dummyData.stackgraph.labels}
-             StackBarSeries={dummyData.stackgraph.series}
+            <Stackbargraph
+              StackBarLabel={dummyData.stackgraph.labels}
+              StackBarSeries={dummyData.stackgraph.series}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
-              <Typography variant="body1"  style={FeatureParagraph}>
+              <Typography variant="body1" style={FeatureParagraph}>
                 Superiority derive gains will christianity law war contradict
                 prejudice mountains derive. Insofar superiority marvelous
                 deceptions grandeur decieve decieve. Superiority ultimate
@@ -59,7 +62,13 @@ const FeatureSection = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} wrap={"wrap-reverse"}>
+        <Grid
+          container
+          alignItems={"center"}
+          rowSpacing={1}
+          columnSpacing={5}
+          wrap={"wrap-reverse"}
+        >
           <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
               <p style={FeatureParagraph}>
@@ -76,14 +85,18 @@ const FeatureSection = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={5} order={{ md: 1, lg: 2 }}>
-            <LineGraph LineGraphLabel={dummyData.linegraph.labels}
-                      LineGraphSeries={dummyData.linegraph.series} />
+            <LineGraph
+              LineGraphLabel={dummyData.linegraph.labels}
+              LineGraphSeries={dummyData.linegraph.series}
+            />
           </Grid>
         </Grid>
-        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5} >
+        <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5}>
           <Grid item xs={12} sm={12} md={5}>
-            <PieChart PieChartLabel={dummyData.piechart.labels}
-                      PieChartSeries={dummyData.piechart.series} />
+            <PieChart
+              PieChartLabel={dummyData.piechart.labels}
+              PieChartSeries={dummyData.piechart.series}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box>
