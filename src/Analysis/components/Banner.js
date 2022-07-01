@@ -10,12 +10,12 @@ const Banner = () => {
     <div className="banner-container">
       <div className="banner">
         <Container maxWidth="lg"  >
-        <Typography
+        {/* <Typography
               variant="h3"
               style={{ fontFamily: "Poppins", marginBottom: "1rem", marginTop: "1rem",color:"white" }}
             >
               Featured Courses
-            </Typography>
+            </Typography> */}
           <div
             style={{
               display: "flex",

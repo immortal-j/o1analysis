@@ -12,6 +12,12 @@ const Ban = ({weak,name}) => {
     <Container maxWidth={'xl'} >
           
       <div className="banner-container-1">
+        <Typography
+              variant="h3"
+              style={{ fontFamily: "Poppins",fontSize:'3.1rem', marginBottom: "1rem", marginTop: "1rem",color:"white" }}
+            >
+              Featured Courses
+            </Typography>
         <div className="banner-1">
         <div className="content">
             <div style={{width:"75%"}}>
@@ -53,10 +59,14 @@ const Ban = ({weak,name}) => {
           {  core && 
             <CourseCard courseName={"Core Subjects - Crash Course"} />
           }
+          {
+            !sde && !aptitude && !core &&  <div>
           
-            <CourseCard courseName={"Core Subjects - Crash Course"} />
-            <CourseCard courseName={"Core Subjects - Crash Course"} />
-            <CourseCard courseName={"Core Subjects - Crash Course"} />
+          <CourseCard courseName={"Complete SDE Bootcamp - Master Course"} />
+            <CourseCard courseName={"Aptitude Series - Self Pace"} />
+            <CourseCard courseName={"Core Subjects - Crash Course"} /></div>
+          }
+         
             
           </div>
          
