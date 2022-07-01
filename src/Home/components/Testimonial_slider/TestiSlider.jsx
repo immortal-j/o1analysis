@@ -169,7 +169,7 @@ const Testislider = () => {
                         </p>
                         
                         <div className="testimonials-avatar">
-                          <a href="#" className="text-link">in</a>
+                          {/* <a href="#" className="text-link">in</a> */}
                           <h3>{testimonial.name}</h3>  
                           
                           <h4>{testimonial.title}</h4>
