@@ -11,10 +11,10 @@ const Ban = ({weak,name}) => {
   return (
     <Container maxWidth={'xl'} >
           
-      <div class="banner-container-1">
-        <div class="banner-1">
-                    <div class="content">
-            <div>
+      <div className="banner-container-1">
+        <div className="banner-1">
+        <div className="content">
+            <div style={{width:"75%"}}>
             {(aptitude || core || sde) && (
               <Typography
                 variant="body2"
@@ -44,6 +44,7 @@ const Ban = ({weak,name}) => {
               Recommended for {name}
             </Typography>
             </div>
+           
             {sde && 
             <CourseCard courseName={"Complete SDE Bootcamp - Master Course"} />
           }{
@@ -52,8 +53,14 @@ const Ban = ({weak,name}) => {
           {  core && 
             <CourseCard courseName={"Core Subjects - Crash Course"} />
           }
+          
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            <CourseCard courseName={"Core Subjects - Crash Course"} />
+            
           </div>
-          <div class="women">
+         
+          <div className="women">
             <img src={Man} alt="" />
           </div>
         </div>

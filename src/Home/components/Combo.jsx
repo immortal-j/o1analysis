@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mar2: {
     marginTop: "6%",
+  marginBottom:"2rem",
 
     [theme.breakpoints.up("sm")]: {
       display: "none",
@@ -21,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBig: {
     width: "100%",
-    borderRadius: "10px",
+  marginBottom:"2rem",
+    borderRadius:"10px",
   },
   imgSmall: {
     width: "100%",
@@ -33,6 +36,7 @@ export default function Combo() {
 
   return (
     <div className={classes.wrapper}>
+      <a href="https://www.o1codingclub.in/" target="_blank">
       <div className={classes.mar}>
         <img src="banner.png" className={classes.imgBig} />
       </div>
@@ -42,6 +46,7 @@ export default function Combo() {
         <img src="combo_left.png" className={classes.imgSmall} />
         <img src="combo_right.png" className={classes.imgSmall} />
       </div>
+      </a>
     </div>
   );
 }

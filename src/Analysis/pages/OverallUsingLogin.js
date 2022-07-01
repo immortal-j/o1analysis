@@ -27,6 +27,7 @@ import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
+import Combo from '../../Home/components/Combo'
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
 const CardContents = styled(CardContent)({
