@@ -172,7 +172,7 @@ const Overall2 = () => {
       setGlobalRankList(userData.data.globalRanklist);
       setListToShow(userData.data.globalRanklist);
 
-      console.log({globalRank,collegeRankList,globalRankList});
+      // console.log({globalRank,collegeRankList,globalRankList});
     } catch (error) {
       toast.warn("Something went wrong. Please check your email");
       console.log(error);
@@ -245,6 +245,7 @@ const Overall2 = () => {
       );
       fetchWeakTopics(email);
       setName(userData.data.name);
+      console.log(userData)
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
       setLeetCodeTotal(userData.data.leetcode.total);

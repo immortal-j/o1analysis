@@ -4,17 +4,16 @@ import Chart from "react-apexcharts";
 const LeetCode = (props) => {
   // const series=byId?.[0].leetcode.series;
   // const labels=byId?.[0].leetcode.labels;
-  const getPercentile = (par) => {
-    return parseFloat((par / total) * 100).toFixed(2);
-  };
+  // const getPercentile = (par) => {
+  //   return parseFloat((par / total) * 100).toFixed(2);
+  // };
   const labels = props.leetcodeLabel;
   const orignalseries = props.leetcodeSeries;
-  const total=props.leetcodeTotal.toFixed(2)
 
   const series = [
-    orignalseries[0].toFixed(2),
-    orignalseries[1].toFixed(2),
-    orignalseries[2].toFixed(2),
+    orignalseries[0][0],
+    orignalseries[1][0],
+    orignalseries[2][0],
   ];
   const temp = {
     series: series,
@@ -32,7 +31,7 @@ const LeetCode = (props) => {
         },
       },
       // colors:["#0169CD","#6794DC","#6771DC"],
-      colors: ["#DC143C","#FBB500",  "#0BDA51"],
+      colors: ["#DC143C", "#FBB500", "#0BDA51"],
       plotOptions: {
         radialBar: {
           dataLabels: {
@@ -51,7 +50,9 @@ const LeetCode = (props) => {
                 // return w.globals.seriesTotals.reduce((a, b, c) => {
                 //   return a + b + c;
                 // }, 0);
-                return total;
+                return orignalseries[0][0]+
+                orignalseries[1][0]+
+                orignalseries[2][0]
               },
             },
           },

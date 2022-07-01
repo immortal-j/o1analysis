@@ -133,7 +133,7 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/ranklist/subject_ranklist`,
         obj
       );
-      console.log(userData);
+      // console.log(userData);
       // console.log(userData.data.college_list[1][0]);
       // setCollegeRank(userData.data.college_rank);
       // setGlobalRank(userData.data.global_rank);
