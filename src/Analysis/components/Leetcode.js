@@ -7,13 +7,29 @@ const LeetCode = (props) => {
   // const getPercentile = (par) => {
   //   return parseFloat((par / total) * 100).toFixed(2);
   // };
-  const labels = props.leetcodeLabel;
   const orignalseries = props.leetcodeSeries;
+  const labels = [
+    props.leetcodeLabel[0] +
+      " - " +
+      orignalseries[0][0] +
+      " / " +
+      orignalseries[0][1],
+    props.leetcodeLabel[1] +
+      " - " +
+      orignalseries[1][0] +
+      " / " +
+      orignalseries[1][1],
+    props.leetcodeLabel[2] +
+      " - " +
+      orignalseries[2][0] +
+      " / " +
+      orignalseries[2][1],
+  ];
 
   const series = [
-    orignalseries[0][0],
-    orignalseries[1][0],
-    orignalseries[2][0],
+    ((orignalseries[0][0] / orignalseries[0][1]) * 100).toFixed(),
+    ((orignalseries[1][0] / orignalseries[1][1]) * 100).toFixed(),
+    ((orignalseries[2][0] / orignalseries[2][1]) * 100).toFixed(),
   ];
   const temp = {
     series: series,
@@ -50,9 +66,15 @@ const LeetCode = (props) => {
                 // return w.globals.seriesTotals.reduce((a, b, c) => {
                 //   return a + b + c;
                 // }, 0);
-                return orignalseries[0][0]+
-                orignalseries[1][0]+
-                orignalseries[2][0]
+                return (
+                  orignalseries[0][0] +
+                  orignalseries[1][0] +
+                  orignalseries[2][0] +
+                  " / " +
+                  (orignalseries[0][1] +
+                    orignalseries[1][1] +
+                    orignalseries[2][1])
+                );
               },
             },
           },
