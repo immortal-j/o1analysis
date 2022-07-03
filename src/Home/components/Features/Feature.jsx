@@ -37,7 +37,7 @@ const FeatureSection = () => {
           }}
         >
           <div className="section-title">
-            <h2 style={{fontSize:"2.5rem"}}>Features</h2>
+            <h2 style={{ fontSize: "2.5rem" }}>Features</h2>
             <span className="section-separator"></span>
           </div>
         </Typography>
@@ -50,15 +50,11 @@ const FeatureSection = () => {
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
-              <Typography variant="body1" style={FeatureParagraph}>
-                Superiority derive gains will christianity law war contradict
-                prejudice mountains derive. Insofar superiority marvelous
-                deceptions grandeur decieve decieve. Superiority ultimate
-                superiority morality grandeur value dead battle eternal-return
-                salvation noble ascetic. Oneself battle inexpedient ascetic self
-                transvaluation of salvation inexpedient right holiest. Disgust
-                ultimate convictions morality philosophy snare grandeur.
-              </Typography>
+              <div  style={FeatureParagraph}>
+                <h3> No of Correct and Incorrect Answers</h3> Analysis the
+                number of correct and incorrect answers per subject and get to
+                know where you need to work on.
+              </div>
             </Box>
           </Grid>
         </Grid>
@@ -71,17 +67,12 @@ const FeatureSection = () => {
         >
           <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
             <Box sx={{ height: "max-content" }}>
-              <p style={FeatureParagraph}>
-                Oneself transvaluation marvelous pinnacle burying chaos fearful
-                transvaluation snare decieve eternal-return. Ideal battle joy
-                sea madness holiest pinnacle selfish prejudice spirit.
-                Christianity suicide mountains convictions transvaluation
-                christianity war reason. Ultimate sexuality ideal derive
-                inexpedient burying oneself transvaluation eternal-return noble
-                self morality dead. Merciful derive of morality christian
-                philosophy merciful disgust self good ascetic marvelous. Society
-                truth salvation god joy of.
-              </p>
+              <div style={FeatureParagraph}>
+                <h3>Subject-wise Performance</h3>
+                Graphically track your strongest and weakest subject based on
+                your performance in the test so that you always have a chance to
+                improve and work on your weak topics.
+              </div>
             </Box>
           </Grid>
           <Grid item xs={12} sm={12} md={5} order={{ md: 1, lg: 2 }}>
@@ -100,16 +91,12 @@ const FeatureSection = () => {
           </Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Box>
-              <p style={FeatureParagraph}>
-                Abstract decieve enlightenment zarathustra transvaluation
-                superiority salvation of. Ultimate deceptions moral noble horror
-                ocean strong war marvelous. War deceptions endless faith endless
-                holiest. Overcome disgust grandeur madness justice war. Ocean
-                convictions ubermensch joy decieve inexpedient morality free
-                play abstract ideal oneself ubermensch. Pious ocean war moral
-                convictions overcome revaluation aversion battle deceptions.
-                Salvation against value battle noble ocean madness evil.
-              </p>
+              <div style={FeatureParagraph}>
+                <h3>Overall Analysis:</h3>
+                Analyse your contribution per subject based upon the questions
+                you solved in
+                <pre>● DAA ● DSA ● DBMS ● SE ● OS</pre>{" "}
+              </div>
             </Box>
           </Grid>
         </Grid>

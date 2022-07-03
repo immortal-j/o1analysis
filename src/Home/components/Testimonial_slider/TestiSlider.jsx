@@ -102,7 +102,7 @@ const data = [
     title: "Software Engineering Intern at Fivetran",
     description:
       "The CPL helped me to maintain the speed and accuracy of problem-solving. Senior-Junior interaction was increased during these events. The Knowledge sessions were quite informative.",
-    image: "https://www.o1codingclub.in/images/Vishal%20Kriplani-min.png",
+    image: "https://www.o1codingclub.in/images/Sudhanshu%20Bhogal-min.png",
   },
   {
     id: 9,
@@ -113,7 +113,7 @@ const data = [
     image: "https://www.o1codingclub.in/images/Yavar%20Vazir-min.png",
   },
   {
-    id: 9,
+    id: 10,
     name: "Rajat Bhanarkar",
     title: "Data Engineer Intern at Amazon",
     description:
@@ -124,6 +124,8 @@ const data = [
 
 
 const Testislider = () => {
+
+  const [trim, setTrim] = useState(true);
 
 
 
@@ -165,7 +167,11 @@ const Testislider = () => {
                           <i className="fa fa-star"></i>
                         </div>
                         <p>
-                        {testimonial.description}
+                     {     trim &&
+                        testimonial.description.substring(0,250) ||  testimonial.description}
+                        
+                        <button onClick={()=>setTrim(!trim)} style={{borderRadius:"4px ", padding:" 0 2px", fontFamily:"sans-serif", opacity:"0.6",textDecoration:"underline", border:"none"}}>{trim && `See more` || `See less`}</button>
+                        
                         </p>
                         
                         <div className="testimonials-avatar">

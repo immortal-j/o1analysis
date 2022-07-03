@@ -122,7 +122,8 @@ const RegisterForm = (props) => {
 
           <Grid item md={6} xs={12}>
             <Typography variant={"h4"} marginBottom={2}>
-              Register Here
+              {/* Register Here */}
+              Newly registered users will be redirected to another page where they can give their test.
             </Typography>
             <TextField
               margin={"dense"}

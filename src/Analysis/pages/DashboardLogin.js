@@ -54,7 +54,9 @@ const DashboardLogin = () => {
          >
            <Grid item md={12} xs={12}>
              <Typography variant={"h4"} marginBottom={2}>
-               Login Here for Analysis
+             Enter your registered email address to check and analyse your results.
+
+
              </Typography>
              <TextField
                margin={"dense"}
