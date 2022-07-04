@@ -14,6 +14,8 @@ const series=props.PieChartSeries
       chart: {
         type: "pie",
       },
+      colors: ["#008FFB","#775DD0","#FEB019","#205afe","#00E396","#284D36","#eedc09","#EE1709","#834b01","#EBEB89","#F61148"],
+      // colors: ["#84E84A","#7A32EE","#FFB226","#AD4546","#330433","#2A56EB","#EE1709"],
 
       title: {
         text: "Overall Analysis ",

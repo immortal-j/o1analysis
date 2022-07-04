@@ -25,6 +25,7 @@ import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
 import RankTableAK from "../components/RankTableAK";
 import Banner from "../components/Banner";
+import FooterNew from '../../Home/components/Footer/FooterNew'
 import Ban from "../components/Ban";
 import { useCookies } from "react-cookie";
 const CardContents = styled(CardContent)({
@@ -265,9 +266,9 @@ const Overall = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2 className="user-detail"> Hello,{name} </h2>
+                    <h2 className="user-detail"> Hello,{" "}{name} </h2>
                     <p>Nice to meet you !</p>
-                    <Typography variant="body2"> {publicURL}</Typography>
+                    {/* <Typography variant="body1"> {publicURL}</Typography> */}
                     <CopyToClipboard text={publicURL}>
                       <Button
                         variant="contained"
@@ -288,7 +289,7 @@ const Overall = () => {
                           color: "#6f63e6",
                         }}
                       >
-                        Public Profile URL
+                       Copy Public Profile URL
                       </Button>
                     </CopyToClipboard>
                     <br></br>
@@ -449,6 +450,7 @@ const Overall = () => {
             <br />
             <Banner/>
             <Ban weak={weak} name={name}/>
+            <FooterNew/>
           </Container>
           {demostatus?<Demo />:''} 
           <br />

@@ -1,6 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
+import banner from '../../Analysis/Assets/banner.png'
+import comboleft from "../../Analysis/Assets/combo_right.png"
+import combomid from "../../Analysis/Assets/combo_mid.png"
+import comboright from "../../Analysis/Assets/combo_right.png"
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   imgBig: {
     width: "100%",
-  marginBottom:"2rem",
+    marginBottom:"2rem",
     borderRadius:"10px",
   },
   imgSmall: {
@@ -38,13 +41,13 @@ export default function Combo() {
     <div className={classes.wrapper}>
       <a href="https://www.o1codingclub.in/" target="_blank">
       <div className={classes.mar}>
-        <img src="banner.png" className={classes.imgBig} />
+        <img src={banner} className={classes.imgBig} />
       </div>
 
       <div className={classes.mar2}>
-        <img src="combo_mid.png" className={classes.imgSmall} />
-        <img src="combo_left.png" className={classes.imgSmall} />
-        <img src="combo_right.png" className={classes.imgSmall} />
+        <img src={combomid} className={classes.imgSmall} />
+        <img src={comboleft} className={classes.imgSmall} />
+        <img src={comboright} className={classes.imgSmall} />
       </div>
       </a>
     </div>

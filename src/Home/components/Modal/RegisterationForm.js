@@ -74,6 +74,7 @@ const RegisterForm = (props) => {
         setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
         window.location = testlink;
         props.handleClose();
+
       })
       .catch(function (error) {
         setLoading(false);
@@ -81,11 +82,13 @@ const RegisterForm = (props) => {
           toast.error("Email Already Exist.");
         else if (error.response.data === "INVALID DATA")
           toast.warn("Please fill all the fields.");
+        else if (error.response.data === "WRONG KEY")
+          toast.warn("Wrong Key.");
         else {
           // console.log(error.response);
           toast.warn("Something goes wrong. Please try again.");
         }
-        props.handleClose();
+        // props.handleClose();
       });
     }
   };
@@ -219,7 +222,6 @@ const RegisterForm = (props) => {
             </Button>
           </Grid>
         </Grid>
-      </Container>
       <ToastContainer
         position="bottom-right"
         autoClose={2000}
@@ -231,6 +233,7 @@ const RegisterForm = (props) => {
         draggable
         theme="colored"
       />
+      </Container>
     </>
   );
 };
