@@ -114,9 +114,8 @@ const Overall = () => {
       "dbms",
       "os",
       "oops",
-      "logical",
-      "verbal",
-      "quantitative",
+      "general aptitude",
+      "language",
     ];
     if(key===0){
       setIsOverall(1);
