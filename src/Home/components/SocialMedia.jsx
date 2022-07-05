@@ -32,7 +32,7 @@ const SocialMedia = () => {
         </a>
 
         <a
-          href="https://www.linkedin.com/in/o-1-coding-club/?originalSubdomain=in"
+          href="https://t.me/+diEKUu4Y-oY3NDFl"
           target="_blank"
         >
           <TelegramIcon sx={iconStyle} />
