@@ -7,7 +7,7 @@ const Ban = ({weak,name}) => {
   // console.log(weak);
   const sde=weak?.sde_bootcamp
   const aptitude=weak?.apti
-  console.log(aptitude);
+  // console.log(aptitude);
   const core=weak?.core
   return (
     <Container maxWidth={'xl'} >

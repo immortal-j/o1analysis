@@ -7,29 +7,31 @@ const LeetCode = (props) => {
   // const getPercentile = (par) => {
   //   return parseFloat((par / total) * 100).toFixed(2);
   // };
-  const orignalseries = props.leetcodeSeries;
-  const labels = [
+  console.log(props);
+  let orignalseries = props.leetcodeSeries;
+  let orignaltotalseries=props.leetcodeTotalSeries;
+  let labels = [
     props.leetcodeLabel[0] +
       " - " +
-      orignalseries[0][0] +
+      orignalseries[0] +
       " / " +
-      orignalseries[0][1],
+      orignaltotalseries[0],
     props.leetcodeLabel[1] +
       " - " +
-      orignalseries[1][0] +
+      orignalseries[1] +
       " / " +
-      orignalseries[1][1],
+      orignaltotalseries[1],
     props.leetcodeLabel[2] +
       " - " +
-      orignalseries[2][0] +
+      orignalseries[2] +
       " / " +
-      orignalseries[2][1],
+      orignaltotalseries[2],
   ];
 
-  const series = [
-    ((orignalseries[0][0] / orignalseries[0][1]) * 100).toFixed(),
-    ((orignalseries[1][0] / orignalseries[1][1]) * 100).toFixed(),
-    ((orignalseries[2][0] / orignalseries[2][1]) * 100).toFixed(),
+  let series = [
+    ((orignalseries[0] / orignaltotalseries[0]) * 100).toFixed(),
+    ((orignalseries[1] / orignaltotalseries[1]) * 100).toFixed(),
+    ((orignalseries[2] / orignaltotalseries[2]) * 100).toFixed(),
   ];
   const temp = {
     series: series,
@@ -67,13 +69,8 @@ const LeetCode = (props) => {
                 //   return a + b + c;
                 // }, 0);
                 return (
-                  orignalseries[0][0] +
-                  orignalseries[1][0] +
-                  orignalseries[2][0] +
-                  " / " +
-                  (orignalseries[0][1] +
-                    orignalseries[1][1] +
-                    orignalseries[2][1])
+                 props.leetcodeTotal[0]+
+                  " / " + props.leetcodeTotal[1]
                 );
               },
             },

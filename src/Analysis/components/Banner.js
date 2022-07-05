@@ -1,8 +1,7 @@
 import React from "react";
 import "./Banner.css";
-import bannerImg from "../Assets/courses.jpeg";
 import { Container, Typography } from "@mui/material";
-import Combo from "../../Home/components/Combo";
+import Combo from "./Combo";
 
 const Banner = () => {
   // console.log(apti);

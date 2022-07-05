@@ -25,7 +25,7 @@ import Demo from "./demo";
 import CopyToClipboard from "react-copy-to-clipboard";
 import RankTableAK from "../components/RankTableAK";
 import Banner from "../components/Banner";
-import FooterNew from '../../Home/components/Footer/FooterNew'
+import FooterNew from "../../Home/components/Footer/FooterNew";
 import Ban from "../components/Ban";
 import { useCookies } from "react-cookie";
 const CardContents = styled(CardContent)({
@@ -48,6 +48,7 @@ const Overall = () => {
   const [name, setName] = useState("");
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
+  const [leetcodeTotalSeries, setLeetCodeTotalSeries] = useState([]);
   const [leetcodetotal, setLeetCodeTotal] = useState(0);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
   const [LineGraphSeries, setLineGraphSeries] = useState([]);
@@ -62,9 +63,9 @@ const Overall = () => {
   const [collegeRankList, setCollegeRankList] = useState([]);
   const [globalRankList, setGlobalRankList] = useState([]);
   const [listToShow, setListToShow] = useState([]);
-  const [isOverall,setIsOverall] = useState(1);
+  const [isOverall, setIsOverall] = useState(1);
   const [cookies, setCookie] = useCookies(["abcd"]);
-  const [demostatus,SetDemostatus] = useState(true);
+  const [demostatus, SetDemostatus] = useState(true);
   const currentURL = window.location.href;
   const publicURL = `${currentURL}`;
 
@@ -82,15 +83,16 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      // const weaktopics = await axios.post(
-      //   `https://o1apti.herokuapp.com/weak_topic`,
-      //   { email }
-      // );
-      // setWeak(weaktopics.data);
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/weak_topic`,
+        { email }
+      );
+      setWeak(weaktopics.data);
       setName(userData.data.name);
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotalSeries(userData.data.leetcode.total_series);
       setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
@@ -118,9 +120,9 @@ const Overall = () => {
       "general aptitude",
       "language",
     ];
-    if(key===0){
+    if (key === 0) {
       setIsOverall(1);
-    }else{
+    } else {
       setIsOverall(0);
     }
     try {
@@ -171,17 +173,18 @@ const Overall = () => {
         `https://o1apti.herokuapp.com/get_test_analysis`,
         obj
       );
-      // const weaktopics = await axios.post(
-      //   `https://o1apti.herokuapp.com/weak_topic`,
-      //   { email }
-      // );
-      
+      const weaktopics = await axios.post(
+        `https://o1apti.herokuapp.com/weak_topic`,
+        { email }
+      );
+
       getRankTable(key);
       setSubName(subject.data.subject);
-      // setWeak(weaktopics.data);
+      setWeak(weaktopics.data);
       setLeetCodeLabel(subject.data.leetcode.labels);
       setLeetCodeSeries(subject.data.leetcode.series);
       setLineGraphLabel(subject.data.linegraph.labels);
+      setLeetCodeTotalSeries(subject.data.leetcode.total_series);
       setLineGraphSeries(subject.data.linegraph.series);
       setPieChartLabel(subject.data.piechart.labels);
       setPieChartSeries(subject.data.piechart.series);
@@ -192,7 +195,7 @@ const Overall = () => {
       setVisibility(true);
       toast.info("Check your " + obj.subject + " analysis here");
     } catch (error) {
-            setVisibility(true);
+      setVisibility(true);
       toast.error("Subject data not found");
     }
   };
@@ -200,12 +203,11 @@ const Overall = () => {
   useEffect(() => {
     getAnalysis();
     getRankTable(0);
-    if("democookie" in cookies){
-      SetDemostatus(false)
-    }
-    else{
+    if ("democookie" in cookies) {
+      SetDemostatus(false);
+    } else {
       SetDemostatus(true);
-        setCookie("democookie",'done');
+      setCookie("democookie", "done");
     }
   }, [0]);
 
@@ -266,7 +268,7 @@ const Overall = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2 className="user-detail"> Hello,{" "}{name} </h2>
+                    <h2 className="user-detail"> Hello, {name} </h2>
                     <p>Nice to meet you !</p>
                     {/* <Typography variant="body1"> {publicURL}</Typography> */}
                     <CopyToClipboard text={publicURL}>
@@ -289,7 +291,7 @@ const Overall = () => {
                           color: "#6f63e6",
                         }}
                       >
-                       Copy Public Profile URL
+                        Copy Public Profile URL
                       </Button>
                     </CopyToClipboard>
                     <br></br>
@@ -331,6 +333,7 @@ const Overall = () => {
                       <LeetCode
                         leetcodeLabel={leetcodeLabel}
                         leetcodeSeries={leetcodeSeries}
+                        leetcodeTotalSeries={leetcodeTotalSeries}
                         leetcodeTotal={leetcodetotal}
                       />
                     </CardContents>
@@ -387,21 +390,23 @@ const Overall = () => {
                     }}
                   >
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                      {isOverall
-                      ?(<Button
-                        onClick={handleCollegeRankList}
-                        variant="contained"
-                        color="secondary"
-                        style={{
-                          marginTop: "1rem",
-                          marginLeft: "2rem",
-                          background: "#f4f4ff",
-                          color: "#6f63e6",
-                        }}
-                      >
-                        College Level RankList
-                      </Button>)
-                      :('')}
+                      {isOverall ? (
+                        <Button
+                          onClick={handleCollegeRankList}
+                          variant="contained"
+                          color="secondary"
+                          style={{
+                            marginTop: "1rem",
+                            marginLeft: "2rem",
+                            background: "#f4f4ff",
+                            color: "#6f63e6",
+                          }}
+                        >
+                          College Level RankList
+                        </Button>
+                      ) : (
+                        ""
+                      )}
                       {/* <Button
                         onClick={handleCollegeRankList}
                         variant="contained"
@@ -448,11 +453,11 @@ const Overall = () => {
               </Grid>
             </Grid>
             <br />
-            <Banner/>
-            <Ban weak={weak} name={name}/>
-            <FooterNew/>
+            <Banner />
+            <Ban weak={weak} name={name} />
+            <FooterNew />
           </Container>
-          {demostatus?<Demo />:''} 
+          {demostatus ? <Demo /> : ""}
           <br />
           <br />
         </div>
