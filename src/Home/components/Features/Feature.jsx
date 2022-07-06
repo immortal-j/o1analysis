@@ -42,7 +42,9 @@ const FeatureSection = () => {
           </div>
         </Typography>
         <Grid container alignItems={"center"} rowSpacing={1} columnSpacing={5}>
+
           <Grid item xs={12} sm={12} md={5}>
+{/* <h3 className="heading-desktop" style={{textAlign:"center"}} > No of Correct and Incorrect Answers</h3>  */}
             <Stackbargraph
               StackBarLabel={dummyData.stackgraph.labels}
               StackBarSeries={dummyData.stackgraph.series}
@@ -51,8 +53,8 @@ const FeatureSection = () => {
           <Grid item xs={12} sm={12} md={7}>
             <Box sx={{ height: "max-content" }}>
               <div  style={FeatureParagraph}>
-                <h3> No of Correct and Incorrect Answers</h3> Analysis the
-                number of correct and incorrect answers per subject and get to
+                <h3 className="heading-desktop" > No of Correct and Incorrect Answers</h3> 
+                Analysis the number of correct and incorrect answers per subject and get to
                 know where you need to work on.
               </div>
             </Box>
@@ -64,11 +66,13 @@ const FeatureSection = () => {
           rowSpacing={1}
           columnSpacing={5}
           wrap={"wrap-reverse"}
-        >
+        >  
+          {/* <h3  className="heading-desktop" >Subject-wise Performance</h3> */}
           <Grid item xs={12} sm={12} md={7} order={{ md: 2, lg: 1 }}>
+        
             <Box sx={{ height: "max-content" }}>
               <div style={FeatureParagraph}>
-                <h3>Subject-wise Performance</h3>
+                <h3  className="heading-desktop" >Subject-wise Performance</h3>
                 Graphically track your strongest and weakest subject based on
                 your performance in the test so that you always have a chance to
                 improve and work on your weak topics.
@@ -92,7 +96,7 @@ const FeatureSection = () => {
           <Grid item xs={12} sm={12} md={7}>
             <Box>
               <div style={FeatureParagraph}>
-                <h3>Overall Analysis:</h3>
+                <h3  className="heading-desktop" >Overall Analysis:</h3>
                 Analyse your contribution per subject based upon the questions
                 you solved in
                 <pre>● DAA ● DSA ● DBMS ● SE ● OS</pre>{" "}

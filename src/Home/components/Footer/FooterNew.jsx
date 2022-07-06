@@ -37,7 +37,7 @@ const FooterNew = () => {
               <h4>Contact</h4>
               <ul className="footer-link">
                 <li>
-                  <a href="o1codingclub@gmail.com" title="Contact">
+                  <a href= "mailto: o1codingclub@gmail.com" title="Contact">
                     o1codingclub@gmail.com
                   </a>
                 </li>
