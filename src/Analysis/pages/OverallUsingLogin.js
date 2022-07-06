@@ -27,8 +27,8 @@ import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
-import Combo from '../../Home/components/Combo'
-import FooterNew from '../../Home/components/Footer/FooterNew'
+import Combo from "../../Home/components/Combo";
+import FooterNew from "../../Home/components/Footer/FooterNew";
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
 const CardContents = styled(CardContent)({
@@ -63,6 +63,7 @@ const style = {
 const Overall2 = () => {
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
+  const [leetcodeTotalSeries, setLeetCodeTotalSeries] = useState([]);
   const [leetcodetotal, setLeetCodeTotal] = useState(0);
   const [LineGraphLabel, setLineGraphLabel] = useState([]);
   const [LineGraphSeries, setLineGraphSeries] = useState([]);
@@ -73,7 +74,7 @@ const Overall2 = () => {
   const [open, setOpen] = useState(true);
   const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
-  const [subName, setSubName] = useState("Overall");
+  const [subName, setSubName] = useState("Overall Analysis");
   const [loading, setLoading] = useState(false);
   const [collegeRank, setCollegeRank] = useState(0);
   const [globalRank, setGlobalRank] = useState(0);
@@ -85,8 +86,8 @@ const Overall2 = () => {
   const [email, setEmail] = useState("");
   const [active, SetActive] = useState(false);
   const [cookies, setCookie] = useCookies(["abcd"]);
-  const [isOverall,setIsOverall] = useState(1);
-  const [demostatus,SetDemostatus] = useState(true);
+  const [isOverall, setIsOverall] = useState(1);
+  const [demostatus, SetDemostatus] = useState(true);
   const obj = {
     email: email,
     subject: "overall",
@@ -106,9 +107,9 @@ const Overall2 = () => {
       "general aptitude",
       "language",
     ];
-    if(key===0){
+    if (key === 0) {
       setIsOverall(1);
-    }else{
+    } else {
       setIsOverall(0);
     }
     try {
@@ -149,9 +150,9 @@ const Overall2 = () => {
       "general aptitude",
       "language",
     ];
-    if(key===0){
+    if (key === 0) {
       setIsOverall(1);
-    }else{
+    } else {
       setIsOverall(0);
     }
     try {
@@ -160,7 +161,7 @@ const Overall2 = () => {
         subject: subjectlist[key],
         // rank_subject: "overall",
       };
-      
+
       const userData = await axios.post(
         `https://o1apti.herokuapp.com/ranklist/subject_ranklist`,
         obj
@@ -183,54 +184,50 @@ const Overall2 = () => {
   const fetchSubject = async (key) => {
     setLoading(true);
     try {
-      
-   
-    const subjectlist = [
-      "overall",
-      "dsa",
-      "cn",
-      "dbms",
-      "os",
-      "oops",
-      "general aptitude",
-      "language",
-      
-    ];
-    getRankTable(key);
-    const obj = {
-      email: email,
-      subject: subjectlist[key],
-      
-    };
+      const subjectlist = [
+        "overall",
+        "dsa",
+        "cn",
+        "dbms",
+        "os",
+        "oops",
+        "general aptitude",
+        "language",
+      ];
+      getRankTable(key);
+      const obj = {
+        email: email,
+        subject: subjectlist[key],
+      };
 
-    const subject = await axios.post(
-      `https://o1apti.herokuapp.com/get_test_analysis`,
-      obj
-    );
-    // const weaktopics = await axios.post(
-    //   `https://o1apti.herokuapp.com/weak_topic`,
-    //   { email }
-    // );
-    
-    // setWeak(weaktopics.data);
-    setSubName(subject.data.subject);
-    setLeetCodeLabel(subject.data.leetcode.labels);
-    setLeetCodeSeries(subject.data.leetcode.series);
-    setLineGraphLabel(subject.data.linegraph.labels);
-    setLineGraphSeries(subject.data.linegraph.series);
-    setPieChartLabel(subject.data.piechart.labels);
-    setPieChartSeries(subject.data.piechart.series);
-    setPieChartLabel(subject.data.piechart.labels);
-    setPieChartSeries(subject.data.piechart.series);
-    setStackBarLabel(subject.data.stackgraph.labels);
-    setStackBarSeries(subject.data.stackgraph.series);
-    setLoading(false);
-    toast.info("Check your " + obj.subject+ " analysis here");
-  } catch (error) {
-    setLoading(false);
-    toast.error("Subject data not found");
-      
-  }
+      const subject = await axios.post(
+        `https://o1apti.herokuapp.com/get_test_analysis`,
+        obj
+      );
+      // const weaktopics = await axios.post(
+      //   `https://o1apti.herokuapp.com/weak_topic`,
+      //   { email }
+      // );
+
+      // setWeak(weaktopics.data);
+      setSubName(subject.data.subject);
+      setLeetCodeLabel(subject.data.leetcode.labels);
+      setLeetCodeSeries(subject.data.leetcode.series);
+      setLeetCodeTotalSeries(subject.data.leetcode.total_series);
+      setLineGraphLabel(subject.data.linegraph.labels);
+      setLineGraphSeries(subject.data.linegraph.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setPieChartLabel(subject.data.piechart.labels);
+      setPieChartSeries(subject.data.piechart.series);
+      setStackBarLabel(subject.data.stackgraph.labels);
+      setStackBarSeries(subject.data.stackgraph.series);
+      setLoading(false);
+      toast.info("Check your " + obj.subject + " analysis here");
+    } catch (error) {
+      setLoading(false);
+      toast.error("Subject data not found");
+    }
   };
 
   const handleLogin = async (e) => {
@@ -245,10 +242,11 @@ const Overall2 = () => {
       );
       fetchWeakTopics(email);
       setName(userData.data.name);
-      console.log(userData)
+      // console.log(userData);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
       setLeetCodeTotal(userData.data.leetcode.total);
+      setLeetCodeTotalSeries(userData.data.leetcode.total_series);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
       setPieChartLabel(userData.data.piechart.labels);
@@ -285,6 +283,7 @@ const Overall2 = () => {
       setSubName(userData.data.subject);
       setLeetCodeLabel(userData.data.leetcode.labels);
       setLeetCodeSeries(userData.data.leetcode.series);
+      setLeetCodeTotalSeries(userData.data.leetcode.total_series);
       setLeetCodeTotal(userData.data.leetcode.total);
       setLineGraphLabel(userData.data.linegraph.labels);
       setLineGraphSeries(userData.data.linegraph.series);
@@ -305,16 +304,15 @@ const Overall2 = () => {
       console.log(e);
     }
   };
-  const fetchWeakTopics=async(par)=>{
-    console.log(par);
+  const fetchWeakTopics = async (par) => {
+    // console.log(par);
     const weaktopics = await axios.post(
-        `https://o1apti.herokuapp.com/weak_topic`,
-        {email:par} 
-      );
-     
-      setWeak(weaktopics.data);
-      
-  }
+      `https://o1apti.herokuapp.com/weak_topic`,
+      { email: par }
+    );
+
+    setWeak(weaktopics.data);
+  };
   const handlecookie = (par) => {
     handleLoginWithCookie(par);
   };
@@ -322,13 +320,12 @@ const Overall2 = () => {
     if ("o1user" in cookies) {
       handlecookie(cookies.o1user);
     }
-    if("democookie" in cookies){
-      SetDemostatus(false)
-    }
-    else{
+    if ("democookie" in cookies) {
+      SetDemostatus(false);
+    } else {
       SetDemostatus(true);
       setTimeout(() => {
-        setCookie("democookie",'done');
+        setCookie("democookie", "done");
       }, 100);
     }
   }, [0]);
@@ -441,7 +438,7 @@ const Overall2 = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2 className="user-detail"> Hello,{" "}{name}</h2>
+                    <h2 className="user-detail"> Hello, {name}</h2>
                     <p>Nice to meet you !</p>
                     {/* <Typography variant="body1"> {publicURL}</Typography> */}
                     <CopyToClipboard text={publicURL}>
@@ -464,7 +461,7 @@ const Overall2 = () => {
                           color: "#6f63e6",
                         }}
                       >
-                       Copy Public Profile URL
+                        Copy Public Profile URL
                       </Button>
                     </CopyToClipboard>
                     <br></br>
@@ -506,6 +503,7 @@ const Overall2 = () => {
                       <LeetCode
                         leetcodeLabel={leetcodeLabel}
                         leetcodeSeries={leetcodeSeries}
+                        leetcodeTotalSeries={leetcodeTotalSeries}
                         leetcodeTotal={leetcodetotal}
                       />
                     </CardContents>
@@ -599,7 +597,6 @@ const Overall2 = () => {
                     </div>
                     <CardContentsMobile>
                       <RankTableAK
-                       
                         ListToShow={listToShow}
                         collegeRankList={collegeRankList}
                         globalRankList={globalRankList}
@@ -611,10 +608,10 @@ const Overall2 = () => {
               </Grid>
             </Grid>
 
-           {demostatus?<Demo />:''} 
-            <Banner  />
-            <Ban weak={weak} name={name}/>
-            <FooterNew/>
+            {demostatus ? <Demo /> : ""}
+            <Banner />
+            <Ban weak={weak} name={name} />
+            <FooterNew />
           </Container>
         </div>
       )}

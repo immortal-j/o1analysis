@@ -27,17 +27,13 @@ const FooterNew = () => {
                 <p className="tagline">A product of O1 Coding Club.</p>
               </div>
             </div>
-            <div className="col-md-2">
-             
-            </div>
-            <div className="col-md-2">
-             
-            </div>
+            <div className="col-md-2"></div>
+            <div className="col-md-2"></div>
             <div className="col-md-3">
               <h4>Contact</h4>
               <ul className="footer-link">
                 <li>
-                  <a href= "mailto: o1codingclub@gmail.com" title="Contact">
+                  <a href="mailto:o1codingclub@gmail.com" title="Contact">
                     o1codingclub@gmail.com
                   </a>
                 </li>
@@ -52,10 +48,7 @@ const FooterNew = () => {
                       >
                         <LinkedInIcon />
                       </a>
-                      <a
-                        href="https://t.me/+diEKUu4Y-oY3NDFl"
-                        target="_blank"
-                      >
+                      <a href="https://t.me/+diEKUu4Y-oY3NDFl" target="_blank">
                         <TelegramIcon />
                       </a>
                       <a

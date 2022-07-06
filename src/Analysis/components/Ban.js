@@ -7,7 +7,7 @@ const Ban = ({weak,name}) => {
   // console.log(weak);
   const sde=weak?.sde_bootcamp
   const aptitude=weak?.apti
-  console.log(aptitude);
+  // console.log(aptitude);
   const core=weak?.core
   return (
     <Container maxWidth={'xl'} >
@@ -53,7 +53,7 @@ const Ban = ({weak,name}) => {
             </div>
            
             {sde && 
-            <CourseCard courseName={"Complete SDE Bootcamp - Master Course"} />
+            <CourseCard courseName={"Complete SDE Bootcamp "} />
           }{
             aptitude && <CourseCard courseName={"Aptitude Series - Self Pace"} /> 
           }
@@ -63,7 +63,7 @@ const Ban = ({weak,name}) => {
           {
             !sde && !aptitude && !core &&  <div>
           
-          <CourseCard courseName={"Complete SDE Bootcamp - Master Course"} />
+          <CourseCard courseName={"Complete SDE Bootcamp "} />
             <CourseCard courseName={"Aptitude Series - Self Pace"} />
             <CourseCard courseName={"Core Subjects - Crash Course"} /></div>
           }
