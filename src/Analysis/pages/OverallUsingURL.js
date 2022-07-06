@@ -56,7 +56,7 @@ const Overall = () => {
   const [PieChartSeries, setPieChartSeries] = useState([]);
   const [StackBarLabel, setStackBarLabel] = useState([]);
   const [StackBarSeries, setStackBarSeries] = useState([]);
-  const [subName, setSubName] = useState("");
+  const [subName, setSubName] = useState("Overall Analysis");
   const [weak, setWeak] = useState({});
   const [collegeRank, setCollegeRank] = useState(0);
   const [globalRank, setGlobalRank] = useState(0);
