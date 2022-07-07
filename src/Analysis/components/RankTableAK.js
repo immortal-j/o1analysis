@@ -21,7 +21,7 @@ var columns = [
     selector: (row) => row.total_score,
     sortable: true,
   },
-  
+
   {
     name: "College",
     selector: (row) => row.college,
@@ -29,23 +29,6 @@ var columns = [
   },
 ];
 
-// const conditionalRowStyles = [
-//   {
-//     when: (row) => row.email === email,
-//     style: {
-//       backgroundColor: "green",
-//       color: "white",
-//       "&:hover": {
-//         cursor: "pointer",
-//       },
-//     },
-//   },
-//   // You can also pass a callback to style for additional customization
-//   // {
-//   //   when: (row) => row.calories < 400,
-//   //   style: (row) => ({ backgroundColor: row.isSpecial ? "pink" : "inerit" }),
-//   // },
-// ];
 
 const customStyles = {
   table: {
@@ -66,7 +49,7 @@ const customStyles = {
       paddingLeft: "12px",
       // backgroundColor: "#040612",
       // paddingRight: "58px",
-      fontSize:"1.3rem"
+      fontSize: "1.3rem"
     },
   },
   cells: {
@@ -75,7 +58,7 @@ const customStyles = {
       // paddingRight: "8px",
     },
   },
- 
+
 };
 
 createTheme("dark", {
@@ -86,20 +69,20 @@ createTheme("dark", {
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
-    <FilledInput 
-     variant="outlined"
+    <FilledInput
+      variant="outlined"
       id="search"
       type="text"
       placeholder="Filter By Name"
       aria-label="Search Input"
       value={filterText}
       onChange={onFilter}
-       inputProps={{
-        style: { color:"white",opacity:"0.7",fontSize:"0.9rem" },
+      inputProps={{
+        style: { color: "white", opacity: "0.7", fontSize: "0.9rem" },
       }}
     />
     <Button type="button" onClick={onClear}
-     style={{color:"white",opacity:"0.7"}}>
+      style={{ color: "white", opacity: "0.7" }}>
       X
     </Button>
   </>
@@ -148,38 +131,60 @@ createTheme(
 );
 
 function RankTableAK(props) {
+  console.log(props);
   getData(props);
   const [filterText, setFilterText] = React.useState('');
-	const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
-	const filteredItems = userData.filter(
-		item => item.name && item.name.toLowerCase().includes(filterText.toLowerCase()),
-);
-
-	const subHeaderComponentMemo = React.useMemo(() => {
-		const handleClear = () => {
-			if (filterText) {
-				setResetPaginationToggle(!resetPaginationToggle);
-				setFilterText('');
-			}
-		};
-
-		return (
-			<FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
-		);
-	}, [filterText, resetPaginationToggle]);
-  return (
-    <DataTable
-      columns={columns}
-      data={filteredItems}
-      customStyles={customStyles}
-      // conditionalRowStyles={conditionalRowStyles}
-      theme="solarized"
-      pagination
-      subHeader
-			subHeaderComponent={subHeaderComponentMemo}
-    />
-    
+  const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+  const filteredItems = userData.filter(
+    item => item.name && item.name.toLowerCase().includes(filterText.toLowerCase()),
   );
+  const conditionalRowStyles = [
+    {
+      when: (row) => row.name === props.ListToShow[0].name,
+      style: {
+        backgroundColor: "rgb(237 235 255)",
+        color: "#002c94",
+        textTransform: "uppercase",
+        borderRadius: "0.5rem",
+        border: "#243a73 solid 0.1rem"
+      },
+      "&:hover": {
+        cursor: "pointer",
+      },
+    
+  },
+  // You can also pass a callback to style for additional customization
+  // {
+  //   when: (row) => row.calories < 400,
+  //   style: (row) => ({ backgroundColor: row.isSpecial ? "pink" : "inerit" }),
+  // },
+];
+
+const subHeaderComponentMemo = React.useMemo(() => {
+  const handleClear = () => {
+    if (filterText) {
+      setResetPaginationToggle(!resetPaginationToggle);
+      setFilterText('');
+    }
+  };
+
+  return (
+    <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
+  );
+}, [filterText, resetPaginationToggle]);
+return (
+  <DataTable
+    columns={columns}
+    data={filteredItems}
+    customStyles={customStyles}
+    conditionalRowStyles={conditionalRowStyles}
+    theme="solarized"
+    pagination
+    subHeader
+    subHeaderComponent={subHeaderComponentMemo}
+  />
+
+);
 }
 
 export default RankTableAK;
