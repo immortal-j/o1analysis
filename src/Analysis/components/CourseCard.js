@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CourseCard = ({courseName}) => {
+const CourseCard = ({courseName,coursePrice,courseMRP}) => {
   return (
     <Wrapper style={{ boxShadow: "rgb(0 0 0 / 85%) 0px 4px 16px" }}>
       <Card>
@@ -23,10 +23,10 @@ const CourseCard = ({courseName}) => {
                 variant="h6"
                 style={{ textDecoration: "line-through", color: "#ADADAD",fontSize:"1rem" }}
               >
-                ₹ 6000
+                {courseMRP}
               </Typography>
               <Typography variant="h6" style={{ color: "#ffbe37" }}>
-                ₹ 3000
+                {coursePrice}
               </Typography>
             </div>
             <div >

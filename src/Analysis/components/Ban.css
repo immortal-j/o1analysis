@@ -1,5 +1,6 @@
 .banner-container-1{
     flex-direction: column;
+    box-shadow: 0 5px 10px #0005;
     display: flex;
     align-items: center;
     width: 100%;
@@ -13,6 +14,7 @@
 
     border-radius: 5px;
     margin:10px;
+    margin-bottom: 0;
     display: flex;
     width: 100%;
     padding:1.2rem ;
@@ -20,7 +22,6 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    box-shadow: 0 5px 10px #0005;
     overflow: hidden;
 }
 
@@ -35,12 +36,13 @@
 }
 
 .banner-container-1 .banner-1 .content{
-    gap: 2rem;
+    gap: 1.2rem;
     flex-wrap: wrap;
     text-align: center;
     position: relative;
     flex:1;
-    padding:10px;
+    left: 3rem;
+    /* padding:10px; */
     /* text-transform: uppercase; */
 }
 
@@ -74,7 +76,8 @@
 .banner-container-1 .banner-1 .women{
     position: relative;
     bottom: -56px;
-    padding:10px;
+    /* padding:10px; */
+    left: 4rem;
     /* flex:1 1 250px; */
 }
 
@@ -85,5 +88,8 @@
 @media (max-width:768px){
     .banner-container-1 .banner-1 .women{
         display: none;
+    }
+    .banner-container-1 .banner-1 .content{
+        left: 0;
     }
 }

@@ -131,7 +131,6 @@ createTheme(
 );
 
 function RankTableAK(props) {
-  console.log(props);
   getData(props);
   const [filterText, setFilterText] = React.useState('');
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
@@ -151,40 +150,40 @@ function RankTableAK(props) {
       "&:hover": {
         cursor: "pointer",
       },
-    
-  },
-  // You can also pass a callback to style for additional customization
-  // {
-  //   when: (row) => row.calories < 400,
-  //   style: (row) => ({ backgroundColor: row.isSpecial ? "pink" : "inerit" }),
-  // },
-];
 
-const subHeaderComponentMemo = React.useMemo(() => {
-  const handleClear = () => {
-    if (filterText) {
-      setResetPaginationToggle(!resetPaginationToggle);
-      setFilterText('');
-    }
-  };
+    },
+    // You can also pass a callback to style for additional customization
+    // {
+    //   when: (row) => row.calories < 400,
+    //   style: (row) => ({ backgroundColor: row.isSpecial ? "pink" : "inerit" }),
+    // },
+  ];
 
+  const subHeaderComponentMemo = React.useMemo(() => {
+    const handleClear = () => {
+      if (filterText) {
+        setResetPaginationToggle(!resetPaginationToggle);
+        setFilterText('');
+      }
+    };
+
+    return (
+      <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
+    );
+  }, [filterText, resetPaginationToggle]);
   return (
-    <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
-  );
-}, [filterText, resetPaginationToggle]);
-return (
-  <DataTable
-    columns={columns}
-    data={filteredItems}
-    customStyles={customStyles}
-    conditionalRowStyles={conditionalRowStyles}
-    theme="solarized"
-    pagination
-    subHeader
-    subHeaderComponent={subHeaderComponentMemo}
-  />
+    <DataTable
+      columns={columns}
+      data={filteredItems}
+      customStyles={customStyles}
+      conditionalRowStyles={conditionalRowStyles}
+      theme="solarized"
+      pagination
+      subHeader
+      subHeaderComponent={subHeaderComponentMemo}
+    />
 
-);
+  );
 }
 
 export default RankTableAK;
