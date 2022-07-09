@@ -7,9 +7,9 @@ const LeetCode = (props) => {
   // const getPercentile = (par) => {
   //   return parseFloat((par / total) * 100).toFixed(2);
   // };
-  console.log(props);
+  // console.log(props);
   let orignalseries = props.leetcodeSeries;
-  let orignaltotalseries=props.leetcodeTotalSeries;
+  let orignaltotalseries = props.leetcodeTotalSeries;
   let labels = [
     props.leetcodeLabel[0] +
       " - " +
@@ -68,10 +68,7 @@ const LeetCode = (props) => {
                 // return w.globals.seriesTotals.reduce((a, b, c) => {
                 //   return a + b + c;
                 // }, 0);
-                return (
-                 props.leetcodeTotal[0]+
-                  " / " + props.leetcodeTotal[1]
-                );
+                return props.leetcodeTotal[0] + " / " + props.leetcodeTotal[1];
               },
             },
           },

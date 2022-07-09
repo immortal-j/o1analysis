@@ -6,25 +6,23 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Button } from "@mui/material";
 import { NavBarData } from "./NavBarData";
 import { Link } from "react-router-dom";
-import { useCookies } from 'react-cookie';
-import LogoutIcon from '@mui/icons-material/Logout';
-const ToggleSidebar = ({fetchSubject,subName} ) => {
+import { useCookies } from "react-cookie";
+import LogoutIcon from "@mui/icons-material/Logout";
+const ToggleSidebar = ({ fetchSubject, subName }) => {
   const [isOpen, setIsopen] = useState(false);
-  const [cookies, setCookie,RemoveCookie] = useCookies(['abcd']);
+  const [cookies, setCookie, RemoveCookie] = useCookies(["abcd"]);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
   };
 
-  const xyz=(key)=>{
+  const xyz = (key) => {
     ToggleSidebar();
-      fetchSubject(key)
-     
-  }
-  const handleLogOut=()=>{
+    fetchSubject(key);
+  };
+  const handleLogOut = () => {
     RemoveCookie("o1user");
-    window.location.href='/dashboard'
-  }
-
+    window.location.href = "/dashboard";
+  };
 
   return (
     <>
@@ -36,12 +34,18 @@ const ToggleSidebar = ({fetchSubject,subName} ) => {
                 <MenuIcon />
               </div>
             </div>
-            <h3 style={{color:'white', marginRight:"auto", textTransform:"capitalize"}}>
+            <h3
+              style={{
+                color: "white",
+                marginRight: "auto",
+                textTransform: "capitalize",
+              }}
+            >
               {subName}
             </h3>
             {/* <Button  className="mr-3" style={{backgroundColor:"#6f63e6",}} variant="contained" onClick={handleLogOut}>LOGOUT<LogoutIcon style={{    marginLeft: "0.2rem",
     paddingLeft: "0.2rem"}}/></Button> */}
-            <Link className="navbar-brand text-primary mr-0" to='/'>
+            <Link className="navbar-brand text-primary mr-0" to="/">
               <img
                 className="brand-logo"
                 src={Logo}
@@ -53,7 +57,7 @@ const ToggleSidebar = ({fetchSubject,subName} ) => {
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-            <Link to='/' className="navbar-brand text-primary mr-0">
+            <Link to="/" className="navbar-brand text-primary mr-0">
               <img
                 className="brand-logo"
                 src={Logo}

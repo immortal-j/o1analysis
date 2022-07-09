@@ -3,16 +3,15 @@ import "./textStyle.css";
 import { Typography } from "@mui/material";
 function List() {
   return (
-
     <Typography className="para">
-      Not just a coding platform, but a complete placement ecosystem with strong
-      emphasis on high quality placement training & support, not only equipping
-      you with relevant job market skills but providing every help to land your
-      dream job.
+      <Typography fontSize={"x-large"} fontWeight={"bold"}>
+         Afraid of the upcoming placements?
+      </Typography>
+      Know-Your-Prep is a tool that helps you judge your preparation for placements.
+	  Get detailed analysis of your strong and weak areas and see where you stand with our <b>Placement Readiness Score</b> and what to do next to succeed.
     </Typography>
 
   );
 }
 
 export default List;
-

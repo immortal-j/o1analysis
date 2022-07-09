@@ -183,8 +183,9 @@ const Overall = () => {
       setWeak(weaktopics.data);
       setLeetCodeLabel(subject.data.leetcode.labels);
       setLeetCodeSeries(subject.data.leetcode.series);
-      setLineGraphLabel(subject.data.linegraph.labels);
+      setLeetCodeTotal(subject.data.leetcode.total);
       setLeetCodeTotalSeries(subject.data.leetcode.total_series);
+      setLineGraphLabel(subject.data.linegraph.labels);
       setLineGraphSeries(subject.data.linegraph.series);
       setPieChartLabel(subject.data.piechart.labels);
       setPieChartSeries(subject.data.piechart.series);

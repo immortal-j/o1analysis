@@ -4,49 +4,58 @@ function Demo() {
   const [state, setState] = useState({
     stepsEnabled: false,
     initialStep: 0,
-    showProgress:true,
+    showProgress: true,
     steps: [
       {
         element: ".user-detail",
-        intro: "About User",
+        intro:
+          "<b>About User</b><br/> Share your public profile with friends and on social media",
+        position: "right",
       },
       {
         element: ".overall-analysis",
-        intro: "Score Distribution",
+        intro:
+          "<b>Score Distribution</b><br/> Distribution of score between different subjects/topics",
       },
       {
         element: ".levelwise-analysis",
-        intro: "Levelwise Distribution",
+        intro:
+          "<b>Levelwise Distribution</b><br/> Distribution of score according to level - easy, medium and hard",
       },
       {
         element: ".correct-analysis",
-        intro: "No of correct and incorrect questions",
+        intro:
+          "<b>No of correct and incorrect questions</b> of each subject/topic",
+        position: "right",
       },
       {
         element: ".subjectWise-analysis",
-        intro: "Hard and weak topics",
+        intro:
+          "<b>Hard and weak topics</b><br/> Analyze your weakness and improve on them",
       },
     ],
   });
-  const options={
+  const options = {
     showProgress: true,
-  }
+  };
 
   useEffect(() => {
-   toggleSteps();
-  },[]);
-  const onExit = () => {
-    setState((prev) => ({...prev, stepsEnabled: false }));
-};
+    toggleSteps();
+  }, []);
 
-const toggleSteps = () => {
-    setState(prev => ({...prev,stepsEnabled: !prev.stepsEnabled }));
-};
+  const onExit = () => {
+    setState((prev) => ({ ...prev, stepsEnabled: false }));
+  };
+
+  const toggleSteps = () => {
+    setState((prev) => ({ ...prev, stepsEnabled: !prev.stepsEnabled }));
+  };
 
   return (
     <div>
       <Steps
         enabled={state.stepsEnabled}
+        // enabled={true}
         options={options}
         steps={state.steps}
         initialStep={state.initialStep}

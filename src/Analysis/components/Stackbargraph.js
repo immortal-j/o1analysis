@@ -5,17 +5,21 @@ const StackbarGraph = (props) => {
   // const series = byId?.[0].stackgraph.series;
   // const labels = byId?.[0].stackgraph.labels;
 
-  const labels=props.StackBarLabel
-  const series=props.StackBarSeries
+  const labels = props.StackBarLabel;
+  const series = props.StackBarSeries;
+
+  try {
+    labels.forEach((elem, ind) => {
+      var label = elem.split(" ");
+      labels[ind] = label;
+    });
+  } catch (error) {}
+
   const temp = {
     series: series,
-    // series: [
-    //   { name: "Right", data: [55, 22, 66, 77, 52, 99, 34] },
-    //   { name: "Wrong", data: [-35, -10, -22, -17, -26, -23, -21] },
-    // ],
     options: {
       title: {
-        text: "No of correct and incorrect answers",
+        text: "Number of correct and incorrect answers",
         align: "Center",
         style: {
           color: "#fff",
@@ -25,17 +29,19 @@ const StackbarGraph = (props) => {
         toolbar: { show: false },
         type: "bar",
         stacked: "true",
+        height: 450,
       },
       plotOptions: {
         bar: {
           dataLabels: {
             position: "top",
           },
+          columnWidth: "80%",
         },
       },
       dataLabels: {
         enabled: true,
-        offsetX: -6,
+        offsetX: 0,
         style: {
           fontSize: "12px",
           colors: ["#fff"],
@@ -44,7 +50,7 @@ const StackbarGraph = (props) => {
       stroke: {
         show: true,
         width: 1,
-        colors: ["#EB5797","#EF7DBA","#C05FE3"],
+        colors: ["#EB5797", "#EF7DBA", "#C05FE3"],
         // colors: ["#EB5797"],
       },
       // colors: ["rgba(237, 10, 51,0.5)", "#ED0A33"],
@@ -67,13 +73,13 @@ const StackbarGraph = (props) => {
       },
       legend: {
         labels: {
-          colors: "white",
+          colors: "#fff",
         },
       },
       xaxis: {
         categories: labels,
-        // categories: ["DAA", "DSA", "AI", "DBMS", "React", "OS", "MERN"],
         labels: {
+          rotate: 0,
           style: {
             colors: "#fff",
             fontSize: "12px",
@@ -94,36 +100,36 @@ const StackbarGraph = (props) => {
         {
           breakpoint: 1000,
           options: {
-            chart:{
-            height: "200%"
-          },
+            chart: {
+              height: "200%",
+            },
             plotOptions: {
               bar: {
-                horizontal: false
-              }
+                horizontal: false,
+              },
             },
             legend: {
-              position: "bottom"
-            }
-          }
+              position: "bottom",
+            },
+          },
         },
         {
           breakpoint: 600,
           options: {
-            chart:{
-            height: "200%"
-          },
+            chart: {
+              height: "200%",
+            },
             plotOptions: {
               bar: {
-                horizontal: false
-              }
+                horizontal: false,
+              },
             },
             legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
+              position: "bottom",
+            },
+          },
+        },
+      ],
     },
   };
 

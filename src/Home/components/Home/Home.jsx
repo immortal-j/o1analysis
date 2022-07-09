@@ -18,7 +18,7 @@ const Home = () => {
       >
         <Navbar />
         <Main />
-        
+
         {/* Main content contains Start btn, modal, form */}
         <SocialMedia />
       </div>

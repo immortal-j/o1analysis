@@ -3,16 +3,18 @@ import Chart from "react-apexcharts";
 const LineGraph = (props) => {
   // const series = byId?.[0].linegraph.series;
   // const labels = byId?.[0].linegraph.labels;
-  const labels=props.LineGraphLabel
-  const series=props.LineGraphSeries
+  const labels = props.LineGraphLabel;
+  const series = props.LineGraphSeries;
+
+  try {
+    labels.forEach((elem, ind) => {
+      var label = elem.split(" ");
+      labels[ind] = label;
+    });
+  } catch (error) {}
+
   const temp = {
     series: series,
-    // series: [
-    //   {
-    //     name: "Subjects",
-    //     data: [12, 20, 33, 36, 32, 32, 33],
-    //   },
-    // ],
     options: {
       chart: {
         type: "line",
@@ -85,10 +87,10 @@ const LineGraph = (props) => {
         theme: "dark",
         y: {
           title: {
-            formatter: function(val) {
-              return val.length >= 0 ? "Total Marks" + '...' : val
-            }
-          }
+            formatter: function (val) {
+              return val.length >= 0 ? "Total Marks" + "..." : val;
+            },
+          },
         },
         style: {
           fontSize: "10px",
@@ -136,36 +138,36 @@ const LineGraph = (props) => {
         {
           breakpoint: 1000,
           options: {
-            chart:{
-            height: "200%"
-          },
+            chart: {
+              height: "200%",
+            },
             plotOptions: {
               bar: {
-                horizontal: false
-              }
+                horizontal: false,
+              },
             },
             legend: {
-              position: "bottom"
-            }
-          }
+              position: "bottom",
+            },
+          },
         },
         {
           breakpoint: 600,
           options: {
-            chart:{
-            height: "200%"
-          },
+            chart: {
+              height: "200%",
+            },
             plotOptions: {
               bar: {
-                horizontal: false
-              }
+                horizontal: false,
+              },
             },
             legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
+              position: "bottom",
+            },
+          },
+        },
+      ],
     },
   };
   return <Chart type="line" options={temp.options} series={temp.series} />;

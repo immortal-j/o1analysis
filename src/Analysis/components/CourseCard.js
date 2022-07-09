@@ -3,12 +3,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CourseCard = ({courseName}) => {
+const CourseCard = ({ courseName, coursePrice, coursePriceNew, website }) => {
+  const handleWebsiteOpen = () => {
+    window.location.href = website;
+  };
+
   return (
     <Wrapper style={{ boxShadow: "rgb(0 0 0 / 85%) 0px 4px 16px" }}>
       <Card>
-        <div style={{borderRadius: '0.5rem',height:"8rem"}} >
-          <img style={{borderRadius: '0.5rem',height:"100%",width:"100%", objectFit:"cover"}}
+        <div style={{ borderRadius: "0.5rem", height: "8rem" }}>
+          <img
+            style={{
+              borderRadius: "0.5rem",
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+            }}
             src="https://practice.geeksforgeeks.org/_next/image?url=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fimg-practice%2Fbanner%2Fcomplete-interview-preparation-thumbnail.png&w=1920&q=75"
             alt=""
           />
@@ -17,29 +27,32 @@ const CourseCard = ({courseName}) => {
           <Typography variant="h6" color="white" fontSize={16}>
             {courseName}
           </Typography>
-          <div style={{display:'flex', alignItems:'flex-end'}}>
-            <div style={{marginTop:'1rem',flex:"1"}}>
+          <div style={{ display: "flex", alignItems: "flex-end" }}>
+            <div style={{ marginTop: "1rem", flex: "1" }}>
               <Typography
                 variant="h6"
-                style={{ textDecoration: "line-through", color: "#ADADAD",fontSize:"1rem" }}
-              >
-                ₹ 6000
-              </Typography>
-              <Typography variant="h6" style={{ color: "#ffbe37" }}>
-                ₹ 3000
-              </Typography>
-            </div>
-            <div >
-              <Link to='/'>
-              <Button
-                variant="contained"
-                style={{ textTransform: "none", backgroundColor: "#0259eb" }}
-                onClick={()=>{
-                  window.location="https://www.o1codingclub.in/"
+                style={{
+                  textDecoration: "line-through",
+                  color: "#ADADAD",
+                  fontSize: "1rem",
                 }}
               >
-                Explore
-              </Button></Link>
+                Rs. {coursePrice}
+              </Typography>
+              <Typography variant="h6" style={{ color: "#ffbe37" }}>
+                Rs. {coursePriceNew}
+              </Typography>
+            </div>
+            <div>
+              <Link to="#">
+                <Button
+                  variant="contained"
+                  style={{ textTransform: "none", backgroundColor: "#0259eb" }}
+                  onClick={handleWebsiteOpen}
+                >
+                  Explore
+                </Button>
+              </Link>
             </div>
           </div>
         </CardInfo>
@@ -56,7 +69,6 @@ const Card = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 0.5rem;
-
   img {
     width: 100%;
   }
@@ -70,6 +82,10 @@ const Wrapper = styled.div`
   width: 15rem;
   height: 17.5rem;
   margin-bottom: 2rem;
-  background: linear-gradient( 163.41deg, rgb(17 18 41) 20.11%, rgb(0 0 0) 171.59% );
+  background: linear-gradient(
+    163.41deg,
+    rgb(17 18 41) 20.11%,
+    rgb(0 0 0) 171.59%
+  );
 `;
 export default CourseCard;
