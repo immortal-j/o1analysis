@@ -3,13 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CourseCard = ({courseName,coursePrice,courseMRP}) => {
+const CourseCard = ({courseName,coursePrice,courseMRP,courseImg}) => {
   return (
     <Wrapper style={{ boxShadow: "rgb(0 0 0 / 85%) 0px 4px 16px" }}>
       <Card>
         <div style={{borderRadius: '0.5rem',height:"8rem"}} >
           <img style={{borderRadius: '0.5rem',height:"100%",width:"100%", objectFit:"cover"}}
-            src="https://practice.geeksforgeeks.org/_next/image?url=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fimg-practice%2Fbanner%2Fcomplete-interview-preparation-thumbnail.png&w=1920&q=75"
+            src={courseImg}
             alt=""
           />
         </div>

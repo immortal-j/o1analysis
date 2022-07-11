@@ -4,6 +4,9 @@ import "./Ban.css";
 import CourseCard from "./CourseCard";
 import { Container, Typography } from "@mui/material";
 import { CourseData } from "./CourseData";
+import card1img from "../Assets/card1.jpg";
+import card2img from "../Assets/card2.jpg";
+import card3img from "../Assets/card3.jpg";
 const Ban = ({ weak, name }) => {
   // console.log(weak);
   let sde = weak?.sde_bootcamp
@@ -11,7 +14,7 @@ const Ban = ({ weak, name }) => {
   // console.log(aptitude);
   let core = weak?.core
   
-
+const courseimg=[card1img,card2img,card3img];
   return (
     <Container maxWidth={'xl'} >
 
@@ -68,14 +71,14 @@ const Ban = ({ weak, name }) => {
               !sde && !aptitude && !core && <div>
 
                 <CourseCard courseName={"Complete SDE Bootcamp "} />
-                <CourseCard courseName={"Aptitude Series - Self Pace"} />
+                <CourseCard courseName={"Aptitude Series - Self Pace" }  />
                 <CourseCard courseName={"Core Subjects - Crash Course"} /></div>
             }
 
             {
-              CourseData.map((data) => {
+              CourseData.map((data,id) => {
                 return (
-                  (sde || aptitude) && <CourseCard courseName={data.name} coursePrice={data.price} courseMRP={data.mrp} />)
+                  (sde || aptitude) && <CourseCard key={id}courseName={data.name} coursePrice={data.price} courseMRP={data.mrp} courseImg={courseimg[id]} />)
               })
 
 

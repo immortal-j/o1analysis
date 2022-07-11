@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Steps } from "intro.js-react";
-function Demo() {
+function Demo(props) {
   const [state, setState] = useState({
     stepsEnabled: false,
     initialStep: 0,
@@ -34,15 +34,15 @@ function Demo() {
 
   useEffect(() => {
    toggleSteps();
-  },[]);
+  },[props.demoStatus]);
   const onExit = () => {
     setState((prev) => ({...prev, stepsEnabled: false }));
 };
 
 const toggleSteps = () => {
     setState(prev => ({...prev,stepsEnabled: !prev.stepsEnabled }));
+  
 };
-
   return (
     <div>
       <Steps
