@@ -3,6 +3,7 @@ import Man from "../Assets/Man.png";
 import "./Ban.css";
 import CourseCard from "./CourseCard";
 import { Container, Typography } from "@mui/material";
+
 const Ban = ({ weak, name }) => {
   // weak = {};
   // weak = { core: "oops" };

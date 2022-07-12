@@ -26,7 +26,7 @@ const FooterNew = () => {
                   />
                   Know Your Prep
                 </a>
-                <p className="tagline">A product of O(1) Coding Club</p>
+                <p className="tagline">An O(1) Product.</p>
               </div>
             </div>
             <div className="col-md-2"></div>

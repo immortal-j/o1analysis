@@ -219,7 +219,10 @@ const Overall = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   };
-
+  const handleDemotrue=()=>{
+    setTimeout(() => {SetDemostatus(false);},100);
+    setTimeout(() => {SetDemostatus(true);},200);
+  }
   const [active, SetActive] = useState(false);
 
   return (
@@ -247,7 +250,7 @@ const Overall = () => {
 
       {visibility && (
         <div>
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} demoStatus={handleDemotrue} />
 
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>

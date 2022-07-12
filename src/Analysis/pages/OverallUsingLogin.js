@@ -345,7 +345,15 @@ const Overall2 = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   };
-
+  const handleDemotrue=()=>{
+    setTimeout(() => {SetDemostatus(false);},100);
+    setTimeout(() => {SetDemostatus(true);},200);
+  }
+  const handleDemofalse=()=>{
+    
+   
+   
+  }
   return (
     <div>
       {!toggle && (
@@ -430,7 +438,7 @@ const Overall2 = () => {
               <CircularProgress color="secondary" />
             </Backdrop>
           )}
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} />
+          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} demoStatus={handleDemotrue} />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -623,7 +631,7 @@ const Overall2 = () => {
               </Grid>
             </Grid>
 
-            {demostatus ? <Demo /> : ""}
+            {demostatus ? <Demo demoStatus={demostatus} /> : ""}
             <Banner />
             <Ban weak={weak} name={name} />
             <FooterNew />
