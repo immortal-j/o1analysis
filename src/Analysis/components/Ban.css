@@ -18,21 +18,11 @@
     display: flex;
     width: 100%;
     padding:1.2rem ;
-    
+
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
-}
-
-.banner-container-1 .banner-1 .shoe{
-    /* flex:1 1 250px; */
-    padding:15px;
-    text-align: center;
-}
-
-.banner-container-1 .banner-1 .shoe img{
-    width:80%;
 }
 
 .banner-container-1 .banner-1 .content{

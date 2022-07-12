@@ -1,11 +1,13 @@
 import React from "react";
-import Homepage from "./Home/Pages/Homepage";
 import { Routes, Route } from "react-router-dom";
-import Overall from "./Analysis/pages/OverallUsingURL";
 import GlobalStyles from "./GlobalStyles";
+
+import Homepage from "./Home/Pages/Homepage";
 import PageNotFound from "./Analysis/pages/PageNotFound";
-import DashboardLogin from "./Analysis/pages/DashboardLogin";
 import Overall2 from "./Analysis/pages/OverallUsingLogin";
+import Overall from "./Analysis/pages/OverallUsingURL";
+// import DashboardLogin from "./Analysis/pages/DashboardLogin";
+
 function App() {
   return (
     <div className="App">

@@ -1,12 +1,14 @@
 import React from "react";
 // import { SocialIcon } from "react-social-icons";
 import "./footerNew.css";
+import "../../../style.css"
 
 import logo from "../../../Analysis/Assets/Logo/logo2.svg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import InstagramIcon from "@mui/icons-material/Instagram";
+
 const FooterNew = () => {
   return (
     <div id="footer-wrap">
@@ -30,7 +32,7 @@ const FooterNew = () => {
             <div className="col-md-2"></div>
             <div className="col-md-2"></div>
             <div className="col-md-3">
-              <h4>Contact</h4>
+              <h4 className="footer-link">Contact</h4>
               <ul className="footer-link">
                 <li>
                   <a href="mailto:o1codingclub@gmail.com" title="Contact">
@@ -64,19 +66,6 @@ const FooterNew = () => {
                         <YouTubeIcon />
                       </a>
                     </div>
-
-                    {/* <SocialIcon
-                          href="#"
-                          title="Facebook"
-                          network="facebook"
-                          bgColor="#ffffff"
-                        />
-                        <SocialIcon
-                          href="#"
-                          title="Link"
-                          network=""
-                          bgColor="#ffffff"
-                        /> */}
                   </div>
                 </li>
               </ul>
@@ -85,9 +74,9 @@ const FooterNew = () => {
         </div>
         <div className="bottom-footer">
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-5 col-lg-12">
               <p className="copyright pt-3">
-                O(1) Know Your Prep &reg; {new Date().getFullYear()}
+                O(1) - Know Your Prep &reg; {new Date().getFullYear()}
               </p>
             </div>
           </div>

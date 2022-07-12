@@ -50,8 +50,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  minWidth: 400,
-  height: 400,
+  minWidth: 350,
   borderRadius: "2rem",
   bgcolor: "white",
   border: "2px solid #000",
@@ -210,9 +209,11 @@ const Overall2 = () => {
       // );
 
       // setWeak(weaktopics.data);
+      // console.log(subject);
       setSubName(subject.data.subject);
       setLeetCodeLabel(subject.data.leetcode.labels);
       setLeetCodeSeries(subject.data.leetcode.series);
+      setLeetCodeTotal(subject.data.leetcode.total);
       setLeetCodeTotalSeries(subject.data.leetcode.total_series);
       setLineGraphLabel(subject.data.linegraph.labels);
       setLineGraphSeries(subject.data.linegraph.series);
@@ -232,6 +233,12 @@ const Overall2 = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (email.trim() == "") {
+      toast.error("Please enter your email");
+      return;
+    }
+
     setCookie("o1user", email, { maxAge: 1800 });
     setLoading(true);
 
@@ -320,6 +327,7 @@ const Overall2 = () => {
     if ("o1user" in cookies) {
       handlecookie(cookies.o1user);
     }
+
     if ("democookie" in cookies) {
       SetDemostatus(false);
     } else {
@@ -374,10 +382,22 @@ const Overall2 = () => {
                 alignItems={"center"}
                 style={{ padding: "1rem" }}
               >
-                <Grid item md={6} xs={12}>
-                  <Typography variant={"h4"} marginBottom={2}>
+                <Grid
+                  item
+                  md={6}
+                  xs={12}
+                  display={{ md: "block", xs: "block" }}
+                >
+                  <img
+                    src={loginImage}
+                    alt=""
+                    style={{ width: "100%", height: "100%" }}
+                  />
+                </Grid>
+                <Grid item md={6} xs={12} style={{ textAlign: "center" }}>
+                  {/* <Typography variant={"h4"} marginBottom={2}>
                     Login Here for Analysis
-                  </Typography>
+                  </Typography> */}
                   <TextField
                     margin={"dense"}
                     fullWidth
@@ -397,15 +417,8 @@ const Overall2 = () => {
                     onClick={handleLogin}
                     style={{ marginTop: "1rem" }}
                   >
-                    Login
+                    Check Analysis
                   </Button>
-                </Grid>
-                <Grid item md={6} display={{ md: "block", xs: "none" }}>
-                  <img
-                    src={loginImage}
-                    alt=""
-                    style={{ width: "100%", height: "100%" }}
-                  />
                 </Grid>
               </Grid>
             </Box>
@@ -436,7 +449,7 @@ const Overall2 = () => {
                     backgroundColor: "#6F63E6",
                   }}
                 >
-                  <CardContents>
+                  <CardContents className="user-detail">
                     <EmojiPeopleIcon
                       sx={{
                         boxShadow: 2,
@@ -446,7 +459,7 @@ const Overall2 = () => {
                         padding: "0.3rem",
                       }}
                     />
-                    <h2 className="user-detail"> Hello, {name}</h2>
+                    <h2> Hello, {name}</h2>
                     <p>Nice to meet you !</p>
                     {/* <Typography variant="body1"> {publicURL}</Typography> */}
                     <CopyToClipboard text={publicURL}>
@@ -600,7 +613,9 @@ const Overall2 = () => {
                         }}
                         className={active === true ? "active-btn" : ""}
                       >
-                        Global Level RankList
+                        {isOverall
+                          ? "Global Level RankList"
+                          : "Subject wise Ranklist"}
                       </Button>
                     </div>
                     <CardContentsMobile>

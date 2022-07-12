@@ -31,16 +31,14 @@ const CircleStyle = styled.div`
   }
 
   @keyframes MoveUpDown {
-    0% ,100%{
-transform: translateY(0)
-
+    0%, 100% {
+      transform: translateY(0)
     }
-    50%{
+    50% {
       transform: translateY(-5px);
- 
     }
-    
   }
+
   &:hover {
     transform: scale(1.01);
     transition: 0.9s all ease-in-out;
@@ -54,10 +52,8 @@ transform: translateY(0)
     transform: scale(0.5) !important;
     right: 10rem;
   }
-
   @media screen and (max-width: 400px) {
     transform: scale(0.5) !important;
-    right: 11rem;
     animation: none;
   }
 `;

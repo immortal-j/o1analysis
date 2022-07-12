@@ -8,13 +8,7 @@ const Banner = () => {
   return (
     <div className="banner-container">
       <div className="banner">
-        <Container maxWidth="lg"  >
-        {/* <Typography
-              variant="h3"
-              style={{ fontFamily: "Poppins", marginBottom: "1rem", marginTop: "1rem",color:"white" }}
-            >
-              Featured Courses
-            </Typography> */}
+        <Container maxWidth="lg">
           <div
             style={{
               display: "flex",

@@ -10,21 +10,19 @@ import { useCookies } from 'react-cookie';
 import LogoutIcon from '@mui/icons-material/Logout';
 const ToggleSidebar = ({fetchSubject,subName,demoStatus} ) => {
   const [isOpen, setIsopen] = useState(false);
-  const [cookies, setCookie,RemoveCookie] = useCookies(['abcd']);
+  const [cookies, setCookie, RemoveCookie] = useCookies(["abcd"]);
   const ToggleSidebar = () => {
     isOpen === true ? setIsopen(false) : setIsopen(true);
   };
 
-  const xyz=(key)=>{
+  const xyz = (key) => {
     ToggleSidebar();
-      fetchSubject(key)
-     
-  }
-  const handleLogOut=()=>{
+    fetchSubject(key);
+  };
+  const handleLogOut = () => {
     RemoveCookie("o1user");
-    window.location.href='/dashboard'
-  }
-
+    window.location.href = "/dashboard";
+  };
 
   return (
     <>
@@ -62,7 +60,6 @@ const ToggleSidebar = ({fetchSubject,subName,demoStatus} ) => {
         </nav>
         <div className={`sidebar ${isOpen === true ? "active" : ""}`}>
           <div className="sd-header">
-
             <Link to='/' className="navbar-brand text-primary mr-0">
               <img
                 className="brand-logo"

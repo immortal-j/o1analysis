@@ -64,32 +64,36 @@ const RegisterForm = (props) => {
     ) {
       setLoading(false);
       toast.error("Fields Empty");
-    }
-    else{
-    axios
-      .post(`https://o1apti.herokuapp.com/auth/register`, userData)
-      .then((res) => {
-        setLoading(false);
-        toast.success("User Register Successfully");
-        setUserData({ name: "", email: "", mobile: "", key: "", college: "" });
-        window.location = testlink;
-        props.handleClose();
-
-      })
-      .catch(function (error) {
-        setLoading(false);
-        if (error.response.data === "EMAIL ALREADY EXIST")
-          toast.error("Email Already Exist.");
-        else if (error.response.data === "INVALID DATA")
-          toast.warn("Please fill all the fields.");
-        else if (error.response.data === "WRONG KEY")
-          toast.warn("Wrong Key.");
-        else {
-          // console.log(error.response);
-          toast.warn("Something goes wrong. Please try again.");
-        }
-        // props.handleClose();
-      });
+    } else {
+      axios
+        .post(`https://o1apti.herokuapp.com/auth/register`, userData)
+        .then((res) => {
+          setLoading(false);
+          toast.success("User Register Successfully");
+          setUserData({
+            name: "",
+            email: "",
+            mobile: "",
+            key: "",
+            college: "",
+          });
+          window.location = testlink;
+          props.handleClose();
+        })
+        .catch(function (error) {
+          setLoading(false);
+          if (error.response.data === "EMAIL ALREADY EXIST")
+            toast.error("Email Already Exist.");
+          else if (error.response.data === "INVALID DATA")
+            toast.warn("Please fill all the fields.");
+          else if (error.response.data === "WRONG KEY")
+            toast.warn("Wrong Key.");
+          else {
+            // console.log(error.response);
+            toast.warn("Something goes wrong. Please try again.");
+          }
+          // props.handleClose();
+        });
     }
   };
 
@@ -124,10 +128,6 @@ const RegisterForm = (props) => {
           </Grid>
 
           <Grid item md={6} xs={12}>
-            <Typography variant={"h4"} marginBottom={2}>
-              {/* Register Here */}
-              Newly registered users will be redirected to another page where they can give their test.
-            </Typography>
             <TextField
               margin={"dense"}
               fullWidth
@@ -166,7 +166,6 @@ const RegisterForm = (props) => {
               variant="filled"
               required
             />
-
             <TextField
               margin={"dense"}
               color="secondary"
@@ -186,6 +185,15 @@ const RegisterForm = (props) => {
                 </MenuItem>
               ))}
             </TextField>
+            <Typography style={{ textAlign: "center", fontSize: "10" }}>
+              Your college not in list?{" "}
+              <a
+                href="https://www.linkedin.com/in/o-1-coding-club"
+                target={"_blank"}
+              >
+                Contact Us
+              </a>
+            </Typography>
             <TextField
               margin={"dense"}
               color="secondary"
@@ -217,22 +225,22 @@ const RegisterForm = (props) => {
                   <CircularProgress color="secondary" />
                 </Backdrop>
               ) : (
-                <span>Register Now </span>
+                <span>Give Test</span>
               )}
             </Button>
           </Grid>
         </Grid>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        theme="colored"
-      />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          theme="colored"
+        />
       </Container>
     </>
   );
