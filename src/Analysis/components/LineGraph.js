@@ -1,17 +1,15 @@
 import React from "react";
 import Chart from "react-apexcharts";
 const LineGraph = (props) => {
-  // const series = byId?.[0].linegraph.series;
-  // const labels = byId?.[0].linegraph.labels;
   const labels = props.LineGraphLabel;
   const series = props.LineGraphSeries;
 
-  try {
-    labels.forEach((elem, ind) => {
-      var label = elem.split(" ");
-      labels[ind] = label;
-    });
-  } catch (error) {}
+  // try {
+  //   labels.forEach((elem, ind) => {
+  //     var label = elem.split(" ");
+  //     labels[ind] = label;
+  //   });
+  // } catch (error) {}
 
   const temp = {
     series: series,

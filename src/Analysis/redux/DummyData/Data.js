@@ -21,7 +21,7 @@ export const Data = [
         },
       ],
       labels: [
-        "general aptitude".split(" "),
+        "general aptitude",
         "dbms",
         "dsa",
         "os",
@@ -32,7 +32,7 @@ export const Data = [
     },
     linegraph: {
       labels: [
-        "general aptitude".split(" "),
+        "general aptitude",
         "dbms",
         "dsa",
         "os",

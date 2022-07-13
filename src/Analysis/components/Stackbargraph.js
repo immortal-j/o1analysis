@@ -2,18 +2,15 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 const StackbarGraph = (props) => {
-  // const series = byId?.[0].stackgraph.series;
-  // const labels = byId?.[0].stackgraph.labels;
-
   const labels = props.StackBarLabel;
   const series = props.StackBarSeries;
 
-  try {
-    labels.forEach((elem, ind) => {
-      var label = elem.split(" ");
-      labels[ind] = label;
-    });
-  } catch (error) {}
+  // try {
+  //   labels.forEach((elem, ind) => {
+  //     var label = elem.split(" ");
+  //     labels[ind] = label;
+  //   });
+  // } catch (error) {}
 
   const temp = {
     series: series,
@@ -79,7 +76,7 @@ const StackbarGraph = (props) => {
       xaxis: {
         categories: labels,
         labels: {
-          rotate: 0,
+          // rotate: 90,
           style: {
             colors: "#fff",
             fontSize: "12px",

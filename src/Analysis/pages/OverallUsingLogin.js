@@ -632,11 +632,16 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
+              <Grid item xs={12}>
+                <Box>
+                  <Ban weak={weak} name={name} />
+                </Box>
+              </Grid>
             </Grid>
 
             {demostatus ? <Demo demoStatus={demostatus} /> : ""}
             {/* <Banner /> */}
-            <Ban weak={weak} name={name} />
+
             <FooterNew />
           </Container>
         </div>

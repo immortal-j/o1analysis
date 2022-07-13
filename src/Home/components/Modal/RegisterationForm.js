@@ -131,19 +131,6 @@ const RegisterForm = (props) => {
             <TextField
               margin={"dense"}
               fullWidth
-              type="email"
-              onChange={handleInputs}
-              value={userData.email}
-              name="email"
-              id="standard-basic"
-              label="Email"
-              variant="filled"
-              color="secondary"
-              required
-            />
-            <TextField
-              margin={"dense"}
-              fullWidth
               onChange={handleInputs}
               value={userData.name}
               name="name"
@@ -156,13 +143,26 @@ const RegisterForm = (props) => {
             <TextField
               margin={"dense"}
               fullWidth
+              type="email"
               onChange={handleInputs}
-              name="key"
-              type="password"
-              color="secondary"
-              value={userData.key}
+              value={userData.email}
+              name="email"
               id="standard-basic"
-              label="Key"
+              label="Email"
+              variant="filled"
+              color="secondary"
+              required
+            />
+            <TextField
+              margin={"dense"}
+              color="secondary"
+              fullWidth
+              onChange={handleInputs}
+              value={userData.mobile}
+              name="mobile"
+              id="standard-basic"
+              label="Mobile"
+              type="number"
               variant="filled"
               required
             />
@@ -196,14 +196,14 @@ const RegisterForm = (props) => {
             </Typography>
             <TextField
               margin={"dense"}
-              color="secondary"
               fullWidth
               onChange={handleInputs}
-              value={userData.mobile}
-              name="mobile"
+              name="key"
+              type="password"
+              color="secondary"
+              value={userData.key}
               id="standard-basic"
-              label="Mobile"
-              type="number"
+              label="Key"
               variant="filled"
               required
             />

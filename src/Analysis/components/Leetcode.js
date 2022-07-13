@@ -2,12 +2,6 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 const LeetCode = (props) => {
-  // const series=byId?.[0].leetcode.series;
-  // const labels=byId?.[0].leetcode.labels;
-  // const getPercentile = (par) => {
-  //   return parseFloat((par / total) * 100).toFixed(2);
-  // };
-  // console.log(props);
   let orignalseries = props.leetcodeSeries;
   let orignaltotalseries = props.leetcodeTotalSeries;
   let labels = [
