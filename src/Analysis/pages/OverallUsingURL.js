@@ -219,10 +219,14 @@ const Overall = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   };
-  const handleDemotrue=()=>{
-    setTimeout(() => {SetDemostatus(false);},100);
-    setTimeout(() => {SetDemostatus(true);},200);
-  }
+  const handleDemotrue = () => {
+    setTimeout(() => {
+      SetDemostatus(false);
+    }, 100);
+    setTimeout(() => {
+      SetDemostatus(true);
+    }, 200);
+  };
   const [active, SetActive] = useState(false);
 
   return (
@@ -250,7 +254,11 @@ const Overall = () => {
 
       {visibility && (
         <div>
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} demoStatus={handleDemotrue} />
+          <ToggleSidebar
+            subName={subName}
+            fetchSubject={fetchSubject}
+            demoStatus={handleDemotrue}
+          />
 
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
@@ -279,7 +287,7 @@ const Overall = () => {
                       <Button
                         variant="contained"
                         onClick={() => {
-                          toast.info("Copy to Clipboard", {
+                          toast.info("Copied to Clipboard", {
                             position: "bottom-right",
                             autoClose: 1500,
                             closeOnClick: true,
@@ -457,7 +465,7 @@ const Overall = () => {
               </Grid>
             </Grid>
             <br />
-            <Banner />
+            {/* <Banner /> */}
             <Ban weak={weak} name={name} />
             <FooterNew />
           </Container>

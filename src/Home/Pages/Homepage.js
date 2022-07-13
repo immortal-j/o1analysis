@@ -18,8 +18,8 @@ const Homepage = () => {
         <Home />
         <Feature />
         <Testislider />
-        <Combo/>
-        <FooterNew/>
+        {/* <Combo/> */}
+        <FooterNew />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import { NavBarData } from "./NavBarData";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import LogoutIcon from "@mui/icons-material/Logout";
-const ToggleSidebar = ({ fetchSubject, subName,demoStatus }) => {
+const ToggleSidebar = ({ fetchSubject, subName, demoStatus }) => {
   const [isOpen, setIsopen] = useState(false);
   const [cookies, setCookie, RemoveCookie] = useCookies(["abcd"]);
   const ToggleSidebar = () => {
@@ -49,8 +49,7 @@ const ToggleSidebar = ({ fetchSubject, subName,demoStatus }) => {
               variant="contained"
               onClick={demoStatus}
             >
-              Start Demo
-              
+              Take a tour
             </Button>
             <Button
               className="mr-3"

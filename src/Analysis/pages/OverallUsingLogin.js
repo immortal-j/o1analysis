@@ -27,7 +27,6 @@ import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
-import Combo from "../../Home/components/Combo";
 import FooterNew from "../../Home/components/Footer/FooterNew";
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
@@ -345,15 +344,15 @@ const Overall2 = () => {
   const handleCollegeRankList = () => {
     setListToShow(collegeRankList);
   };
-  const handleDemotrue=()=>{
-    setTimeout(() => {SetDemostatus(false);},100);
-    setTimeout(() => {SetDemostatus(true);},200);
-  }
-  const handleDemofalse=()=>{
-    
-   
-   
-  }
+  const handleDemotrue = () => {
+    setTimeout(() => {
+      SetDemostatus(false);
+    }, 100);
+    setTimeout(() => {
+      SetDemostatus(true);
+    }, 200);
+  };
+  const handleDemofalse = () => {};
   return (
     <div>
       {!toggle && (
@@ -438,7 +437,11 @@ const Overall2 = () => {
               <CircularProgress color="secondary" />
             </Backdrop>
           )}
-          <ToggleSidebar subName={subName} fetchSubject={fetchSubject} demoStatus={handleDemotrue} />
+          <ToggleSidebar
+            subName={subName}
+            fetchSubject={fetchSubject}
+            demoStatus={handleDemotrue}
+          />
           <Container maxWidth="xl">
             <Grid container spacing={2} rowSpacing={3} columnSpacing={3}>
               <Grid item xs={12} sm={6} md={4}>
@@ -466,7 +469,7 @@ const Overall2 = () => {
                       <Button
                         variant="contained"
                         onClick={() => {
-                          toast.info("Copy to Clipboard", {
+                          toast.info("Copied to Clipboard", {
                             position: "bottom-right",
                             autoClose: 1500,
                             closeOnClick: true,
@@ -632,7 +635,7 @@ const Overall2 = () => {
             </Grid>
 
             {demostatus ? <Demo demoStatus={demostatus} /> : ""}
-            <Banner />
+            {/* <Banner /> */}
             <Ban weak={weak} name={name} />
             <FooterNew />
           </Container>
