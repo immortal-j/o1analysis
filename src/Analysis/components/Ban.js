@@ -179,25 +179,25 @@ const Ban = ({ weak, name }) => {
                   className={[classes.body, "testimonial-body"].join(" ")}
                 >
                   <Typography style={{}}>
-                    Hey, I'm Rohit Doshi, an SDE at Amazon. I conduct{" "}
-                    <b>"The Complete SDE Bootcamp Training"</b> wherein I train
-                    students from all across India to master DSA & Problem
-                    Solving for Coding Rounds & Interviews of companies. <br />
-                    <br /> Though the cost of the course is Rs. 5000, I am
-                    giving away a few seats of the upcoming batch to deserving
-                    students at a <b>90% scholarship</b> i.e. at Rs. 450 only
-                    (cheaper than a pizza 😉) <br />
+                    Hey, I'm Rohit Doshi, SDE at Amazon. We conduct{" "}
+                    <b>"Placement Training"</b> wherein dream company placed
+                    experts train students from all across India to master
+                    Aptitude and Core Subjects for Interviews. <br />
+                    <br /> Though the actual cost of the course is Rs. 4000, we
+                    are giving away a few seats of the upcoming batch to
+                    deserving students at a <b>75% scholarship</b> i.e. at Rs.
+                    1000 only <br />
                     <br /> To get the scholarship, you need to score at least
                     50% marks in the{" "}
                     <a
                       href="https://forms.gle/Krh6cHT3bYSLh3aJ7"
                       target={"_blank"}
                     >
-                      Scholarship MCQ Test{" "}
+                      Scholarship MCQ Test
                     </a>
                     . The test is pretty simple & it will hardly take 10 minutes
-                    to give the test, so give the test now & get the valuable
-                    training by me at a 90% scholarship.
+                    to give the test, so give the test now & get valuable
+                    training at a 75% scholarship.
                   </Typography>
                 </Grid>
                 <Grid
