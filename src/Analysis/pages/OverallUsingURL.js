@@ -282,7 +282,6 @@ const Overall = () => {
                     />
                     <h2 className="user-detail"> Hello, {name} </h2>
                     <p>Nice to meet you !</p>
-                    {/* <Typography variant="body1"> {publicURL}</Typography> */}
                     <CopyToClipboard text={publicURL}>
                       <Button
                         variant="contained"
@@ -306,7 +305,7 @@ const Overall = () => {
                         Copy Public Profile URL
                       </Button>
                     </CopyToClipboard>
-                    <br></br>
+                                        <br></br>
                     {/* <Typography>Global Rank: {globalRank} </Typography>
                     <Typography>College Rank: {collegeRank}</Typography> */}
                   </CardContents>

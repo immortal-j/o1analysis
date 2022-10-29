@@ -1,15 +1,4 @@
-import {
-  Backdrop,
-  Button,
-  Card,
-  CardContent,
-  CircularProgress,
-  Container,
-  Grid,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Backdrop, Button, Card, CardContent, CircularProgress, Container, Grid, Modal, TextField, Typography, } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loginImage from "../../Home/images/Register.svg";
@@ -27,9 +16,11 @@ import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
 import Banner from "../components/Banner";
+import Contest from "../components/Contest";
 import FooterNew from "../../Home/components/Footer/FooterNew";
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
+import DailyQuestion from "../components/DailyQuestion";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -59,6 +50,15 @@ const style = {
 };
 
 const Overall2 = () => {
+  const [openContest, setOpenContest] = React.useState(false);
+  const handleOpenContest = () => setOpenContest(true);
+  const handleCloseContest = () => setOpenContest(false);
+
+  const [openQOTD, setOpenQOTD] = React.useState(false);
+  const handleOpenQOTD = () => setOpenQOTD(true);
+  const handleCloseQOTD = () => setOpenQOTD(false);
+
+
   const [leetcodeLabel, setLeetCodeLabel] = useState([]);
   const [leetcodeSeries, setLeetCodeSeries] = useState([]);
   const [leetcodeTotalSeries, setLeetCodeTotalSeries] = useState([]);
@@ -352,7 +352,7 @@ const Overall2 = () => {
       SetDemostatus(true);
     }, 200);
   };
-  const handleDemofalse = () => {};
+  const handleDemofalse = () => { };
   return (
     <div>
       {!toggle && (
@@ -488,9 +488,15 @@ const Overall2 = () => {
                         Copy Public Profile URL
                       </Button>
                     </CopyToClipboard>
+                    <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
+                      <Button variant="contained" onClick={handleOpenContest}>Today's Contest</Button>
+                      <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button>
+                    </div>
                     <br></br>
                     {/* <Typography>Global Rank: {globalRank} </Typography>
                     <Typography>College Rank: {collegeRank}</Typography> */}
+                    <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
+                    <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
                   </CardContents>
                 </Card>
               </Grid>
