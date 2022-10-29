@@ -31,6 +31,7 @@ import Combo from "../../Home/components/Combo";
 import FooterNew from "../../Home/components/Footer/FooterNew";
 import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
+import Heatmap from "../components/Heatmap";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -570,6 +571,10 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
+           <Heatmap    
+           HeatGraphLabel={LineGraphLabel}
+                        HeatGraphSeries={LineGraphLabel}
+                        />
               <Grid item xs={12}>
                 <Box>
                   <Card
