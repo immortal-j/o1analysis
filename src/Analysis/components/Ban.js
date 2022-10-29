@@ -136,11 +136,9 @@ const Ban = ({ weak, name }) => {
                 <Typography
                   variant="body2"
                   style={{ fontWeight: "100", fontSize: "1.3rem" }}
-                  textAlign="left"
                 >
-                  Hey {name}, <br /> Based on your performance, your weak topics
-                  is/are:
-                  <br />
+                  Hey {name}, Based on your performance, Your weak topics is/are
+                  as follows:
                   <br />
                   <span
                     style={{

@@ -3,9 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CourseCard = ({ courseName, coursePrice, coursePriceNew, website }) => {
+const CourseCard = ({ courseName, coursePrice, courseMRP,courseImg }) => {
   const handleWebsiteOpen = () => {
-    window.location.href = website;
+    window.location.href = "https://www.o1codingclub.in/combo";
   };
 
   return (
@@ -19,7 +19,7 @@ const CourseCard = ({ courseName, coursePrice, coursePriceNew, website }) => {
               width: "100%",
               objectFit: "cover",
             }}
-            src="https://practice.geeksforgeeks.org/_next/image?url=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fimg-practice%2Fbanner%2Fcomplete-interview-preparation-thumbnail.png&w=1920&q=75"
+            src={courseImg}
             alt=""
           />
         </div>
@@ -40,7 +40,7 @@ const CourseCard = ({ courseName, coursePrice, coursePriceNew, website }) => {
                 Rs. {coursePrice}
               </Typography>
               <Typography variant="h6" style={{ color: "#ffbe37" }}>
-                Rs. {coursePriceNew}
+                Rs. {courseMRP}
               </Typography>
             </div>
             <div>
