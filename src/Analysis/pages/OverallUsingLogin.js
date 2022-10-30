@@ -1,4 +1,4 @@
-import { Backdrop, Button, Card, CardContent, CircularProgress, Container, Grid, Modal, TextField, Typography, } from "@mui/material";
+import { Backdrop, Button, Card, CardContent, CircularProgress, Container, Grid, Modal, TextField } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loginImage from "../../Home/images/Register.svg";
@@ -88,7 +88,7 @@ const Overall2 = () => {
   const [cookies, setCookie] = useCookies(["abcd"]);
   const [isOverall, setIsOverall] = useState(1);
   const [demostatus, SetDemostatus] = useState(true);
-  const [timerstarted,setTimerstarted] = useState(false);
+  const [timerstarted, setTimerstarted] = useState(false);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(12);
@@ -345,7 +345,7 @@ const Overall2 = () => {
     //   const time=localStorage.getItem('starttime');
     //   const date=new Date();
     //   const sum=Date.now();
-      
+
     //   if(sum-time<=43200000)
     //   {
     //     const temp=sum-time;
@@ -374,7 +374,7 @@ const Overall2 = () => {
     }, 200);
   };
   const handleDemofalse = () => { };
-  const handleTimer=()=>{
+  const handleTimer = () => {
     // const date=new Date();
     // localStorage.setItem('starttime',Date.now());
     // setTimerstarted(true);
@@ -382,7 +382,7 @@ const Overall2 = () => {
     // setMinutes(0);
     // setSeconds(0);
   }
-  const handleTimerstop=()=>{
+  const handleTimerstop = () => {
     // setTimerstarted(false);
     // localStorage.removeItem('starttime');
   }
@@ -523,7 +523,7 @@ const Overall2 = () => {
                     </CopyToClipboard>
                     <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
                       <Button variant="contained" onClick={handleOpenContest}>Today's Contest</Button>
-                      <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop}/>
+                      <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop} />
                       {/* <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button> */}
                     </div>
                     <br></br>
@@ -544,28 +544,28 @@ const Overall2 = () => {
                       backgroundColor: "#fb9f15",
                     }}
                   >
-                     <CardContents className="user-detail">
-                     <div style={{borderRadius:'50%',background:'#000',height:'100px',width:'100px'}}>
-                     <img src="leetcodeicon.png" height="50px" width="50px" style={{margin:'25px'}}></img>
-                     </div>
-                    
-                    <h2> Daily Challenge</h2>
-                    <p> Get a step closer to mastering DSA </p>
-                    {/* <Typography variant="body1"> {publicURL}</Typography> */}
-                    
-                    <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
-                      <Button variant="contained" style={{backgroundColor: "#000",color:'#fb9f15'}} onClick={handleOpenQOTD}>Question of the day</Button>
-                    </div>
-                    <br></br>
-                    {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <CardContents className="user-detail">
+                      <div style={{ borderRadius: '50%', background: '#000', height: '100px', width: '100px' }}>
+                        <img src="leetcodeicon.png" height="50px" width="50px" style={{ margin: '25px' }}></img>
+                      </div>
+
+                      <h2> Daily Challenge</h2>
+                      <p> Get a step closer to mastering DSA </p>
+                      {/* <Typography variant="body1"> {publicURL}</Typography> */}
+
+                      <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
+                        <Button variant="contained" style={{ backgroundColor: "#000", color: '#fb9f15' }} onClick={handleOpenQOTD}>Question of the day</Button>
+                      </div>
+                      <br></br>
+                      {/* <Typography>Global Rank: {globalRank} </Typography>
                     <Typography>College Rank: {collegeRank}</Typography> */}
-                    <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
-                    <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
-                  </CardContents>
+                      <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
+                      <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
+                    </CardContents>
                   </Card>
                 </Box>
               </Grid>
-             
+
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
@@ -585,7 +585,7 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
-              
+
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
@@ -646,7 +646,16 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
-              {/* <Heatmap HeatGraphLabel={LineGraphLabel} HeatGraphSeries={LineGraphLabel}              /> */}
+              <Grid item xs={12} sm={6}>
+                <div style={{
+                  boxShadow: 2,
+                  minWidth: 275,
+                  height:"100%",
+                  backgroundColor: "#10153B",
+                }}>
+                  <Heatmap HeatGraphLabel={LineGraphLabel} HeatGraphSeries={LineGraphLabel} />
+                </div>
+              </Grid>
               <Grid item xs={12}>
                 <Box>
                   <Card

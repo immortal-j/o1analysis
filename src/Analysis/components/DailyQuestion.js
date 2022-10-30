@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { FormControlLabel, Grid, Radio, RadioGroup } from '@mui/material';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -46,10 +47,32 @@ export default function DailyQuestion({ openQOTD, handleCloseQOTD, handleOpenQOT
         onClose={handleCloseQOTD}
         aria-labelledby="responsive-dialog-title"
       >
-       <Container maxWidth="md" >
-       <Typography variant='h5'>Question of the Day</Typography>
-          <Typography variant={'body1'}>1. What is this?</Typography>
-       </Container>
+        <Container maxWidth="xl" >
+          <Typography variant='h5'>Question of the Day</Typography>
+          <Grid  container  sx={{ borderBottom: "1px solid grey" }}>
+            <Grid item xs={12} md={8}>
+              <Typography variant={'body1'}>1. What is this?</Typography>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box >
+                <RadioGroup sx={{ flexDirection: "row" }}>
+                  <FormControlLabel sx={{ color: 'green', fontWeight: "bold" }} value="solved" control={<Radio sx={{
+                    color: "green", '&.Mui-checked': { color: 'green' },
+                  }} />} label="Solved" />
+                  <FormControlLabel sx={{ color: '#b14949', fontWeight: "bold" }} value="unsolved" control={<Radio sx={{
+                    color: "#b14949", '&.Mui-checked': { color: '#b14949' },
+                  }} />} label="Unsolved" />
+                  <FormControlLabel sx={{ color: '#666363', fontWeight: "bold" }} value="tried" control={<Radio sx={{
+                    color: "#666363", '&.Mui-checked': { color: '#666363' },
+                  }} />} label="Tried" />
+                </RadioGroup>
+              </Box>
+            </Grid>
+          </Grid>
+          <Button variant='contained' sx={{
+            background: "purple", marginTop: '2rem', margin: " auto"
+          }}> Submit</Button>
+        </Container>
       </Dialog>
     </div>
   );
