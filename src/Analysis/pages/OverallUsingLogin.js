@@ -15,6 +15,7 @@ import PieChart from "../components/PieChart";
 import Demo from "./demo";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useCookies } from "react-cookie";
+import TimerWrapper from "../components/NewTImer";
 import Banner from "../components/Banner";
 import Contest from "../components/Contest";
 import FooterNew from "../../Home/components/Footer/FooterNew";
@@ -92,6 +93,10 @@ const Overall2 = () => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(12);
+  const [inter, setinter] = useState();
+  const [status, setstatus] = useState(true);
+  const [started, setStarted] = useState(false);
+
   const obj = {
     email: email,
     subject: "overall",
@@ -341,21 +346,29 @@ const Overall2 = () => {
         setCookie("democookie", "done");
       }, 100);
     }
-    // if(localStorage.getItem('starttime')!==null) {
-    //   const time=localStorage.getItem('starttime');
-    //   const date=new Date();
-    //   const sum=Date.now();
+    if (localStorage.getItem('starttime') !== null) {
+      const time = localStorage.getItem('starttime');
+      const date = new Date();
+      const sum = Date.now();
 
-    //   if(sum-time<=43200000)
-    //   {
-    //     const temp=sum-time;
-    //   const hr=temp/3600,min=(temp%3600)/60,sec=(temp%3600)%60;
-    //   setTimerstarted(true);
-    //   setHours(hr);
-    //   setMinutes(min);
-    //   setSeconds(sec);
-    //   }
-    // }
+      if (sum - time <= 43200000) {
+        const temp = (43200000 - new Date(sum - time)) / 1000;
+        console.log(sum);
+        console.log(time);
+        // console.log("Start time  " +  Date(time));
+        // console.log("temp " + temp);
+        // const hr = temp.getHours(), min = temp.getMinutes(), sec = temp.getSeconds();
+        const hr = Math.floor(temp / 3600), min = Math.floor((temp % 3600) / 60), sec = Math.floor((temp % 3600) % 60);
+        console.log(temp, hr, min, sec);
+        setTimerstarted(true);
+        setHours(hr);
+        setMinutes(min);
+        setSeconds(sec);
+        if(inter==null)
+        start();
+
+      }
+    }
   }, [0]);
 
   const handleGlobalRankList = () => {
@@ -375,17 +388,84 @@ const Overall2 = () => {
   };
   const handleDemofalse = () => { };
   const handleTimer = () => {
-    // const date=new Date();
-    // localStorage.setItem('starttime',Date.now());
-    // setTimerstarted(true);
-    // setHours(12);
-    // setMinutes(0);
-    // setSeconds(0);
+    const date = new Date();
+    setTimerstarted(true);
+    setHours(12);
+    setMinutes(0);
+    setSeconds(0);
+    localStorage.setItem('starttime', Date.now());
   }
   const handleTimerstop = () => {
-    // setTimerstarted(false);
-    // localStorage.removeItem('starttime');
+    setTimerstarted(false);
+    localStorage.removeItem('starttime');
   }
+
+  var interval;
+  var sec = seconds,
+    min = minutes,
+    hr = hours,
+    inte = inter;
+  const start = () => {
+    setTimerstarted(true);
+    setHours(hr);
+    setMinutes(min);
+    setSeconds(sec);
+    localStorage.setItem('starttime', Date.now());
+    hr = hr;
+    min = min;
+    sec = sec;
+    interval = setInterval(() => {
+      run();
+    }, 1000);
+    // setstatus(false);
+    setinter(interval);
+  };
+
+  const run = () => {
+    sec--;
+
+    if (sec < 0) {
+      min -= 1;
+      sec = 59;
+    }
+    if (min < 0) {
+      hr -= 1;
+      min = 59;
+      sec = 59;
+    }
+    if (hr < 0) {
+      hr = 12;
+      min = 0;
+      sec = 0;
+      setHours(hr);
+      setMinutes(min);
+      setSeconds(sec);
+      setstatus(true);
+      setTimerstarted(false);
+      clearInterval(interval);
+    } else {
+      setHours(hr);
+      setMinutes(min);
+      setSeconds(sec);
+    }
+  };
+  const stop = () => {
+    hr = 12;
+    min = 0;
+    sec = 0;
+    setHours(hr);
+    setMinutes(min);
+    setTimerstarted(false);
+    setSeconds(sec);
+    localStorage.removeItem('starttime');
+    // setstatus(true);
+    // console.log(inter);
+
+    clearInterval(inter);
+  };
+
+
+
   return (
     <div>
       {!toggle && (
@@ -523,7 +603,19 @@ const Overall2 = () => {
                     </CopyToClipboard>
                     <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
                       <Button variant="contained" onClick={handleOpenContest}>Today's Contest</Button>
-                      <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop} />
+                      {timerstarted ? (
+                        <h1>
+                          {hours < 10 ? 0 : ""}
+                          {hours}:{minutes < 10 ? 0 : ""}
+                          {minutes}:{seconds < 10 ? 0 : ""}
+                          {seconds}
+                        </h1>
+                      ) : (
+                        ""
+                      )}
+                      <Button variant="contained" onClick={start}>Start</Button>
+                      <Button variant="contained" onClick={stop}>stop</Button>
+                      {/* <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} setStarted={setTimerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop} /> */}
                       {/* <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button> */}
                     </div>
                     <br></br>
@@ -565,6 +657,7 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
+                    <TimerWrapper />
 
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
@@ -650,7 +743,7 @@ const Overall2 = () => {
                 <div style={{
                   boxShadow: 2,
                   minWidth: 275,
-                  height:"100%",
+                  height: "100%",
                   backgroundColor: "#10153B",
                 }}>
                   <Heatmap HeatGraphLabel={LineGraphLabel} HeatGraphSeries={LineGraphLabel} />
