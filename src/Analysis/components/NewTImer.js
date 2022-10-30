@@ -14,7 +14,7 @@ function MyTimer({ expiryTimestamp,diff,timerstarted,handleTimer,autostart }) {
     pause,
     resume,
     restart,
-  } = useTimer({ expiryTimestamp,autoStart:true,onExpire: () =>{localStorage.setItem('starttime',Date.now())}   });
+  } = useTimer({ expiryTimestamp,autoStart:true   });
 
 
   return (
@@ -25,6 +25,7 @@ function MyTimer({ expiryTimestamp,diff,timerstarted,handleTimer,autostart }) {
         // Restarts to 5 minutes timer
         const time = new Date();
         handleTimer(true);
+        localStorage.setItem('starttime',Date.now());
         time.setSeconds(time.getSeconds() + diff);
         restart(time)
       }}>Start</button>)
@@ -38,13 +39,13 @@ function MyTimer({ expiryTimestamp,diff,timerstarted,handleTimer,autostart }) {
 }
 
 export default function App(props) {
-    const [diff,setDiff]=useState(43200);
+    const [diff,setDiff]=useState(0);
     const [autostart,setAutostart]=useState(false);
     const time = new Date();
      useEffect(() => {
-        
-        if (localStorage.getItem('starttime') !== null) {
-            const old = localStorage.getItem('starttime');
+        console.log(localStorage.getItem('starttime'));
+        const old=localStorage.getItem('starttime')
+        if ( old!==null) {
             const curr = Date.now();
             console.log(curr-old);
             setDiff( 43200-((curr - old)/ 1000));
@@ -53,12 +54,11 @@ export default function App(props) {
             time.setSeconds(time.getSeconds() + 43200/2-((curr - old)/ 1000));
         }
         else
-        {
-            setDiff(43200);
-            localStorage.setItem('starttime',Date.now());
+        {setDiff(43200);
+            // localStorage.setItem('starttime',Date.now());
             time.setSeconds(time.getSeconds() + 43200);
         }
-    }, [])
+    }, [0])
     
   return (
     <div>
