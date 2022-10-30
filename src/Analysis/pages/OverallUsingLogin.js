@@ -22,6 +22,7 @@ import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
 import DailyQuestion from "../components/DailyQuestion";
 import Heatmap from "../components/Heatmap";
+import Timer from "../components/timer";
 const CardContents = styled(CardContent)({
   display: "flex",
   flexDirection: "column",
@@ -87,6 +88,10 @@ const Overall2 = () => {
   const [cookies, setCookie] = useCookies(["abcd"]);
   const [isOverall, setIsOverall] = useState(1);
   const [demostatus, SetDemostatus] = useState(true);
+  const [timerstarted,setTimerstarted] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [hours, setHours] = useState(12);
   const obj = {
     email: email,
     subject: "overall",
@@ -336,6 +341,21 @@ const Overall2 = () => {
         setCookie("democookie", "done");
       }, 100);
     }
+    // if(localStorage.getItem('starttime')!==null) {
+    //   const time=localStorage.getItem('starttime');
+    //   const date=new Date();
+    //   const sum=Date.now();
+      
+    //   if(sum-time<=43200000)
+    //   {
+    //     const temp=sum-time;
+    //   const hr=temp/3600,min=(temp%3600)/60,sec=(temp%3600)%60;
+    //   setTimerstarted(true);
+    //   setHours(hr);
+    //   setMinutes(min);
+    //   setSeconds(sec);
+    //   }
+    // }
   }, [0]);
 
   const handleGlobalRankList = () => {
@@ -354,6 +374,18 @@ const Overall2 = () => {
     }, 200);
   };
   const handleDemofalse = () => { };
+  const handleTimer=()=>{
+    // const date=new Date();
+    // localStorage.setItem('starttime',Date.now());
+    // setTimerstarted(true);
+    // setHours(12);
+    // setMinutes(0);
+    // setSeconds(0);
+  }
+  const handleTimerstop=()=>{
+    // setTimerstarted(false);
+    // localStorage.removeItem('starttime');
+  }
   return (
     <div>
       {!toggle && (
@@ -491,7 +523,8 @@ const Overall2 = () => {
                     </CopyToClipboard>
                     <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
                       <Button variant="contained" onClick={handleOpenContest}>Today's Contest</Button>
-                      <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button>
+                      <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop}/>
+                      {/* <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button> */}
                     </div>
                     <br></br>
                     {/* <Typography>Global Rank: {globalRank} </Typography>
@@ -501,6 +534,38 @@ const Overall2 = () => {
                   </CardContents>
                 </Card>
               </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Box>
+                  <Card
+                    className="overall-analysis"
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#fb9f15",
+                    }}
+                  >
+                     <CardContents className="user-detail">
+                     <div style={{borderRadius:'50%',background:'#000',height:'100px',width:'100px'}}>
+                     <img src="leetcodeicon.png" height="50px" width="50px" style={{margin:'25px'}}></img>
+                     </div>
+                    
+                    <h2> Daily Challenge</h2>
+                    <p> Get a step closer to mastering DSA </p>
+                    {/* <Typography variant="body1"> {publicURL}</Typography> */}
+                    
+                    <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
+                      <Button variant="contained" style={{backgroundColor: "#000",color:'#fb9f15'}} onClick={handleOpenQOTD}>Question of the day</Button>
+                    </div>
+                    <br></br>
+                    {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography> */}
+                    <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
+                    <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
+                  </CardContents>
+                  </Card>
+                </Box>
+              </Grid>
+             
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
@@ -520,6 +585,7 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
+              
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
@@ -542,7 +608,7 @@ const Overall2 = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6} md={8}>
                 <Box>
                   <Card
                     className="correct-analysis"
@@ -580,7 +646,7 @@ const Overall2 = () => {
                   </Card>
                 </Box>
               </Grid>
-              <Heatmap HeatGraphLabel={LineGraphLabel} HeatGraphSeries={LineGraphLabel}              />
+              {/* <Heatmap HeatGraphLabel={LineGraphLabel} HeatGraphSeries={LineGraphLabel}              /> */}
               <Grid item xs={12}>
                 <Box>
                   <Card

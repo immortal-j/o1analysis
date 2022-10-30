@@ -26,7 +26,7 @@ const StackbarGraph = (props) => {
         toolbar: { show: false },
         type: "bar",
         stacked: "true",
-        height: 450,
+        // height: 450,
       },
       plotOptions: {
         bar: {
@@ -130,7 +130,7 @@ const StackbarGraph = (props) => {
     },
   };
 
-  return <Chart type="bar" options={temp.options} series={temp.series} />;
+  return <Chart type="bar" options={temp.options} series={temp.series} height={325} />;
 };
 
 export default StackbarGraph;

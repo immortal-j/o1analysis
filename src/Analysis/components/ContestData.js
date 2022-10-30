@@ -1,12 +1,15 @@
-import { Box, Grid, Typography, FormControlLabel, Radio, RadioGroup, Button } from '@mui/material'
+import { Box, Grid, Typography, FormControlLabel, Radio, RadioGroup, Button} from '@mui/material'
 import React from 'react'
+import Container from '@mui/material/Container';
 
 
-
-const data=[1,2,3,5,6,9,3,4,6,5,5,2,4]
+const data=[1,2,3,5,6,9,3,4,6,5,5,2,4];
+const style = {
+    width:'50%',
+  };
 const ContestData = () => {
     return (
-        <Box>
+        <Container maxWidth="md">
             <Typography variant="h5" sx={{ textAlign: "center", marginBottom: "2rem" }}> Today's Contest</Typography>
             <Box>
                 <Grid container>
@@ -37,7 +40,7 @@ const ContestData = () => {
                 <Button variant='contained' sx={{background:"purple", marginTop:'2rem', margin:" auto"
             }}> Submit</Button>
             </Box>
-        </Box>
+        </Container>
     )
 }
 

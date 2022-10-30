@@ -4,7 +4,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import ContestData from './ContestData';
-
+import Container from '@mui/material/Container';
+import Dialog from '@mui/material/Dialog';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -25,7 +28,7 @@ export default function DailyQuestion({ openQOTD, handleCloseQOTD, handleOpenQOT
 
   return (
     <div>
-      <Modal
+      {/* <Modal
         open={openQOTD}
         onClose={handleCloseQOTD}
         aria-labelledby="modal-modal-title"
@@ -35,7 +38,19 @@ export default function DailyQuestion({ openQOTD, handleCloseQOTD, handleOpenQOT
           <Typography variant='h5'>Question of the Day</Typography>
           <Typography variant={'body1'}>1. What is this?</Typography>
         </Box>
-      </Modal>
+      </Modal> */}
+
+      <Dialog
+        // fullScreen={fullScreen}
+        open={openQOTD}
+        onClose={handleCloseQOTD}
+        aria-labelledby="responsive-dialog-title"
+      >
+       <Container maxWidth="md" >
+       <Typography variant='h5'>Question of the Day</Typography>
+          <Typography variant={'body1'}>1. What is this?</Typography>
+       </Container>
+      </Dialog>
     </div>
   );
 }
