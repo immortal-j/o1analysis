@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
-
+import styled from 'styled-components';
 function MyTimer({ expiryTimestamp, diff, timerstarted, handleTimer, autostart }) {
 
   const {
@@ -19,24 +19,28 @@ function MyTimer({ expiryTimestamp, diff, timerstarted, handleTimer, autostart }
 
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      {timerstarted ? (<div style={{ fontSize: '18px', color: 'black' }}>
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-      </div>) : (<button onClick={() => {
-        // Restarts to 5 minutes timer
-        const time = new Date();
-        handleTimer(true);
-        localStorage.setItem('starttime', Date.now());
-        time.setSeconds(time.getSeconds() + diff);
-        restart(time)
-      }}>Start</button>)
+    <TimerCSS style={{ textAlign: 'center' }}>
+      {timerstarted ? (<div style={{ fontSize: '1rem', color: 'black' }}>
+        <span className='timeStamp' >{hours}</span><span className="colon">:</span><span className='timeStamp'>{minutes}</span><span className="colon">:</span><span className='timeStamp'>{seconds}</span>
+      </div>) :
+        (<Button variant='contained' sx={{
+          background: "#2C6DE7", margin: '1rem 0', marginTop: "2rem", width: "15%"
+        }} onClick={() => {
+          // Restarts to 5 minutes timer
+          const time = new Date();
+          handleTimer(true);
+          localStorage.setItem('starttime', Date.now());
+          time.setSeconds(time.getSeconds() + diff);
+          restart(time)
+        }}>Start</Button>)
       }
-      <Button onClick={start} variant='contained' sx={{
-        background: "#2C6DE7", margin: '0.5rem 0',
-        width: "10%"
-      }}> Start</Button>
-      
-      <Button onClick={pause} variant='contained' sx={{
+      {/* {
+        !timerstarted &&
+        <Button onClick={start} variant='contained' sx={{
+          background: "#2C6DE7", margin: '1rem 0', marginTop: "2rem", width: "15%"
+        }}> Start</Button>} */}
+
+      {/* <Button onClick={pause} variant='contained' sx={{
         background: "#2C6DE7", margin: '0.5rem 0',
         width: "10%"
       }}>Pause</Button>
@@ -49,9 +53,9 @@ function MyTimer({ expiryTimestamp, diff, timerstarted, handleTimer, autostart }
       <Button onClick={restart} variant='contained' sx={{
         background: "#2C6DE7", margin: '0.5rem 0',
         width: "10%"
-      }}>restart</Button>
+      }}>restart</Button> */}
 
-    </div>
+    </TimerCSS>
   );
 }
 
@@ -83,3 +87,23 @@ export default function App(props) {
     </div>
   );
 }
+
+const TimerCSS = styled.div`
+margin: 1.5rem 0;
+.timeStamp{
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: #535353; 
+  font-size: 2rem;
+   color:white;
+   @media screen and (max-width:600px){
+    font-size: 1rem;
+   }
+}
+.colon{
+  font-size: 2rem;
+  font-weight: 900;
+  color:grey;
+  margin:0 0.6rem;
+
+}`

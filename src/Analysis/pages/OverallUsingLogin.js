@@ -23,6 +23,7 @@ import RankTableAK from "../components/RankTableAK";
 import Ban from "../components/Ban";
 import DailyQuestion from "../components/DailyQuestion";
 import Heatmap from "../components/Heatmap";
+import todaysContest from '../Assets/todaysContest.jpg'
 import Timer from "../components/timer";
 const CardContents = styled(CardContent)({
   display: "flex",
@@ -514,7 +515,7 @@ const Overall2 = () => {
                     <Typography>College Rank: {collegeRank}</Typography> */}
                     <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
                     <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
-                    <TimerWrapper timerstarted={timerstarted} handleTimer={handleTimer} />
+                    {/* <TimerWrapper timerstarted={timerstarted} handleTimer={handleTimer} /> */}
                   </CardContents>
                 </Card>
               </Grid>
@@ -561,7 +562,7 @@ const Overall2 = () => {
                   >
                     <CardContents className="user-detail">
                       <div style={{ borderRadius: '50%', background: '#000', height: '100px', width: '100px' }}>
-                        <img src="leetcodeicon.png" height="50px" width="50px" style={{ margin: '25px' }}></img>
+                        <img src={todaysContest} height="100%" width="100%" style={{  borderRadius: '50%',}}></img>
                       </div>
 
                       <h2> Today's Contest</h2>
