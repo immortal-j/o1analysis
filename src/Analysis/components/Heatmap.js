@@ -161,8 +161,7 @@ const Heatmap = (props) => {
     
   return (
     <div>
-      
-          <Chart  options={state.options} series={state.series} type="heatmap" width="650"/>;
+          <Chart  options={state.options} series={state.series} type="heatmap" />;
     </div>
   )
 }

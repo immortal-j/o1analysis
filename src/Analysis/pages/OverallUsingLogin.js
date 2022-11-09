@@ -90,7 +90,7 @@ const Overall2 = () => {
   const [isOverall, setIsOverall] = useState(1);
   const [demostatus, SetDemostatus] = useState(true);
   const [timerstarted, setTimerstarted] = useState(false);
- 
+
 
   const obj = {
     email: email,
@@ -341,7 +341,7 @@ const Overall2 = () => {
         setCookie("democookie", "done");
       }, 100);
     }
-   
+
   }, [0]);
 
   const handleGlobalRankList = () => {
@@ -360,11 +360,11 @@ const Overall2 = () => {
     }, 200);
   };
   const handleDemofalse = () => { };
-  
-const handleTimer=(arg)=>{
-  setTimerstarted(arg);
-}
-  
+
+  const handleTimer = (arg) => {
+    setTimerstarted(arg);
+  }
+
 
 
 
@@ -505,7 +505,7 @@ const handleTimer=(arg)=>{
                     </CopyToClipboard>
                     <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
                       <Button variant="contained" onClick={handleOpenContest}>Today's Contest</Button>
-                      
+
                       {/* <Timer hr={hours} min={minutes} sec={seconds} started={timerstarted} setStarted={setTimerstarted} handletimer={handleTimer} handleTimerstop={handleTimerstop} /> */}
                       {/* <Button variant="contained" onClick={handleOpenQOTD}>Question of the day</Button> */}
                     </div>
@@ -549,7 +549,38 @@ const handleTimer=(arg)=>{
                   </Card>
                 </Box>
               </Grid>
-                   
+              <Grid item xs={12} sm={6} md={4}>
+                <Box>
+                  <Card
+                    className="overall-analysis"
+                    sx={{
+                      boxShadow: 2,
+                      minWidth: 275,
+                      backgroundColor: "#4267ff",
+                    }}
+                  >
+                    <CardContents className="user-detail">
+                      <div style={{ borderRadius: '50%', background: '#000', height: '100px', width: '100px' }}>
+                        <img src="leetcodeicon.png" height="50px" width="50px" style={{ margin: '25px' }}></img>
+                      </div>
+
+                      <h2> Today's Contest</h2>
+                      <p> Practice Daily,  Improve Forever </p>
+                      {/* <Typography variant="body1"> {publicURL}</Typography> */}
+
+                      <div style={{ display: 'flex', gap: "1rem", justifyContent: "center", marginTop: "1rem" }}>
+                        <Button variant="contained" style={{ backgroundColor: "#000", color: '#8ea4ff' }} onClick={handleOpenContest}>Enroll Here</Button>
+                      </div>
+                      <br></br>
+                      {/* <Typography>Global Rank: {globalRank} </Typography>
+                    <Typography>College Rank: {collegeRank}</Typography> */}
+                      <DailyQuestion handleOpenQOTD={handleOpenQOTD} openQOTD={openQOTD} handleCloseQOTD={handleCloseQOTD} />
+                      <Contest handleOpenContest={handleOpenContest} openContest={openContest} handleCloseContest={handleCloseContest} />
+                    </CardContents>
+                  </Card>
+                </Box>
+              </Grid>
+
 
               <Grid item xs={12} sm={6} md={4}>
                 <Box>
@@ -593,7 +624,7 @@ const handleTimer=(arg)=>{
                 </Box>
               </Grid>
 
-              <Grid item xs={12} sm={6} md={8}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Box>
                   <Card
                     className="correct-analysis"

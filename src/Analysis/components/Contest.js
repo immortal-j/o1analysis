@@ -44,7 +44,7 @@ export default function Contest({ openContest, handleCloseContest, handleOpenCon
 
 
       <Dialog
-        maxWidth="md"
+        maxWidth="xl"
         open={openContest}
         onClose={handleCloseContest}
         aria-labelledby="responsive-dialog-title"
