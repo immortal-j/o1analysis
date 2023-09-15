@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Know Your Prep | Test Analyzing Application with Interactive Charts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Know Your Prep** GitHub repository! Know Your Prep is a live web application designed to help engineering students analyze their test performance with the aid of interactive charts. It provides in-depth insights into your test results, identifies strong and weak areas, and allows you to track your progress over time.
 
-## Available Scripts
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
 
-In the project directory, you can run:
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Know Your Prep** is a web application aimed at assisting engineering students in their test preparation journey. It provides a user-friendly interface for analyzing test metrics using interactive charts and graphs. The platform helps students identify their strengths and weaknesses in different subjects and topics, allowing them to focus their efforts more effectively and ultimately improve their test scores.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Key Highlights
+- Interactive charts and graphs for detailed performance analysis.
+- Subject-wise and topic-wise breakdown of test results.
+- Progress tracking and global competition with college and global rankings.
+- Positive impact on 600+ engineering students across 31 colleges nationwide.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Interactive Charts:** Visualize your test performance with interactive charts and graphs to gain a better understanding of your strengths and weaknesses.
 
-### `npm run build`
+- **Subject and Topic Analysis:** Get detailed subject-wise and topic-wise analysis of your test results to pinpoint areas that need improvement.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Progress Tracking:** Keep track of your progress over time to see how your performance is improving and where you need to focus your efforts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Competition:** Compete globally by comparing your test scores with students from different colleges and regions using our ranking system.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+This project leverages the following technologies to provide a seamless user experience:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React.js:** The front-end of the application is built using React.js, a popular JavaScript library for building user interfaces.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **ApexCharts:** Interactive charts and graphs are created using ApexCharts, making it easy to visualize test metrics.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Material-UI:** Material-UI is used for designing a modern and responsive user interface.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Redux Toolkit:** Redux Toolkit is utilized for state management, ensuring efficient data handling within the application.
 
-## Learn More
+- **Django:** Django, a high-level Python web framework, is used on the backend for data management and API endpoints.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To get started with **Know Your Prep**, follow these steps:
 
-### Code Splitting
+1. Clone the repository to your local machine:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```
+   git clone https://github.com/your-username/know-your-prep.git
+   ```
 
-### Analyzing the Bundle Size
+2. Install the necessary dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```
+   cd know-your-prep
+   npm install
+   ```
 
-### Making a Progressive Web App
+3. Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```
+   npm start
+   ```
 
-### Advanced Configuration
+4. Open your web browser and visit `http://localhost:3000` to access the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Usage
 
-### Deployment
+Once the application is up and running, you can:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Log in or create an account to start analyzing your test results.
+- Explore the interactive charts to gain insights into your performance.
+- View detailed subject and topic-wise analysis.
+- Track your progress and compete with students globally through rankings.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
